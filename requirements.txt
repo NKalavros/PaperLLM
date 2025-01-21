@@ -1,0 +1,6 @@
+flask
+PyPDF2
+celery
+python_dotenv
+openai
+google_generativeai
