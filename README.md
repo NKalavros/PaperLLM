@@ -22,11 +22,12 @@ More to come
 
 ### Clone the repo:
 
-```https://github.com/NKalavros/PaperLLM/tree/```
+```https://github.com/NKalavros/PaperLLM```
 
 ### Install the reqs:
 
 ```sudo apt-get install redis```
+
 ```pip install -r requirements.txt```
 
 ### Create the .env file in the same repository:
