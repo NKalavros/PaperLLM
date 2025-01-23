@@ -6,7 +6,7 @@ Just upload the PDF and it serves answers which you can rate. Dependencies are k
 
 ## Current supported models (I should really add icons here):
 
-~~GPT4o~~ Damn you rate limits.
+GPT4o
 
 Deepseek
 
@@ -15,6 +15,10 @@ Claude
 Gemini
 
 Perplexity
+
+Llama3
+
+Grok2
 
 More to come
 
