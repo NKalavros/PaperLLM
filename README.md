@@ -2,11 +2,11 @@
 
 Well, how to they do? I've built a quick evaluation platform with rankings and scores to gather data from.
 
-Just upload the PDF and it serves answers which you can rate.
+Just upload the PDF and it serves answers which you can rate. Dependencies are kept to an absolute minimum.
 
 ## Current supported models (I should really add icons here):
 
-~~GPT4o~~ Damn you rate limits.
+GPT4o
 
 Deepseek
 
@@ -15,6 +15,10 @@ Claude
 Gemini
 
 Perplexity
+
+Llama3
+
+Grok2
 
 More to come
 

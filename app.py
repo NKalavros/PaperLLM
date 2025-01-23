@@ -15,6 +15,7 @@ from openai import OpenAI #type: ignore
 from dotenv import load_dotenv #type: ignore
 from google.generativeai import configure, GenerativeModel #type: ignore
 from collections import defaultdict
+import json
 request_tracker = defaultdict(list)  # Tracks request_id -> task_ids
 
 # Configure logging
@@ -59,16 +60,20 @@ celery.conf.update(
 
 # Load environment variables
 load_dotenv()
-client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
+oaiclient = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 DEEPSEEK_API_KEY = os.getenv('DEEPSEEK_API_KEY')
 CLAUDE_API_KEY = os.getenv('CLAUDE_API_KEY')
 PERPLEXITY_API_KEY = os.getenv('PERPLEXITY_API_KEY')
+LLAMA_API_KEY = os.getenv('LLAMA_API_KEY')
+GROQ_API_KEY = os.getenv('GROQ_API_KEY')
 configure(api_key=os.getenv('GEMINI_API_KEY'))
 gemini_model = GenerativeModel('gemini-pro')
 
+
 # Constants
+#debug:
 MAX_API_TIMEOUT = 45
-MAX_TEXT_LENGTH = 8000
+MAX_TEXT_LENGTH = 1200000
 API_RETRY_DELAYS = [5, 15, 45]
 RPM_LIMIT = 3500
 
@@ -100,6 +105,8 @@ def extract_text_from_pdf(pdf_path):
         reader = PdfReader(pdf_path)
         text = ''.join(page.extract_text() for page in reader.pages)
         logger.info(f"Extracted {len(text)} characters from PDF")
+        wordcount = len(text.split(" "))
+        logger.info(f"Extracted {wordcount} words from PDF")
         return text
     except Exception as e:
         logger.error(f"PDF extraction failed: {str(e)}")
@@ -119,20 +126,21 @@ def process_summary(self, text, prompt_prefix, model, request_id=None):
         endpoint = None
         headers = {}
         payload = {}
-
+        logger.info("Text Used: " + text[min(len(text), MAX_TEXT_LENGTH)-100:min(len(text), MAX_TEXT_LENGTH)])
         if model == "openai":
-            endpoint = "https://api.openai.com/v1/chat/completions"
-            headers = {
-                "Authorization": f"Bearer {os.getenv('OPENAI_API_KEY')}",
-                "Content-Type": "application/json"
-            }
-            payload = {
-                "model": "gpt-4o",
-                "messages": [
+            #Nikolas note: OpenAI needs their client package, let's use that
+            #Nikolas note: [2025-01-23 14:20:02,258: ERROR/ForkPoolWorker-1] openai error: Error code: 429 - {'error': {'message': 'Request too large for gpt-4o in organization org-FPY5TvqSJGKGWU6QsfNtWZB7 on tokens per min (TPM): Limit 30000, Requested 34102. The input or output tokens must be reduced in order to run successfully. Visit https://platform.openai.com/account/rate-limits to learn more.', 'type': 'tokens', 'param': None, 'code': 'rate_limit_exceeded'}}. Retrying in 16.37188766227481s - Jesus christ what an annoyance.
+            completion = oaiclient.chat.completions.create(
+                model="gpt-4o",
+                messages=[
                     {"role": "system", "content": prompt_prefix},
-                    {"role": "user", "content": text[:MAX_TEXT_LENGTH]}
+                    {
+                        "role": "user",
+                        "content": text[:min(len(text), MAX_TEXT_LENGTH)]
+                    }
                 ]
-            }
+            )
+            logger.info("OpenAI completion: " + str(completion))
 
         elif model == "deepseek":
             endpoint = "https://api.deepseek.com/v1/chat/completions"
@@ -141,7 +149,7 @@ def process_summary(self, text, prompt_prefix, model, request_id=None):
                 "model": "deepseek-chat",
                 "messages": [{
                     "role": "user", 
-                    "content": f"{prompt_prefix}\n\n{text[:MAX_TEXT_LENGTH]}"
+                    "content": f"{prompt_prefix}\n\n{ text[:min(len(text),MAX_TEXT_LENGTH)]}"
                 }]
             }
 
@@ -153,11 +161,11 @@ def process_summary(self, text, prompt_prefix, model, request_id=None):
                 "Content-Type": "application/json"
             }
             payload = {
-                "model": "claude-3-haiku-20240307",
+                "model": "claude-3-5-sonnet-20241022",
                 "max_tokens": 1000,
                 "messages": [{
                     "role": "user",
-                    "content": f"{prompt_prefix}\n\n{text[:MAX_TEXT_LENGTH]}"
+                    "content": f"{prompt_prefix}\n\n{ text[:min(len(text),MAX_TEXT_LENGTH)]}"
                 }]
             }
         elif model == "gemini":
@@ -166,7 +174,7 @@ def process_summary(self, text, prompt_prefix, model, request_id=None):
             payload = {
                 "contents": [{
                     "parts": [{
-                        "text": f"{prompt_prefix}\n\n{text[:MAX_TEXT_LENGTH]}"
+                        "text": f"{prompt_prefix}\n\n{ text[:min(len(text),MAX_TEXT_LENGTH)]}"
                     }]
                 }]
             }
@@ -181,10 +189,41 @@ def process_summary(self, text, prompt_prefix, model, request_id=None):
                 "model": "sonar-pro",
                 "messages": [{
                     "role": "user",
-                    "content": f"{prompt_prefix}\n\n{text[:MAX_TEXT_LENGTH]}"
+                    "content": f"{prompt_prefix}\n\n{ text[:min(len(text),MAX_TEXT_LENGTH)]}"
                 }]
             }
-
+        elif model == "llama3":
+            endpoint = 'https://api.llama-api.com/chat/completions'
+            headers = {
+                "Authorization": f"Bearer {os.getenv('LLAMA_API_KEY')}",
+                "Content-Type": "application/json"
+            }
+            payload = {
+                "model": "llama3.3-70b",
+                "messages": [{
+                    "role": "user",
+                    "content": f"{prompt_prefix}\n\n{ text[:min(len(text),MAX_TEXT_LENGTH)]}"
+                }],
+                "temperature": 0.7,
+                "max_tokens": 1000,
+                "stream": False,
+            }
+        elif model == "grok2":
+            endpoint = "https://api.x.ai/v1/chat/completions"
+            headers = {
+                "Authorization": f"Bearer {GROQ_API_KEY}",
+                "Content-Type": "application/json"
+            }
+            payload = {
+                "messages": [
+                    {
+                    "role": "user",
+                    "content": f"{prompt_prefix}\n\n{ text[:min(len(text),MAX_TEXT_LENGTH)]}"
+                }],
+                "model": "grok-2-latest",
+                "temperature": 0,
+                "stream": False,
+            }
         elif model == "gemini":
             response = session.post(
                 endpoint,
@@ -206,16 +245,17 @@ def process_summary(self, text, prompt_prefix, model, request_id=None):
                 }
             )
             content = response.text
-        
-        response = session.post(
-            endpoint,
-            headers=headers,
-            json=payload,
-            timeout=(3.05, MAX_API_TIMEOUT)
-        )
-        response.raise_for_status()
-        response_json = response.json()
-
+        if model != "openai":
+            response = session.post(
+                endpoint,
+                headers=headers,
+                json=payload,
+                timeout=(3.05, MAX_API_TIMEOUT)
+            )
+            response.raise_for_status()
+            response_json = response.json()
+        elif model == "openai":
+            response_json = json.loads(completion.json())
         if model == "openai":
             if not response_json.get('choices'):
                 raise ValueError("Empty OpenAI response")
@@ -228,7 +268,10 @@ def process_summary(self, text, prompt_prefix, model, request_id=None):
             content = response_json['candidates'][0]['content']['parts'][0]['text']
         elif model == "perplexity":  # New response handling
             content = response_json['choices'][0]['message']['content']
-
+        elif model == "llama3":
+            content = response_json['choices'][0]['message']['content']
+        elif model == "grok2":
+            content = response_json['choices'][0]['message']['content']
         return {
             'model': model,
             'summary': content,
@@ -268,7 +311,8 @@ def summarize():
         text = extract_text_from_pdf(pdf_path)
         prompt_prefix = request.form.get('prompt_prefix', 'Summarize this academic paper:')
 
-        models = ['deepseek', 'perplexity','gemini','claude']
+        models = ['deepseek','llama3','claude','perplexity','grok2','gemini','openai']
+        logger.info("running model: "," ".join(models))
         tasks = [process_summary.apply_async(
             args=(text, prompt_prefix, model,request_id),
         ) for model in models]
