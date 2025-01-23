@@ -42,6 +42,8 @@ DEEPSEEK_API_KEY="***"
 CLAUDE_API_KEY="***"
 GEMINI_API_KEY="***"
 PERPLEXITY_API_KEY="***"
+LLAMA_API_KEY="***"
+GROQ2_API_KEY="***"
 ```
 
 ### Run
@@ -65,3 +67,7 @@ celery -A app.celery worker --loglevel=info --without-heartbeat --without-mingle
 ```
 python app.py
 ```
+
+## Visualization
+
+I also have a rudimentary R Shiny app to go with this project and a debugging script that generates fake requests for the json. 
