@@ -13,7 +13,7 @@ from celery import Celery #type: ignore
 import requests #type: ignore
 from openai import OpenAI #type: ignore
 from dotenv import load_dotenv #type: ignore
-from google.generativeai import configure, GenerativeModel #type: ignore
+import google.generativeai as genai #type: ignore
 from collections import defaultdict
 import json
 request_tracker = defaultdict(list)  # Tracks request_id -> task_ids
@@ -66,10 +66,15 @@ CLAUDE_API_KEY = os.getenv('CLAUDE_API_KEY')
 PERPLEXITY_API_KEY = os.getenv('PERPLEXITY_API_KEY')
 LLAMA_API_KEY = os.getenv('LLAMA_API_KEY')
 GROQ_API_KEY = os.getenv('GROQ_API_KEY')
-configure(api_key=os.getenv('GEMINI_API_KEY'))
-gemini_model = GenerativeModel('gemini-pro')
 
+# Initialize gemini
+genai.configure(api_key=os.getenv('GEMINI_API_KEY'))
+import typing_extensions as typing #type: ignore
 
+class Recipe(typing.TypedDict):
+    recipe_name: str
+    ingredients: list[str]
+geminimodel = genai.GenerativeModel("gemini-exp-1206")
 # Constants
 #debug:
 MAX_API_TIMEOUT = 45
@@ -168,17 +173,6 @@ def process_summary(self, text, prompt_prefix, model, request_id=None):
                     "content": f"{prompt_prefix}\n\n{ text[:min(len(text),MAX_TEXT_LENGTH)]}"
                 }]
             }
-        elif model == "gemini":
-            endpoint = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key={os.getenv('GEMINI_API_KEY')}"
-            headers = {"Content-Type": "application/json"}
-            payload = {
-                "contents": [{
-                    "parts": [{
-                        "text": f"{prompt_prefix}\n\n{ text[:min(len(text),MAX_TEXT_LENGTH)]}"
-                    }]
-                }]
-            }
-        
         elif model == "perplexity":  # New section
             endpoint = "https://api.perplexity.ai/chat/completions"
             headers = {
@@ -225,27 +219,14 @@ def process_summary(self, text, prompt_prefix, model, request_id=None):
                 "stream": False,
             }
         elif model == "gemini":
-            response = session.post(
-                endpoint,
-                headers=headers,
-                json=payload,
-                timeout=(3.05, MAX_API_TIMEOUT)
-            )
-            response_json = response.json()
-            content = response_json['candidates'][0]['content']['parts'][0]['text']
+            geminiresponse = geminimodel.generate_content(f"{prompt_prefix}\n\n{ text[:min(len(text),MAX_TEXT_LENGTH)]}")
 
-        elif model == "gemini-client":
-            response = gemini_model.generate_content(
-                f"{prompt_prefix}\n\n{text[:MAX_TEXT_LENGTH]}",
-                safety_settings={
-                    'HARM_CATEGORY_HARASSMENT': 'BLOCK_NONE',
-                    'HARM_CATEGORY_HATE_SPEECH': 'BLOCK_NONE',
-                    'HARM_CATEGORY_SEXUALLY_EXPLICIT': 'BLOCK_NONE',
-                    'HARM_CATEGORY_DANGEROUS_CONTENT': 'BLOCK_NONE'
-                }
-            )
-            content = response.text
-        if model != "openai":
+        #The weirdos
+        if model == "openai":
+            response_json = json.loads(completion.json())
+        elif model == "gemini":
+            response_json = geminiresponse
+        else:
             response = session.post(
                 endpoint,
                 headers=headers,
@@ -254,8 +235,6 @@ def process_summary(self, text, prompt_prefix, model, request_id=None):
             )
             response.raise_for_status()
             response_json = response.json()
-        elif model == "openai":
-            response_json = json.loads(completion.json())
         if model == "openai":
             if not response_json.get('choices'):
                 raise ValueError("Empty OpenAI response")
@@ -265,7 +244,11 @@ def process_summary(self, text, prompt_prefix, model, request_id=None):
         elif model == "claude":
             content = response_json['content'][0]['text']
         elif model == "gemini":
-            content = response_json['candidates'][0]['content']['parts'][0]['text']
+            #This is also a json
+            content = response_json.text
+            logger.info("Gemini response: " + content)
+            if isinstance(content, list):
+                content = "\n".join(content)
         elif model == "perplexity":  # New response handling
             content = response_json['choices'][0]['message']['content']
         elif model == "llama3":
@@ -311,8 +294,7 @@ def summarize():
         text = extract_text_from_pdf(pdf_path)
         prompt_prefix = request.form.get('prompt_prefix', 'Summarize this academic paper:')
 
-        models = ['deepseek','llama3','claude','perplexity','grok2','gemini','openai']
-        logger.info("running model: "," ".join(models))
+        models = ['deepseek','gemini','claude','perplexity','llama3','grok2']
         tasks = [process_summary.apply_async(
             args=(text, prompt_prefix, model,request_id),
         ) for model in models]

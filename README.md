@@ -71,3 +71,12 @@ python app.py
 ## Visualization
 
 I also have a rudimentary R Shiny app to go with this project and a debugging script that generates fake requests for the json. 
+
+## Features TBD:
+
+1. Add better PDF summarization (based on PaperQA2).
+2. Add cost estimates for each model
+3. VPS upload script
+4. Side-project for an automated benchmarking based on existing structured query answer pairs based on existing database
+5. Local running for models that can be used. Probably DeepSeek.
+6. Difficulty of question (Easy, Medium, Hard)
