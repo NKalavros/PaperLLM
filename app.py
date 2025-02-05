@@ -1,6 +1,6 @@
 import logging
 from logging.handlers import RotatingFileHandler
-from flask import Flask, request, jsonify, render_template #type: ignore
+from flask import Flask, request, jsonify, render_template, redirect, url_for #type: ignore
 from werkzeug.utils import secure_filename #type: ignore
 import os
 import uuid
@@ -8,7 +8,7 @@ import json
 import time
 import random
 from datetime import datetime
-from PyPDF2 import PdfReader #type: ignore
+import pymupdf4llm #type: ignore
 from celery import Celery #type: ignore
 import requests #type: ignore
 from openai import OpenAI #type: ignore
@@ -16,6 +16,16 @@ from dotenv import load_dotenv #type: ignore
 import google.generativeai as genai #type: ignore
 from collections import defaultdict
 import json
+#Adding logins
+from flask_login import (
+    LoginManager,
+    UserMixin,
+    login_user,
+    login_required,
+    logout_user,
+    current_user
+)
+from werkzeug.security import generate_password_hash, check_password_hash
 request_tracker = defaultdict(list)  # Tracks request_id -> task_ids
 
 # Configure logging
@@ -32,6 +42,8 @@ logger = logging.getLogger(__name__)
 # Initialize Flask app
 app = Flask(__name__)
 
+
+app.secret_key = os.getenv('SECRET_KEY', 'dev-key-change-in-prod')
 # Configuration
 app.config.update(
     UPLOAD_FOLDER=os.path.join(os.getcwd(), 'uploads'),
@@ -41,6 +53,49 @@ app.config.update(
     CELERY_RESULT_EXPIRES=300,
     CELERY_TASK_IGNORE_RESULT=False
 )
+
+
+# Add after Flask app initialization
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = 'login'
+
+# User class
+class User(UserMixin):
+    def __init__(self, id):
+        self.id = id
+
+# Simple user database (replace with proper DB in production)
+users = {
+    "admin": {"password": generate_password_hash("gustavo"), "role": "admin"}
+}
+
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User(user_id) if user_id in users else None
+
+# Add new routes
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+        
+        if username in users and check_password_hash(users[username]['password'], password):
+            user = User(username)
+            login_user(user)
+            return redirect('/')
+        
+        return "Invalid credentials", 401
+    return render_template('login.html')
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect('/')
 
 # Initialize Celery
 celery = Celery(
@@ -85,30 +140,28 @@ RPM_LIMIT = 3500
 # Create upload directory
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
-def log_request(request_id, text, prompt_prefix, summaries):
+def log_request(request_id, text, prompt_prefix, summaries, question_difficulty):
     log_entry = {
         'timestamp': datetime.now().isoformat(),
         'request_id': request_id,
         'prompt_prefix': prompt_prefix,
+        'question_difficulty': question_difficulty,
         'text_preview': text[:200] + '...' if len(text) > 200 else text,
-        'summaries': summaries,
+        'summaries': {},  # Will store {display_name: {real_model: ..., summary: ...}}
         'rankings': {},
         'quality_scores': {}
     }
     
     try:
-        # Append new entry instead of searching
         with open('requests.log', 'a') as f:
             f.write(json.dumps(log_entry) + '\n')
     except Exception as e:
         logger.error(f"Initial log failed: {str(e)}")
 
 
-
 def extract_text_from_pdf(pdf_path):
     try:
-        reader = PdfReader(pdf_path)
-        text = ''.join(page.extract_text() for page in reader.pages)
+        text = pymupdf4llm.to_markdown(pdf_path)
         logger.info(f"Extracted {len(text)} characters from PDF")
         wordcount = len(text.split(" "))
         logger.info(f"Extracted {wordcount} words from PDF")
@@ -119,12 +172,15 @@ def extract_text_from_pdf(pdf_path):
 
 @celery.task(
     bind=True,
-    max_retries=3,
+    max_retries=2,  # Reduced from 3
     time_limit=MAX_API_TIMEOUT*2,
     soft_time_limit=MAX_API_TIMEOUT+5,
-    rate_limit=f"{RPM_LIMIT//60}/s"
+    rate_limit=f"{RPM_LIMIT//60}/s",
+    autoretry_for=(Exception,),  # Add automatic retry
+    retry_backoff=5,  # Add exponential backoff
+    retry_jitter=True
 )
-def process_summary(self, text, prompt_prefix, model, request_id=None):
+def process_summary(self, text, prompt_prefix, model, request_id=None, display_name=None):
     try:
         logger.info(f"Starting {model} processing (attempt {self.request.retries + 1})")
         session = requests.Session()
@@ -256,11 +312,12 @@ def process_summary(self, text, prompt_prefix, model, request_id=None):
         elif model == "grok2":
             content = response_json['choices'][0]['message']['content']
         return {
-            'model': model,
+            'model': display_name,  # Show display name to users
+            'real_model': model,    # Keep actual model for internal tracking
             'summary': content,
             'status': 'success',
             'model_id': f"{model}_{uuid.uuid4().hex[:4]}",
-            'request_id': request_id  # Include request_id in result
+            'request_id': request_id
         }
 
     except requests.exceptions.HTTPError as e:
@@ -278,9 +335,12 @@ def process_summary(self, text, prompt_prefix, model, request_id=None):
 
 @app.route('/')
 def index():
+    if not current_user.is_authenticated:
+        return redirect(url_for('login'))  # ← Force login redirect
     return render_template('index.html')
 
 @app.route('/summarize', methods=['POST'])
+@login_required  # Add this decorator
 def summarize():
     request_id = str(uuid.uuid4())
     try:
@@ -293,17 +353,27 @@ def summarize():
         file.save(pdf_path)
         text = extract_text_from_pdf(pdf_path)
         prompt_prefix = request.form.get('prompt_prefix', 'Summarize this academic paper:')
-
-        models = ['deepseek','gemini','claude','perplexity','llama3','grok2']
-        tasks = [process_summary.apply_async(
-            args=(text, prompt_prefix, model,request_id),
-        ) for model in models]
-
-        # Store task IDs with request ID
-        request_tracker[request_id] = [task.id for task in tasks]
+        question_difficulty = request.form.get('question_difficulty', 'Medium')
+        
+        # Modified line - select 2 random models
+        all_models = ['deepseek','gemini','claude','perplexity','llama3','grok2','openai']
+        selected_models = random.sample(all_models, 2)
+        display_names = ['model1', 'model2']
+        tasks = []
+        for model, display_name in zip(selected_models, display_names):
+            task = process_summary.apply_async(
+                args=(text, prompt_prefix, model, request_id, display_name),
+            )
+            tasks.append(task)
+            # Store mapping between task ID and model names
+            request_tracker[request_id].append({
+                'task_id': task.id,
+                'real_model': model,
+                'display_name': display_name
+            })
 
         # Initial log with empty summaries
-        log_request(request_id, text, prompt_prefix, [])
+        log_request(request_id, text, prompt_prefix, [], question_difficulty)
         
         return jsonify({
             "request_id": request_id,
@@ -318,12 +388,9 @@ def summarize():
 
 
 @app.route('/status/<task_id>')
+@login_required
 def task_status(task_id):
     task = process_summary.AsyncResult(task_id)
-    
-    # Force refresh for completed tasks
-    if task.ready():
-        task.backend.get_task_meta(task.id)
     
     response = {
         'task_id': task_id,
@@ -336,33 +403,50 @@ def task_status(task_id):
     if task.successful():
         result = task.result
         response.update({
-            'model': result.get('model'),
+            'model': result.get('model'),  # Display name (model1/model2)
             'summary': result.get('summary'),
             'status': 'completed'
         })
         
-        # Update log with summary using request_id from task result
+        # Update log with both names
         request_id = result.get('request_id')
         if request_id:
-            updated = False
-            with open('requests.log', 'r+') as f:
-                lines = f.readlines()
-                f.seek(0)
-                f.truncate()
-                
-                for line in lines:
-                    try:
-                        log_entry = json.loads(line)
-                        if log_entry['request_id'] == request_id:
-                            # Initialize summaries list if empty
-                            if 'summaries' not in log_entry:
-                                log_entry['summaries'] = []
-                            # Add new summary
-                            log_entry['summaries'].append(result['summary'])
-                            updated = True
-                        f.write(json.dumps(log_entry) + '\n')
-                    except json.JSONDecodeError:
-                        continue
+            try:
+                with open('requests.log', 'r+') as f:
+                    lines = f.readlines()
+                    f.seek(0)
+                    f.truncate()
+                    updated = False
+                    
+                    for line in lines:
+                        try:
+                            log_entry = json.loads(line)
+                            if log_entry['request_id'] == request_id:
+                                # Store both display and real names
+                                log_entry['summaries'][result['model']] = {
+                                    'real_model': result['real_model'],
+                                    'summary': result['summary']
+                                }
+                                updated = True
+                            f.write(json.dumps(log_entry) + '\n')
+                        except json.JSONDecodeError:
+                            continue
+                    
+                    if not updated:
+                        new_entry = {
+                            'request_id': request_id,
+                            'summaries': {
+                                result['model']: {
+                                    'real_model': result['real_model'],
+                                    'summary': result['summary']
+                                }
+                            },
+                            'timestamp': datetime.now().isoformat()
+                        }
+                        f.write(json.dumps(new_entry) + '\n')
+                        
+            except Exception as e:
+                logger.error(f"Log update failed: {str(e)}")
 
     elif task.failed():
         response.update({
@@ -372,8 +456,8 @@ def task_status(task_id):
     
     return jsonify(response)
 
-
 @app.route('/rankings', methods=['POST'])
+@login_required  # Add this decorator
 def save_rankings():
     try:
         data = request.json
