@@ -25,6 +25,8 @@ from flask_login import (
     logout_user,
     current_user
 )
+from auth import auth_bp, User, init_login_manager  # Remove login_manager from import
+
 from werkzeug.security import generate_password_hash, check_password_hash
 request_tracker = defaultdict(list)  # Tracks request_id -> task_ids
 
@@ -41,9 +43,19 @@ logger = logging.getLogger(__name__)
 
 # Initialize Flask app
 app = Flask(__name__)
-
-
 app.secret_key = os.getenv('SECRET_KEY', 'dev-key-change-in-prod')
+
+# Initialize login manager
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = 'auth.login'
+
+# Initialize the login manager with user loader
+init_login_manager(login_manager)
+
+# Register blueprint
+app.register_blueprint(auth_bp)
+
 # Configuration
 app.config.update(
     UPLOAD_FOLDER=os.path.join(os.getcwd(), 'uploads'),
@@ -53,50 +65,6 @@ app.config.update(
     CELERY_RESULT_EXPIRES=300,
     CELERY_TASK_IGNORE_RESULT=False
 )
-
-
-# Add after Flask app initialization
-login_manager = LoginManager()
-login_manager.init_app(app)
-login_manager.login_view = 'login'
-
-# User class
-class User(UserMixin):
-    def __init__(self, id):
-        self.id = id
-
-# Simple user database (replace with proper DB in production)
-users = {
-    "admin": {"password": generate_password_hash("gustavo"), "role": "admin"}
-}
-
-
-
-@login_manager.user_loader
-def load_user(user_id):
-    return User(user_id) if user_id in users else None
-
-# Add new routes
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    if request.method == 'POST':
-        username = request.form.get('username')
-        password = request.form.get('password')
-        
-        if username in users and check_password_hash(users[username]['password'], password):
-            user = User(username)
-            login_user(user)
-            return redirect('/')
-        
-        return "Invalid credentials", 401
-    return render_template('login.html')
-
-@app.route('/logout')
-@login_required
-def logout():
-    logout_user()
-    return redirect('/')
-
 # Initialize Celery
 celery = Celery(
     app.name,
@@ -110,7 +78,8 @@ celery.conf.update(
     result_serializer='json',
     broker_connection_retry_on_startup=True,
     worker_concurrency=2,
-    task_acks_late=True
+    task_acks_late=True,
+    broker_pool_limit=None  # Add this line
 )
 
 # Load environment variables
@@ -140,12 +109,13 @@ RPM_LIMIT = 3500
 # Create upload directory
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
-def log_request(request_id, text, prompt_prefix, summaries, question_difficulty):
+def log_request(request_id, text, prompt_prefix, summaries, question_difficulty, username):
     log_entry = {
         'timestamp': datetime.now().isoformat(),
         'request_id': request_id,
+        'username': username,  # Add username
         'prompt_prefix': prompt_prefix,
-        'question_difficulty': question_difficulty,
+        'question_difficulty': question_difficulty,  # Add question difficulty
         'text_preview': text[:200] + '...' if len(text) > 200 else text,
         'summaries': {},  # Will store {display_name: {real_model: ..., summary: ...}}
         'rankings': {},
@@ -157,6 +127,7 @@ def log_request(request_id, text, prompt_prefix, summaries, question_difficulty)
             f.write(json.dumps(log_entry) + '\n')
     except Exception as e:
         logger.error(f"Initial log failed: {str(e)}")
+
 
 
 def extract_text_from_pdf(pdf_path):
@@ -336,44 +307,57 @@ def process_summary(self, text, prompt_prefix, model, request_id=None, display_n
 @app.route('/')
 def index():
     if not current_user.is_authenticated:
-        return redirect(url_for('login'))  # ← Force login redirect
+        return redirect(url_for('auth.login'))  # Update to use blueprint route
     return render_template('index.html')
 
 @app.route('/summarize', methods=['POST'])
-@login_required  # Add this decorator
+@login_required
 def summarize():
     request_id = str(uuid.uuid4())
     try:
+        if 'file' not in request.files:
+            return jsonify({"error": "No file part"}), 400
+            
         file = request.files['file']
-        if not file or file.filename == '':
-            return jsonify({"error": "No file selected"}), 400
+        if file.filename == '':
+            return jsonify({"error": "No selected file"}), 400
 
         filename = secure_filename(file.filename)
         pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
         file.save(pdf_path)
+        
+        if not os.path.exists(pdf_path):
+            return jsonify({"error": "File upload failed"}), 500
+
         text = extract_text_from_pdf(pdf_path)
         prompt_prefix = request.form.get('prompt_prefix', 'Summarize this academic paper:')
         question_difficulty = request.form.get('question_difficulty', 'Medium')
-        
-        # Modified line - select 2 random models
+
         all_models = ['deepseek','gemini','claude','perplexity','llama3','grok2','openai']
         selected_models = random.sample(all_models, 2)
-        display_names = ['model1', 'model2']
+        display_names = [f"Model {i+1}" for i in range(2)]  # More descriptive names
+        
         tasks = []
         for model, display_name in zip(selected_models, display_names):
             task = process_summary.apply_async(
                 args=(text, prompt_prefix, model, request_id, display_name),
             )
             tasks.append(task)
-            # Store mapping between task ID and model names
             request_tracker[request_id].append({
                 'task_id': task.id,
                 'real_model': model,
                 'display_name': display_name
             })
 
-        # Initial log with empty summaries
-        log_request(request_id, text, prompt_prefix, [], question_difficulty)
+        # Update log_request call to include username and question_difficulty
+        log_request(
+            request_id=request_id,
+            text=text,
+            prompt_prefix=prompt_prefix,
+            summaries=[],
+            question_difficulty=question_difficulty,
+            username=current_user.id  # Add current user's username
+        )
         
         return jsonify({
             "request_id": request_id,
@@ -382,10 +366,8 @@ def summarize():
         }), 202
 
     except Exception as e:
-        logger.error(f"Request {request_id} failed: {str(e)}")
+        logger.error(f"Request {request_id} failed: {str(e)}", exc_info=True)
         return jsonify({"error": str(e)}), 500
-
-
 
 @app.route('/status/<task_id>')
 @login_required

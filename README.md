@@ -80,3 +80,9 @@ I also have a rudimentary R Shiny app to go with this project and a debugging sc
 4. Side-project for an automated benchmarking based on existing structured query answer pairs based on existing database
 5. Local running for models that can be used. Probably DeepSeek.
 6. Difficulty of question (Easy, Medium, Hard)
+
+
+### Notes:
+
+https://devavrat.mit.edu/wp-content/uploads/2017/11/Iterative-ranking-from-pair-wise-comparisons.pdf
+Effectively we need ELO
