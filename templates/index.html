@@ -166,6 +166,12 @@
             color: #4a5568;
             font-weight: 500;
         }
+
+        .validation-error {
+            color: #dc3545;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
     </style>
 </head>
 
@@ -185,23 +191,33 @@
                     <input type="text" id="prompt_prefix" name="prompt_prefix"
                         value="Summarize the following papers key findings within 5 lines">
                 </div>
-
+                <div class="form-group">
+                    <label for="question_difficulty">Question Difficulty:</label>
+                    <select id="question_difficulty" name="question_difficulty" required>
+                        <option value="Easy">Easy</option>
+                        <option value="Medium" selected>Medium</option>
+                        <option value="Hard">Hard</option>
+                    </select>
+                    <div id="difficulty-error" class="validation-error hidden"></div>
+                </div>
                 <button type="submit" id="submit-btn">Generate Summaries</button>
             </form>
         </div>
+    </div>
 
-        <div id="progress-container" class="hidden">
-            <h2>Processing Progress</h2>
-            <div id="progress-list"></div>
-        </div>
+    <div id="progress-container" class="hidden">
+        <h2>Processing Progress</h2>
+        <div id="progress-list"></div>
+    </div>
 
-        <div id="ranking-container" class="hidden">
-            <h2>Generated Summaries</h2>
-            <form id="ranking-form">
-                <div id="summaries-list"></div>
-                <button type="submit" id="rank-submit-btn">Submit Rankings</button>
-            </form>
-        </div>
+    <div id="ranking-container" class="hidden">
+
+        <h2>Generated Summaries</h2>
+        <form id="ranking-form">
+            <div id="summaries-list"></div>
+            <button type="submit" id="rank-submit-btn">Submit Rankings</button>
+        </form>
+    </div>
     </div>
 
     <script>
@@ -211,7 +227,6 @@
         });
 
         let currentRequestId = '';
-
         document.getElementById('summarizeForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const submitBtn = document.getElementById('submit-btn');
@@ -221,19 +236,30 @@
             const formData = new FormData(e.target);
 
             try {
+                // Single fetch call to /summarize
                 const response = await fetch('/summarize', {
                     method: 'POST',
                     body: formData
                 });
 
+                if (response.status === 401) {
+                    alert('Please log in to use this feature');
+                    window.location.href = '/login';
+                    return;
+                }
+
                 const data = await response.json();
+                if (!response.ok) {
+                    throw new Error(data.error || 'Failed to start processing');
+                }
+
                 if (response.status === 202) {
                     currentRequestId = data.request_id;
                     document.getElementById('progress-container').classList.remove('hidden');
                     monitorProgress(data.status_urls);
                 }
             } catch (error) {
-                console.error('Error:', error);
+                console.error('Fetch Error:', error);
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Generate Summaries';
@@ -250,9 +276,9 @@
             });
 
             progressList.innerHTML = taskIds.map(taskId => `
-                <div class="progress-item" id="task-${taskId}">
-                    ⏳ Initializing task ${taskId.slice(-6)}
-                </div>
+            <div class="progress-item" id="task-${taskId}">
+                ⏳ Initializing task ${taskId.slice(-6)}
+            </div>
             `).join('');
 
             const interval = setInterval(async () => {
@@ -320,15 +346,15 @@
                     <select class="ranking-select" name="${modelId}">
                         <option value="">Select Rank</option>
                         ${Array.from({ length: modelCount }, (_, i) => `
-                            <option value="${i + 1}">${i + 1}</option>
-                        `).join('')}
+                <option value="${i + 1}">${i + 1}</option>
+                `).join('')}
                     </select>
-                    <input type="number" class="quality-score" name="quality-${modelId}" 
-                           min="0" max="10" placeholder="Score (0-10)">
+                    <input type="number" class="quality-score" name="quality-${modelId}" min="0" max="10"
+                        placeholder="Score (0-10)">
                 </div>
             </div>
             <div class="summary-content">${marked.parse(result)}</div>
-        `;
+            `;
                 list.appendChild(div);
             });
 

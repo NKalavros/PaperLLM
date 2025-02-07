@@ -4,3 +4,6 @@ celery
 python_dotenv
 openai
 google_generativeai
+pymupdf4llm
+flask-login
+redis
