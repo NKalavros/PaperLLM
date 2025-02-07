@@ -7,3 +7,4 @@ google_generativeai
 pymupdf4llm
 flask-login
 redis
+gunicorn
