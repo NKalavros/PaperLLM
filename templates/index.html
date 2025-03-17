@@ -149,7 +149,8 @@
 
         .summary-content {
             margin-top: 1rem;
-            color: #4a5568;
+            color: #2c3e50;
+            /* Even darker shade for better readability */
         }
 
         h1 {
@@ -172,273 +173,290 @@
             font-size: 0.875rem;
             margin-top: 0.25rem;
         }
+
+        .tab {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            margin-right: 1rem;
+            background: #4a90e2;
+            color: white;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .tab.active {
+            background: #357abd;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .markdown-body {
+            background-color: white;
+        }
     </style>
 </head>
 
 <body>
     <div class="container markdown-body">
         <h1>Academic Paper Summarizer</h1>
-
-        <div class="form-section">
-            <form id="summarizeForm">
-                <div class="form-group">
-                    <label for="file">Upload PDF:</label>
-                    <input type="file" id="file" name="file" accept=".pdf" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="prompt_prefix">Summary Prompt:</label>
-                    <input type="text" id="prompt_prefix" name="prompt_prefix"
-                        value="Summarize the following papers key findings within 5 lines">
-                </div>
-                <div class="form-group">
-                    <label for="question_difficulty">Question Difficulty:</label>
-                    <select id="question_difficulty" name="question_difficulty" required>
-                        <option value="Easy">Easy</option>
-                        <option value="Medium" selected>Medium</option>
-                        <option value="Hard">Hard</option>
-                    </select>
-                    <div id="difficulty-error" class="validation-error hidden"></div>
-                </div>
-                <div class="form-group">
-                    <label for="nickname">Nickname:</label>
-                    <input type="text" id="nickname" name="nickname" required>
-                </div>
-                <button type="submit" id="submit-btn">Generate Summaries</button>
-            </form>
+        <div>
+            <span class="tab active" id="questions-tab-btn">Questions</span>
+            <span class="tab" id="answers-tab-btn">Answers</span>
+        </div>
+        <!-- Questions Tab: upload file, nickname, prompt -->
+        <div id="questions-tab" class="tab-content active">
+            <div class="form-section">
+                <form id="summarizeForm" method="POST" enctype="multipart/form-data" action="/summarize">
+                    <div class="form-group">
+                        <label for="file">Upload PDF:</label>
+                        <input type="file" id="file" name="file" accept=".pdf" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="prompt_prefix">Summary Prompt:</label>
+                        <input type="text" id="prompt_prefix" name="prompt_prefix"
+                            value="Summarize the following papers key findings within 5 lines">
+                    </div>
+                    <div class="form-group">
+                        <label for="question_difficulty">Question Difficulty:</label>
+                        <select id="question_difficulty" name="question_difficulty" required>
+                            <option value="Easy">Easy</option>
+                            <option value="Medium" selected>Medium</option>
+                            <option value="Hard">Hard</option>
+                        </select>
+                        <div id="difficulty-error" class="validation-error hidden"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="nickname">Nickname:</label>
+                        <input type="text" id="nickname" name="nickname" required>
+                    </div>
+                    <button type="submit" id="submit-btn">Submit Question</button>
+                </form>
+                <div id="question-status"></div>
+            </div>
+        </div>
+        <!-- Answers Tab modifications -->
+        <div id="answers-tab" class="tab-content">
+            <div class="form-section">
+                <form id="answersForm">
+                    <div class="form-group">
+                        <label for="ans-nickname">Nickname:</label>
+                        <input type="text" id="ans-nickname" name="nickname" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="extra-num">Extra Questions (number):</label>
+                        <input type="number" id="extra-num" name="extra" min="0" value="0" required>
+                    </div>
+                    <button type="submit" id="fetch-requests-btn">Get Requests</button>
+                </form>
+            </div>
+            <!-- Removed the select request menu; all rating panels will be displayed below automatically -->
+            <div id="ratings-panels"></div>
+            <div id="all-ratings-submit" class="hidden">
+                <button id="submit-all-ratings-btn">Submit All Ratings</button>
+            </div>
         </div>
     </div>
-
-    <div id="progress-container" class="hidden">
-        <h2>Processing Progress</h2>
-        <div id="progress-list"></div>
-    </div>
-
-    <div id="ranking-container" class="hidden">
-
-        <h2>Generated Summaries</h2>
-        <form id="ranking-form">
-            <div id="summaries-list"></div>
-            <button type="submit" id="rank-submit-btn">Submit Rankings</button>
-        </form>
-    </div>
-    </div>
-
     <script>
+        // Tab switching
+        const questionsTabBtn = document.getElementById('questions-tab-btn');
+        const answersTabBtn = document.getElementById('answers-tab-btn');
+        const questionsTab = document.getElementById('questions-tab');
+        const answersTab = document.getElementById('answers-tab');
+        questionsTabBtn.addEventListener('click', () => {
+            questionsTabBtn.classList.add('active');
+            answersTabBtn.classList.remove('active');
+            questionsTab.classList.add('active');
+            answersTab.classList.remove('active');
+        });
+        answersTabBtn.addEventListener('click', () => {
+            answersTabBtn.classList.add('active');
+            questionsTabBtn.classList.remove('active');
+            answersTab.classList.add('active');
+            questionsTab.classList.remove('active');
+        });
+
+        // Existing summarizeForm JS remains unchanged
         marked.setOptions({
             breaks: true,
             sanitize: true
         });
-
         let currentRequestId = '';
         document.getElementById('summarizeForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const submitBtn = document.getElementById('submit-btn');
             submitBtn.disabled = true;
-            submitBtn.textContent = 'Processing...';
-
+            submitBtn.textContent = 'Submitting...';
             const formData = new FormData(e.target);
-
+            const nickname = document.getElementById('nickname').value; // Get nickname from form
+            formData.append('nickname', nickname); // Append nickname to form data
             try {
-                // Single fetch call to /summarize
                 const response = await fetch('/summarize', {
                     method: 'POST',
                     body: formData
                 });
-
                 if (response.status === 401) {
                     alert('Please log in to use this feature');
                     window.location.href = '/login';
                     return;
                 }
-
                 const data = await response.json();
-                if (!response.ok) {
-                    throw new Error(data.error || 'Failed to start processing');
-                }
-
-                if (response.status === 202) {
-                    currentRequestId = data.request_id;
-                    document.getElementById('progress-container').classList.remove('hidden');
-                    monitorProgress(data.status_urls);
-                }
+                if (!response.ok) throw new Error(data.error || 'Failed to submit question');
+                // Simply display a confirmation message and clear the form
+                document.getElementById('question-status').innerText = 'Question submitted successfully!';
+                e.target.reset();
             } catch (error) {
                 console.error('Fetch Error:', error);
+                document.getElementById('question-status').innerText = 'Submission failed. Please try again.';
             } finally {
                 submitBtn.disabled = false;
-                submitBtn.textContent = 'Generate Summaries';
+                submitBtn.textContent = 'Submit Question';
+            }
+        });
+        // Answer tab JS
+        document.getElementById('answersForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const nickname = document.getElementById('ans-nickname').value;
+            const extra = document.getElementById('extra-num').value;
+            try {
+                const response = await fetch(`/get_answers?nickname=${encodeURIComponent(nickname)}&extra=${extra}`);
+                const data = await response.json();
+                let panelsHtml = '';
+                if (data.length === 0) {
+                    document.getElementById('ratings-panels').innerHTML = '<p>No requests found.</p>';
+                    document.getElementById('all-ratings-submit').classList.add('hidden');
+                } else {
+                    data.forEach(item => {
+                        const reqId = item.request_id;
+                        const promptText = item.prompt;
+                        const fileText = item.file;
+                        const modelAnswers = item.model_answers;
+
+                        // Extract model names and answers
+                        const model1 = Object.keys(modelAnswers)[0] || 'Model1';
+                        const answer1 = modelAnswers[model1] || 'No answer available';
+                        const model2 = Object.keys(modelAnswers)[1] || 'Model2';
+                        const answer2 = modelAnswers[model2] || 'No answer available';
+
+                        let panelHtml = `<div class="summary-box" data-request-id="${reqId}" data-model1-answer="${answer1}" data-model2-answer="${answer2}">
+                            <div class="summary-header">
+                                <div>
+                                    <h3>${promptText}</h3>
+                                    <p>${fileText}</p>
+                                </div>
+                                <button type="button" class="toggle-details">Show Details</button>
+                            </div>
+                            <div class="summary-content hidden">
+                                <div style="border:1px solid #ccc; padding:0.5rem; margin:0.5rem 0;">
+                                    <strong>${model1}:</strong><br><div class="markdown-body" color='black'>${marked.parse(answer1)}</div>
+                                </div>
+                                <div style="border:1px solid #ccc; padding:0.5rem; margin:0.5rem 0;">
+                                    <strong>${model2}:</strong><br><div class="markdown-body" color='black'>${marked.parse(answer2)}</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="preferred-${reqId}">Preferred Answer:</label>
+                                    <select id="preferred-${reqId}" class="preferred-dropdown">
+                                        <option value="">--Select Preferred--</option>
+                                        <option value="answer1">First Answer (${model1})</option>
+                                        <option value="answer2">Second Answer (${model2})</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="quality1-${reqId}">Quality Score for ${model1}:</label>
+                                    <input type="number" id="quality1-${reqId}" class="quality-input" min="0" max="10" placeholder="Score (0-10)">
+                                </div>
+                                <div class="form-group">
+                                    <label for="quality2-${reqId}">Quality Score for ${model2}:</label>
+                                    <input type="number" id="quality2-${reqId}" class="quality-input" min="0" max="10" placeholder="Score (0-10)">
+                                </div>
+                            </div>
+                        </div>`;
+                        panelsHtml += panelHtml;
+                    });
+                    document.getElementById('ratings-panels').innerHTML = panelsHtml;
+                    document.querySelectorAll('.toggle-details').forEach(button => {
+                        button.addEventListener('click', () => {
+                            const content = button.closest('.summary-box').querySelector('.summary-content');
+                            content.classList.toggle('hidden');
+                            button.textContent = content.classList.contains('hidden') ? 'Show Details' : 'Hide Details';
+                        });
+                    });
+                    document.getElementById('all-ratings-submit').classList.remove('hidden');
+                }
+            } catch (error) {
+                console.error('Error fetching answers:', error);
             }
         });
 
-        async function monitorProgress(taskIds) {
-            const progressList = document.getElementById('progress-list');
-            const results = {};
-            const taskStates = new Map();
-
-            taskIds.forEach(taskId => {
-                taskStates.set(taskId, { completed: false, attempts: 0 });
-            });
-
-            progressList.innerHTML = taskIds.map(taskId => `
-            <div class="progress-item" id="task-${taskId}">
-                ⏳ Initializing task ${taskId.slice(-6)}
-            </div>
-            `).join('');
-
-            const interval = setInterval(async () => {
-                const checks = Array.from(taskStates).map(async ([taskId, state]) => {
-                    if (state.completed) return true;
-
-                    try {
-                        const response = await fetch(`/status/${taskId}`);
-                        if (!response.ok) throw new Error('Network error');
-
-                        const status = await response.json();
-                        taskStates.get(taskId).attempts++;
-
-                        const item = document.getElementById(`task-${taskId}`);
-                        if (!item) return false;
-
-                        switch (status.status) {
-                            case 'completed':
-                                item.innerHTML = `✅ ${status.model} completed`;
-                                results[status.model] = status.summary;
-                                taskStates.get(taskId).completed = true;
-                                return true;
-                            case 'failed':
-                                item.innerHTML = `❌ ${status.model} failed: ${status.error}`;
-                                taskStates.get(taskId).completed = true;
-                                return true;
-                            default:
-                                item.innerHTML = `⏳ ${status.model || 'Task'} processing (attempt ${taskStates.get(taskId).attempts})`;
-                                return false;
-                        }
-                    } catch (error) {
-                        console.error(`Error checking ${taskId}:`, error);
-                        return false;
-                    }
-                });
-
-                try {
-                    const statuses = await Promise.all(checks);
-                    const allDone = statuses.every(s => s === true);
-
-                    if (allDone || Array.from(taskStates.values()).every(t => t.attempts >= 10)) {
-                        clearInterval(interval);
-                        showRankingForm(results);
-                    }
-                } catch (error) {
-                    console.error('Polling error:', error);
-                    clearInterval(interval);
+        // Submit all ratings from each complete panel
+        document.getElementById('submit-all-ratings-btn').addEventListener('click', async () => {
+            const panels = document.querySelectorAll('#ratings-panels .summary-box');
+            let promises = [];
+            panels.forEach(panel => {
+                const reqId = panel.getAttribute('data-request-id');
+                if (!panel.querySelector('.preferred-dropdown')) return;
+                const model1Answer = panel.getAttribute('data-model1-answer');
+                const model2Answer = panel.getAttribute('data-model2-answer');
+                const preferred = panel.querySelector('.preferred-dropdown').value;
+                const quality1 = panel.querySelector(`#quality1-${reqId}`).value;
+                const quality2 = panel.querySelector(`#quality2-${reqId}`).value;
+                if (!reqId || !preferred || quality1 === '' || quality2 === '') {
+                    alert(`Please complete ratings for request ${reqId}.`);
+                    return;
                 }
-            }, 2000);
-        }
-
-        // Update the ranking select options generation
-        function showRankingForm(results) {
-            const list = document.getElementById('summaries-list');
-            list.innerHTML = '';
-            const modelCount = Object.keys(results).length;
-
-            Object.entries(results).forEach(([modelId, result], index) => {
-                const div = document.createElement('div');
-                div.className = 'summary-box';
-                div.innerHTML = `
-            <div class="summary-header">
-                <h3>Summary ${index + 1}</h3>
-                <div>
-                    <select class="ranking-select" name="${modelId}">
-                        <option value="">Select Rank</option>
-                        ${Array.from({ length: modelCount }, (_, i) => `
-                <option value="${i + 1}">${i + 1}</option>
-                `).join('')}
-                    </select>
-                    <input type="number" class="quality-score" name="quality-${modelId}" min="0" max="10"
-                        placeholder="Score (0-10)">
-                </div>
-            </div>
-            <div class="summary-content">${marked.parse(result)}</div>
-            `;
-                list.appendChild(div);
-            });
-
-            // Update validation message
-            document.querySelector('#ranking-form button').insertAdjacentHTML('beforebegin',
-                `<p class="ranking-instruction">Assign unique ranks (1-${modelCount}) and scores</p>`
-            );
-
-            document.getElementById('ranking-container').classList.remove('hidden');
-            document.getElementById('progress-container').classList.add('hidden');
-        }
-
-        // Update form validation
-        document.getElementById('ranking-form').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const rankings = {};
-            const qualityScores = {};
-            const selects = document.querySelectorAll('.ranking-select');
-            const scores = document.querySelectorAll('.quality-score');
-            const modelCount = selects.length;
-            const ranks = new Set();
-
-            // Validate rankings
-            selects.forEach(select => {
-                if (select.value) {
-                    const rank = parseInt(select.value);
-                    if (rank < 1 || rank > modelCount) {
-                        alert(`Rank must be between 1 and ${modelCount}`);
-                        select.value = '';
-                        return;
-                    }
-                    if (ranks.has(rank)) {
-                        alert('Please assign unique ranks!');
-                        select.value = '';
-                        return;
-                    }
-                    ranks.add(rank);
-                    rankings[select.name] = rank;
+                const label1 = panel.querySelector(`label[for="quality1-${reqId}"]`).innerText;
+                const label2 = panel.querySelector(`label[for="quality2-${reqId}"]`).innerText;
+                const model1 = label1.split('for ')[1].replace(':', '');
+                const model2 = label2.split('for ')[1].replace(':', '');
+                let rankings = {};
+                if (preferred === 'answer1') {
+                    rankings[model1] = 1;
+                    rankings[model2] = 2;
+                } else {
+                    rankings[model2] = 1;
+                    rankings[model1] = 2;
                 }
-            });
-
-            // Validate scores
-            scores.forEach(score => {
-                if (score.value) {
-                    const modelId = score.name.replace('quality-', '');
-                    const scoreValue = parseInt(score.value);
-                    if (scoreValue < 0 || scoreValue > 10) {
-                        alert('Score must be between 0-10');
-                        score.value = '';
-                        return;
-                    }
-                    qualityScores[modelId] = scoreValue;
-                }
-            });
-
-            if (Object.keys(rankings).length !== modelCount ||
-                Object.keys(qualityScores).length !== modelCount) {
-                alert(`Please rank all ${modelCount} summaries and provide quality scores!`);
-                return;
-            }
-
-            // Submit data
-            try {
-                const response = await fetch('/rankings', {
+                let quality_scores = {};
+                quality_scores[model1] = parseInt(quality1);
+                quality_scores[model2] = parseInt(quality2);
+                const p = fetch('/rankings', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                        request_id: currentRequestId,
+                        request_id: reqId,
                         rankings: rankings,
-                        quality_scores: qualityScores
+                        quality_scores: quality_scores,
+                        model_answers: {
+                            [model1]: model1Answer,
+                            [model2]: model2Answer
+                        }
                     })
+                }).then(res => {
+                    if (!res.ok) {
+                        console.error('Failed to submit rating:', res.status, res.statusText);
+                        throw new Error(`Failed to submit rating: ${res.status} ${res.statusText}`);
+                    }
+                    return res.json();
+                }).then(data => {
+                    if (data.status !== 'success') {
+                        console.error('Failed to submit rating:', data.status);
+                        throw new Error(`Failed to submit rating: ${data.status}`);
+                    }
+                    return { status: 'success' };  // Return a consistent object
                 });
-
-                if (response.ok) {
-                    alert('Thank you for your rankings and quality scores!');
-                    window.location.href = '/';
-                }
+                promises.push(p);
+            });
+            try {
+                await Promise.all(promises);
+                alert('All ratings submitted successfully!');
             } catch (error) {
-                console.error('Submission failed:', error);
-                alert('Submission failed. Please try again.');
+                console.error('Error submitting ratings:', error);
+                alert(`Error submitting ratings: ${error.message}`);
             }
         });
     </script>
