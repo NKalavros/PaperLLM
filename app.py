@@ -109,11 +109,12 @@ RPM_LIMIT = 3500
 # Create upload directory
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
-def log_request(request_id, text, prompt_prefix, summaries, question_difficulty, username):
+def log_request(request_id, text, prompt_prefix, summaries, question_difficulty, username, nickname):
     log_entry = {
         'timestamp': datetime.now().isoformat(),
         'request_id': request_id,
         'username': username,  # Add username
+        'nickname': nickname,  # Add nickname
         'prompt_prefix': prompt_prefix,
         'question_difficulty': question_difficulty,  # Add question difficulty
         'text_preview': text[:200] + '...' if len(text) > 200 else text,
@@ -310,6 +311,42 @@ def index():
         return redirect(url_for('auth.login'))  # Update to use blueprint route
     return render_template('index.html')
 
+# New logging helper for questions
+def log_question(request_id, text, prompt_prefix, question_difficulty, nickname, filename):
+    log_entry = {
+        'timestamp': datetime.now().isoformat(),
+        'request_id': request_id,
+        'nickname': nickname,
+        'prompt': prompt_prefix,
+        'question_difficulty': question_difficulty,
+        'file': filename,
+        'text_preview': text[:200] + '...' if len(text) > 200 else text
+    }
+    try:
+        with open('requests_questions.log', 'a') as f:
+            f.write(json.dumps(log_entry) + '\n')
+    except Exception as e:
+        logger.error(f"Question log failed: {str(e)}")
+        
+# New logging helper for answers
+def log_answer(result, nickname):
+    log_entry = {
+        'timestamp': datetime.now().isoformat(),
+        'request_id': result.get('request_id'),
+        'nickname': nickname,
+        'summaries': {
+            result.get('model'): {
+                'real_model': result.get('real_model'),
+                'summary': result.get('summary')
+            }
+        }
+    }
+    try:
+        with open('requests_answers.log', 'a') as f:
+            f.write(json.dumps(log_entry) + '\n')
+    except Exception as e:
+        logger.error(f"Answer log failed: {str(e)}")
+
 @app.route('/summarize', methods=['POST'])
 @login_required
 def summarize():
@@ -332,8 +369,10 @@ def summarize():
         text = extract_text_from_pdf(pdf_path)
         prompt_prefix = request.form.get('prompt_prefix', 'Summarize this academic paper:')
         question_difficulty = request.form.get('question_difficulty', 'Medium')
+        nickname = request.form.get('nickname', 'Anonymous')  # Get nickname from form
 
-        all_models = ['deepseek','gemini','claude','perplexity','llama3','grok2','openai']
+        #all_models = ['deepseek','gemini','claude','perplexity','llama3','grok2','openai']
+        all_models = ['deepseek','openai']
         selected_models = random.sample(all_models, 2)
         display_names = [f"Model {i+1}" for i in range(2)]  # More descriptive names
         
@@ -349,16 +388,18 @@ def summarize():
                 'display_name': display_name
             })
 
-        # Update log_request call to include username and question_difficulty
         log_request(
             request_id=request_id,
             text=text,
             prompt_prefix=prompt_prefix,
             summaries=[],
             question_difficulty=question_difficulty,
-            username=current_user.id  # Add current user's username
+            username=current_user.id,  # Add current user's username
+            nickname=nickname  # Add nickname to log
         )
         
+        # Log the question details into a dedicated log file
+        log_question(request_id, text, prompt_prefix, question_difficulty, nickname, filename)
         return jsonify({
             "request_id": request_id,
             "status_urls": [task.id for task in tasks],
@@ -429,6 +470,10 @@ def task_status(task_id):
                         
             except Exception as e:
                 logger.error(f"Log update failed: {str(e)}")
+        
+        # Instead of updating an existing log, append answer details into a new log file.
+        # Here we use current_user.id as the nickname if available.
+        log_answer(result, current_user.id)
 
     elif task.failed():
         response.update({
@@ -437,6 +482,40 @@ def task_status(task_id):
         })
     
     return jsonify(response)
+
+# New endpoint for answers tab
+@app.route('/get_answers', methods=['GET'])
+@login_required
+def get_answers():
+    nickname = request.args.get('nickname', '')
+    extra = request.args.get('extra', '0')
+    try:
+        extra = int(extra)
+    except ValueError:
+        extra = 0
+    answers = []
+    # Read the answers log
+    try:
+        with open('requests_answers.log', 'r') as f:
+            for line in f:
+                try:
+                    entry = json.loads(line)
+                    answers.append(entry)
+                except json.JSONDecodeError:
+                    continue
+    except FileNotFoundError:
+        answers = []
+    # Filter entries matching the provided nickname
+    user_answers = [entry for entry in answers if entry.get('nickname') == nickname]
+    # Also get extra random entries from all answers (if extra > 0)
+    extra_answers = []
+    if extra > 0:
+        pool = [entry for entry in answers if entry.get('nickname') != nickname]
+        extra_answers = random.sample(pool, min(extra, len(pool))) if pool else []
+    return jsonify({
+        'user_answers': user_answers,
+        'extra_answers': extra_answers
+    })
 
 @app.route('/rankings', methods=['POST'])
 @login_required  # Add this decorator
