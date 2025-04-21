@@ -374,7 +374,7 @@ def summarize():
             return jsonify({"error": "Nickname cannot be empty"}), 400
 
         #all_models = ['deepseek','gemini','claude','perplexity','llama3','grok2','openai']
-        all_models = ['deepseek','openai']
+        all_models = ['perplexity','openai']
         selected_models = random.sample(all_models, 2)
         display_names = [f"Model {i+1}" for i in range(2)]  # More descriptive names
         
@@ -566,6 +566,7 @@ def save_rankings():
             'nickname': current_user.id,
             'prompt': question_entry.get('prompt'),
             'file': question_entry.get('file'),
+            'question_difficulty': question_entry.get('question_difficulty'),  # New: log question difficulty
             'summaries': summaries,
             'rankings': rankings,
             'quality_scores': quality_scores
