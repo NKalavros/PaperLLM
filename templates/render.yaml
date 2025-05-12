@@ -1,0 +1,32 @@
+services:
+  # Web service
+  - type: web
+    name: paperllm
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn app:app"
+    envVars:
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: paperllm-redis
+          property: connectionString
+
+  # Celery worker service
+  - type: worker
+    name: paperllm-celery
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "celery -A app.celery worker --loglevel=info"
+    envVars:
+      - key: redis://red-d0h2co0dl3ps73a82e2g:6379
+        fromService:
+          type: redis
+          name: paperllm-redis
+          property: connectionString
+
+# Redis service
+databases:
+  - name: paperllm-redis
+    type: redis
+    plan: free
