@@ -14,7 +14,7 @@ services:
       - key: REDIS_URL
         fromService:
           type: redis
-          name: paperllm-redis  # Replace with your actual Redis service name
+          name: celery-redis  # Replace with your actual Redis service name
           property: connectionString
 
   # Celery worker service
@@ -31,5 +31,5 @@ services:
       - key: REDIS_URL
         fromService:
           type: redis
-          name: paperllm-redis
+          name: celery-redis
           property: connectionString
