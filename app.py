@@ -32,6 +32,9 @@ from auth import auth_bp, User, init_login_manager  # Remove login_manager from 
 from werkzeug.security import generate_password_hash, check_password_hash
 request_tracker = defaultdict(list)  # Tracks request_id -> task_ids
 
+
+# TODO: Test this as prompt suffix on real examples. See if model obeys.
+prompt_suffix = 'Please keep your answer to less than 200 words.'
 # Configure logging
 logging.basicConfig(
     level=logging.INFO,
@@ -211,7 +214,7 @@ def process_summary(self, text, prompt_prefix, model, request_id=None, display_n
                 "model": "deepseek-chat",
                 "messages": [{
                     "role": "user", 
-                    "content": f"{prompt_prefix}\n\n{ text[:min(len(text),MAX_TEXT_LENGTH)]}"
+                    "content": f"{prompt_prefix}\n\n{ text[:min(len(text),MAX_TEXT_LENGTH)]}\n{prompt_suffix}"
                 }]
             }
 

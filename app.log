@@ -5928,3 +5928,40 @@ NameError: name 'log_question' is not defined
 2025-05-12 12:54:28,955 INFO Extracted 7198 words from PDF
 2025-05-12 12:54:29,002 INFO 127.0.0.1 - - [12/May/2025 12:54:29] "[35m[1mPOST /summarize HTTP/1.1[0m" 202 -
 2025-05-12 12:54:32,087 INFO 127.0.0.1 - - [12/May/2025 12:54:32] "GET /available_pdfs HTTP/1.1" 200 -
+2025-05-12 13:02:49,084 INFO 127.0.0.1 - - [12/May/2025 13:02:49] "GET / HTTP/1.1" 200 -
+2025-05-12 13:03:02,543 INFO 127.0.0.1 - - [12/May/2025 13:03:02] "GET /available_pdfs HTTP/1.1" 200 -
+2025-05-12 13:03:14,257 INFO 127.0.0.1 - - [12/May/2025 13:03:14] "GET /available_pdfs HTTP/1.1" 200 -
+2025-05-12 13:06:22,228 INFO Extracted 24352 characters from PDF
+2025-05-12 13:06:22,229 INFO Extracted 3131 words from PDF
+2025-05-12 13:06:22,329 INFO 127.0.0.1 - - [12/May/2025 13:06:22] "[35m[1mPOST /summarize HTTP/1.1[0m" 202 -
+2025-05-12 13:07:07,924 INFO 127.0.0.1 - - [12/May/2025 13:07:07] "GET /get_answers?nickname=Gustavo&extra=0 HTTP/1.1" 200 -
+2025-05-12 13:07:10,640 INFO 127.0.0.1 - - [12/May/2025 13:07:10] "GET /get_answers?nickname=gustavo2&extra=0 HTTP/1.1" 200 -
+2025-05-12 13:07:11,290 INFO 127.0.0.1 - - [12/May/2025 13:07:11] "GET /get_answers?nickname=gustavo2&extra=0 HTTP/1.1" 200 -
+2025-05-12 13:07:14,307 INFO 127.0.0.1 - - [12/May/2025 13:07:14] "GET /get_answers?nickname=Gustavo2&extra=0 HTTP/1.1" 200 -
+2025-05-12 13:08:03,583 INFO 127.0.0.1 - - [12/May/2025 13:08:03] "GET /get_answers?nickname=Gustavo2&extra=2 HTTP/1.1" 200 -
+2025-05-12 13:09:04,014 INFO Successfully saved rankings for request 59982303-2a74-4c45-9cf1-9d1b1103b943
+2025-05-12 13:09:04,015 INFO Successfully saved rankings for request a6c6ebe5-120b-434c-99ad-11920511b02e
+2025-05-12 13:09:04,016 INFO 127.0.0.1 - - [12/May/2025 13:09:04] "POST /rankings HTTP/1.1" 200 -
+2025-05-12 13:09:04,018 INFO 127.0.0.1 - - [12/May/2025 13:09:04] "POST /rankings HTTP/1.1" 200 -
+2025-05-12 13:09:04,018 INFO Successfully saved rankings for request 28e09f6b-ac2c-4476-8b20-3d58d0deff1d
+2025-05-12 13:09:04,023 INFO 127.0.0.1 - - [12/May/2025 13:09:04] "POST /rankings HTTP/1.1" 200 -
+2025-05-12 13:09:44,374 INFO 127.0.0.1 - - [12/May/2025 13:09:44] "GET /available_pdfs HTTP/1.1" 200 -
+2025-05-12 13:10:39,135 INFO Duplicate PDF detected. Using existing file: 2023.09.20.558624v1.full.pdf
+2025-05-12 13:10:42,363 INFO Extracted 62699 characters from PDF
+2025-05-12 13:10:42,363 INFO Extracted 7927 words from PDF
+2025-05-12 13:10:42,421 INFO 127.0.0.1 - - [12/May/2025 13:10:42] "[35m[1mPOST /summarize HTTP/1.1[0m" 202 -
+2025-05-12 13:10:44,923 INFO 127.0.0.1 - - [12/May/2025 13:10:44] "GET /available_pdfs HTTP/1.1" 200 -
+2025-05-12 13:10:59,228 INFO 127.0.0.1 - - [12/May/2025 13:10:59] "GET /available_pdfs HTTP/1.1" 200 -
+2025-05-12 13:11:29,672 INFO 127.0.0.1 - - [12/May/2025 13:11:29] "GET /get_answers?nickname=Gustavo8&extra=2 HTTP/1.1" 200 -
+2025-05-12 13:11:48,639 INFO 127.0.0.1 - - [12/May/2025 13:11:48] "GET /get_answers?nickname=Gustavo8&extra=2 HTTP/1.1" 200 -
+2025-05-12 13:12:02,553 INFO 127.0.0.1 - - [12/May/2025 13:12:02] "GET /get_answers?nickname=Gustavo8&extra=0 HTTP/1.1" 200 -
+2025-05-12 13:12:25,593 INFO Extracted 55889 characters from PDF
+2025-05-12 13:12:25,594 INFO Extracted 7198 words from PDF
+2025-05-12 13:12:25,626 INFO 127.0.0.1 - - [12/May/2025 13:12:25] "[35m[1mPOST /summarize HTTP/1.1[0m" 202 -
+2025-05-12 13:12:37,021 INFO 127.0.0.1 - - [12/May/2025 13:12:37] "GET /get_answers?nickname=Gustavo8&extra=0 HTTP/1.1" 200 -
+2025-05-12 13:13:28,438 INFO 127.0.0.1 - - [12/May/2025 13:13:28] "GET /get_answers?nickname=Gustavo8&extra=3 HTTP/1.1" 200 -
+2025-05-12 13:13:41,871 INFO 127.0.0.1 - - [12/May/2025 13:13:41] "GET /get_answers?nickname=Gustavo8&extra=3 HTTP/1.1" 200 -
+2025-05-12 13:13:44,305 INFO 127.0.0.1 - - [12/May/2025 13:13:44] "GET /get_answers?nickname=Gustavo8&extra=3 HTTP/1.1" 200 -
+2025-05-12 13:14:58,573 INFO 127.0.0.1 - - [12/May/2025 13:14:58] "GET /get_answers?nickname=Gustavo2&extra=3 HTTP/1.1" 200 -
+2025-05-12 13:15:29,772 INFO 127.0.0.1 - - [12/May/2025 13:15:29] "GET /get_answers?nickname=Gustavo2&extra=3 HTTP/1.1" 200 -
+2025-05-12 13:15:35,669 INFO 127.0.0.1 - - [12/May/2025 13:15:35] "GET /get_answers?nickname=Gustavo2&extra=3 HTTP/1.1" 200 -
