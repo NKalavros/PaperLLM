@@ -16,6 +16,8 @@ from dotenv import load_dotenv #type: ignore
 import google.generativeai as genai #type: ignore
 from collections import defaultdict
 import json
+import hashlib  # Add for MD5 hashing
+import shutil  # Add for file operations
 #Adding logins
 from flask_login import (
     LoginManager,
@@ -59,6 +61,7 @@ app.register_blueprint(auth_bp)
 # Configuration
 app.config.update(
     UPLOAD_FOLDER=os.path.join(os.getcwd(), 'uploads'),
+    PDF_STORAGE_FOLDER=os.path.join(os.getcwd(), 'pdf_storage'),  # Add permanent storage folder
     MAX_CONTENT_LENGTH=50*1024*1024,
     CELERY_BROKER_URL='redis://localhost:6379/0',
     CELERY_RESULT_BACKEND='redis://localhost:6379/0',
@@ -106,12 +109,32 @@ MAX_TEXT_LENGTH = 1200000
 API_RETRY_DELAYS = [5, 15, 45]
 RPM_LIMIT = 3500
 
-# Create upload directory
+# Create upload directory and PDF storage directory
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
+os.makedirs(app.config['PDF_STORAGE_FOLDER'], exist_ok=True)
 
 import threading
 
 log_lock = threading.Lock()
+
+def calculate_md5(file_path):
+    """Calculate MD5 hash of a file"""
+    hash_md5 = hashlib.md5()
+    with open(file_path, "rb") as f:
+        for chunk in iter(lambda: f.read(4096), b""):
+            hash_md5.update(chunk)
+    return hash_md5.hexdigest()
+
+def find_duplicate_pdf(file_path):
+    """Check if a PDF with the same MD5 hash exists in storage"""
+    file_md5 = calculate_md5(file_path)
+    
+    for filename in os.listdir(app.config['PDF_STORAGE_FOLDER']):
+        if filename.endswith('.pdf'):
+            stored_path = os.path.join(app.config['PDF_STORAGE_FOLDER'], filename)
+            if calculate_md5(stored_path) == file_md5:
+                return filename
+    return None
 
 def log_request(request_id, text, prompt_prefix, summaries, question_difficulty, username, nickname):
     log_entry = {
@@ -345,24 +368,72 @@ def log_question(request_id, text, prompt_prefix, question_difficulty, nickname,
     except Exception as e:
         logger.error(f"Question log failed: {str(e)}")
 
+@app.route('/available_pdfs', methods=['GET'])
+@login_required
+def get_available_pdfs():
+    """Get list of available PDFs in storage"""
+    try:
+        pdf_files = []
+        for filename in os.listdir(app.config['PDF_STORAGE_FOLDER']):
+            if filename.endswith('.pdf'):
+                file_path = os.path.join(app.config['PDF_STORAGE_FOLDER'], filename)
+                pdf_files.append({
+                    'filename': filename,
+                    'size': os.path.getsize(file_path),
+                    'modified': datetime.fromtimestamp(os.path.getmtime(file_path)).isoformat()
+                })
+        
+        # Sort by modified date, newest first
+        pdf_files.sort(key=lambda x: x['modified'], reverse=True)
+        return jsonify({'pdfs': pdf_files})
+    except Exception as e:
+        logger.error(f"Error listing PDFs: {str(e)}")
+        return jsonify({'error': str(e)}), 500
+
 @app.route('/summarize', methods=['POST'])
 @login_required
 def summarize():
     request_id = str(uuid.uuid4())
     try:
-        if 'file' not in request.files:
-            return jsonify({"error": "No file part"}), 400
-            
-        file = request.files['file']
-        if file.filename == '':
-            return jsonify({"error": "No selected file"}), 400
-
-        filename = secure_filename(file.filename)
-        pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-        file.save(pdf_path)
+        # Check if user selected an existing PDF
+        selected_pdf = request.form.get('selected_pdf')
         
-        if not os.path.exists(pdf_path):
-            return jsonify({"error": "File upload failed"}), 500
+        if selected_pdf and selected_pdf != 'upload':
+            # User selected an existing PDF
+            pdf_path = os.path.join(app.config['PDF_STORAGE_FOLDER'], selected_pdf)
+            if not os.path.exists(pdf_path):
+                return jsonify({"error": "Selected PDF not found"}), 404
+            filename = selected_pdf
+        else:
+            # User is uploading a new PDF
+            if 'file' not in request.files:
+                return jsonify({"error": "No file part"}), 400
+                
+            file = request.files['file']
+            if file.filename == '':
+                return jsonify({"error": "No selected file"}), 400
+
+            filename = secure_filename(file.filename)
+            temp_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            file.save(temp_path)
+            
+            if not os.path.exists(temp_path):
+                return jsonify({"error": "File upload failed"}), 500
+
+            # Check for duplicate
+            duplicate_filename = find_duplicate_pdf(temp_path)
+            
+            if duplicate_filename:
+                # Use existing file
+                pdf_path = os.path.join(app.config['PDF_STORAGE_FOLDER'], duplicate_filename)
+                os.remove(temp_path)  # Remove temporary upload
+                filename = duplicate_filename
+                logger.info(f"Duplicate PDF detected. Using existing file: {duplicate_filename}")
+            else:
+                # Move to permanent storage
+                pdf_path = os.path.join(app.config['PDF_STORAGE_FOLDER'], filename)
+                shutil.move(temp_path, pdf_path)
+                logger.info(f"New PDF stored: {filename}")
 
         text = extract_text_from_pdf(pdf_path)
         prompt_prefix = request.form.get('prompt_prefix', 'Summarize this academic paper:')
@@ -702,4 +773,4 @@ def index():
     return render_template('index.html')
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5100)

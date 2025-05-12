@@ -199,6 +199,43 @@
         .markdown-body {
             background-color: white;
         }
+
+        /* New styles for PDF source selection */
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            margin: 10px 0;
+        }
+
+        .radio-group label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .radio-group input[type="radio"] {
+            margin-right: 5px;
+        }
+
+        select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d0d7de;
+            border-radius: 6px;
+            background: white;
+            transition: border-color 0.3s ease;
+            color: #4a5568;
+        }
+
+        select:focus {
+            border-color: #4a90e2;
+            outline: none;
+        }
+
+        #pdf-dropdown {
+            margin-top: 10px;
+        }
     </style>
 </head>
 
@@ -214,8 +251,27 @@
             <div class="form-section">
                 <form id="summarizeForm" method="POST" enctype="multipart/form-data" action="/summarize">
                     <div class="form-group">
+                        <label>PDF Source:</label>
+                        <div class="radio-group">
+                            <label>
+                                <input type="radio" name="pdf_source" value="upload" checked>
+                                Upload new PDF
+                            </label>
+                            <label>
+                                <input type="radio" name="pdf_source" value="existing">
+                                Select existing PDF
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group" id="upload-section">
                         <label for="file">Upload PDF:</label>
-                        <input type="file" id="file" name="file" accept=".pdf" required>
+                        <input type="file" id="file" name="file" accept=".pdf">
+                    </div>
+                    <div class="form-group hidden" id="dropdown-section">
+                        <label for="pdf-dropdown">Select existing PDF:</label>
+                        <select id="pdf-dropdown" name="selected_pdf">
+                            <option value="">-- Select a PDF --</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="prompt_prefix">Summary Prompt:</label>
@@ -281,7 +337,58 @@
             questionsTab.classList.remove('active');
         });
 
-        // Existing summarizeForm JS remains unchanged
+        // Handle PDF source selection (new functionality)
+        document.querySelectorAll('input[name="pdf_source"]').forEach(radio => {
+            radio.addEventListener('change', function () {
+                if (this.value === 'upload') {
+                    document.getElementById('upload-section').classList.remove('hidden');
+                    document.getElementById('dropdown-section').classList.add('hidden');
+                    document.getElementById('file').required = true;
+                    document.getElementById('pdf-dropdown').required = false;
+                } else {
+                    document.getElementById('upload-section').classList.add('hidden');
+                    document.getElementById('dropdown-section').classList.remove('hidden');
+                    document.getElementById('file').required = false;
+                    document.getElementById('pdf-dropdown').required = true;
+                    loadAvailablePDFs();
+                }
+            });
+        });
+
+        // Load available PDFs (new function)
+        async function loadAvailablePDFs() {
+            try {
+                const response = await fetch('/available_pdfs');
+                const data = await response.json();
+                const dropdown = document.getElementById('pdf-dropdown');
+
+                // Clear existing options except the first one
+                dropdown.innerHTML = '<option value="">-- Select a PDF --</option>';
+
+                if (data.pdfs) {
+                    data.pdfs.forEach(pdf => {
+                        const option = document.createElement('option');
+                        option.value = pdf.filename;
+                        option.textContent = `${pdf.filename} (${formatFileSize(pdf.size)})`;
+                        dropdown.appendChild(option);
+                    });
+                }
+            } catch (error) {
+                console.error('Error loading PDFs:', error);
+                document.getElementById('question-status').innerText = 'Error loading available PDFs';
+            }
+        }
+
+        // Format file size (new function)
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return Math.round(bytes / Math.pow(k, i) * 100) / 100 + ' ' + sizes[i];
+        }
+
+        // Existing summarizeForm JS with modifications
         marked.setOptions({
             breaks: true,
             sanitize: true
@@ -295,6 +402,28 @@
             const formData = new FormData(e.target);
             const nickname = document.getElementById('nickname').value; // Get nickname from form
             formData.append('nickname', nickname); // Append nickname to form data
+
+            // Handle PDF source selection
+            const pdfSource = document.querySelector('input[name="pdf_source"]:checked').value;
+            if (pdfSource === 'existing') {
+                const selectedPdf = document.getElementById('pdf-dropdown').value;
+                if (!selectedPdf) {
+                    alert('Please select a PDF from the dropdown');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Submit Question';
+                    return;
+                }
+                formData.set('selected_pdf', selectedPdf);
+            } else {
+                const fileInput = document.getElementById('file');
+                if (!fileInput.files[0]) {
+                    alert('Please select a PDF file to upload');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Submit Question';
+                    return;
+                }
+            }
+
             try {
                 const response = await fetch('/summarize', {
                     method: 'POST',
@@ -310,9 +439,13 @@
                 // Simply display a confirmation message and clear the form
                 document.getElementById('question-status').innerText = 'Question submitted successfully!';
                 e.target.reset();
+                // Reset PDF source to upload
+                document.querySelector('input[name="pdf_source"][value="upload"]').checked = true;
+                document.getElementById('upload-section').classList.remove('hidden');
+                document.getElementById('dropdown-section').classList.add('hidden');
             } catch (error) {
                 console.error('Fetch Error:', error);
-                document.getElementById('question-status').innerText = 'Submission failed. Please try again.';
+                document.getElementById('question-status').innerText = 'Submission failed: ' + error.message;
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Submit Question';
