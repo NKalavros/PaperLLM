@@ -67,7 +67,7 @@ app.config.update(
     PDF_STORAGE_FOLDER=os.path.join(os.getcwd(), 'pdf_storage'),  # Add permanent storage folder
     MAX_CONTENT_LENGTH=50*1024*1024,
     CELERY_BROKER_URL=os.environ.get('CELERY_BROKER_URL', 'redis://localhost:6379/0'),
-    CELERY_RESULT_BACKEND=os.environ.get('CELERY_RESULT_BACKEND', 'redis://localhost:6379/0'),
+    CELERY_RESULT_BACKEND=os.environ.get('CELERY_BROKER_URL', 'redis://localhost:6379/0'),
     CELERY_RESULT_EXPIRES=300,
     CELERY_TASK_IGNORE_RESULT=False
 )
