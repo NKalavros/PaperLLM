@@ -214,7 +214,7 @@ def process_summary(self, text, prompt_prefix, model, request_id=None, display_n
                 "model": "deepseek-chat",
                 "messages": [{
                     "role": "user", 
-                    "content": f"{prompt_prefix}\n\n{ text[:min(len(text),MAX_TEXT_LENGTH)]}\n{prompt_suffix}"
+                    "content": f"{prompt_prefix}\n{prompt_suffix}\n{ text[:min(len(text),MAX_TEXT_LENGTH)]}"
                 }]
             }
 
