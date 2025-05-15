@@ -279,7 +279,6 @@ def process_summary(self, text, prompt_prefix, model, request_id=None, display_n
         elif model == "gemini":
             response_json = geminiresponse
         else:
-            endpoint = "https://api.x.ai/v1/chat/completions"
             response = session.post(
                 endpoint,
                 headers=headers,

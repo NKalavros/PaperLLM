@@ -5965,3 +5965,64 @@ NameError: name 'log_question' is not defined
 2025-05-12 13:14:58,573 INFO 127.0.0.1 - - [12/May/2025 13:14:58] "GET /get_answers?nickname=Gustavo2&extra=3 HTTP/1.1" 200 -
 2025-05-12 13:15:29,772 INFO 127.0.0.1 - - [12/May/2025 13:15:29] "GET /get_answers?nickname=Gustavo2&extra=3 HTTP/1.1" 200 -
 2025-05-12 13:15:35,669 INFO 127.0.0.1 - - [12/May/2025 13:15:35] "GET /get_answers?nickname=Gustavo2&extra=3 HTTP/1.1" 200 -
+2025-05-15 12:19:59,633 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.148.171.66:5100
+2025-05-15 12:19:59,633 INFO [33mPress CTRL+C to quit[0m
+2025-05-15 12:20:08,109 INFO 127.0.0.1 - - [15/May/2025 12:20:08] "[32mGET / HTTP/1.1[0m" 302 -
+2025-05-15 12:20:08,126 INFO 127.0.0.1 - - [15/May/2025 12:20:08] "GET /login HTTP/1.1" 200 -
+2025-05-15 12:20:08,225 INFO 127.0.0.1 - - [15/May/2025 12:20:08] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-15 12:20:24,367 INFO 127.0.0.1 - - [15/May/2025 12:20:24] "[31m[1mPOST /login HTTP/1.1[0m" 401 -
+2025-05-15 12:20:37,440 INFO 127.0.0.1 - - [15/May/2025 12:20:37] "[31m[1mPOST /login HTTP/1.1[0m" 401 -
+2025-05-15 12:21:34,736 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.148.171.66:5100
+2025-05-15 12:21:34,736 INFO [33mPress CTRL+C to quit[0m
+2025-05-15 12:21:40,909 INFO 127.0.0.1 - - [15/May/2025 12:21:40] "[32mGET / HTTP/1.1[0m" 302 -
+2025-05-15 12:21:40,917 INFO 127.0.0.1 - - [15/May/2025 12:21:40] "GET /login HTTP/1.1" 200 -
+2025-05-15 12:21:43,109 INFO 127.0.0.1 - - [15/May/2025 12:21:43] "[31m[1mPOST /login HTTP/1.1[0m" 401 -
+2025-05-15 12:21:46,736 INFO 127.0.0.1 - - [15/May/2025 12:21:46] "GET /login HTTP/1.1" 200 -
+2025-05-15 12:21:54,065 INFO 127.0.0.1 - - [15/May/2025 12:21:54] "[31m[1mPOST /login HTTP/1.1[0m" 401 -
+2025-05-15 12:24:53,560 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.148.171.66:5100
+2025-05-15 12:24:53,560 INFO [33mPress CTRL+C to quit[0m
+2025-05-15 12:24:58,589 INFO 10.148.171.66 - - [15/May/2025 12:24:58] "[32mGET / HTTP/1.1[0m" 302 -
+2025-05-15 12:24:58,603 INFO 10.148.171.66 - - [15/May/2025 12:24:58] "GET /login HTTP/1.1" 200 -
+2025-05-15 12:24:58,765 INFO 10.148.171.66 - - [15/May/2025 12:24:58] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-15 12:25:12,135 INFO 10.148.171.66 - - [15/May/2025 12:25:12] "[31m[1mPOST /login HTTP/1.1[0m" 401 -
+2025-05-15 12:25:33,515 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.148.171.66:5100
+2025-05-15 12:25:33,516 INFO [33mPress CTRL+C to quit[0m
+2025-05-15 12:25:35,524 INFO 10.148.171.66 - - [15/May/2025 12:25:35] "[31m[1mPOST /login HTTP/1.1[0m" 401 -
+2025-05-15 12:25:40,443 INFO 10.148.171.66 - - [15/May/2025 12:25:40] "[31m[1mPOST /login HTTP/1.1[0m" 401 -
+2025-05-15 12:26:51,549 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.148.171.66:5100
+2025-05-15 12:26:51,549 INFO [33mPress CTRL+C to quit[0m
+2025-05-15 12:26:52,470 INFO 10.148.171.66 - - [15/May/2025 12:26:52] "[31m[1mPOST /login HTTP/1.1[0m" 401 -
+2025-05-15 12:26:54,896 INFO 10.148.171.66 - - [15/May/2025 12:26:54] "[31m[1mPOST /login HTTP/1.1[0m" 401 -
+2025-05-15 12:26:57,127 INFO 10.148.171.66 - - [15/May/2025 12:26:57] "GET /login HTTP/1.1" 200 -
+2025-05-15 12:27:03,874 INFO 10.148.171.66 - - [15/May/2025 12:27:03] "[31m[1mPOST /login HTTP/1.1[0m" 401 -
+2025-05-15 12:29:01,167 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.148.171.66:5100
+2025-05-15 12:29:01,167 INFO [33mPress CTRL+C to quit[0m
+2025-05-15 12:29:10,488 INFO 127.0.0.1 - - [15/May/2025 12:29:10] "[32mGET / HTTP/1.1[0m" 302 -
+2025-05-15 12:29:10,500 INFO 127.0.0.1 - - [15/May/2025 12:29:10] "GET /login HTTP/1.1" 200 -
+2025-05-15 12:29:10,987 INFO 127.0.0.1 - - [15/May/2025 12:29:10] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-15 12:29:16,876 INFO 127.0.0.1 - - [15/May/2025 12:29:16] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-05-15 12:29:16,883 INFO 127.0.0.1 - - [15/May/2025 12:29:16] "GET / HTTP/1.1" 200 -
+2025-05-15 12:29:20,157 INFO 127.0.0.1 - - [15/May/2025 12:29:20] "GET /available_pdfs HTTP/1.1" 200 -
+2025-05-15 12:29:26,560 INFO Extracted 69693 characters from PDF
+2025-05-15 12:29:26,561 INFO Extracted 8780 words from PDF
+2025-05-15 12:29:26,606 INFO 127.0.0.1 - - [15/May/2025 12:29:26] "[35m[1mPOST /summarize HTTP/1.1[0m" 202 -
+2025-05-15 12:29:53,642 INFO 127.0.0.1 - - [15/May/2025 12:29:53] "GET /get_answers?nickname=Arivederci&extra=0 HTTP/1.1" 200 -
+2025-05-15 12:29:54,584 INFO 127.0.0.1 - - [15/May/2025 12:29:54] "GET /get_answers?nickname=Arivederci&extra=0 HTTP/1.1" 200 -
