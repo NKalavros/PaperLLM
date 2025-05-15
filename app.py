@@ -19,7 +19,7 @@ import json
 import hashlib  # Add for MD5 hashing
 import shutil  # Add for file operations
 #Adding logins
-from flask_login import (
+from flask_login import ( #type: ignore
     LoginManager,
     UserMixin,
     login_user,
@@ -29,8 +29,22 @@ from flask_login import (
 )
 from auth import auth_bp, User, init_login_manager  # Remove login_manager from import
 
-from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash #type: ignore
 request_tracker = defaultdict(list)  # Tracks request_id -> task_ids
+
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+LOGS_DIR = os.path.join(BASE_DIR, 'logs')
+os.makedirs(LOGS_DIR, exist_ok=True)
+
+REQUESTS_LOG = os.path.join(LOGS_DIR, 'requests.log')
+QUESTIONS_LOG = os.path.join(LOGS_DIR, 'requests_questions.log')
+ANSWERS_LOG = os.path.join(LOGS_DIR, 'requests_answers.log')
+
+# Update file paths
+QUESTIONS_LOG_PATH = os.path.join(LOGS_DIR, 'requests_questions.log')
+ANSWERS_LOG_PATH = os.path.join(LOGS_DIR, 'requests_answers.log')
+RATINGS_LOG_PATH = os.path.join(LOGS_DIR, 'requests_ratings.log')
 
 
 # TODO: Test this as prompt suffix on real examples. See if model obeys.
@@ -143,24 +157,19 @@ def log_request(request_id, text, prompt_prefix, summaries, question_difficulty,
     log_entry = {
         'timestamp': datetime.now().isoformat(),
         'request_id': request_id,
-        'username': username,  # Add username
-        'nickname': nickname,  # Add nickname
+        'username': username,
+        'nickname': nickname,
         'prompt_prefix': prompt_prefix,
-        'question_difficulty': question_difficulty,  # Add question difficulty
-        'text_preview': text[:200] + '...' if len(text) > 200 else text,
-        'summaries': {},  # Will store {display_name: {real_model: ..., summary: ...}}
-        'rankings': {},
-        'quality_scores': {}
+        'question_difficulty': question_difficulty,
+        'text_preview': text[:200] + '...' if len(text) > 200 else text
     }
     
     try:
-        log_file_path = os.path.join(app.root_path, 'requests.log')
-        with log_lock:
-            with open(log_file_path, 'a') as f:
-                f.write(json.dumps(log_entry) + '\n')
+        # Simple append operation
+        with open('requests.log', 'a') as f:
+            f.write(json.dumps(log_entry) + '\n')
     except Exception as e:
         logger.error(f"Initial log failed: {str(e)}")
-
 
 
 def extract_text_from_pdf(pdf_path):
@@ -596,124 +605,54 @@ def save_rankings():
         request_id = data.get('request_id')
         rankings = data.get('rankings', {})
         quality_scores = data.get('quality_scores', {})
-        model_answers = data.get('model_answers', {})
-
-        # First read the question entry to get all metadata
+        
+        # Get the original question data
         question_entry = None
+        summaries = {}
+        
+        # Read from requests_questions.log to get all the data
         with open('requests_questions.log', 'r') as f:
             for line in f:
                 try:
                     entry = json.loads(line)
                     if entry.get('request_id') == request_id:
-                        question_entry = entry
-                        break
+                        if 'prompt' in entry:
+                            question_entry = entry
+                        elif 'model' in entry:
+                            summaries[entry['model']] = {
+                                'real_model': entry['real_model'],
+                                'summary': entry['summary']
+                            }
                 except json.JSONDecodeError:
                     continue
-
+        
         if not question_entry:
-            raise ValueError("Original question not found")
-
-        # Count the number of model answers in requests_questions.log
-        model_count = 0
-        summaries = {}
-        with open('requests_questions.log', 'r') as f:
-            for line in f:
-                try:
-                    entry = json.loads(line)
-                    if entry.get('request_id') == request_id and 'model' in entry:
-                        model_count += 1
-                        summaries[entry['model']] = {
-                            'real_model': entry['real_model'],
-                            'summary': entry['summary']
-                        }
-                except json.JSONDecodeError:
-                    continue
-
-        if model_count < 2:
-            logger.warning(f"Not enough model answers found for request {request_id}")
-            return jsonify({'status': 'failed', 'error': 'Not enough model answers found'}), 400
-
-        # Save to requests_answers.log
+            return jsonify({'status': 'failed', 'error': 'Question not found'}), 404
+        
+        # Create a new answers log entry
         answer_entry = {
             'timestamp': datetime.now().isoformat(),
             'request_id': request_id,
             'nickname': current_user.id,
             'prompt': question_entry.get('prompt'),
             'file': question_entry.get('file'),
-            'question_difficulty': question_entry.get('question_difficulty'),  # New: log question difficulty
+            'question_difficulty': question_entry.get('question_difficulty'),
             'summaries': summaries,
             'rankings': rankings,
             'quality_scores': quality_scores
         }
-
+        
+        # Append to requests_answers.log instead of updating requests.log
         with open('requests_answers.log', 'a') as f:
             f.write(json.dumps(answer_entry) + '\n')
-
-        updated = True
+        
         logger.info(f"Successfully saved rankings for request {request_id}")
         return jsonify({'status': 'success'})
-
-        updated = False
-        log_file_path = os.path.join(app.root_path, 'requests.log')
-        try:
-            with open(log_file_path, 'r+') as f:
-                lines = f.readlines()
-                f.seek(0)
-                f.truncate()
-
-                for line in lines:
-                    try:
-                        log_entry = json.loads(line)
-                        if log_entry['request_id'] == request_id:
-                            # Check if summaries exist
-                            if not log_entry.get('summaries') or len(log_entry['summaries']) < 2:
-                                logger.warning(f"Not enough summaries found for request {request_id}")
-                                continue
-
-                            model_count = len(log_entry['summaries'])
-                            if model_count == 0:
-                                raise ValueError("Summaries not yet generated")
-
-                            # Validate counts match
-                            if len(rankings) != model_count:
-                                raise ValueError(
-                                    f"Expected {model_count} rankings, got {len(rankings)}"
-                                )
-
-                            if len(quality_scores) != model_count:
-                                raise ValueError(
-                                    f"Expected {model_count} scores, got {len(quality_scores)}"
-                                )
-
-                            # Validate ranks
-                            unique_ranks = set(rankings.values())
-                            if len(unique_ranks) != model_count:
-                                raise ValueError("All ranks must be unique")
-
-                            if any(rank < 1 or rank > model_count for rank in unique_ranks):
-                                raise ValueError(f"Ranks must be between 1 and {model_count}")
-
-                            log_entry['rankings'] = rankings
-                            log_entry['quality_scores'] = quality_scores
-                            updated = True
-
-                        f.write(json.dumps(log_entry) + '\n')
-                    except json.JSONDecodeError:
-                        continue
-        except Exception as e:
-            logger.error(f"Error updating rankings in requests.log: {str(e)}")
-            return jsonify({'status': 'failed', 'error': str(e)}), 500
-
-        if updated:
-            logger.info(f"Successfully updated rankings for request {request_id}")
-            return jsonify({'status': 'success'})
-        else:
-            logger.warning(f"Request {request_id} not found in requests.log")
-            return jsonify({'status': 'not found'}), 404
-
+        
     except Exception as e:
         logger.error(f"Ranking update failed: {str(e)}")
         return jsonify({'error': str(e)}), 500
+    
 
 @app.route('/get_questions', methods=['GET'])
 @login_required
