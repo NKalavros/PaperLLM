@@ -1,25 +1,24 @@
 import logging
 from logging.handlers import RotatingFileHandler
-from flask import Flask, request, jsonify, render_template, redirect, url_for #type: ignore
-from werkzeug.utils import secure_filename #type: ignore
+from flask import Flask, request, jsonify, render_template, redirect, url_for
+from werkzeug.utils import secure_filename
 import os
 import uuid
 import json
 import time
 import random
 from datetime import datetime
-import pymupdf4llm #type: ignore
-from celery import Celery #type: ignore
-import requests #type: ignore
-from openai import OpenAI #type: ignore
-from dotenv import load_dotenv #type: ignore
-import google.generativeai as genai #type: ignore
+import pymupdf4llm
+from celery import Celery
+import requests
+from openai import OpenAI
+from dotenv import load_dotenv
+import google.generativeai as genai
 from collections import defaultdict
-import json
-import hashlib  # Add for MD5 hashing
-import shutil  # Add for file operations
-#Adding logins
-from flask_login import ( #type: ignore
+import hashlib
+import shutil
+import redis
+from flask_login import (
     LoginManager,
     UserMixin,
     login_user,
@@ -27,28 +26,11 @@ from flask_login import ( #type: ignore
     logout_user,
     current_user
 )
-from auth import auth_bp, User, init_login_manager  # Remove login_manager from import
+from auth import auth_bp, User, init_login_manager
+from werkzeug.security import generate_password_hash, check_password_hash
 
-from werkzeug.security import generate_password_hash, check_password_hash #type: ignore
 request_tracker = defaultdict(list)  # Tracks request_id -> task_ids
 
-
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-LOGS_DIR = os.path.join(BASE_DIR, 'logs')
-os.makedirs(LOGS_DIR, exist_ok=True)
-
-REQUESTS_LOG = os.path.join(LOGS_DIR, 'requests.log')
-QUESTIONS_LOG = os.path.join(LOGS_DIR, 'requests_questions.log')
-ANSWERS_LOG = os.path.join(LOGS_DIR, 'requests_answers.log')
-
-# Update file paths
-QUESTIONS_LOG_PATH = os.path.join(LOGS_DIR, 'requests_questions.log')
-ANSWERS_LOG_PATH = os.path.join(LOGS_DIR, 'requests_answers.log')
-RATINGS_LOG_PATH = os.path.join(LOGS_DIR, 'requests_ratings.log')
-
-
-# TODO: Test this as prompt suffix on real examples. See if model obeys.
-prompt_suffix = 'Please keep your answer to less than 200 words.'
 # Configure logging
 logging.basicConfig(
     level=logging.INFO,
@@ -78,13 +60,17 @@ app.register_blueprint(auth_bp)
 # Configuration
 app.config.update(
     UPLOAD_FOLDER=os.path.join(os.getcwd(), 'uploads'),
-    PDF_STORAGE_FOLDER=os.path.join(os.getcwd(), 'pdf_storage'),  # Add permanent storage folder
+    PDF_STORAGE_FOLDER=os.path.join(os.getcwd(), 'pdf_storage'),
     MAX_CONTENT_LENGTH=50*1024*1024,
     CELERY_BROKER_URL=os.environ.get('CELERY_BROKER_URL', 'redis://localhost:6379/0'),
     CELERY_RESULT_BACKEND=os.environ.get('CELERY_BROKER_URL', 'redis://localhost:6379/0'),
     CELERY_RESULT_EXPIRES=300,
     CELERY_TASK_IGNORE_RESULT=False
 )
+
+# Initialize Redis client
+redis_client = redis.from_url(app.config['CELERY_BROKER_URL'])
+
 # Initialize Celery
 celery = Celery(
     app.name,
@@ -99,7 +85,7 @@ celery.conf.update(
     broker_connection_retry_on_startup=True,
     worker_concurrency=2,
     task_acks_late=True,
-    broker_pool_limit=None  # Add this line
+    broker_pool_limit=None
 )
 
 # Load environment variables
@@ -113,14 +99,16 @@ GROQ_API_KEY = os.getenv('GROQ_API_KEY')
 
 # Initialize gemini
 genai.configure(api_key=os.getenv('GEMINI_API_KEY'))
-import typing_extensions as typing #type: ignore
+import typing_extensions as typing
 
 class Recipe(typing.TypedDict):
     recipe_name: str
     ingredients: list[str]
+
 geminimodel = genai.GenerativeModel("gemini-exp-1206")
+
 # Constants
-#debug:
+prompt_suffix = 'Please keep your answer to less than 200 words.'
 MAX_API_TIMEOUT = 45
 MAX_TEXT_LENGTH = 1200000
 API_RETRY_DELAYS = [5, 15, 45]
@@ -129,10 +117,6 @@ RPM_LIMIT = 3500
 # Create upload directory and PDF storage directory
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 os.makedirs(app.config['PDF_STORAGE_FOLDER'], exist_ok=True)
-
-import threading
-
-log_lock = threading.Lock()
 
 def calculate_md5(file_path):
     """Calculate MD5 hash of a file"""
@@ -161,16 +145,17 @@ def log_request(request_id, text, prompt_prefix, summaries, question_difficulty,
         'nickname': nickname,
         'prompt_prefix': prompt_prefix,
         'question_difficulty': question_difficulty,
-        'text_preview': text[:200] + '...' if len(text) > 200 else text
+        'text_preview': text[:200] + '...' if len(text) > 200 else text,
+        'summaries': {},
+        'rankings': {},
+        'quality_scores': {}
     }
     
     try:
-        # Simple append operation
         with open('requests.log', 'a') as f:
             f.write(json.dumps(log_entry) + '\n')
     except Exception as e:
         logger.error(f"Initial log failed: {str(e)}")
-
 
 def extract_text_from_pdf(pdf_path):
     try:
@@ -185,15 +170,15 @@ def extract_text_from_pdf(pdf_path):
 
 @celery.task(
     bind=True,
-    max_retries=2,  # Reduced from 3
+    max_retries=2,
     time_limit=MAX_API_TIMEOUT*2,
     soft_time_limit=MAX_API_TIMEOUT+5,
     rate_limit=f"{RPM_LIMIT//60}/s",
-    autoretry_for=(Exception,),  # Add automatic retry
-    retry_backoff=5,  # Add exponential backoff
+    autoretry_for=(Exception,),
+    retry_backoff=5,
     retry_jitter=True
 )
-def process_summary(self, text, prompt_prefix, model, request_id=None, display_name=None, nickname=None):  # renamed parameter
+def process_summary(self, text, prompt_prefix, model, request_id=None, display_name=None, nickname=None):
     try:
         logger.info(f"Starting {model} processing (attempt {self.request.retries + 1})")
         session = requests.Session()
@@ -201,9 +186,8 @@ def process_summary(self, text, prompt_prefix, model, request_id=None, display_n
         headers = {}
         payload = {}
         logger.info("Text Used: " + text[min(len(text), MAX_TEXT_LENGTH)-100:min(len(text), MAX_TEXT_LENGTH)])
+        
         if model == "openai":
-            #Nikolas note: OpenAI needs their client package, let's use that
-            #Nikolas note: [2025-01-23 14:20:02,258: ERROR/ForkPoolWorker-1] openai error: Error code: 429 - {'error': {'message': 'Request too large for gpt-4o in organization org-FPY5TvqSJGKGWU6QsfNtWZB7 on tokens per min (TPM): Limit 30000, Requested 34102. The input or output tokens must be reduced in order to run successfully. Visit https://platform.openai.com/account/rate-limits to learn more.', 'type': 'tokens', 'param': None, 'code': 'rate_limit_exceeded'}}. Retrying in 16.37188766227481s - Jesus christ what an annoyance.
             completion = oaiclient.chat.completions.create(
                 model="gpt-4o",
                 messages=[
@@ -242,7 +226,7 @@ def process_summary(self, text, prompt_prefix, model, request_id=None, display_n
                     "content": f"{prompt_prefix}\n\n{ text[:min(len(text),MAX_TEXT_LENGTH)]}"
                 }]
             }
-        elif model == "perplexity":  # New section
+        elif model == "perplexity":
             endpoint = "https://api.perplexity.ai/chat/completions"
             headers = {
                 "Authorization": f"Bearer {PERPLEXITY_API_KEY}",
@@ -290,7 +274,7 @@ def process_summary(self, text, prompt_prefix, model, request_id=None, display_n
         elif model == "gemini":
             geminiresponse = geminimodel.generate_content(f"{prompt_prefix}\n\n{ text[:min(len(text),MAX_TEXT_LENGTH)]}")
 
-        #The weirdos
+        # Handle model responses
         if model == "openai":
             response_json = json.loads(completion.json())
         elif model == "gemini":
@@ -304,6 +288,8 @@ def process_summary(self, text, prompt_prefix, model, request_id=None, display_n
             )
             response.raise_for_status()
             response_json = response.json()
+            
+        # Extract content based on model
         if model == "openai":
             if not response_json.get('choices'):
                 raise ValueError("Empty OpenAI response")
@@ -313,25 +299,53 @@ def process_summary(self, text, prompt_prefix, model, request_id=None, display_n
         elif model == "claude":
             content = response_json['content'][0]['text']
         elif model == "gemini":
-            #This is also a json
             content = response_json.text
             logger.info("Gemini response: " + content)
             if isinstance(content, list):
                 content = "\n".join(content)
-        elif model == "perplexity":  # New response handling
+        elif model == "perplexity":
             content = response_json['choices'][0]['message']['content']
         elif model == "llama3":
             content = response_json['choices'][0]['message']['content']
         elif model == "grok2":
             content = response_json['choices'][0]['message']['content']
-        return {
-            'model': display_name,  # Show display name to users
-            'real_model': model,    # Keep actual model for internal tracking
+        
+        # Store result in Redis
+        result_data = {
+            'model': display_name,
+            'real_model': model,
             'summary': content,
             'status': 'success',
-            'model_id': f"{model}_{uuid.uuid4().hex[:4]}",
-            'request_id': request_id
+            'request_id': request_id,
+            'nickname': nickname,
+            'timestamp': datetime.now().isoformat()
         }
+        
+        # Store in Redis with TTL of 1 hour
+        result_key = f"result:{request_id}:{model}"
+        redis_client.setex(
+            result_key,
+            3600,  # Expire after 1 hour
+            json.dumps(result_data)
+        )
+        
+        # Also log to file for backwards compatibility
+        log_entry = {
+            'timestamp': datetime.now().isoformat(),
+            'request_id': request_id,
+            'nickname': nickname,
+            'model': display_name,
+            'real_model': model,
+            'summary': content
+        }
+        
+        try:
+            with open('requests_questions.log', 'a') as f:
+                f.write(json.dumps(log_entry) + '\n')
+        except Exception as e:
+            logger.error(f"Logging model response failed: {str(e)}")
+        
+        return result_data
 
     except requests.exceptions.HTTPError as e:
         if e.response.status_code == 429:
@@ -346,24 +360,6 @@ def process_summary(self, text, prompt_prefix, model, request_id=None, display_n
         logger.error(f"{model} error: {str(e)}. Retrying in {delay}s")
         raise self.retry(exc=e, countdown=delay)
 
-    finally:
-        # Log the model's response to requests_questions.log
-        if 'content' in locals():
-            log_entry = {
-                'timestamp': datetime.now().isoformat(),
-                'request_id': request_id,
-                'nickname': nickname,  # Use the provided nickname
-                'model': display_name,
-                'real_model': model,
-                'summary': content
-            }
-            try:
-                with open('requests_questions.log', 'a') as f:
-                    f.write(json.dumps(log_entry) + '\n')
-            except Exception as e:
-                logger.error(f"Logging model response failed: {str(e)}")
-
-# New logging helper for questions
 def log_question(request_id, text, prompt_prefix, question_difficulty, nickname, filename):
     log_entry = {
         'timestamp': datetime.now().isoformat(),
@@ -456,15 +452,14 @@ def summarize():
         if not nickname.strip():
             return jsonify({"error": "Nickname cannot be empty"}), 400
 
-        #all_models = ['deepseek','gemini','claude','perplexity','llama3','grok2','openai']
         all_models = ['perplexity','openai']
         selected_models = random.sample(all_models, 2)
-        display_names = [f"Model {i+1}" for i in range(2)]  # More descriptive names
+        display_names = [f"Model {i+1}" for i in range(2)]
         
         tasks = []
         for model, display_name in zip(selected_models, display_names):
             task = process_summary.apply_async(
-                args=(text, prompt_prefix, model, request_id, display_name, nickname)  # Pass provided nickname
+                args=(text, prompt_prefix, model, request_id, display_name, nickname)
             )
             tasks.append(task)
             request_tracker[request_id].append({
@@ -479,11 +474,11 @@ def summarize():
             prompt_prefix=prompt_prefix,
             summaries=[],
             question_difficulty=question_difficulty,
-            username=current_user.id,  # Add current user's username
-            nickname=nickname  # Add nickname to log
+            username=current_user.id,
+            nickname=nickname
         )
         
-        # Log the question details into a dedicated log file
+        # Log the question details
         log_question(request_id, text, prompt_prefix, question_difficulty, nickname, filename)
         return jsonify({
             "request_id": request_id,
@@ -515,17 +510,6 @@ def task_status(task_id):
             'summary': result.get('summary'),
             'status': 'completed'
         })
-        
-        request_id = result.get('request_id')
-        if request_id:
-            # Asynchronously update requests_questions.log with the model response
-            update_question_log.delay(
-                request_id,
-                result.get('model'),
-                result.get('real_model'),
-                result.get('summary'),
-                current_user.id
-            )
     elif task.failed():
         response.update({
             'status': 'failed',
@@ -534,7 +518,6 @@ def task_status(task_id):
     
     return jsonify(response)
 
-# Remove the first get_answers route definition and keep only this one
 @app.route('/get_answers', methods=['GET'])
 @login_required
 def get_answers():
@@ -545,58 +528,52 @@ def get_answers():
     except ValueError:
         extra = 0
 
-    entries = []
+    # First, get questions from file
+    questions = []
     try:
         with open('requests_questions.log', 'r') as f:
             for line in f:
                 try:
                     entry = json.loads(line)
-                    entries.append(entry)
+                    if 'prompt' in entry:  # This is a question entry
+                        questions.append(entry)
                 except json.JSONDecodeError:
                     continue
     except FileNotFoundError:
         return jsonify([])
 
-    # Group entries by request_id; each group should have a question and its answers.
-    groups = defaultdict(lambda: {'question': None, 'answers': []})
-    for entry in entries:
-        req_id = entry.get('request_id')
-        if not req_id:
-            continue
-        if 'prompt' in entry:
-            groups[req_id]['question'] = entry
-            groups[req_id]['nickname'] = entry.get('nickname')
-        else:
-            groups[req_id]['answers'].append(entry)
-
-    # Build two lists: one for user questions and one for others (only include complete groups)
-    user_questions = []
-    other_questions = []
-    for req_id, data in groups.items():
-        if not data['question'] or len(data['answers']) == 0:
-            continue
-        item = {
-            'request_id': req_id,
-            'prompt': data['question'].get('prompt', 'No prompt available'),
-            'file': data['question'].get('file', 'File: Unavailable'),
-            'model_answers': {
-                ans.get('model'): ans.get('summary', 'No answer available')
-                for ans in data['answers']
+    # Now get answers from Redis
+    results = []
+    for question in questions:
+        request_id = question['request_id']
+        
+        # Get all answers for this request from Redis
+        pattern = f"result:{request_id}:*"
+        model_answers = {}
+        
+        for key in redis_client.scan_iter(match=pattern):
+            result_data = redis_client.get(key)
+            if result_data:
+                result = json.loads(result_data)
+                model_answers[result['model']] = result['summary']
+        
+        # Only include questions that have at least 2 answers
+        if len(model_answers) >= 2:
+            item = {
+                'request_id': request_id,
+                'prompt': question.get('prompt', 'No prompt available'),
+                'file': question.get('file', 'File: Unavailable'),
+                'model_answers': model_answers
             }
-        }
-        if data.get('nickname', '') == nickname:
-            user_questions.append(item)
-        else:
-            other_questions.append(item)
-
-    # Randomly sample extra questions from other_users if needed
-    extra_questions = []
-    if extra > 0 and other_questions:
-        extra_questions = random.sample(other_questions, min(extra, len(other_questions)))
-
-    result = user_questions + extra_questions
-    return jsonify(result)
+            
+            # Check if this question belongs to the user or is an extra question
+            if question.get('nickname') == nickname:
+                results.append(item)
+            elif extra > 0 and len(results) < (extra + sum(1 for q in questions if q.get('nickname') == nickname)):
+                results.append(item)
     
+    return jsonify(results)
+
 @app.route('/rankings', methods=['POST'])
 @login_required
 def save_rankings():
@@ -605,31 +582,41 @@ def save_rankings():
         request_id = data.get('request_id')
         rankings = data.get('rankings', {})
         quality_scores = data.get('quality_scores', {})
-        
-        # Get the original question data
+        model_answers = data.get('model_answers', {})
+
+        # Get the original question data from file
         question_entry = None
-        summaries = {}
-        
-        # Read from requests_questions.log to get all the data
         with open('requests_questions.log', 'r') as f:
             for line in f:
                 try:
                     entry = json.loads(line)
-                    if entry.get('request_id') == request_id:
-                        if 'prompt' in entry:
-                            question_entry = entry
-                        elif 'model' in entry:
-                            summaries[entry['model']] = {
-                                'real_model': entry['real_model'],
-                                'summary': entry['summary']
-                            }
+                    if entry.get('request_id') == request_id and 'prompt' in entry:
+                        question_entry = entry
+                        break
                 except json.JSONDecodeError:
                     continue
-        
+
         if not question_entry:
-            return jsonify({'status': 'failed', 'error': 'Question not found'}), 404
+            raise ValueError("Original question not found")
+
+        # Get summaries from Redis
+        summaries = {}
+        pattern = f"result:{request_id}:*"
         
-        # Create a new answers log entry
+        for key in redis_client.scan_iter(match=pattern):
+            result_data = redis_client.get(key)
+            if result_data:
+                result = json.loads(result_data)
+                summaries[result['model']] = {
+                    'real_model': result['real_model'],
+                    'summary': result['summary']
+                }
+
+        if len(summaries) < 2:
+            logger.warning(f"Not enough model answers found for request {request_id}")
+            return jsonify({'status': 'failed', 'error': 'Not enough model answers found'}), 400
+
+        # Save to requests_answers.log
         answer_entry = {
             'timestamp': datetime.now().isoformat(),
             'request_id': request_id,
@@ -641,18 +628,16 @@ def save_rankings():
             'rankings': rankings,
             'quality_scores': quality_scores
         }
-        
-        # Append to requests_answers.log instead of updating requests.log
+
         with open('requests_answers.log', 'a') as f:
             f.write(json.dumps(answer_entry) + '\n')
-        
+
         logger.info(f"Successfully saved rankings for request {request_id}")
         return jsonify({'status': 'success'})
-        
+
     except Exception as e:
         logger.error(f"Ranking update failed: {str(e)}")
         return jsonify({'error': str(e)}), 500
-    
 
 @app.route('/get_questions', methods=['GET'])
 @login_required
@@ -663,6 +648,7 @@ def get_questions():
         extra = int(extra)
     except ValueError:
         extra = 0
+        
     questions = []
     # Read questions from requests_questions.log
     try:
@@ -670,29 +656,32 @@ def get_questions():
             for line in f:
                 try:
                     entry = json.loads(line)
-                    questions.append(entry)
+                    if 'prompt' in entry:  # Only get question entries, not answer entries
+                        questions.append(entry)
                 except json.JSONDecodeError:
                     continue
     except FileNotFoundError:
         questions = []
+        
     user_questions = [q for q in questions if q.get('nickname') == nickname]
     extra_questions = []
     if extra > 0:
         pool = [q for q in questions if q.get('nickname') != nickname]
         if pool:
             extra_questions = random.sample(pool, min(extra, len(pool)))
+            
     return jsonify({
         'user_questions': user_questions,
         'extra_questions': extra_questions
     })
 
-# In save_ratings, save ratings into a new file so that requests_questions.log remains free of user ratings.
 @app.route('/save_ratings', methods=['POST'])
 @login_required
 def save_ratings():
     data = request.json
     ratings = data.get('ratings', {})
     saved = []
+    
     for request_id, score in ratings.items():
         entry = {
             'timestamp': datetime.now().isoformat(),
@@ -701,17 +690,18 @@ def save_ratings():
             'rating': score
         }
         try:
-            with open('requests_ratings.log', 'a') as f:  # <-- using a separate file for ratings
+            with open('requests_ratings.log', 'a') as f:
                 f.write(json.dumps(entry) + '\n')
             saved.append(request_id)
         except Exception as e:
             logger.error(f"Saving rating failed for {request_id}: {str(e)}")
+            
     return jsonify({'status': 'success', 'saved': saved})
 
 @app.route('/')
 def index():
     if not current_user.is_authenticated:
-        return redirect(url_for('auth.login'))  # Update to use blueprint route
+        return redirect(url_for('auth.login'))
     return render_template('index.html')
 
 if __name__ == '__main__':
