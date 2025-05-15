@@ -1,24 +1,24 @@
 import logging
 from logging.handlers import RotatingFileHandler
-from flask import Flask, request, jsonify, render_template, redirect, url_for
-from werkzeug.utils import secure_filename
+from flask import Flask, request, jsonify, render_template, redirect, url_for #type: ignore 
+from werkzeug.utils import secure_filename #type: ignore
 import os
 import uuid
 import json
 import time
 import random
 from datetime import datetime
-import pymupdf4llm
-from celery import Celery
-import requests
-from openai import OpenAI
-from dotenv import load_dotenv
-import google.generativeai as genai
+import pymupdf4llm #type: ignore
+from celery import Celery #type: ignore
+import requests #type: ignore
+from openai import OpenAI #type: ignore
+from dotenv import load_dotenv #type: ignore
+import google.generativeai as genai #type: ignore
 from collections import defaultdict
 import hashlib
 import shutil
-import redis
-from flask_login import (
+import redis #type: ignore
+from flask_login import ( #type: ignore
     LoginManager,
     UserMixin,
     login_user,
@@ -27,8 +27,8 @@ from flask_login import (
     current_user
 )
 from auth import auth_bp, User, init_login_manager
-from werkzeug.security import generate_password_hash, check_password_hash
-
+from werkzeug.security import generate_password_hash, check_password_hash #type: ignore
+import typing_extensions as typing #type: ignore
 request_tracker = defaultdict(list)  # Tracks request_id -> task_ids
 
 # Configure logging
@@ -99,7 +99,6 @@ GROQ_API_KEY = os.getenv('GROQ_API_KEY')
 
 # Initialize gemini
 genai.configure(api_key=os.getenv('GEMINI_API_KEY'))
-import typing_extensions as typing
 
 class Recipe(typing.TypedDict):
     recipe_name: str
@@ -280,6 +279,7 @@ def process_summary(self, text, prompt_prefix, model, request_id=None, display_n
         elif model == "gemini":
             response_json = geminiresponse
         else:
+            endpoint = "https://api.x.ai/v1/chat/completions"
             response = session.post(
                 endpoint,
                 headers=headers,
