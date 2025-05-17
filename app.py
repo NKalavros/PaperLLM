@@ -91,11 +91,14 @@ celery.conf.update(
 # Load environment variables
 load_dotenv()
 oaiclient = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
+oaiclient2 = OpenAI(api_key=os.getenv('OPENAI_API_KEY2'))
 DEEPSEEK_API_KEY = os.getenv('DEEPSEEK_API_KEY')
 CLAUDE_API_KEY = os.getenv('CLAUDE_API_KEY')
 PERPLEXITY_API_KEY = os.getenv('PERPLEXITY_API_KEY')
 LLAMA_API_KEY = os.getenv('LLAMA_API_KEY')
 GROQ_API_KEY = os.getenv('GROQ_API_KEY')
+PERPLEXITY_API_KEY2 = os.getenv('PERPLEXITY_API_KEY2')
+
 
 # Initialize gemini
 genai.configure(api_key=os.getenv('GEMINI_API_KEY'))
@@ -187,17 +190,25 @@ def process_summary(self, text, prompt_prefix, model, request_id=None, display_n
         logger.info("Text Used: " + text[min(len(text), MAX_TEXT_LENGTH)-100:min(len(text), MAX_TEXT_LENGTH)])
         
         if model == "openai":
-            completion = oaiclient.chat.completions.create(
-                model="gpt-4o",
-                messages=[
-                    {"role": "system", "content": prompt_prefix},
-                    {
-                        "role": "user",
-                        "content": text[:min(len(text), MAX_TEXT_LENGTH)]
-                    }
-                ]
-            )
-            logger.info("OpenAI completion: " + str(completion))
+            # try primary client
+            try:
+                completion = oaiclient.chat.completions.create(
+                    model="gpt-4o",
+                    messages=[{"role": "system","content": prompt_prefix},
+                              {"role": "user","content": text[:MAX_TEXT_LENGTH]}]
+                )
+                resp = json.loads(completion.json())
+                if not resp.get('choices'):
+                    raise ValueError("Empty primary OpenAI response")
+            except Exception as e:
+                logger.warning(f"Primary OpenAI failed: {e}, retrying with fallback client")
+                completion = oaiclient2.chat.completions.create(
+                    model="gpt-4o",
+                    messages=[{"role":"system","content":prompt_prefix},
+                              {"role":"user","content": text[:MAX_TEXT_LENGTH]}]
+                )
+                resp = json.loads(completion.json())
+            response_json = resp
 
         elif model == "deepseek":
             endpoint = "https://api.deepseek.com/v1/chat/completions"
@@ -226,18 +237,30 @@ def process_summary(self, text, prompt_prefix, model, request_id=None, display_n
                 }]
             }
         elif model == "perplexity":
-            endpoint = "https://api.perplexity.ai/chat/completions"
-            headers = {
-                "Authorization": f"Bearer {PERPLEXITY_API_KEY}",
-                "Content-Type": "application/json"
-            }
-            payload = {
-                "model": "sonar-pro",
-                "messages": [{
-                    "role": "user",
-                    "content": f"{prompt_prefix}\n\n{ text[:min(len(text),MAX_TEXT_LENGTH)]}"
-                }]
-            }
+            # try primary key
+            headers = {"Authorization": f"Bearer {PERPLEXITY_API_KEY2}"}
+            for key in (PERPLEXITY_API_KEY, PERPLEXITY_API_KEY2):
+                headers["Authorization"] = f"Bearer {key}"
+                try:
+                    response = session.post(
+                        "https://api.perplexity.ai/chat/completions",
+                        headers=headers,
+                        json={
+                            "model":"sonar-pro",
+                            "messages":[{"role":"user",
+                                         "content":f"{prompt_prefix}\n{text[:MAX_TEXT_LENGTH]}"}]
+                        },
+                        timeout=(3.05, MAX_API_TIMEOUT)
+                    )
+                    response.raise_for_status()
+                    resp = response.json()
+                    if resp.get('choices'):
+                        response_json = resp
+                        break
+                except Exception as e:
+                    logger.warning(f"Perplexity with key {key} failed: {e}")
+            else:
+                raise ValueError("Both Perplexity keys failed")
         elif model == "llama3":
             endpoint = 'https://api.llama-api.com/chat/completions'
             headers = {
@@ -278,9 +301,13 @@ def process_summary(self, text, prompt_prefix, model, request_id=None, display_n
             response_json = json.loads(completion.json())
         elif model == "gemini":
             response_json = geminiresponse
+        elif model == "perplexity":
+            # already set response_json in the Perplexity branch above
+            pass
         else:
+            # all other models use endpoint/payload
             response = session.post(
-                endpoint,
+                endpoint,  # type: ignore
                 headers=headers,
                 json=payload,
                 timeout=(3.05, MAX_API_TIMEOUT)
@@ -526,6 +553,8 @@ def get_answers():
         extra = int(extra)
     except ValueError:
         extra = 0
+    
+    logger.info(f"get_answers called with nickname={nickname}, extra={extra}")
 
     # First, get questions from file
     questions = []
@@ -539,10 +568,13 @@ def get_answers():
                 except json.JSONDecodeError:
                     continue
     except FileNotFoundError:
+        logger.warning("requests_questions.log file not found")
         return jsonify([])
 
     # Now get answers from Redis
-    results = []
+    user_results = []
+    extra_results = []
+    
     for question in questions:
         request_id = question['request_id']
         
@@ -565,78 +597,28 @@ def get_answers():
                 'model_answers': model_answers
             }
             
-            # Check if this question belongs to the user or is an extra question
-            if question.get('nickname') == nickname:
-                results.append(item)
-            elif extra > 0 and len(results) < (extra + sum(1 for q in questions if q.get('nickname') == nickname)):
-                results.append(item)
+            # Separate user questions from potential extra questions
+            question_nickname = question.get('nickname')
+            if question_nickname == nickname:
+                user_results.append(item)
+                logger.debug(f"Added user question: {request_id}")
+            else:
+                extra_results.append(item)
+                logger.debug(f"Added to extra questions pool: {request_id} from {question_nickname}")
     
-    return jsonify(results)
-
-@app.route('/rankings', methods=['POST'])
-@login_required
-def save_rankings():
-    try:
-        data = request.json
-        request_id = data.get('request_id')
-        rankings = data.get('rankings', {})
-        quality_scores = data.get('quality_scores', {})
-        model_answers = data.get('model_answers', {})
-
-        # Get the original question data from file
-        question_entry = None
-        with open('requests_questions.log', 'r') as f:
-            for line in f:
-                try:
-                    entry = json.loads(line)
-                    if entry.get('request_id') == request_id and 'prompt' in entry:
-                        question_entry = entry
-                        break
-                except json.JSONDecodeError:
-                    continue
-
-        if not question_entry:
-            raise ValueError("Original question not found")
-
-        # Get summaries from Redis
-        summaries = {}
-        pattern = f"result:{request_id}:*"
-        
-        for key in redis_client.scan_iter(match=pattern):
-            result_data = redis_client.get(key)
-            if result_data:
-                result = json.loads(result_data)
-                summaries[result['model']] = {
-                    'real_model': result['real_model'],
-                    'summary': result['summary']
-                }
-
-        if len(summaries) < 2:
-            logger.warning(f"Not enough model answers found for request {request_id}")
-            return jsonify({'status': 'failed', 'error': 'Not enough model answers found'}), 400
-
-        # Save to requests_answers.log
-        answer_entry = {
-            'timestamp': datetime.now().isoformat(),
-            'request_id': request_id,
-            'nickname': current_user.id,
-            'prompt': question_entry.get('prompt'),
-            'file': question_entry.get('file'),
-            'question_difficulty': question_entry.get('question_difficulty'),
-            'summaries': summaries,
-            'rankings': rankings,
-            'quality_scores': quality_scores
-        }
-
-        with open('requests_answers.log', 'a') as f:
-            f.write(json.dumps(answer_entry) + '\n')
-
-        logger.info(f"Successfully saved rankings for request {request_id}")
-        return jsonify({'status': 'success'})
-
-    except Exception as e:
-        logger.error(f"Ranking update failed: {str(e)}")
-        return jsonify({'error': str(e)}), 500
+    # If extra > 0, randomly select that many extra questions
+    selected_extras = []
+    if extra > 0 and extra_results:
+        # Ensure we're selecting random items without repeating
+        num_to_select = min(extra, len(extra_results))
+        selected_extras = random.sample(extra_results, num_to_select)
+        logger.info(f"Selected {len(selected_extras)} extra questions out of {len(extra_results)} available")
+    
+    # Combine into two lists
+    return jsonify({
+        'user_questions': user_results,
+        'extra_questions': selected_extras
+    })
 
 @app.route('/get_questions', methods=['GET'])
 @login_required
@@ -664,10 +646,14 @@ def get_questions():
         
     user_questions = [q for q in questions if q.get('nickname') == nickname]
     extra_questions = []
+    
+    # Only select extra questions if explicitly requested
     if extra > 0:
-        pool = [q for q in questions if q.get('nickname') != nickname]
-        if pool:
-            extra_questions = random.sample(pool, min(extra, len(pool)))
+        # Filter out questions that belong to the user
+        other_questions = [q for q in questions if q.get('nickname') != nickname]
+        if other_questions:
+            # Randomly select up to 'extra' number of questions
+            extra_questions = random.sample(other_questions, min(extra, len(other_questions)))
             
     return jsonify({
         'user_questions': user_questions,
@@ -702,6 +688,34 @@ def index():
     if not current_user.is_authenticated:
         return redirect(url_for('auth.login'))
     return render_template('index.html')
+
+@app.route('/rankings', methods=['POST'])
+@app.route('/rankings/', methods=['POST'])
+@login_required
+def save_rankings():
+    data = request.json
+    request_id = data.get('request_id')
+    rankings = data.get('rankings', {})
+    quality_scores = data.get('quality_scores', {})
+    model_answers = data.get('model_answers', {})
+
+    answer_entry = {
+        'timestamp': datetime.now().isoformat(),
+        'request_id': request_id,
+        'nickname': current_user.id,
+        'rankings': rankings,
+        'quality_scores': quality_scores,
+        'model_answers': model_answers
+    }
+    try:
+        with open('requests_answers.log', 'a') as f:
+            f.write(json.dumps(answer_entry) + '\n')
+    except Exception as e:
+        logger.error(f"Ranking update failed: {str(e)}")
+        return jsonify({'status': 'failed', 'error': str(e)}), 500
+
+    logger.info(f"Successfully saved rankings for request {request_id}")
+    return jsonify({'status': 'success'})
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5100)
