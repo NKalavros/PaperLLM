@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Academic Paper Summarizer</title>
+    <title>Academic Paper Summarizer - Benchmarking LLMs using Academic Talks</title>
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown.min.css">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
@@ -251,30 +251,30 @@
             <div class="form-section">
                 <form id="summarizeForm" method="POST" enctype="multipart/form-data" action="/summarize">
                     <div class="form-group">
-                        <label>PDF Source:</label>
+                        <label>Source:</label>
                         <div class="radio-group">
                             <label>
                                 <input type="radio" name="pdf_source" value="upload" checked>
-                                Upload new PDF
+                                Upload new talk PDF
                             </label>
                             <label>
                                 <input type="radio" name="pdf_source" value="existing">
-                                Select existing PDF
+                                Select existing talk
                             </label>
                         </div>
                     </div>
                     <div class="form-group" id="upload-section">
-                        <label for="file">Upload PDF:</label>
+                        <label for="file">Upload talk PDF:</label>
                         <input type="file" id="file" name="file" accept=".pdf">
                     </div>
                     <div class="form-group hidden" id="dropdown-section">
-                        <label for="pdf-dropdown">Select existing PDF:</label>
+                        <label for="pdf-dropdown">Select existing talk:</label>
                         <select id="pdf-dropdown" name="selected_pdf">
-                            <option value="">-- Select a PDF --</option>
+                            <option value="">-- Select a talk --</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="prompt_prefix">Summary Prompt:</label>
+                        <label for="prompt_prefix">Ask your question on the talk:</label>
                         <input type="text" id="prompt_prefix" name="prompt_prefix"
                             value="Summarize the following papers key findings within 5 lines">
                     </div>
@@ -282,14 +282,14 @@
                         <label for="question_difficulty">Question Difficulty:</label>
                         <select id="question_difficulty" name="question_difficulty" required>
                             <option value="Easy">Easy</option>
-                            <option value="Medium" selected>Medium</option>
                             <option value="Hard">Hard</option>
                         </select>
                         <div id="difficulty-error" class="validation-error hidden"></div>
                     </div>
                     <div class="form-group">
                         <label for="nickname">Nickname:</label>
-                        <input type="text" id="nickname" name="nickname" required>
+                        <input type="text" id="nickname" name="nickname" required
+                            style="background-color: #ffffff !important; -webkit-appearance: none; color: #000000;">
                     </div>
                     <button type="submit" id="submit-btn">Submit Question</button>
                 </form>
@@ -302,11 +302,13 @@
                 <form id="answersForm">
                     <div class="form-group">
                         <label for="ans-nickname">Nickname:</label>
-                        <input type="text" id="ans-nickname" name="nickname" required>
+                        <input type="text" id="ans-nickname" name="nickname" required
+                            style="background-color: #ffffff !important; color: #000000; width: 100%; padding: 0.75rem; border: 1px solid #d0d7de; border-radius: 6px;">
                     </div>
                     <div class="form-group">
                         <label for="extra-num">Extra Questions (number):</label>
-                        <input type="number" id="extra-num" name="extra" min="0" value="0" required>
+                        <input type="number" id="extra-num" name="extra" min="0" value="0" required
+                            style="background-color: #ffffff !important; color: #000000; width: 100%; padding: 0.75rem; border: 1px solid #d0d7de; border-radius: 6px;">
                     </div>
                     <button type="submit" id="fetch-requests-btn">Get Requests</button>
                 </form>
@@ -363,7 +365,7 @@
                 const dropdown = document.getElementById('pdf-dropdown');
 
                 // Clear existing options except the first one
-                dropdown.innerHTML = '<option value="">-- Select a PDF --</option>';
+                dropdown.innerHTML = '<option value="">-- Select a Talk --</option>';
 
                 if (data.pdfs) {
                     data.pdfs.forEach(pdf => {
@@ -455,74 +457,93 @@
         document.getElementById('answersForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const nickname = document.getElementById('ans-nickname').value;
-            const extra = document.getElementById('extra-num').value;
+            const extra = parseInt(document.getElementById('extra-num').value, 10);
+            document.getElementById('ratings-panels').innerHTML = '<p>Loading questions...</p>';
+            document.getElementById('all-ratings-submit').classList.add('hidden');
+
             try {
-                const response = await fetch(`/get_answers?nickname=${encodeURIComponent(nickname)}&extra=${extra}`);
-                const data = await response.json();
-                let panelsHtml = '';
-                if (data.length === 0) {
-                    document.getElementById('ratings-panels').innerHTML = '<p>No requests found.</p>';
-                    document.getElementById('all-ratings-submit').classList.add('hidden');
+                const resp = await fetch(`/get_answers?nickname=${encodeURIComponent(nickname)}&extra=${extra}`);
+                if (!resp.ok) throw new Error(`Status ${resp.status}`);
+
+                const jsonData = await resp.json();
+                // support both array‐only and object shapes
+                let userResults = [], extraResults = [];
+                if (Array.isArray(jsonData)) {
+                    userResults = jsonData;
                 } else {
-                    data.forEach(item => {
-                        const reqId = item.request_id;
-                        const promptText = item.prompt;
-                        const fileText = item.file;
-                        const modelAnswers = item.model_answers;
-
-                        // Extract model names and answers
-                        const model1 = Object.keys(modelAnswers)[0] || 'Model1';
-                        const answer1 = modelAnswers[model1] || 'No answer available';
-                        const model2 = Object.keys(modelAnswers)[1] || 'Model2';
-                        const answer2 = modelAnswers[model2] || 'No answer available';
-
-                        let panelHtml = `<div class="summary-box" data-request-id="${reqId}" data-model1-answer="${answer1}" data-model2-answer="${answer2}">
-                            <div class="summary-header">
-                                <div>
-                                    <h3>${promptText}</h3>
-                                    <p>${fileText}</p>
-                                </div>
-                                <button type="button" class="toggle-details">Show Details</button>
-                            </div>
-                            <div class="summary-content hidden">
-                                <div style="border:1px solid #ccc; padding:0.5rem; margin:0.5rem 0;">
-                                    <strong>${model1}:</strong><br><div class="markdown-body" color='black'>${marked.parse(answer1)}</div>
-                                </div>
-                                <div style="border:1px solid #ccc; padding:0.5rem; margin:0.5rem 0;">
-                                    <strong>${model2}:</strong><br><div class="markdown-body" color='black'>${marked.parse(answer2)}</div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="preferred-${reqId}">Preferred Answer:</label>
-                                    <select id="preferred-${reqId}" class="preferred-dropdown">
-                                        <option value="">--Select Preferred--</option>
-                                        <option value="answer1">First Answer (${model1})</option>
-                                        <option value="answer2">Second Answer (${model2})</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="quality1-${reqId}">Quality Score for ${model1}:</label>
-                                    <input type="number" id="quality1-${reqId}" class="quality-input" min="0" max="10" placeholder="Score (0-10)">
-                                </div>
-                                <div class="form-group">
-                                    <label for="quality2-${reqId}">Quality Score for ${model2}:</label>
-                                    <input type="number" id="quality2-${reqId}" class="quality-input" min="0" max="10" placeholder="Score (0-10)">
-                                </div>
-                            </div>
-                        </div>`;
-                        panelsHtml += panelHtml;
-                    });
-                    document.getElementById('ratings-panels').innerHTML = panelsHtml;
-                    document.querySelectorAll('.toggle-details').forEach(button => {
-                        button.addEventListener('click', () => {
-                            const content = button.closest('.summary-box').querySelector('.summary-content');
-                            content.classList.toggle('hidden');
-                            button.textContent = content.classList.contains('hidden') ? 'Show Details' : 'Hide Details';
-                        });
-                    });
-                    document.getElementById('all-ratings-submit').classList.remove('hidden');
+                    userResults = jsonData.user_questions || [];
+                    extraResults = jsonData.extra_questions || [];
                 }
-            } catch (error) {
-                console.error('Error fetching answers:', error);
+
+                // nothing to show?
+                if (userResults.length === 0 && extraResults.length === 0) {
+                    document.getElementById('ratings-panels').innerHTML = '<p>No questions found.</p>';
+                    return;
+                }
+
+                const allItems = [...userResults, ...extraResults];
+                let panelsHtml = '';
+                allItems.forEach(item => {
+                    const reqId = item.request_id;
+                    const promptText = item.prompt || 'No prompt';
+                    const fileText = item.file || 'File unavailable';
+                    const answers = item.model_answers || {};
+                    if (Object.keys(answers).length < 2) return;
+
+                    const [model1, model2] = Object.keys(answers);
+                    const answer1 = answers[model1];
+                    const answer2 = answers[model2];
+
+                    panelsHtml += `
+                    <div class="summary-box"
+                         data-request-id="${reqId}"
+                         data-model1-name="${model1}"
+                         data-model2-name="${model2}"
+                         data-model1-answer="${answer1.replace(/"/g,'&quot;')}"
+                         data-model2-answer="${answer2.replace(/"/g,'&quot;')}">
+                      <div class="summary-header">
+                        <div>
+                          <h3>${promptText}</h3>
+                          <p>${fileText}</p>
+                        </div>
+                        <button type="button" class="toggle-details">Show Details</button>
+                      </div>
+                      <div class="summary-content hidden">
+                        <div><strong>${model1}:</strong>${marked.parse(answer1)}</div>
+                        <div><strong>${model2}:</strong>${marked.parse(answer2)}</div>
+                        <div class="form-group">
+                          <label for="preferred-${reqId}">Preferred Answer:</label>
+                          <select id="preferred-${reqId}" class="preferred-dropdown">
+                            <option value="">--Select--</option>
+                            <option value="answer1">First (${model1})</option>
+                            <option value="answer2">Second (${model2})</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label for="quality1-${reqId}">Quality ${model1} (1-10):</label>
+                          <input type="number" id="quality1-${reqId}" class="quality-input" min="1" max="10">
+                        </div>
+                        <div class="form-group">
+                          <label for="quality2-${reqId}">Quality ${model2} (1-10):</label>
+                          <input type="number" id="quality2-${reqId}" class="quality-input" min="1" max="10">
+                        </div>
+                      </div>
+                    </div>`;
+                });
+
+                document.getElementById('ratings-panels').innerHTML = panelsHtml;
+                document.getElementById('all-ratings-submit').classList.toggle('hidden', panelsHtml === '');
+
+                document.querySelectorAll('.toggle-details').forEach(btn =>
+                    btn.addEventListener('click', () => {
+                        const c = btn.closest('.summary-box').querySelector('.summary-content');
+                        c.classList.toggle('hidden');
+                        btn.textContent = c.classList.contains('hidden') ? 'Show Details' : 'Hide Details';
+                    })
+                );
+            } catch (err) {
+                console.error(err);
+                document.getElementById('ratings-panels').innerHTML = `<p>Error: ${err.message}</p>`;
             }
         });
 
@@ -530,63 +551,71 @@
         document.getElementById('submit-all-ratings-btn').addEventListener('click', async () => {
             const panels = document.querySelectorAll('#ratings-panels .summary-box');
             let promises = [];
+            let cancel = false;
+
             panels.forEach(panel => {
                 const reqId = panel.getAttribute('data-request-id');
-                if (!panel.querySelector('.preferred-dropdown')) return;
-                const model1Answer = panel.getAttribute('data-model1-answer');
-                const model2Answer = panel.getAttribute('data-model2-answer');
+                const model1 = panel.getAttribute('data-model1-name');
+                const model2 = panel.getAttribute('data-model2-name');
                 const preferred = panel.querySelector('.preferred-dropdown').value;
                 const quality1 = panel.querySelector(`#quality1-${reqId}`).value;
                 const quality2 = panel.querySelector(`#quality2-${reqId}`).value;
+
+                // ...existing empty‐field check...
                 if (!reqId || !preferred || quality1 === '' || quality2 === '') {
                     alert(`Please complete ratings for request ${reqId}.`);
+                    cancel = true;
                     return;
                 }
-                const label1 = panel.querySelector(`label[for="quality1-${reqId}"]`).innerText;
-                const label2 = panel.querySelector(`label[for="quality2-${reqId}"]`).innerText;
-                const model1 = label1.split('for ')[1].replace(':', '');
-                const model2 = label2.split('for ')[1].replace(':', '');
-                let rankings = {};
-                if (preferred === 'answer1') {
-                    rankings[model1] = 1;
-                    rankings[model2] = 2;
-                } else {
-                    rankings[model2] = 1;
-                    rankings[model1] = 2;
+
+                const q1 = parseInt(quality1, 10);
+                const q2 = parseInt(quality2, 10);
+                // consistency check
+                if ((preferred === 'answer1' && q1 <= q2) ||
+                    (preferred === 'answer2' && q2 <= q1)) {
+                    const highModel = (preferred === 'answer1') ? model1 : model2;
+                    const lowModel = (preferred === 'answer1') ? model2 : model1;
+                    const highScore = (preferred === 'answer1') ? q1 : q2;
+                    const lowScore = (preferred === 'answer1') ? q2 : q1;
+                    if (!confirm(
+                        `You ranked ${highModel} as preferred (score ${highScore}) but its quality ` +
+                        `score is not higher than ${lowModel} (score ${lowScore}).\nContinue?`
+                    )) {
+                        cancel = true;
+                        return;
+                    }
                 }
-                let quality_scores = {};
-                quality_scores[model1] = parseInt(quality1);
-                quality_scores[model2] = parseInt(quality2);
-                const p = fetch('/rankings', {
+
+                // ...existing fetch logic...
+                const p = fetch('/rankings/', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         request_id: reqId,
-                        rankings: rankings,
-                        quality_scores: quality_scores,
+                        rankings: (preferred === 'answer1')
+                            ? { [model1]: 1, [model2]: 2 }
+                            : { [model2]: 1, [model1]: 2 },
+                        quality_scores: { [model1]: q1, [model2]: q2 },
                         model_answers: {
-                            [model1]: model1Answer,
-                            [model2]: model2Answer
+                            [model1]: panel.getAttribute('data-model1-answer'),
+                            [model2]: panel.getAttribute('data-model2-answer')
                         }
                     })
                 }).then(res => {
-                    if (!res.ok) {
-                        console.error('Failed to submit rating:', res.status, res.statusText);
-                        throw new Error(`Failed to submit rating: ${res.status} ${res.statusText}`);
-                    }
+                    if (!res.ok) throw new Error(`Failed: ${res.status}`);
                     return res.json();
                 }).then(data => {
-                    if (data.status !== 'success') {
-                        console.error('Failed to submit rating:', data.status);
-                        throw new Error(`Failed to submit rating: ${data.status}`);
-                    }
-                    return { status: 'success' };  // Return a consistent object
+                    if (data.status !== 'success') throw new Error(data.status);
                 });
                 promises.push(p);
             });
+
+            if (cancel) return;
+
             try {
                 await Promise.all(promises);
                 alert('All ratings submitted successfully!');
+                // ...existing post‐submit cleanup...
             } catch (error) {
                 console.error('Error submitting ratings:', error);
                 alert(`Error submitting ratings: ${error.message}`);

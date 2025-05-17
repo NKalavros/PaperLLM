@@ -6026,3 +6026,336 @@ NameError: name 'log_question' is not defined
 2025-05-15 12:29:26,606 INFO 127.0.0.1 - - [15/May/2025 12:29:26] "[35m[1mPOST /summarize HTTP/1.1[0m" 202 -
 2025-05-15 12:29:53,642 INFO 127.0.0.1 - - [15/May/2025 12:29:53] "GET /get_answers?nickname=Arivederci&extra=0 HTTP/1.1" 200 -
 2025-05-15 12:29:54,584 INFO 127.0.0.1 - - [15/May/2025 12:29:54] "GET /get_answers?nickname=Arivederci&extra=0 HTTP/1.1" 200 -
+2025-05-15 12:31:05,079 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.148.171.66:5100
+2025-05-15 12:31:05,080 INFO [33mPress CTRL+C to quit[0m
+2025-05-15 12:31:05,862 INFO 127.0.0.1 - - [15/May/2025 12:31:05] "GET / HTTP/1.1" 200 -
+2025-05-15 12:31:07,479 INFO 127.0.0.1 - - [15/May/2025 12:31:07] "GET /available_pdfs HTTP/1.1" 200 -
+2025-05-15 12:31:17,907 INFO Extracted 24352 characters from PDF
+2025-05-15 12:31:17,908 INFO Extracted 3131 words from PDF
+2025-05-15 12:31:17,948 INFO 127.0.0.1 - - [15/May/2025 12:31:17] "[35m[1mPOST /summarize HTTP/1.1[0m" 202 -
+2025-05-15 12:34:28,886 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.148.171.66:5100
+2025-05-15 12:34:28,886 INFO [33mPress CTRL+C to quit[0m
+2025-05-15 12:34:36,079 INFO 127.0.0.1 - - [15/May/2025 12:34:36] "GET / HTTP/1.1" 200 -
+2025-05-15 12:34:40,719 INFO 127.0.0.1 - - [15/May/2025 12:34:40] "GET /available_pdfs HTTP/1.1" 200 -
+2025-05-15 12:34:50,628 INFO Extracted 69693 characters from PDF
+2025-05-15 12:34:50,629 INFO Extracted 8780 words from PDF
+2025-05-15 12:34:50,670 INFO 127.0.0.1 - - [15/May/2025 12:34:50] "[35m[1mPOST /summarize HTTP/1.1[0m" 202 -
+2025-05-15 12:35:14,481 INFO 127.0.0.1 - - [15/May/2025 12:35:14] "GET /get_answers?nickname=Arivederci&extra=0 HTTP/1.1" 200 -
+2025-05-15 14:55:28,931 INFO 127.0.0.1 - - [15/May/2025 14:55:28] "GET / HTTP/1.1" 200 -
+2025-05-17 11:17:10,160 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.15.12.68:5100
+2025-05-17 11:17:10,160 INFO [33mPress CTRL+C to quit[0m
+2025-05-17 11:17:15,831 INFO 127.0.0.1 - - [17/May/2025 11:17:15] "[32mGET / HTTP/1.1[0m" 302 -
+2025-05-17 11:17:15,838 INFO 127.0.0.1 - - [17/May/2025 11:17:15] "GET /login HTTP/1.1" 200 -
+2025-05-17 11:17:17,247 INFO 127.0.0.1 - - [17/May/2025 11:17:17] "[31m[1mPOST /login HTTP/1.1[0m" 401 -
+2025-05-17 11:18:26,224 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.15.12.68:5100
+2025-05-17 11:18:26,224 INFO [33mPress CTRL+C to quit[0m
+2025-05-17 11:18:29,549 INFO 127.0.0.1 - - [17/May/2025 11:18:29] "[31m[1mPOST /login HTTP/1.1[0m" 401 -
+2025-05-17 11:18:31,057 INFO 127.0.0.1 - - [17/May/2025 11:18:31] "[31m[1mPOST /login HTTP/1.1[0m" 401 -
+2025-05-17 11:18:33,793 INFO 127.0.0.1 - - [17/May/2025 11:18:33] "[32mGET / HTTP/1.1[0m" 302 -
+2025-05-17 11:18:33,802 INFO 127.0.0.1 - - [17/May/2025 11:18:33] "GET /login HTTP/1.1" 200 -
+2025-05-17 11:18:35,229 INFO 127.0.0.1 - - [17/May/2025 11:18:35] "[31m[1mPOST /login HTTP/1.1[0m" 401 -
+2025-05-17 11:18:56,128 INFO 127.0.0.1 - - [17/May/2025 11:18:56] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-05-17 11:18:56,133 INFO 127.0.0.1 - - [17/May/2025 11:18:56] "GET / HTTP/1.1" 200 -
+2025-05-17 11:18:59,587 INFO 127.0.0.1 - - [17/May/2025 11:18:59] "GET /available_pdfs HTTP/1.1" 200 -
+2025-05-17 11:19:51,684 INFO 127.0.0.1 - - [17/May/2025 11:19:51] "GET / HTTP/1.1" 200 -
+2025-05-17 11:19:58,480 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.15.12.68:5100
+2025-05-17 11:19:58,480 INFO [33mPress CTRL+C to quit[0m
+2025-05-17 11:19:59,230 INFO 127.0.0.1 - - [17/May/2025 11:19:59] "GET / HTTP/1.1" 200 -
+2025-05-17 11:20:08,918 INFO 127.0.0.1 - - [17/May/2025 11:20:08] "GET /available_pdfs HTTP/1.1" 200 -
+2025-05-17 11:20:12,407 INFO Extracted 55889 characters from PDF
+2025-05-17 11:20:12,408 INFO Extracted 7198 words from PDF
+2025-05-17 11:20:12,438 INFO 127.0.0.1 - - [17/May/2025 11:20:12] "[35m[1mPOST /summarize HTTP/1.1[0m" 202 -
+2025-05-17 11:20:42,817 INFO 127.0.0.1 - - [17/May/2025 11:20:42] "GET /get_answers?nickname=Adam&extra=0 HTTP/1.1" 200 -
+2025-05-17 11:22:42,929 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.15.12.68:5100
+2025-05-17 11:22:42,929 INFO [33mPress CTRL+C to quit[0m
+2025-05-17 11:22:44,923 INFO 127.0.0.1 - - [17/May/2025 11:22:44] "GET / HTTP/1.1" 200 -
+2025-05-17 11:22:47,136 INFO 127.0.0.1 - - [17/May/2025 11:22:47] "GET /get_answers?nickname=Adam&extra=0 HTTP/1.1" 200 -
+2025-05-17 11:24:13,441 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.15.12.68:5100
+2025-05-17 11:24:13,441 INFO [33mPress CTRL+C to quit[0m
+2025-05-17 11:24:15,298 INFO 127.0.0.1 - - [17/May/2025 11:24:15] "GET / HTTP/1.1" 200 -
+2025-05-17 11:24:24,871 INFO 127.0.0.1 - - [17/May/2025 11:24:24] "GET /get_answers?nickname=Adam&extra=0 HTTP/1.1" 200 -
+2025-05-17 11:24:39,587 INFO 127.0.0.1 - - [17/May/2025 11:24:39] "GET /get_answers?nickname=Adam&extra=3 HTTP/1.1" 200 -
+2025-05-17 11:24:41,775 INFO 127.0.0.1 - - [17/May/2025 11:24:41] "GET /get_answers?nickname=Adam&extra=3 HTTP/1.1" 200 -
+2025-05-17 11:24:48,367 INFO 127.0.0.1 - - [17/May/2025 11:24:48] "GET /get_answers?nickname=Adam&extra=1 HTTP/1.1" 200 -
+2025-05-17 11:24:48,787 INFO 127.0.0.1 - - [17/May/2025 11:24:48] "GET /get_answers?nickname=Adam&extra=1 HTTP/1.1" 200 -
+2025-05-17 11:24:48,937 INFO 127.0.0.1 - - [17/May/2025 11:24:48] "GET /get_answers?nickname=Adam&extra=1 HTTP/1.1" 200 -
+2025-05-17 11:24:49,304 INFO 127.0.0.1 - - [17/May/2025 11:24:49] "GET /get_answers?nickname=Adam&extra=1 HTTP/1.1" 200 -
+2025-05-17 11:24:50,680 INFO 127.0.0.1 - - [17/May/2025 11:24:50] "GET / HTTP/1.1" 200 -
+2025-05-17 11:24:52,585 INFO 127.0.0.1 - - [17/May/2025 11:24:52] "GET /get_answers?nickname=Adam&extra=1 HTTP/1.1" 200 -
+2025-05-17 11:24:53,348 INFO 127.0.0.1 - - [17/May/2025 11:24:53] "GET /get_answers?nickname=Adam&extra=1 HTTP/1.1" 200 -
+2025-05-17 11:24:53,500 INFO 127.0.0.1 - - [17/May/2025 11:24:53] "GET /get_answers?nickname=Adam&extra=1 HTTP/1.1" 200 -
+2025-05-17 11:25:13,832 INFO 127.0.0.1 - - [17/May/2025 11:25:13] "GET /get_answers?nickname=Arivederci&extra=1 HTTP/1.1" 200 -
+2025-05-17 11:25:14,350 INFO 127.0.0.1 - - [17/May/2025 11:25:14] "GET /get_answers?nickname=Arivederci&extra=1 HTTP/1.1" 200 -
+2025-05-17 11:25:14,481 INFO 127.0.0.1 - - [17/May/2025 11:25:14] "GET /get_answers?nickname=Arivederci&extra=1 HTTP/1.1" 200 -
+2025-05-17 11:25:14,634 INFO 127.0.0.1 - - [17/May/2025 11:25:14] "GET /get_answers?nickname=Arivederci&extra=1 HTTP/1.1" 200 -
+2025-05-17 11:25:15,617 INFO 127.0.0.1 - - [17/May/2025 11:25:15] "GET /get_answers?nickname=Arivederci&extra=1 HTTP/1.1" 200 -
+2025-05-17 11:25:15,882 INFO 127.0.0.1 - - [17/May/2025 11:25:15] "GET /get_answers?nickname=Arivederci&extra=1 HTTP/1.1" 200 -
+2025-05-17 11:26:45,256 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.15.12.68:5100
+2025-05-17 11:26:45,256 INFO [33mPress CTRL+C to quit[0m
+2025-05-17 11:26:46,314 INFO 127.0.0.1 - - [17/May/2025 11:26:46] "GET / HTTP/1.1" 200 -
+2025-05-17 11:26:50,340 INFO 127.0.0.1 - - [17/May/2025 11:26:50] "GET /get_answers?nickname=Adam&extra=1 HTTP/1.1" 200 -
+2025-05-17 11:27:01,205 INFO 127.0.0.1 - - [17/May/2025 11:27:01] "GET /get_answers?nickname=Adam&extra=1 HTTP/1.1" 200 -
+2025-05-17 11:27:03,118 INFO 127.0.0.1 - - [17/May/2025 11:27:03] "GET /get_answers?nickname=Adam&extra=3 HTTP/1.1" 200 -
+2025-05-17 11:27:03,599 INFO 127.0.0.1 - - [17/May/2025 11:27:03] "GET /get_answers?nickname=Adam&extra=3 HTTP/1.1" 200 -
+2025-05-17 11:27:03,753 INFO 127.0.0.1 - - [17/May/2025 11:27:03] "GET /get_answers?nickname=Adam&extra=3 HTTP/1.1" 200 -
+2025-05-17 11:27:03,866 INFO 127.0.0.1 - - [17/May/2025 11:27:03] "GET /get_answers?nickname=Adam&extra=3 HTTP/1.1" 200 -
+2025-05-17 11:27:04,019 INFO 127.0.0.1 - - [17/May/2025 11:27:04] "GET /get_answers?nickname=Adam&extra=3 HTTP/1.1" 200 -
+2025-05-17 11:27:07,368 INFO 127.0.0.1 - - [17/May/2025 11:27:07] "GET /get_answers?nickname=Arivederci&extra=3 HTTP/1.1" 200 -
+2025-05-17 11:27:07,582 INFO 127.0.0.1 - - [17/May/2025 11:27:07] "GET /get_answers?nickname=Arivederci&extra=3 HTTP/1.1" 200 -
+2025-05-17 11:27:07,716 INFO 127.0.0.1 - - [17/May/2025 11:27:07] "GET /get_answers?nickname=Arivederci&extra=3 HTTP/1.1" 200 -
+2025-05-17 11:30:36,422 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.15.12.68:5100
+2025-05-17 11:30:36,422 INFO [33mPress CTRL+C to quit[0m
+2025-05-17 11:30:37,538 INFO 127.0.0.1 - - [17/May/2025 11:30:37] "GET / HTTP/1.1" 200 -
+2025-05-17 11:30:39,743 INFO get_answers called with nickname=Arivederci, extra=3
+2025-05-17 11:30:39,750 INFO Selected 1 extra questions out of 1 available
+2025-05-17 11:30:39,751 INFO Returning 1 total questions (0 user, 1 extra)
+2025-05-17 11:30:39,751 INFO 127.0.0.1 - - [17/May/2025 11:30:39] "GET /get_answers?nickname=Arivederci&extra=3 HTTP/1.1" 200 -
+2025-05-17 11:30:46,644 INFO get_answers called with nickname=Gustavo, extra=3
+2025-05-17 11:30:46,649 INFO Selected 1 extra questions out of 1 available
+2025-05-17 11:30:46,649 INFO Returning 1 total questions (0 user, 1 extra)
+2025-05-17 11:30:46,649 INFO 127.0.0.1 - - [17/May/2025 11:30:46] "GET /get_answers?nickname=Gustavo&extra=3 HTTP/1.1" 200 -
+2025-05-17 11:30:47,165 INFO get_answers called with nickname=Gustavo, extra=3
+2025-05-17 11:30:47,170 INFO Selected 1 extra questions out of 1 available
+2025-05-17 11:30:47,171 INFO Returning 1 total questions (0 user, 1 extra)
+2025-05-17 11:30:47,172 INFO 127.0.0.1 - - [17/May/2025 11:30:47] "GET /get_answers?nickname=Gustavo&extra=3 HTTP/1.1" 200 -
+2025-05-17 11:30:47,330 INFO get_answers called with nickname=Gustavo, extra=3
+2025-05-17 11:30:47,333 INFO Selected 1 extra questions out of 1 available
+2025-05-17 11:30:47,334 INFO Returning 1 total questions (0 user, 1 extra)
+2025-05-17 11:30:47,334 INFO 127.0.0.1 - - [17/May/2025 11:30:47] "GET /get_answers?nickname=Gustavo&extra=3 HTTP/1.1" 200 -
+2025-05-17 11:30:47,463 INFO get_answers called with nickname=Gustavo, extra=3
+2025-05-17 11:30:47,468 INFO Selected 1 extra questions out of 1 available
+2025-05-17 11:30:47,468 INFO Returning 1 total questions (0 user, 1 extra)
+2025-05-17 11:30:47,469 INFO 127.0.0.1 - - [17/May/2025 11:30:47] "GET /get_answers?nickname=Gustavo&extra=3 HTTP/1.1" 200 -
+2025-05-17 11:30:48,044 INFO get_answers called with nickname=Gustavo, extra=3
+2025-05-17 11:30:48,052 INFO Selected 1 extra questions out of 1 available
+2025-05-17 11:30:48,053 INFO Returning 1 total questions (0 user, 1 extra)
+2025-05-17 11:30:48,053 INFO 127.0.0.1 - - [17/May/2025 11:30:48] "GET /get_answers?nickname=Gustavo&extra=3 HTTP/1.1" 200 -
+2025-05-17 11:30:49,680 INFO get_answers called with nickname=Gustavo, extra=1
+2025-05-17 11:30:49,685 INFO Selected 1 extra questions out of 1 available
+2025-05-17 11:30:49,685 INFO Returning 1 total questions (0 user, 1 extra)
+2025-05-17 11:30:49,686 INFO 127.0.0.1 - - [17/May/2025 11:30:49] "GET /get_answers?nickname=Gustavo&extra=1 HTTP/1.1" 200 -
+2025-05-17 11:30:49,844 INFO get_answers called with nickname=Gustavo, extra=1
+2025-05-17 11:30:49,849 INFO Selected 1 extra questions out of 1 available
+2025-05-17 11:30:49,850 INFO Returning 1 total questions (0 user, 1 extra)
+2025-05-17 11:30:49,851 INFO 127.0.0.1 - - [17/May/2025 11:30:49] "GET /get_answers?nickname=Gustavo&extra=1 HTTP/1.1" 200 -
+2025-05-17 11:30:57,911 INFO get_answers called with nickname=asda, extra=1
+2025-05-17 11:30:57,917 INFO Selected 1 extra questions out of 1 available
+2025-05-17 11:30:57,918 INFO Returning 1 total questions (0 user, 1 extra)
+2025-05-17 11:30:57,919 INFO 127.0.0.1 - - [17/May/2025 11:30:57] "GET /get_answers?nickname=asda&extra=1 HTTP/1.1" 200 -
+2025-05-17 11:30:58,331 INFO get_answers called with nickname=asda, extra=1
+2025-05-17 11:30:58,336 INFO Selected 1 extra questions out of 1 available
+2025-05-17 11:30:58,337 INFO Returning 1 total questions (0 user, 1 extra)
+2025-05-17 11:30:58,337 INFO 127.0.0.1 - - [17/May/2025 11:30:58] "GET /get_answers?nickname=asda&extra=1 HTTP/1.1" 200 -
+2025-05-17 11:30:58,477 INFO get_answers called with nickname=asda, extra=1
+2025-05-17 11:30:58,481 INFO Selected 1 extra questions out of 1 available
+2025-05-17 11:30:58,481 INFO Returning 1 total questions (0 user, 1 extra)
+2025-05-17 11:30:58,482 INFO 127.0.0.1 - - [17/May/2025 11:30:58] "GET /get_answers?nickname=asda&extra=1 HTTP/1.1" 200 -
+2025-05-17 11:30:58,609 INFO get_answers called with nickname=asda, extra=1
+2025-05-17 11:30:58,613 INFO Selected 1 extra questions out of 1 available
+2025-05-17 11:30:58,613 INFO Returning 1 total questions (0 user, 1 extra)
+2025-05-17 11:30:58,613 INFO 127.0.0.1 - - [17/May/2025 11:30:58] "GET /get_answers?nickname=asda&extra=1 HTTP/1.1" 200 -
+2025-05-17 11:30:58,764 INFO get_answers called with nickname=asda, extra=1
+2025-05-17 11:30:58,769 INFO Selected 1 extra questions out of 1 available
+2025-05-17 11:30:58,769 INFO Returning 1 total questions (0 user, 1 extra)
+2025-05-17 11:30:58,770 INFO 127.0.0.1 - - [17/May/2025 11:30:58] "GET /get_answers?nickname=asda&extra=1 HTTP/1.1" 200 -
+2025-05-17 11:35:24,768 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.15.12.68:5100
+2025-05-17 11:35:24,768 INFO [33mPress CTRL+C to quit[0m
+2025-05-17 11:35:26,047 INFO 127.0.0.1 - - [17/May/2025 11:35:26] "GET / HTTP/1.1" 200 -
+2025-05-17 11:35:28,046 INFO get_answers called with nickname=asda, extra=1
+2025-05-17 11:35:28,054 INFO Selected 1 extra questions out of 1 available
+2025-05-17 11:35:28,054 INFO 127.0.0.1 - - [17/May/2025 11:35:28] "GET /get_answers?nickname=asda&extra=1 HTTP/1.1" 200 -
+2025-05-17 11:35:28,695 INFO get_answers called with nickname=asda, extra=1
+2025-05-17 11:35:28,699 INFO Selected 1 extra questions out of 1 available
+2025-05-17 11:35:28,700 INFO 127.0.0.1 - - [17/May/2025 11:35:28] "GET /get_answers?nickname=asda&extra=1 HTTP/1.1" 200 -
+2025-05-17 11:35:31,743 INFO get_answers called with nickname=Adam, extra=1
+2025-05-17 11:35:31,748 INFO 127.0.0.1 - - [17/May/2025 11:35:31] "GET /get_answers?nickname=Adam&extra=1 HTTP/1.1" 200 -
+2025-05-17 11:35:32,297 INFO get_answers called with nickname=Adam, extra=1
+2025-05-17 11:35:32,303 INFO 127.0.0.1 - - [17/May/2025 11:35:32] "GET /get_answers?nickname=Adam&extra=1 HTTP/1.1" 200 -
+2025-05-17 11:35:32,446 INFO get_answers called with nickname=Adam, extra=1
+2025-05-17 11:35:32,452 INFO 127.0.0.1 - - [17/May/2025 11:35:32] "GET /get_answers?nickname=Adam&extra=1 HTTP/1.1" 200 -
+2025-05-17 11:35:34,229 INFO get_answers called with nickname=Adam, extra=2
+2025-05-17 11:35:34,234 INFO 127.0.0.1 - - [17/May/2025 11:35:34] "GET /get_answers?nickname=Adam&extra=2 HTTP/1.1" 200 -
+2025-05-17 11:35:34,378 INFO get_answers called with nickname=Adam, extra=2
+2025-05-17 11:35:34,385 INFO 127.0.0.1 - - [17/May/2025 11:35:34] "GET /get_answers?nickname=Adam&extra=2 HTTP/1.1" 200 -
+2025-05-17 11:35:34,527 INFO get_answers called with nickname=Adam, extra=2
+2025-05-17 11:35:34,535 INFO 127.0.0.1 - - [17/May/2025 11:35:34] "GET /get_answers?nickname=Adam&extra=2 HTTP/1.1" 200 -
+2025-05-17 11:37:32,043 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.15.12.68:5100
+2025-05-17 11:37:32,044 INFO [33mPress CTRL+C to quit[0m
+2025-05-17 11:37:36,558 INFO 127.0.0.1 - - [17/May/2025 11:37:36] "[32mGET / HTTP/1.1[0m" 302 -
+2025-05-17 11:37:36,566 INFO 127.0.0.1 - - [17/May/2025 11:37:36] "GET /login HTTP/1.1" 200 -
+2025-05-17 11:37:36,668 INFO 127.0.0.1 - - [17/May/2025 11:37:36] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-17 11:37:38,915 INFO 127.0.0.1 - - [17/May/2025 11:37:38] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-05-17 11:37:38,919 INFO 127.0.0.1 - - [17/May/2025 11:37:38] "GET / HTTP/1.1" 200 -
+2025-05-17 11:37:42,428 INFO get_answers called with nickname=Adam, extra=0
+2025-05-17 11:37:42,436 INFO 127.0.0.1 - - [17/May/2025 11:37:42] "GET /get_answers?nickname=Adam&extra=0 HTTP/1.1" 200 -
+2025-05-17 11:37:44,777 INFO get_answers called with nickname=Adam, extra=1
+2025-05-17 11:37:44,785 INFO 127.0.0.1 - - [17/May/2025 11:37:44] "GET /get_answers?nickname=Adam&extra=1 HTTP/1.1" 200 -
+2025-05-17 11:37:53,358 INFO 127.0.0.1 - - [17/May/2025 11:37:53] "GET / HTTP/1.1" 200 -
+2025-05-17 11:37:55,658 INFO get_answers called with nickname=Adam, extra=1
+2025-05-17 11:37:55,663 INFO 127.0.0.1 - - [17/May/2025 11:37:55] "GET /get_answers?nickname=Adam&extra=1 HTTP/1.1" 200 -
+2025-05-17 11:38:05,794 INFO get_answers called with nickname=Person1, extra=1
+2025-05-17 11:38:05,797 INFO Selected 1 extra questions out of 1 available
+2025-05-17 11:38:05,798 INFO 127.0.0.1 - - [17/May/2025 11:38:05] "GET /get_answers?nickname=Person1&extra=1 HTTP/1.1" 200 -
+2025-05-17 11:38:06,395 INFO get_answers called with nickname=Person1, extra=1
+2025-05-17 11:38:06,401 INFO Selected 1 extra questions out of 1 available
+2025-05-17 11:38:06,402 INFO 127.0.0.1 - - [17/May/2025 11:38:06] "GET /get_answers?nickname=Person1&extra=1 HTTP/1.1" 200 -
+2025-05-17 11:38:06,558 INFO get_answers called with nickname=Person1, extra=1
+2025-05-17 11:38:06,563 INFO Selected 1 extra questions out of 1 available
+2025-05-17 11:38:06,564 INFO 127.0.0.1 - - [17/May/2025 11:38:06] "GET /get_answers?nickname=Person1&extra=1 HTTP/1.1" 200 -
+2025-05-17 11:38:06,692 INFO get_answers called with nickname=Person1, extra=1
+2025-05-17 11:38:06,697 INFO Selected 1 extra questions out of 1 available
+2025-05-17 11:38:06,698 INFO 127.0.0.1 - - [17/May/2025 11:38:06] "GET /get_answers?nickname=Person1&extra=1 HTTP/1.1" 200 -
+2025-05-17 11:38:09,360 INFO get_answers called with nickname=Person1, extra=30
+2025-05-17 11:38:09,366 INFO Selected 1 extra questions out of 1 available
+2025-05-17 11:38:09,367 INFO 127.0.0.1 - - [17/May/2025 11:38:09] "GET /get_answers?nickname=Person1&extra=30 HTTP/1.1" 200 -
+2025-05-17 11:38:09,644 INFO get_answers called with nickname=Person1, extra=30
+2025-05-17 11:38:09,649 INFO Selected 1 extra questions out of 1 available
+2025-05-17 11:38:09,649 INFO 127.0.0.1 - - [17/May/2025 11:38:09] "GET /get_answers?nickname=Person1&extra=30 HTTP/1.1" 200 -
+2025-05-17 11:38:09,775 INFO get_answers called with nickname=Person1, extra=30
+2025-05-17 11:38:09,780 INFO Selected 1 extra questions out of 1 available
+2025-05-17 11:38:09,781 INFO 127.0.0.1 - - [17/May/2025 11:38:09] "GET /get_answers?nickname=Person1&extra=30 HTTP/1.1" 200 -
+2025-05-17 11:38:17,296 INFO 127.0.0.1 - - [17/May/2025 11:38:17] "GET /available_pdfs HTTP/1.1" 200 -
+2025-05-17 11:38:37,307 INFO Extracted 69693 characters from PDF
+2025-05-17 11:38:37,307 INFO Extracted 8780 words from PDF
+2025-05-17 11:38:37,348 INFO 127.0.0.1 - - [17/May/2025 11:38:37] "[35m[1mPOST /summarize HTTP/1.1[0m" 202 -
+2025-05-17 11:39:25,976 INFO get_answers called with nickname=Val, extra=30
+2025-05-17 11:39:25,987 INFO Selected 1 extra questions out of 1 available
+2025-05-17 11:39:25,988 INFO 127.0.0.1 - - [17/May/2025 11:39:25] "GET /get_answers?nickname=Val&extra=30 HTTP/1.1" 200 -
+2025-05-17 11:39:28,943 INFO get_answers called with nickname=Val, extra=1
+2025-05-17 11:39:28,952 INFO Selected 1 extra questions out of 1 available
+2025-05-17 11:39:28,953 INFO 127.0.0.1 - - [17/May/2025 11:39:28] "GET /get_answers?nickname=Val&extra=1 HTTP/1.1" 200 -
+2025-05-17 11:39:29,543 INFO get_answers called with nickname=Val, extra=1
+2025-05-17 11:39:29,552 INFO Selected 1 extra questions out of 1 available
+2025-05-17 11:39:29,553 INFO 127.0.0.1 - - [17/May/2025 11:39:29] "GET /get_answers?nickname=Val&extra=1 HTTP/1.1" 200 -
+2025-05-17 11:39:30,110 INFO get_answers called with nickname=Val, extra=1
+2025-05-17 11:39:30,120 INFO Selected 1 extra questions out of 1 available
+2025-05-17 11:39:30,121 INFO 127.0.0.1 - - [17/May/2025 11:39:30] "GET /get_answers?nickname=Val&extra=1 HTTP/1.1" 200 -
+2025-05-17 11:42:41,792 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.15.12.68:5100
+2025-05-17 11:42:41,792 INFO [33mPress CTRL+C to quit[0m
+2025-05-17 11:43:08,670 INFO 127.0.0.1 - - [17/May/2025 11:43:08] "GET / HTTP/1.1" 200 -
+2025-05-17 11:43:10,808 INFO get_answers called with nickname=Val, extra=1
+2025-05-17 11:43:10,820 INFO Selected 1 extra questions out of 1 available
+2025-05-17 11:43:10,821 INFO 127.0.0.1 - - [17/May/2025 11:43:10] "GET /get_answers?nickname=Val&extra=1 HTTP/1.1" 200 -
+2025-05-17 11:43:32,993 INFO 127.0.0.1 - - [17/May/2025 11:43:32] "[33mPOST /rankings HTTP/1.1[0m" 404 -
+2025-05-17 11:43:32,995 INFO 127.0.0.1 - - [17/May/2025 11:43:32] "[33mPOST /rankings HTTP/1.1[0m" 404 -
+2025-05-17 11:43:42,861 INFO 127.0.0.1 - - [17/May/2025 11:43:42] "[33mPOST /rankings HTTP/1.1[0m" 404 -
+2025-05-17 11:43:42,863 INFO 127.0.0.1 - - [17/May/2025 11:43:42] "[33mPOST /rankings HTTP/1.1[0m" 404 -
+2025-05-17 11:47:38,645 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.15.12.68:5100
+2025-05-17 11:47:38,645 INFO [33mPress CTRL+C to quit[0m
+2025-05-17 11:47:48,244 INFO 127.0.0.1 - - [17/May/2025 11:47:48] "GET / HTTP/1.1" 200 -
+2025-05-17 11:47:52,735 INFO get_answers called with nickname=Val, extra=0
+2025-05-17 11:47:52,749 INFO 127.0.0.1 - - [17/May/2025 11:47:52] "GET /get_answers?nickname=Val&extra=0 HTTP/1.1" 200 -
+2025-05-17 11:48:01,993 ERROR Exception on /rankings/ [POST]
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/nikolas/Desktop/Projects/PaperSummarizationWeb/app.py", line 674, in save_rankings
+    for model, score in model_scores.items():
+AttributeError: 'int' object has no attribute 'items'
+2025-05-17 11:48:01,999 INFO 127.0.0.1 - - [17/May/2025 11:48:01] "[35m[1mPOST /rankings/ HTTP/1.1[0m" 500 -
+2025-05-17 11:48:10,636 ERROR Exception on /rankings/ [POST]
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/nikolas/Desktop/Projects/PaperSummarizationWeb/app.py", line 674, in save_rankings
+    for model, score in model_scores.items():
+AttributeError: 'int' object has no attribute 'items'
+2025-05-17 11:48:10,638 INFO 127.0.0.1 - - [17/May/2025 11:48:10] "[35m[1mPOST /rankings/ HTTP/1.1[0m" 500 -
+2025-05-17 11:52:44,548 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.15.12.68:5100
+2025-05-17 11:52:44,548 INFO [33mPress CTRL+C to quit[0m
+2025-05-17 11:52:47,917 INFO 127.0.0.1 - - [17/May/2025 11:52:47] "GET / HTTP/1.1" 200 -
+2025-05-17 11:52:49,602 INFO get_answers called with nickname=Val, extra=0
+2025-05-17 11:52:49,615 INFO 127.0.0.1 - - [17/May/2025 11:52:49] "GET /get_answers?nickname=Val&extra=0 HTTP/1.1" 200 -
+2025-05-17 11:52:59,056 INFO Successfully saved rankings for request 6682ae22-b889-449d-b45c-7ac264f64abc
+2025-05-17 11:52:59,057 INFO 127.0.0.1 - - [17/May/2025 11:52:59] "POST /rankings/ HTTP/1.1" 200 -
+2025-05-17 11:55:20,408 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.15.12.68:5100
+2025-05-17 11:55:20,409 INFO [33mPress CTRL+C to quit[0m
+2025-05-17 11:55:22,581 INFO 127.0.0.1 - - [17/May/2025 11:55:22] "GET / HTTP/1.1" 200 -
+2025-05-17 11:55:24,667 INFO get_answers called with nickname=Val, extra=0
+2025-05-17 11:55:24,677 INFO 127.0.0.1 - - [17/May/2025 11:55:24] "GET /get_answers?nickname=Val&extra=0 HTTP/1.1" 200 -
+2025-05-17 11:55:33,248 INFO Successfully saved rankings for request 6682ae22-b889-449d-b45c-7ac264f64abc
+2025-05-17 11:55:33,248 INFO 127.0.0.1 - - [17/May/2025 11:55:33] "POST /rankings/ HTTP/1.1" 200 -
+2025-05-17 11:59:38,805 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.15.12.68:5100
+2025-05-17 11:59:38,805 INFO [33mPress CTRL+C to quit[0m
+2025-05-17 11:59:47,105 INFO 127.0.0.1 - - [17/May/2025 11:59:47] "GET / HTTP/1.1" 200 -
+2025-05-17 11:59:53,867 INFO 127.0.0.1 - - [17/May/2025 11:59:53] "GET /available_pdfs HTTP/1.1" 200 -
+2025-05-17 12:00:12,371 INFO Extracted 24352 characters from PDF
+2025-05-17 12:00:12,371 INFO Extracted 3131 words from PDF
+2025-05-17 12:00:12,402 INFO 127.0.0.1 - - [17/May/2025 12:00:12] "[35m[1mPOST /summarize HTTP/1.1[0m" 202 -
+2025-05-17 12:02:36,046 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.15.12.68:5100
+2025-05-17 12:02:36,046 INFO [33mPress CTRL+C to quit[0m
+2025-05-17 12:02:38,921 INFO 127.0.0.1 - - [17/May/2025 12:02:38] "GET / HTTP/1.1" 200 -
+2025-05-17 12:02:42,298 INFO 127.0.0.1 - - [17/May/2025 12:02:42] "GET /available_pdfs HTTP/1.1" 200 -
+2025-05-17 12:02:56,049 INFO Extracted 24352 characters from PDF
+2025-05-17 12:02:56,049 INFO Extracted 3131 words from PDF
+2025-05-17 12:02:56,080 INFO 127.0.0.1 - - [17/May/2025 12:02:56] "[35m[1mPOST /summarize HTTP/1.1[0m" 202 -
+2025-05-17 12:03:31,849 INFO get_answers called with nickname=Matas2, extra=1
+2025-05-17 12:03:31,858 INFO Selected 1 extra questions out of 2 available
+2025-05-17 12:03:31,861 INFO 127.0.0.1 - - [17/May/2025 12:03:31] "GET /get_answers?nickname=Matas2&extra=1 HTTP/1.1" 200 -
