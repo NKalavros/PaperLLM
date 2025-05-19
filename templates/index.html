@@ -6,6 +6,7 @@
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown.min.css">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
             background-color: #f0f4f8;
@@ -245,6 +246,7 @@
         <div>
             <span class="tab active" id="questions-tab-btn">Questions</span>
             <span class="tab" id="answers-tab-btn">Answers</span>
+            <span class="tab" id="leaderboard-tab-btn">Leaderboard</span>
         </div>
         <!-- Questions Tab: upload file, nickname, prompt -->
         <div id="questions-tab" class="tab-content active">
@@ -319,24 +321,64 @@
                 <button id="submit-all-ratings-btn">Submit All Ratings</button>
             </div>
         </div>
+        <!-- Leaderboard Tab -->
+        <div id="leaderboard-tab" class="tab-content">
+            <div class="form-section">
+                <div class="form-group">
+                    <label for="difficulty-filter">Question Difficulty:</label>
+                    <select id="difficulty-filter" class="quality-score">
+                        <option value="">All</option>
+                        <option>Easy</option>
+                        <option>Medium</option>
+                        <option>Hard</option>
+                    </select>
+                    <button id="load-leaderboard" type="button">Load Leaderboard</button>
+                </div>
+                <div class="form-group">
+                    <h3>Quality Score Distribution</h3>
+                    <canvas id="histogramChart"></canvas>
+                </div>
+                <div class="form-group">
+                    <h3>Win Counts (Rank #1)</h3>
+                    <canvas id="rankingChart"></canvas>
+                </div>
+            </div>
+        </div>
     </div>
     <script>
         // Tab switching
         const questionsTabBtn = document.getElementById('questions-tab-btn');
         const answersTabBtn = document.getElementById('answers-tab-btn');
+        const lbBtn = document.getElementById('leaderboard-tab-btn');
         const questionsTab = document.getElementById('questions-tab');
         const answersTab = document.getElementById('answers-tab');
+        const leaderboardTab = document.getElementById('leaderboard-tab');
+
         questionsTabBtn.addEventListener('click', () => {
             questionsTabBtn.classList.add('active');
             answersTabBtn.classList.remove('active');
+            lbBtn.classList.remove('active');
             questionsTab.classList.add('active');
             answersTab.classList.remove('active');
+            leaderboardTab.classList.remove('active');
         });
+
         answersTabBtn.addEventListener('click', () => {
             answersTabBtn.classList.add('active');
             questionsTabBtn.classList.remove('active');
+            lbBtn.classList.remove('active');
             answersTab.classList.add('active');
             questionsTab.classList.remove('active');
+            leaderboardTab.classList.remove('active');
+        });
+
+        lbBtn.addEventListener('click', () => {
+            questionsTabBtn.classList.remove('active');
+            answersTabBtn.classList.remove('active');
+            lbBtn.classList.add('active');
+            questionsTab.classList.remove('active');
+            answersTab.classList.remove('active');
+            leaderboardTab.classList.add('active');
         });
 
         // Handle PDF source selection (new functionality)
@@ -499,8 +541,8 @@
                          data-request-id="${reqId}"
                          data-model1-name="${model1}"
                          data-model2-name="${model2}"
-                         data-model1-answer="${answer1.replace(/"/g,'&quot;')}"
-                         data-model2-answer="${answer2.replace(/"/g,'&quot;')}">
+                         data-model1-answer="${answer1.replace(/"/g, '&quot;')}"
+                         data-model2-answer="${answer2.replace(/"/g, '&quot;')}">
                       <div class="summary-header">
                         <div>
                           <h3>${promptText}</h3>
@@ -621,6 +663,59 @@
                 alert(`Error submitting ratings: ${error.message}`);
             }
         });
+
+        document.getElementById('load-leaderboard').addEventListener('click', () => {
+            const diff = document.getElementById('difficulty-filter').value;
+            fetch(`/leaderboard?difficulty=${encodeURIComponent(diff)}`)
+                .then(r => r.json())
+                .then(renderLeaderboard)
+                .catch(e => console.error(e));
+        });
+
+        let histChart, rankChart;
+        function renderLeaderboard(data) {
+            // prepare labels 1–10
+            const scoreLabels = Array.from({ length: 10 }, (_, i) => String(i + 1));
+            // build frequency arrays
+            const histDatasets = data.models.map((m, i) => {
+                const freq = Array(10).fill(0);
+                m.quality_scores.forEach(s => { if (s >= 1 && s <= 10) freq[s - 1]++; });
+                return {
+                    label: m.name,
+                    data: freq,
+                    backgroundColor: `hsla(${i * 60},70%,50%,0.6)`
+                };
+            });
+            const ctx1 = document.getElementById('histogramChart').getContext('2d');
+            if (histChart) histChart.destroy();
+            histChart = new Chart(ctx1, {
+                type: 'bar',
+                data: { labels: scoreLabels, datasets: histDatasets },
+                options: {
+                    responsive: true,
+                    plugins: { title: { display: true, text: 'Quality Score Histogram' } },
+                    scales: {
+                        x: { stacked: true, title: { display: true, text: 'Score' } },
+                        y: { stacked: true, beginAtZero: true, title: { display: true, text: 'Count' } }
+                    }
+                }
+            });
+
+            // wins bar chart
+            const labels = data.models.map(m => m.name);
+            const wins = data.models.map(m => m.wins);
+            const ctx2 = document.getElementById('rankingChart').getContext('2d');
+            if (rankChart) rankChart.destroy();
+            rankChart = new Chart(ctx2, {
+                type: 'bar',
+                data: { labels, datasets: [{ label: 'Wins (#1)', data: wins, backgroundColor: '#4a90e2' }] },
+                options: {
+                    responsive: true,
+                    plugins: { title: { display: true, text: 'First-place Counts by Model' } },
+                    scales: { y: { beginAtZero: true, title: { display: true, text: 'Wins' } } }
+                }
+            });
+        }
     </script>
 </body>
 
