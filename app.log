@@ -6496,3 +6496,624 @@ AttributeError: 'int' object has no attribute 'items'
 2025-05-19 12:56:56,809 INFO 127.0.0.1 - - [19/May/2025 12:56:56] "GET / HTTP/1.1" 200 -
 2025-05-19 12:56:56,872 INFO 127.0.0.1 - - [19/May/2025 12:56:56] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
 2025-05-19 12:56:58,190 INFO 127.0.0.1 - - [19/May/2025 12:56:58] "GET /leaderboard?difficulty= HTTP/1.1" 200 -
+2025-05-19 13:00:46,913 INFO 127.0.0.1 - - [19/May/2025 13:00:46] "GET / HTTP/1.1" 200 -
+2025-05-19 13:00:46,971 INFO 127.0.0.1 - - [19/May/2025 13:00:46] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-19 13:00:48,344 INFO 127.0.0.1 - - [19/May/2025 13:00:48] "GET /leaderboard?difficulty= HTTP/1.1" 200 -
+2025-05-19 13:00:55,394 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.15.14.165:5100
+2025-05-19 13:00:55,394 INFO [33mPress CTRL+C to quit[0m
+2025-05-19 13:00:56,142 INFO 127.0.0.1 - - [19/May/2025 13:00:56] "GET / HTTP/1.1" 200 -
+2025-05-19 13:00:57,924 INFO 127.0.0.1 - - [19/May/2025 13:00:57] "GET /leaderboard?difficulty= HTTP/1.1" 200 -
+2025-05-19 13:03:32,831 INFO 127.0.0.1 - - [19/May/2025 13:03:32] "GET / HTTP/1.1" 200 -
+2025-05-19 13:03:32,895 INFO 127.0.0.1 - - [19/May/2025 13:03:32] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-19 13:03:39,302 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.15.14.165:5100
+2025-05-19 13:03:39,302 INFO [33mPress CTRL+C to quit[0m
+2025-05-19 13:03:41,005 INFO 127.0.0.1 - - [19/May/2025 13:03:41] "GET / HTTP/1.1" 200 -
+2025-05-19 13:04:03,946 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.15.14.165:5100
+2025-05-19 13:04:03,946 INFO [33mPress CTRL+C to quit[0m
+2025-05-19 13:04:07,441 INFO 127.0.0.1 - - [19/May/2025 13:04:07] "GET / HTTP/1.1" 200 -
+2025-05-19 13:04:07,530 INFO 127.0.0.1 - - [19/May/2025 13:04:07] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-19 13:04:12,658 INFO 127.0.0.1 - - [19/May/2025 13:04:12] "GET /leaderboard?difficulty=Easy HTTP/1.1" 200 -
+2025-05-19 13:04:16,222 INFO 127.0.0.1 - - [19/May/2025 13:04:16] "GET /leaderboard?difficulty=Hard HTTP/1.1" 200 -
+2025-05-19 13:04:16,822 INFO 127.0.0.1 - - [19/May/2025 13:04:16] "GET /leaderboard?difficulty=Hard HTTP/1.1" 200 -
+2025-05-19 13:04:18,488 INFO 127.0.0.1 - - [19/May/2025 13:04:18] "GET /leaderboard?difficulty= HTTP/1.1" 200 -
+2025-05-19 13:05:04,857 INFO 127.0.0.1 - - [19/May/2025 13:05:04] "GET /available_pdfs HTTP/1.1" 200 -
+2025-05-19 13:05:19,489 INFO Extracted 24352 characters from PDF
+2025-05-19 13:05:19,490 INFO Extracted 3131 words from PDF
+2025-05-19 13:05:19,555 INFO 127.0.0.1 - - [19/May/2025 13:05:19] "[35m[1mPOST /summarize HTTP/1.1[0m" 202 -
+2025-05-19 13:05:29,391 INFO get_answers called with nickname=Gustavo3, extra=0
+2025-05-19 13:05:29,403 INFO 127.0.0.1 - - [19/May/2025 13:05:29] "GET /get_answers?nickname=Gustavo3&extra=0 HTTP/1.1" 200 -
+2025-05-19 13:05:30,457 INFO get_answers called with nickname=Gustavo3, extra=0
+2025-05-19 13:05:30,471 INFO 127.0.0.1 - - [19/May/2025 13:05:30] "GET /get_answers?nickname=Gustavo3&extra=0 HTTP/1.1" 200 -
+2025-05-19 13:05:36,271 INFO get_answers called with nickname=Gustavo3, extra=0
+2025-05-19 13:05:36,283 INFO 127.0.0.1 - - [19/May/2025 13:05:36] "GET /get_answers?nickname=Gustavo3&extra=0 HTTP/1.1" 200 -
+2025-05-19 13:05:39,201 INFO get_answers called with nickname=Gustavo, extra=0
+2025-05-19 13:05:39,215 INFO 127.0.0.1 - - [19/May/2025 13:05:39] "GET /get_answers?nickname=Gustavo&extra=0 HTTP/1.1" 200 -
+2025-05-19 13:07:46,261 INFO Successfully saved rankings for request 64c6dc89-e41c-4bdb-8b36-81b2fb6cd885
+2025-05-19 13:07:46,264 INFO 127.0.0.1 - - [19/May/2025 13:07:46] "POST /rankings/ HTTP/1.1" 200 -
+2025-05-19 13:07:49,607 INFO 127.0.0.1 - - [19/May/2025 13:07:49] "GET /leaderboard?difficulty= HTTP/1.1" 200 -
+2025-05-19 13:07:53,097 INFO 127.0.0.1 - - [19/May/2025 13:07:53] "GET / HTTP/1.1" 200 -
+2025-05-19 13:07:54,456 INFO 127.0.0.1 - - [19/May/2025 13:07:54] "GET /leaderboard?difficulty= HTTP/1.1" 200 -
+2025-05-19 13:08:08,045 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.15.14.165:5100
+2025-05-19 13:08:08,045 INFO [33mPress CTRL+C to quit[0m
+2025-05-19 13:08:11,400 INFO 127.0.0.1 - - [19/May/2025 13:08:11] "GET / HTTP/1.1" 200 -
+2025-05-19 13:08:13,225 INFO 127.0.0.1 - - [19/May/2025 13:08:13] "GET /leaderboard?difficulty= HTTP/1.1" 200 -
+2025-05-19 13:08:45,523 INFO 127.0.0.1 - - [19/May/2025 13:08:45] "GET / HTTP/1.1" 200 -
+2025-05-19 13:10:07,731 INFO 127.0.0.1 - - [19/May/2025 13:10:07] "GET /leaderboard?difficulty= HTTP/1.1" 200 -
+2025-05-19 13:14:39,302 INFO get_answers called with nickname=Matas, extra=0
+2025-05-19 13:14:39,319 INFO 127.0.0.1 - - [19/May/2025 13:14:39] "GET /get_answers?nickname=Matas&extra=0 HTTP/1.1" 200 -
+2025-05-19 13:14:43,045 INFO get_answers called with nickname=Matas, extra=2
+2025-05-19 13:14:43,056 INFO Selected 2 extra questions out of 2 available
+2025-05-19 13:14:43,057 INFO 127.0.0.1 - - [19/May/2025 13:14:43] "GET /get_answers?nickname=Matas&extra=2 HTTP/1.1" 200 -
+2025-05-19 13:14:46,664 INFO get_answers called with nickname=Matas, extra=1
+2025-05-19 13:14:46,675 INFO Selected 1 extra questions out of 2 available
+2025-05-19 13:14:46,676 INFO 127.0.0.1 - - [19/May/2025 13:14:46] "GET /get_answers?nickname=Matas&extra=1 HTTP/1.1" 200 -
+2025-05-19 13:15:03,318 INFO Successfully saved rankings for request 739900c0-1fd0-4870-966e-7816a9fa2bf7
+2025-05-19 13:15:03,318 INFO Successfully saved rankings for request 6b72b9b1-577c-4619-8fab-ecbf51f38baf
+2025-05-19 13:15:03,319 INFO 127.0.0.1 - - [19/May/2025 13:15:03] "POST /rankings/ HTTP/1.1" 200 -
+2025-05-19 13:15:03,320 INFO 127.0.0.1 - - [19/May/2025 13:15:03] "POST /rankings/ HTTP/1.1" 200 -
+2025-05-19 13:15:07,551 INFO 127.0.0.1 - - [19/May/2025 13:15:07] "GET /leaderboard?difficulty= HTTP/1.1" 200 -
+2025-05-19 13:15:08,619 INFO 127.0.0.1 - - [19/May/2025 13:15:08] "GET /leaderboard?difficulty= HTTP/1.1" 200 -
+2025-05-19 13:15:09,000 INFO 127.0.0.1 - - [19/May/2025 13:15:09] "GET /leaderboard?difficulty= HTTP/1.1" 200 -
+2025-05-19 13:15:16,690 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.15.14.165:5100
+2025-05-19 13:15:16,690 INFO [33mPress CTRL+C to quit[0m
+2025-05-19 13:15:19,702 INFO 127.0.0.1 - - [19/May/2025 13:15:19] "GET / HTTP/1.1" 200 -
+2025-05-19 13:15:19,760 INFO 127.0.0.1 - - [19/May/2025 13:15:19] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-19 13:15:21,518 INFO 127.0.0.1 - - [19/May/2025 13:15:21] "GET /leaderboard?difficulty= HTTP/1.1" 200 -
+2025-05-19 13:15:24,089 INFO 127.0.0.1 - - [19/May/2025 13:15:24] "GET /leaderboard?difficulty=Easy HTTP/1.1" 200 -
+2025-05-19 13:15:25,203 INFO 127.0.0.1 - - [19/May/2025 13:15:25] "GET /leaderboard?difficulty=Easy HTTP/1.1" 200 -
+2025-05-19 13:15:27,037 INFO 127.0.0.1 - - [19/May/2025 13:15:27] "GET /leaderboard?difficulty=Hard HTTP/1.1" 200 -
+2025-05-19 13:15:27,536 INFO 127.0.0.1 - - [19/May/2025 13:15:27] "GET /leaderboard?difficulty=Hard HTTP/1.1" 200 -
+2025-05-19 13:15:29,418 INFO 127.0.0.1 - - [19/May/2025 13:15:29] "GET /leaderboard?difficulty= HTTP/1.1" 200 -
+2025-05-19 13:24:42,202 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.138.6.115:5100
+2025-05-19 13:24:42,202 INFO [33mPress CTRL+C to quit[0m
+2025-05-19 13:24:43,528 INFO 127.0.0.1 - - [19/May/2025 13:24:43] "GET / HTTP/1.1" 200 -
+2025-05-19 13:24:46,719 INFO 127.0.0.1 - - [19/May/2025 13:24:46] "GET /leaderboard?difficulty= HTTP/1.1" 200 -
+2025-05-19 13:29:00,827 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.138.6.115:5100
+2025-05-19 13:29:00,827 INFO [33mPress CTRL+C to quit[0m
+2025-05-19 13:29:03,148 INFO 127.0.0.1 - - [19/May/2025 13:29:03] "GET / HTTP/1.1" 200 -
+2025-05-19 13:29:33,457 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.138.6.115:5100
+2025-05-19 13:29:33,457 INFO [33mPress CTRL+C to quit[0m
+2025-05-19 13:29:37,612 INFO 127.0.0.1 - - [19/May/2025 13:29:37] "GET / HTTP/1.1" 200 -
+2025-05-19 13:31:23,771 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.138.6.115:5100
+2025-05-19 13:31:23,771 INFO [33mPress CTRL+C to quit[0m
+2025-05-19 13:31:25,254 INFO 127.0.0.1 - - [19/May/2025 13:31:25] "GET / HTTP/1.1" 200 -
+2025-05-19 13:31:26,335 INFO 127.0.0.1 - - [19/May/2025 13:31:26] "GET /leaderboard HTTP/1.1" 200 -
+2025-05-19 13:31:39,231 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.138.6.115:5100
+2025-05-19 13:31:39,231 INFO [33mPress CTRL+C to quit[0m
+2025-05-19 13:31:40,213 INFO 127.0.0.1 - - [19/May/2025 13:31:40] "GET / HTTP/1.1" 200 -
+2025-05-19 13:31:41,340 INFO 127.0.0.1 - - [19/May/2025 13:31:41] "GET /leaderboard HTTP/1.1" 200 -
+2025-05-19 13:31:53,145 INFO 127.0.0.1 - - [19/May/2025 13:31:53] "[32mGET / HTTP/1.1[0m" 302 -
+2025-05-19 13:31:53,149 INFO 127.0.0.1 - - [19/May/2025 13:31:53] "GET /login HTTP/1.1" 200 -
+2025-05-19 13:31:53,214 INFO 127.0.0.1 - - [19/May/2025 13:31:53] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-19 13:31:55,995 INFO 127.0.0.1 - - [19/May/2025 13:31:55] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-05-19 13:31:55,997 INFO 127.0.0.1 - - [19/May/2025 13:31:55] "GET / HTTP/1.1" 200 -
+2025-05-19 13:31:58,037 INFO 127.0.0.1 - - [19/May/2025 13:31:58] "GET /leaderboard HTTP/1.1" 200 -
+2025-05-19 13:32:37,651 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.138.6.115:5100
+2025-05-19 13:32:37,652 INFO [33mPress CTRL+C to quit[0m
+2025-05-19 13:32:39,352 INFO 127.0.0.1 - - [19/May/2025 13:32:39] "GET / HTTP/1.1" 200 -
+2025-05-19 13:32:39,381 INFO 127.0.0.1 - - [19/May/2025 13:32:39] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-19 13:32:40,112 INFO 127.0.0.1 - - [19/May/2025 13:32:40] "GET /leaderboard HTTP/1.1" 200 -
+2025-05-19 13:34:09,270 INFO 127.0.0.1 - - [19/May/2025 13:34:09] "GET / HTTP/1.1" 200 -
+2025-05-19 13:34:10,134 INFO 127.0.0.1 - - [19/May/2025 13:34:10] "GET /leaderboard HTTP/1.1" 200 -
+2025-05-19 13:34:13,317 INFO 127.0.0.1 - - [19/May/2025 13:34:13] "GET /leaderboard HTTP/1.1" 200 -
+2025-05-19 13:34:14,698 INFO 127.0.0.1 - - [19/May/2025 13:34:14] "GET /leaderboard HTTP/1.1" 200 -
+2025-05-19 13:35:41,300 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.138.6.115:5100
+2025-05-19 13:35:41,300 INFO [33mPress CTRL+C to quit[0m
+2025-05-19 13:35:41,734 INFO 127.0.0.1 - - [19/May/2025 13:35:41] "GET / HTTP/1.1" 200 -
+2025-05-19 13:35:42,552 INFO 127.0.0.1 - - [19/May/2025 13:35:42] "GET /leaderboard HTTP/1.1" 200 -
+2025-05-19 13:35:51,529 INFO get_answers called with nickname=Val, extra=0
+2025-05-19 13:35:51,542 INFO 127.0.0.1 - - [19/May/2025 13:35:51] "GET /get_answers?nickname=Val&extra=0 HTTP/1.1" 200 -
+2025-05-19 13:35:53,950 INFO get_answers called with nickname=Adam, extra=0
+2025-05-19 13:35:53,961 INFO 127.0.0.1 - - [19/May/2025 13:35:53] "GET /get_answers?nickname=Adam&extra=0 HTTP/1.1" 200 -
+2025-05-19 13:36:00,732 INFO Successfully saved rankings for request 6b72b9b1-577c-4619-8fab-ecbf51f38baf
+2025-05-19 13:36:00,732 INFO 127.0.0.1 - - [19/May/2025 13:36:00] "POST /rankings/ HTTP/1.1" 200 -
+2025-05-19 13:36:02,968 INFO 127.0.0.1 - - [19/May/2025 13:36:02] "GET /leaderboard HTTP/1.1" 200 -
+2025-05-19 13:36:04,533 INFO 127.0.0.1 - - [19/May/2025 13:36:04] "GET / HTTP/1.1" 200 -
+2025-05-19 13:36:05,369 INFO 127.0.0.1 - - [19/May/2025 13:36:05] "GET /leaderboard HTTP/1.1" 200 -
+2025-05-19 13:36:09,935 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.138.6.115:5100
+2025-05-19 13:36:09,935 INFO [33mPress CTRL+C to quit[0m
+2025-05-19 13:36:10,414 INFO 127.0.0.1 - - [19/May/2025 13:36:10] "GET / HTTP/1.1" 200 -
+2025-05-19 13:36:11,235 INFO 127.0.0.1 - - [19/May/2025 13:36:11] "GET /leaderboard HTTP/1.1" 200 -
+2025-05-19 14:22:24,266 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.138.6.115:5100
+2025-05-19 14:22:24,266 INFO [33mPress CTRL+C to quit[0m
+2025-05-19 14:22:25,685 INFO 127.0.0.1 - - [19/May/2025 14:22:25] "GET / HTTP/1.1" 200 -
+2025-05-19 14:22:25,708 INFO 127.0.0.1 - - [19/May/2025 14:22:25] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-19 14:22:26,571 INFO 127.0.0.1 - - [19/May/2025 14:22:26] "GET /leaderboard HTTP/1.1" 200 -
+2025-05-19 14:22:28,149 INFO 127.0.0.1 - - [19/May/2025 14:22:28] "GET /leaderboard HTTP/1.1" 200 -
+2025-05-19 14:22:29,446 INFO get_answers called with nickname=Adam, extra=0
+2025-05-19 14:22:29,459 INFO 127.0.0.1 - - [19/May/2025 14:22:29] "GET /get_answers?nickname=Adam&extra=0 HTTP/1.1" 200 -
+2025-05-19 14:22:32,164 INFO get_answers called with nickname=Adam, extra=1
+2025-05-19 14:22:32,175 INFO 127.0.0.1 - - [19/May/2025 14:22:32] "GET /get_answers?nickname=Adam&extra=1 HTTP/1.1" 200 -
+2025-05-19 14:22:38,532 INFO 127.0.0.1 - - [19/May/2025 14:22:38] "GET /available_pdfs HTTP/1.1" 200 -
+2025-05-19 14:22:43,169 INFO Extracted 69693 characters from PDF
+2025-05-19 14:22:43,169 INFO Extracted 8780 words from PDF
+2025-05-19 14:22:43,211 INFO 127.0.0.1 - - [19/May/2025 14:22:43] "[35m[1mPOST /summarize HTTP/1.1[0m" 202 -
+2025-05-19 14:22:50,135 INFO 127.0.0.1 - - [19/May/2025 14:22:50] "GET /available_pdfs HTTP/1.1" 200 -
+2025-05-19 14:22:59,549 INFO Extracted 26112 characters from PDF
+2025-05-19 14:22:59,549 INFO Extracted 3468 words from PDF
+2025-05-19 14:22:59,573 INFO 127.0.0.1 - - [19/May/2025 14:22:59] "[35m[1mPOST /summarize HTTP/1.1[0m" 202 -
+2025-05-19 14:23:18,018 INFO get_answers called with nickname=Adam, extra=0
+2025-05-19 14:23:18,032 INFO 127.0.0.1 - - [19/May/2025 14:23:18] "GET /get_answers?nickname=Adam&extra=0 HTTP/1.1" 200 -
+2025-05-19 14:24:42,492 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.138.6.115:5100
+2025-05-19 14:24:42,492 INFO [33mPress CTRL+C to quit[0m
+2025-05-19 14:24:44,365 INFO 127.0.0.1 - - [19/May/2025 14:24:44] "GET / HTTP/1.1" 200 -
+2025-05-19 14:24:44,389 INFO 127.0.0.1 - - [19/May/2025 14:24:44] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-19 14:24:46,096 INFO get_answers called with nickname=Adam, extra=0
+2025-05-19 14:24:46,108 INFO 127.0.0.1 - - [19/May/2025 14:24:46] "GET /get_answers?nickname=Adam&extra=0 HTTP/1.1" 200 -
+2025-05-19 14:24:53,564 INFO Successfully saved rankings for request 8cf138a4-8927-4a77-a83a-2f073766f189
+2025-05-19 14:24:53,565 INFO 127.0.0.1 - - [19/May/2025 14:24:53] "POST /rankings/ HTTP/1.1" 200 -
+2025-05-19 14:24:59,012 INFO get_answers called with nickname=Matas, extra=0
+2025-05-19 14:24:59,022 INFO 127.0.0.1 - - [19/May/2025 14:24:59] "GET /get_answers?nickname=Matas&extra=0 HTTP/1.1" 200 -
+2025-05-19 14:25:05,647 INFO Successfully saved rankings for request 6cb84d94-c7cc-4cc3-9c95-e6e4a3a5265e
+2025-05-19 14:25:05,648 INFO 127.0.0.1 - - [19/May/2025 14:25:05] "POST /rankings/ HTTP/1.1" 200 -
+2025-05-19 14:25:08,948 INFO 127.0.0.1 - - [19/May/2025 14:25:08] "GET /leaderboard HTTP/1.1" 200 -
+2025-05-19 14:25:09,893 INFO 127.0.0.1 - - [19/May/2025 14:25:09] "GET / HTTP/1.1" 200 -
+2025-05-19 14:25:13,155 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.138.6.115:5100
+2025-05-19 14:25:13,155 INFO [33mPress CTRL+C to quit[0m
+2025-05-19 14:25:14,504 INFO 127.0.0.1 - - [19/May/2025 14:25:14] "GET / HTTP/1.1" 200 -
+2025-05-19 14:25:15,832 INFO 127.0.0.1 - - [19/May/2025 14:25:15] "GET /leaderboard HTTP/1.1" 200 -
+2025-05-19 14:31:26,434 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.138.6.115:5100
+2025-05-19 14:31:26,434 INFO [33mPress CTRL+C to quit[0m
+2025-05-19 14:31:30,280 INFO 127.0.0.1 - - [19/May/2025 14:31:30] "GET / HTTP/1.1" 200 -
+2025-05-19 14:31:30,313 INFO 127.0.0.1 - - [19/May/2025 14:31:30] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-19 14:31:31,046 INFO 127.0.0.1 - - [19/May/2025 14:31:31] "GET /leaderboard HTTP/1.1" 200 -
+2025-05-19 14:31:33,038 INFO get_answers called with nickname=Matas, extra=0
+2025-05-19 14:31:33,053 INFO 127.0.0.1 - - [19/May/2025 14:31:33] "GET /get_answers?nickname=Matas&extra=0 HTTP/1.1" 200 -
+2025-05-19 14:31:38,898 INFO Successfully saved rankings for request 6cb84d94-c7cc-4cc3-9c95-e6e4a3a5265e
+2025-05-19 14:31:38,899 INFO 127.0.0.1 - - [19/May/2025 14:31:38] "POST /rankings/ HTTP/1.1" 200 -
+2025-05-19 14:31:41,025 INFO 127.0.0.1 - - [19/May/2025 14:31:41] "GET /leaderboard HTTP/1.1" 200 -
+2025-05-19 14:41:18,180 INFO 127.0.0.1 - - [19/May/2025 14:41:18] "GET / HTTP/1.1" 200 -
+2025-05-19 14:41:18,205 INFO 127.0.0.1 - - [19/May/2025 14:41:18] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-19 14:41:18,971 INFO 127.0.0.1 - - [19/May/2025 14:41:18] "GET /leaderboard HTTP/1.1" 200 -
+2025-05-19 14:41:20,678 INFO get_answers called with nickname=Matas, extra=0
+2025-05-19 14:41:20,691 INFO 127.0.0.1 - - [19/May/2025 14:41:20] "GET /get_answers?nickname=Matas&extra=0 HTTP/1.1" 200 -
+2025-05-19 14:41:26,719 INFO Successfully saved rankings for request 6cb84d94-c7cc-4cc3-9c95-e6e4a3a5265e
+2025-05-19 14:41:26,720 INFO 127.0.0.1 - - [19/May/2025 14:41:26] "POST /rankings/ HTTP/1.1" 200 -
+2025-05-19 14:41:28,934 INFO 127.0.0.1 - - [19/May/2025 14:41:28] "GET /leaderboard HTTP/1.1" 200 -
+2025-05-19 14:42:28,145 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.138.6.115:5100
+2025-05-19 14:42:28,145 INFO [33mPress CTRL+C to quit[0m
+2025-05-19 14:42:32,062 INFO 127.0.0.1 - - [19/May/2025 14:42:32] "GET / HTTP/1.1" 200 -
+2025-05-19 14:42:34,081 INFO get_answers called with nickname=Matas, extra=0
+2025-05-19 14:42:34,095 INFO 127.0.0.1 - - [19/May/2025 14:42:34] "GET /get_answers?nickname=Matas&extra=0 HTTP/1.1" 200 -
+2025-05-19 14:42:39,450 INFO Successfully saved rankings for request 6cb84d94-c7cc-4cc3-9c95-e6e4a3a5265e
+2025-05-19 14:42:39,450 INFO 127.0.0.1 - - [19/May/2025 14:42:39] "POST /rankings/ HTTP/1.1" 200 -
+2025-05-19 14:42:42,017 INFO 127.0.0.1 - - [19/May/2025 14:42:42] "GET /leaderboard HTTP/1.1" 200 -
+2025-05-19 14:43:18,498 INFO Successfully saved rankings for request 6cb84d94-c7cc-4cc3-9c95-e6e4a3a5265e
+2025-05-19 14:43:18,499 INFO 127.0.0.1 - - [19/May/2025 14:43:18] "POST /rankings/ HTTP/1.1" 200 -
+2025-05-19 14:43:38,176 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.138.6.115:5100
+2025-05-19 14:43:38,176 INFO [33mPress CTRL+C to quit[0m
+2025-05-19 14:43:39,906 INFO 127.0.0.1 - - [19/May/2025 14:43:39] "GET / HTTP/1.1" 200 -
+2025-05-19 14:43:40,952 INFO 127.0.0.1 - - [19/May/2025 14:43:40] "GET /leaderboard HTTP/1.1" 200 -
+2025-05-19 14:43:42,829 INFO get_answers called with nickname=Matas, extra=0
+2025-05-19 14:43:42,841 INFO 127.0.0.1 - - [19/May/2025 14:43:42] "GET /get_answers?nickname=Matas&extra=0 HTTP/1.1" 200 -
+2025-05-19 14:43:51,730 INFO Successfully saved rankings for request 6cb84d94-c7cc-4cc3-9c95-e6e4a3a5265e
+2025-05-19 14:43:51,730 INFO 127.0.0.1 - - [19/May/2025 14:43:51] "POST /rankings/ HTTP/1.1" 200 -
+2025-05-19 14:43:53,913 INFO 127.0.0.1 - - [19/May/2025 14:43:53] "GET /leaderboard HTTP/1.1" 200 -
+2025-05-19 14:43:56,846 INFO get_answers called with nickname=Adam, extra=0
+2025-05-19 14:43:56,857 INFO 127.0.0.1 - - [19/May/2025 14:43:56] "GET /get_answers?nickname=Adam&extra=0 HTTP/1.1" 200 -
+2025-05-19 14:43:59,347 INFO get_answers called with nickname=Adam, extra=1
+2025-05-19 14:43:59,357 INFO Selected 1 extra questions out of 1 available
+2025-05-19 14:43:59,358 INFO 127.0.0.1 - - [19/May/2025 14:43:59] "GET /get_answers?nickname=Adam&extra=1 HTTP/1.1" 200 -
+2025-05-19 14:44:11,620 INFO Successfully saved rankings for request 6cb84d94-c7cc-4cc3-9c95-e6e4a3a5265e
+2025-05-19 14:44:11,620 INFO Successfully saved rankings for request 8cf138a4-8927-4a77-a83a-2f073766f189
+2025-05-19 14:44:11,621 INFO 127.0.0.1 - - [19/May/2025 14:44:11] "POST /rankings/ HTTP/1.1" 200 -
+2025-05-19 14:44:11,621 INFO 127.0.0.1 - - [19/May/2025 14:44:11] "POST /rankings/ HTTP/1.1" 200 -
+2025-05-19 14:46:19,803 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.138.6.115:5100
+2025-05-19 14:46:19,803 INFO [33mPress CTRL+C to quit[0m
+2025-05-19 14:46:21,305 INFO 127.0.0.1 - - [19/May/2025 14:46:21] "GET / HTTP/1.1" 200 -
+2025-05-19 14:46:21,334 INFO 127.0.0.1 - - [19/May/2025 14:46:21] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-19 14:46:23,198 INFO get_answers called with nickname=Adam, extra=1
+2025-05-19 14:46:23,212 INFO Selected 1 extra questions out of 1 available
+2025-05-19 14:46:23,215 INFO 127.0.0.1 - - [19/May/2025 14:46:23] "GET /get_answers?nickname=Adam&extra=1 HTTP/1.1" 200 -
+2025-05-19 14:46:27,031 INFO get_answers called with nickname=Adam, extra=0
+2025-05-19 14:46:27,042 INFO 127.0.0.1 - - [19/May/2025 14:46:27] "GET /get_answers?nickname=Adam&extra=0 HTTP/1.1" 200 -
+2025-05-19 14:46:38,501 INFO Successfully saved rankings for request 8cf138a4-8927-4a77-a83a-2f073766f189
+2025-05-19 14:46:38,502 INFO 127.0.0.1 - - [19/May/2025 14:46:38] "POST /rankings/ HTTP/1.1" 200 -
+2025-05-19 14:52:20,333 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.138.6.115:5100
+2025-05-19 14:52:20,333 INFO [33mPress CTRL+C to quit[0m
+2025-05-19 14:52:21,220 INFO 127.0.0.1 - - [19/May/2025 14:52:21] "GET / HTTP/1.1" 200 -
+2025-05-19 14:52:21,243 INFO 127.0.0.1 - - [19/May/2025 14:52:21] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-19 14:52:22,849 INFO get_answers called with nickname=Adam, extra=0
+2025-05-19 14:52:22,853 INFO 127.0.0.1 - - [19/May/2025 14:52:22] "GET /get_answers?nickname=Adam&extra=0 HTTP/1.1" 200 -
+2025-05-19 14:52:23,568 INFO get_answers called with nickname=Adam, extra=0
+2025-05-19 14:52:23,570 INFO 127.0.0.1 - - [19/May/2025 14:52:23] "GET /get_answers?nickname=Adam&extra=0 HTTP/1.1" 200 -
+2025-05-19 14:52:37,015 INFO get_answers called with nickname=Matas, extra=0
+2025-05-19 14:52:37,017 INFO 127.0.0.1 - - [19/May/2025 14:52:37] "GET /get_answers?nickname=Matas&extra=0 HTTP/1.1" 200 -
+2025-05-19 14:52:37,918 INFO get_answers called with nickname=Matas, extra=0
+2025-05-19 14:52:37,919 INFO 127.0.0.1 - - [19/May/2025 14:52:37] "GET /get_answers?nickname=Matas&extra=0 HTTP/1.1" 200 -
+2025-05-19 14:52:38,078 INFO get_answers called with nickname=Matas, extra=0
+2025-05-19 14:52:38,079 INFO 127.0.0.1 - - [19/May/2025 14:52:38] "GET /get_answers?nickname=Matas&extra=0 HTTP/1.1" 200 -
+2025-05-19 14:53:11,923 INFO get_answers called with nickname=Matas, extra=0
+2025-05-19 14:53:11,926 INFO 127.0.0.1 - - [19/May/2025 14:53:11] "GET /get_answers?nickname=Matas&extra=0 HTTP/1.1" 200 -
+2025-05-19 14:53:12,237 INFO get_answers called with nickname=Matas, extra=0
+2025-05-19 14:53:12,238 INFO 127.0.0.1 - - [19/May/2025 14:53:12] "GET /get_answers?nickname=Matas&extra=0 HTTP/1.1" 200 -
+2025-05-19 14:53:12,348 INFO get_answers called with nickname=Matas, extra=0
+2025-05-19 14:53:12,349 INFO 127.0.0.1 - - [19/May/2025 14:53:12] "GET /get_answers?nickname=Matas&extra=0 HTTP/1.1" 200 -
+2025-05-19 14:53:12,499 INFO get_answers called with nickname=Matas, extra=0
+2025-05-19 14:53:12,501 INFO 127.0.0.1 - - [19/May/2025 14:53:12] "GET /get_answers?nickname=Matas&extra=0 HTTP/1.1" 200 -
+2025-05-19 14:54:11,426 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.138.6.115:5100
+2025-05-19 14:54:11,426 INFO [33mPress CTRL+C to quit[0m
+2025-05-19 14:54:12,711 INFO 127.0.0.1 - - [19/May/2025 14:54:12] "GET / HTTP/1.1" 200 -
+2025-05-19 14:54:12,729 INFO 127.0.0.1 - - [19/May/2025 14:54:12] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-19 14:54:14,865 INFO get_answers called with nickname=Matas, extra=0
+2025-05-19 14:54:14,871 INFO 127.0.0.1 - - [19/May/2025 14:54:14] "GET /get_answers?nickname=Matas&extra=0 HTTP/1.1" 200 -
+2025-05-19 14:54:15,446 INFO get_answers called with nickname=Matas, extra=0
+2025-05-19 14:54:15,447 INFO 127.0.0.1 - - [19/May/2025 14:54:15] "GET /get_answers?nickname=Matas&extra=0 HTTP/1.1" 200 -
+2025-05-19 14:54:15,604 INFO get_answers called with nickname=Matas, extra=0
+2025-05-19 14:54:15,605 INFO 127.0.0.1 - - [19/May/2025 14:54:15] "GET /get_answers?nickname=Matas&extra=0 HTTP/1.1" 200 -
+2025-05-19 14:54:16,267 INFO get_answers called with nickname=Matas, extra=0
+2025-05-19 14:54:16,268 INFO 127.0.0.1 - - [19/May/2025 14:54:16] "GET /get_answers?nickname=Matas&extra=0 HTTP/1.1" 200 -
+2025-05-19 14:54:16,432 INFO get_answers called with nickname=Matas, extra=0
+2025-05-19 14:54:16,434 INFO 127.0.0.1 - - [19/May/2025 14:54:16] "GET /get_answers?nickname=Matas&extra=0 HTTP/1.1" 200 -
+2025-05-19 14:54:16,564 INFO get_answers called with nickname=Matas, extra=0
+2025-05-19 14:54:16,565 INFO 127.0.0.1 - - [19/May/2025 14:54:16] "GET /get_answers?nickname=Matas&extra=0 HTTP/1.1" 200 -
+2025-05-19 14:54:19,421 INFO get_answers called with nickname=Matas, extra=1
+2025-05-19 14:54:19,422 INFO 127.0.0.1 - - [19/May/2025 14:54:19] "GET /get_answers?nickname=Matas&extra=1 HTTP/1.1" 200 -
+2025-05-19 14:54:19,736 INFO get_answers called with nickname=Matas, extra=1
+2025-05-19 14:54:19,738 INFO 127.0.0.1 - - [19/May/2025 14:54:19] "GET /get_answers?nickname=Matas&extra=1 HTTP/1.1" 200 -
+2025-05-19 14:54:19,882 INFO get_answers called with nickname=Matas, extra=1
+2025-05-19 14:54:19,883 INFO 127.0.0.1 - - [19/May/2025 14:54:19] "GET /get_answers?nickname=Matas&extra=1 HTTP/1.1" 200 -
+2025-05-19 14:54:20,018 INFO get_answers called with nickname=Matas, extra=1
+2025-05-19 14:54:20,020 INFO 127.0.0.1 - - [19/May/2025 14:54:20] "GET /get_answers?nickname=Matas&extra=1 HTTP/1.1" 200 -
+2025-05-19 14:54:22,297 INFO get_answers called with nickname=asda, extra=1
+2025-05-19 14:54:22,298 INFO 127.0.0.1 - - [19/May/2025 14:54:22] "GET /get_answers?nickname=asda&extra=1 HTTP/1.1" 200 -
+2025-05-19 14:54:28,486 INFO 127.0.0.1 - - [19/May/2025 14:54:28] "GET /available_pdfs HTTP/1.1" 200 -
+2025-05-19 14:54:32,190 INFO Extracted 69693 characters from PDF
+2025-05-19 14:54:32,191 INFO Extracted 8780 words from PDF
+2025-05-19 14:54:32,232 INFO 127.0.0.1 - - [19/May/2025 14:54:32] "[35m[1mPOST /summarize HTTP/1.1[0m" 202 -
+2025-05-19 14:54:43,685 INFO get_answers called with nickname=Matas, extra=1
+2025-05-19 14:54:43,689 INFO 127.0.0.1 - - [19/May/2025 14:54:43] "GET /get_answers?nickname=Matas&extra=1 HTTP/1.1" 200 -
+2025-05-19 14:54:45,936 INFO get_answers called with nickname=Matas, extra=1
+2025-05-19 14:54:45,939 INFO 127.0.0.1 - - [19/May/2025 14:54:45] "GET /get_answers?nickname=Matas&extra=1 HTTP/1.1" 200 -
+2025-05-19 14:54:47,352 INFO get_answers called with nickname=Matas, extra=1
+2025-05-19 14:54:47,356 INFO 127.0.0.1 - - [19/May/2025 14:54:47] "GET /get_answers?nickname=Matas&extra=1 HTTP/1.1" 200 -
+2025-05-19 14:54:47,714 INFO get_answers called with nickname=Matas, extra=1
+2025-05-19 14:54:47,716 INFO 127.0.0.1 - - [19/May/2025 14:54:47] "GET /get_answers?nickname=Matas&extra=1 HTTP/1.1" 200 -
+2025-05-19 14:54:53,553 ERROR Exception on /rankings/ [POST]
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/nikolas/Desktop/Projects/PaperSummarizationWeb/app.py", line 730, in save_rankings
+    'real_rankings': real_rankings,
+NameError: name 'real_rankings' is not defined
+2025-05-19 14:54:53,559 INFO 127.0.0.1 - - [19/May/2025 14:54:53] "[35m[1mPOST /rankings/ HTTP/1.1[0m" 500 -
+2025-05-19 14:54:55,604 ERROR Exception on /rankings/ [POST]
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/nikolas/Desktop/Projects/PaperSummarizationWeb/app.py", line 730, in save_rankings
+    'real_rankings': real_rankings,
+NameError: name 'real_rankings' is not defined
+2025-05-19 14:54:55,606 INFO 127.0.0.1 - - [19/May/2025 14:54:55] "[35m[1mPOST /rankings/ HTTP/1.1[0m" 500 -
+2025-05-19 14:56:29,997 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.138.6.115:5100
+2025-05-19 14:56:29,997 INFO [33mPress CTRL+C to quit[0m
+2025-05-19 14:56:31,761 INFO 127.0.0.1 - - [19/May/2025 14:56:31] "GET / HTTP/1.1" 200 -
+2025-05-19 14:56:31,788 INFO 127.0.0.1 - - [19/May/2025 14:56:31] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-19 14:56:33,116 INFO get_answers called with nickname=Matas, extra=1
+2025-05-19 14:56:33,123 INFO 127.0.0.1 - - [19/May/2025 14:56:33] "GET /get_answers?nickname=Matas&extra=1 HTTP/1.1" 200 -
+2025-05-19 14:56:38,966 ERROR Exception on /rankings/ [POST]
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/nikolas/Desktop/Projects/PaperSummarizationWeb/app.py", line 730, in save_rankings
+    'real_rankings': real_rankings,
+NameError: name 'real_rankings' is not defined
+2025-05-19 14:56:38,969 INFO 127.0.0.1 - - [19/May/2025 14:56:38] "[35m[1mPOST /rankings/ HTTP/1.1[0m" 500 -
+2025-05-19 14:56:41,268 ERROR Exception on /rankings/ [POST]
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/nikolas/Desktop/Projects/PaperSummarizationWeb/app.py", line 730, in save_rankings
+    'real_rankings': real_rankings,
+NameError: name 'real_rankings' is not defined
+2025-05-19 14:56:41,270 INFO 127.0.0.1 - - [19/May/2025 14:56:41] "[35m[1mPOST /rankings/ HTTP/1.1[0m" 500 -
+2025-05-19 14:56:51,519 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.138.6.115:5100
+2025-05-19 14:56:51,519 INFO [33mPress CTRL+C to quit[0m
+2025-05-19 14:56:53,066 INFO 127.0.0.1 - - [19/May/2025 14:56:53] "GET / HTTP/1.1" 200 -
+2025-05-19 14:56:53,086 INFO 127.0.0.1 - - [19/May/2025 14:56:53] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-19 14:56:55,017 INFO get_answers called with nickname=Matas, extra=1
+2025-05-19 14:56:55,021 INFO 127.0.0.1 - - [19/May/2025 14:56:55] "GET /get_answers?nickname=Matas&extra=1 HTTP/1.1" 200 -
+2025-05-19 14:57:01,184 ERROR Exception on /rankings/ [POST]
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/nikolas/Desktop/Projects/PaperSummarizationWeb/app.py", line 730, in save_rankings
+    'real_rankings': real_rankings,
+NameError: name 'real_rankings' is not defined
+2025-05-19 14:57:01,188 INFO 127.0.0.1 - - [19/May/2025 14:57:01] "[35m[1mPOST /rankings/ HTTP/1.1[0m" 500 -
+2025-05-19 14:57:03,906 INFO 127.0.0.1 - - [19/May/2025 14:57:03] "GET /leaderboard HTTP/1.1" 200 -
+2025-05-19 15:00:47,475 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.138.6.115:5100
+2025-05-19 15:00:47,475 INFO [33mPress CTRL+C to quit[0m
+2025-05-19 15:00:49,282 INFO 127.0.0.1 - - [19/May/2025 15:00:49] "GET / HTTP/1.1" 200 -
+2025-05-19 15:00:49,302 INFO 127.0.0.1 - - [19/May/2025 15:00:49] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-19 15:00:50,292 INFO 127.0.0.1 - - [19/May/2025 15:00:50] "GET /leaderboard HTTP/1.1" 200 -
+2025-05-19 15:00:51,937 INFO get_answers called with nickname=Matas, extra=1
+2025-05-19 15:00:51,943 INFO 127.0.0.1 - - [19/May/2025 15:00:51] "GET /get_answers?nickname=Matas&extra=1 HTTP/1.1" 200 -
+2025-05-19 15:00:56,890 INFO Successfully saved rankings for request 70e7aedd-85cb-4a33-a250-2490eb027a99
+2025-05-19 15:00:56,891 INFO 127.0.0.1 - - [19/May/2025 15:00:56] "POST /rankings/ HTTP/1.1" 200 -
+2025-05-19 15:01:19,021 INFO 127.0.0.1 - - [19/May/2025 15:01:19] "GET /leaderboard HTTP/1.1" 200 -
+2025-05-19 15:01:25,019 INFO 127.0.0.1 - - [19/May/2025 15:01:25] "GET /available_pdfs HTTP/1.1" 200 -
+2025-05-19 15:01:29,216 INFO Extracted 55889 characters from PDF
+2025-05-19 15:01:29,217 INFO Extracted 7198 words from PDF
+2025-05-19 15:01:29,256 INFO 127.0.0.1 - - [19/May/2025 15:01:29] "[35m[1mPOST /summarize HTTP/1.1[0m" 202 -
+2025-05-19 15:01:50,402 INFO get_answers called with nickname=Matas, extra=1
+2025-05-19 15:01:50,408 INFO Selected 1 extra questions out of 1 available
+2025-05-19 15:01:50,409 INFO 127.0.0.1 - - [19/May/2025 15:01:50] "GET /get_answers?nickname=Matas&extra=1 HTTP/1.1" 200 -
+2025-05-19 15:01:59,385 INFO get_answers called with nickname=Adam, extra=1
+2025-05-19 15:01:59,389 INFO Selected 1 extra questions out of 1 available
+2025-05-19 15:01:59,389 INFO 127.0.0.1 - - [19/May/2025 15:01:59] "GET /get_answers?nickname=Adam&extra=1 HTTP/1.1" 200 -
+2025-05-19 15:02:12,191 INFO Successfully saved rankings for request a7039aa7-74f2-459d-93f4-88fd95498295
+2025-05-19 15:02:12,192 INFO Successfully saved rankings for request 70e7aedd-85cb-4a33-a250-2490eb027a99
+2025-05-19 15:02:12,192 INFO 127.0.0.1 - - [19/May/2025 15:02:12] "POST /rankings/ HTTP/1.1" 200 -
+2025-05-19 15:02:12,193 INFO 127.0.0.1 - - [19/May/2025 15:02:12] "POST /rankings/ HTTP/1.1" 200 -
+2025-05-19 15:02:14,936 INFO 127.0.0.1 - - [19/May/2025 15:02:14] "GET /leaderboard HTTP/1.1" 200 -
+2025-05-19 15:02:16,201 INFO 127.0.0.1 - - [19/May/2025 15:02:16] "GET / HTTP/1.1" 200 -
+2025-05-19 15:02:16,227 INFO 127.0.0.1 - - [19/May/2025 15:02:16] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-19 15:03:43,390 INFO 127.0.0.1 - - [19/May/2025 15:03:43] "GET / HTTP/1.1" 200 -
+2025-05-19 15:03:43,414 INFO 127.0.0.1 - - [19/May/2025 15:03:43] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-19 15:03:43,977 INFO 127.0.0.1 - - [19/May/2025 15:03:43] "GET /leaderboard HTTP/1.1" 200 -
+2025-05-19 15:03:45,188 INFO 127.0.0.1 - - [19/May/2025 15:03:45] "GET /leaderboard HTTP/1.1" 200 -
+2025-05-19 15:04:02,489 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.138.6.115:5100
+2025-05-19 15:04:02,489 INFO [33mPress CTRL+C to quit[0m
+2025-05-19 15:04:04,555 INFO 127.0.0.1 - - [19/May/2025 15:04:04] "GET / HTTP/1.1" 200 -
+2025-05-19 15:04:05,705 INFO 127.0.0.1 - - [19/May/2025 15:04:05] "GET /leaderboard HTTP/1.1" 200 -
+2025-05-19 15:04:17,557 INFO 127.0.0.1 - - [19/May/2025 15:04:17] "GET /available_pdfs HTTP/1.1" 200 -
+2025-05-19 15:04:27,339 INFO Extracted 26112 characters from PDF
+2025-05-19 15:04:27,339 INFO Extracted 3468 words from PDF
+2025-05-19 15:04:27,392 INFO 127.0.0.1 - - [19/May/2025 15:04:27] "[35m[1mPOST /summarize HTTP/1.1[0m" 202 -
+2025-05-19 15:04:45,369 INFO get_answers called with nickname=Val, extra=1
+2025-05-19 15:04:45,378 INFO Selected 1 extra questions out of 2 available
+2025-05-19 15:04:45,378 INFO 127.0.0.1 - - [19/May/2025 15:04:45] "GET /get_answers?nickname=Val&extra=1 HTTP/1.1" 200 -
+2025-05-19 15:04:46,853 INFO get_answers called with nickname=Val, extra=1
+2025-05-19 15:04:46,859 INFO Selected 1 extra questions out of 2 available
+2025-05-19 15:04:46,860 INFO 127.0.0.1 - - [19/May/2025 15:04:46] "GET /get_answers?nickname=Val&extra=1 HTTP/1.1" 200 -
+2025-05-19 15:04:47,554 INFO get_answers called with nickname=Val, extra=1
+2025-05-19 15:04:47,560 INFO Selected 1 extra questions out of 2 available
+2025-05-19 15:04:47,561 INFO 127.0.0.1 - - [19/May/2025 15:04:47] "GET /get_answers?nickname=Val&extra=1 HTTP/1.1" 200 -
+2025-05-19 15:04:47,955 INFO get_answers called with nickname=Val, extra=1
+2025-05-19 15:04:47,961 INFO Selected 1 extra questions out of 2 available
+2025-05-19 15:04:47,962 INFO 127.0.0.1 - - [19/May/2025 15:04:47] "GET /get_answers?nickname=Val&extra=1 HTTP/1.1" 200 -
+2025-05-19 15:04:48,103 INFO get_answers called with nickname=Val, extra=1
+2025-05-19 15:04:48,108 INFO Selected 1 extra questions out of 2 available
+2025-05-19 15:04:48,109 INFO 127.0.0.1 - - [19/May/2025 15:04:48] "GET /get_answers?nickname=Val&extra=1 HTTP/1.1" 200 -
+2025-05-19 15:04:48,254 INFO get_answers called with nickname=Val, extra=1
+2025-05-19 15:04:48,259 INFO Selected 1 extra questions out of 2 available
+2025-05-19 15:04:48,260 INFO 127.0.0.1 - - [19/May/2025 15:04:48] "GET /get_answers?nickname=Val&extra=1 HTTP/1.1" 200 -
+2025-05-19 15:04:48,435 INFO get_answers called with nickname=Val, extra=1
+2025-05-19 15:04:48,440 INFO Selected 1 extra questions out of 2 available
+2025-05-19 15:04:48,441 INFO 127.0.0.1 - - [19/May/2025 15:04:48] "GET /get_answers?nickname=Val&extra=1 HTTP/1.1" 200 -
+2025-05-19 15:04:48,686 INFO get_answers called with nickname=Val, extra=1
+2025-05-19 15:04:48,692 INFO Selected 1 extra questions out of 2 available
+2025-05-19 15:04:48,693 INFO 127.0.0.1 - - [19/May/2025 15:04:48] "GET /get_answers?nickname=Val&extra=1 HTTP/1.1" 200 -
+2025-05-19 15:04:48,987 INFO get_answers called with nickname=Val, extra=1
+2025-05-19 15:04:48,992 INFO Selected 1 extra questions out of 2 available
+2025-05-19 15:04:48,993 INFO 127.0.0.1 - - [19/May/2025 15:04:48] "GET /get_answers?nickname=Val&extra=1 HTTP/1.1" 200 -
+2025-05-19 15:04:49,172 INFO get_answers called with nickname=Val, extra=1
+2025-05-19 15:04:49,179 INFO Selected 1 extra questions out of 2 available
+2025-05-19 15:04:49,180 INFO 127.0.0.1 - - [19/May/2025 15:04:49] "GET /get_answers?nickname=Val&extra=1 HTTP/1.1" 200 -
+2025-05-19 15:04:49,303 INFO get_answers called with nickname=Val, extra=1
+2025-05-19 15:04:49,308 INFO Selected 1 extra questions out of 2 available
+2025-05-19 15:04:49,309 INFO 127.0.0.1 - - [19/May/2025 15:04:49] "GET /get_answers?nickname=Val&extra=1 HTTP/1.1" 200 -
+2025-05-19 15:04:49,769 INFO get_answers called with nickname=Val, extra=1
+2025-05-19 15:04:49,775 INFO Selected 1 extra questions out of 2 available
+2025-05-19 15:04:49,775 INFO 127.0.0.1 - - [19/May/2025 15:04:49] "GET /get_answers?nickname=Val&extra=1 HTTP/1.1" 200 -
+2025-05-19 15:04:50,104 INFO get_answers called with nickname=Val, extra=1
+2025-05-19 15:04:50,110 INFO Selected 1 extra questions out of 2 available
+2025-05-19 15:04:50,111 INFO 127.0.0.1 - - [19/May/2025 15:04:50] "GET /get_answers?nickname=Val&extra=1 HTTP/1.1" 200 -
+2025-05-19 15:04:50,254 INFO get_answers called with nickname=Val, extra=1
+2025-05-19 15:04:50,258 INFO Selected 1 extra questions out of 2 available
+2025-05-19 15:04:50,259 INFO 127.0.0.1 - - [19/May/2025 15:04:50] "GET /get_answers?nickname=Val&extra=1 HTTP/1.1" 200 -
+2025-05-19 15:04:50,402 INFO get_answers called with nickname=Val, extra=1
+2025-05-19 15:04:50,408 INFO Selected 1 extra questions out of 2 available
+2025-05-19 15:04:50,409 INFO 127.0.0.1 - - [19/May/2025 15:04:50] "GET /get_answers?nickname=Val&extra=1 HTTP/1.1" 200 -
+2025-05-19 15:04:50,554 INFO get_answers called with nickname=Val, extra=1
+2025-05-19 15:04:50,560 INFO Selected 1 extra questions out of 2 available
+2025-05-19 15:04:50,561 INFO 127.0.0.1 - - [19/May/2025 15:04:50] "GET /get_answers?nickname=Val&extra=1 HTTP/1.1" 200 -
+2025-05-19 15:04:50,686 INFO get_answers called with nickname=Val, extra=1
+2025-05-19 15:04:50,692 INFO Selected 1 extra questions out of 2 available
+2025-05-19 15:04:50,693 INFO 127.0.0.1 - - [19/May/2025 15:04:50] "GET /get_answers?nickname=Val&extra=1 HTTP/1.1" 200 -
+2025-05-19 15:04:50,889 INFO get_answers called with nickname=Val, extra=1
+2025-05-19 15:04:50,894 INFO Selected 1 extra questions out of 2 available
+2025-05-19 15:04:50,894 INFO 127.0.0.1 - - [19/May/2025 15:04:50] "GET /get_answers?nickname=Val&extra=1 HTTP/1.1" 200 -
+2025-05-19 15:04:52,954 INFO get_answers called with nickname=Val, extra=1
+2025-05-19 15:04:52,957 INFO Selected 1 extra questions out of 2 available
+2025-05-19 15:04:52,957 INFO 127.0.0.1 - - [19/May/2025 15:04:52] "GET /get_answers?nickname=Val&extra=1 HTTP/1.1" 200 -
+2025-05-19 15:05:05,157 INFO Successfully saved rankings for request 70e7aedd-85cb-4a33-a250-2490eb027a99
+2025-05-19 15:05:05,157 INFO Successfully saved rankings for request 78e09660-3b49-4c0e-ba8a-63fbac0915ae
+2025-05-19 15:05:05,158 INFO 127.0.0.1 - - [19/May/2025 15:05:05] "POST /rankings/ HTTP/1.1" 200 -
+2025-05-19 15:05:05,159 INFO 127.0.0.1 - - [19/May/2025 15:05:05] "POST /rankings/ HTTP/1.1" 200 -
+2025-05-19 15:05:07,922 INFO 127.0.0.1 - - [19/May/2025 15:05:07] "GET /leaderboard HTTP/1.1" 200 -
+2025-05-19 15:05:09,430 INFO 127.0.0.1 - - [19/May/2025 15:05:09] "GET / HTTP/1.1" 200 -
+2025-05-19 15:05:09,456 INFO 127.0.0.1 - - [19/May/2025 15:05:09] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-19 15:05:11,992 INFO 127.0.0.1 - - [19/May/2025 15:05:11] "GET /leaderboard HTTP/1.1" 200 -
+2025-05-19 15:06:37,434 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.138.6.115:5100
+2025-05-19 15:06:37,434 INFO [33mPress CTRL+C to quit[0m
+2025-05-19 15:06:40,637 INFO 127.0.0.1 - - [19/May/2025 15:06:40] "GET / HTTP/1.1" 200 -
+2025-05-19 15:06:40,657 INFO 127.0.0.1 - - [19/May/2025 15:06:40] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-19 15:06:43,957 INFO get_answers called with nickname=Val, extra=0
+2025-05-19 15:06:43,969 INFO 127.0.0.1 - - [19/May/2025 15:06:43] "GET /get_answers?nickname=Val&extra=0 HTTP/1.1" 200 -
+2025-05-19 15:08:19,688 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.138.6.115:5100
+2025-05-19 15:08:19,689 INFO [33mPress CTRL+C to quit[0m
+2025-05-19 15:08:22,028 INFO 127.0.0.1 - - [19/May/2025 15:08:22] "GET / HTTP/1.1" 200 -
+2025-05-19 15:08:22,050 INFO 127.0.0.1 - - [19/May/2025 15:08:22] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-19 15:08:24,448 INFO get_answers called with nickname=Val, extra=1
+2025-05-19 15:08:24,454 INFO Selected 1 extra questions out of 2 available
+2025-05-19 15:08:24,455 INFO 127.0.0.1 - - [19/May/2025 15:08:24] "GET /get_answers?nickname=Val&extra=1 HTTP/1.1" 200 -
+2025-05-19 15:08:31,475 INFO Successfully saved rankings for request 78e09660-3b49-4c0e-ba8a-63fbac0915ae
+2025-05-19 15:08:31,476 INFO 127.0.0.1 - - [19/May/2025 15:08:31] "POST /rankings/ HTTP/1.1" 200 -
+2025-05-19 15:10:01,890 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.138.6.115:5100
+2025-05-19 15:10:01,890 INFO [33mPress CTRL+C to quit[0m
+2025-05-19 15:10:02,928 INFO 127.0.0.1 - - [19/May/2025 15:10:02] "GET / HTTP/1.1" 200 -
+2025-05-19 15:10:02,949 INFO 127.0.0.1 - - [19/May/2025 15:10:02] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-19 15:10:04,710 INFO get_answers called with nickname=Val, extra=1
+2025-05-19 15:10:04,718 INFO Selected 1 extra questions out of 2 available
+2025-05-19 15:10:04,719 INFO 127.0.0.1 - - [19/May/2025 15:10:04] "GET /get_answers?nickname=Val&extra=1 HTTP/1.1" 200 -
+2025-05-19 15:10:12,729 INFO Successfully saved rankings for request 70e7aedd-85cb-4a33-a250-2490eb027a99
+2025-05-19 15:10:12,729 INFO Successfully saved rankings for request 78e09660-3b49-4c0e-ba8a-63fbac0915ae
+2025-05-19 15:10:12,730 INFO 127.0.0.1 - - [19/May/2025 15:10:12] "POST /rankings/ HTTP/1.1" 200 -
+2025-05-19 15:10:12,731 INFO 127.0.0.1 - - [19/May/2025 15:10:12] "POST /rankings/ HTTP/1.1" 200 -
+2025-05-19 15:10:15,827 INFO 127.0.0.1 - - [19/May/2025 15:10:15] "GET /leaderboard HTTP/1.1" 200 -
+2025-05-19 15:13:39,957 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.138.6.115:5100
+2025-05-19 15:13:39,957 INFO [33mPress CTRL+C to quit[0m
+2025-05-19 15:13:40,078 INFO 127.0.0.1 - - [19/May/2025 15:13:40] "GET / HTTP/1.1" 200 -
+2025-05-19 15:13:40,102 INFO 127.0.0.1 - - [19/May/2025 15:13:40] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-19 15:13:43,299 INFO 127.0.0.1 - - [19/May/2025 15:13:43] "GET /available_pdfs HTTP/1.1" 200 -
+2025-05-19 15:13:53,852 INFO Extracted 24352 characters from PDF
+2025-05-19 15:13:53,853 INFO Extracted 3131 words from PDF
+2025-05-19 15:13:53,893 INFO 127.0.0.1 - - [19/May/2025 15:13:53] "[35m[1mPOST /summarize HTTP/1.1[0m" 202 -
+2025-05-19 15:14:07,879 INFO 127.0.0.1 - - [19/May/2025 15:14:07] "GET /leaderboard HTTP/1.1" 200 -
+2025-05-19 15:14:27,329 INFO get_answers called with nickname=Adam, extra=1
+2025-05-19 15:14:27,337 INFO Selected 1 extra questions out of 2 available
+2025-05-19 15:14:27,338 INFO 127.0.0.1 - - [19/May/2025 15:14:27] "GET /get_answers?nickname=Adam&extra=1 HTTP/1.1" 200 -
+2025-05-19 15:14:32,113 INFO get_answers called with nickname=Adam, extra=1
+2025-05-19 15:14:32,119 INFO Selected 1 extra questions out of 2 available
+2025-05-19 15:14:32,120 INFO 127.0.0.1 - - [19/May/2025 15:14:32] "GET /get_answers?nickname=Adam&extra=1 HTTP/1.1" 200 -
+2025-05-19 15:14:32,560 INFO get_answers called with nickname=Adam, extra=1
+2025-05-19 15:14:32,567 INFO Selected 1 extra questions out of 2 available
+2025-05-19 15:14:32,568 INFO 127.0.0.1 - - [19/May/2025 15:14:32] "GET /get_answers?nickname=Adam&extra=1 HTTP/1.1" 200 -
+2025-05-19 15:14:32,711 INFO get_answers called with nickname=Adam, extra=1
+2025-05-19 15:14:32,717 INFO Selected 1 extra questions out of 2 available
+2025-05-19 15:14:32,717 INFO 127.0.0.1 - - [19/May/2025 15:14:32] "GET /get_answers?nickname=Adam&extra=1 HTTP/1.1" 200 -
+2025-05-19 15:14:32,843 INFO get_answers called with nickname=Adam, extra=1
+2025-05-19 15:14:32,850 INFO Selected 1 extra questions out of 2 available
+2025-05-19 15:14:32,852 INFO 127.0.0.1 - - [19/May/2025 15:14:32] "GET /get_answers?nickname=Adam&extra=1 HTTP/1.1" 200 -
+2025-05-19 15:14:33,095 INFO get_answers called with nickname=Adam, extra=1
+2025-05-19 15:14:33,103 INFO Selected 1 extra questions out of 2 available
+2025-05-19 15:14:33,104 INFO 127.0.0.1 - - [19/May/2025 15:14:33] "GET /get_answers?nickname=Adam&extra=1 HTTP/1.1" 200 -
+2025-05-19 15:15:09,422 INFO Successfully saved rankings for request 70e7aedd-85cb-4a33-a250-2490eb027a99
+2025-05-19 15:15:09,422 INFO Successfully saved rankings for request 57a3ca54-2066-47da-90c9-8028528e186c
+2025-05-19 15:15:09,422 INFO Successfully saved rankings for request a7039aa7-74f2-459d-93f4-88fd95498295
+2025-05-19 15:15:09,423 INFO 127.0.0.1 - - [19/May/2025 15:15:09] "POST /rankings/ HTTP/1.1" 200 -
+2025-05-19 15:15:09,424 INFO 127.0.0.1 - - [19/May/2025 15:15:09] "POST /rankings/ HTTP/1.1" 200 -
+2025-05-19 15:15:09,424 INFO 127.0.0.1 - - [19/May/2025 15:15:09] "POST /rankings/ HTTP/1.1" 200 -
+2025-05-19 15:15:11,829 INFO 127.0.0.1 - - [19/May/2025 15:15:11] "GET /leaderboard HTTP/1.1" 200 -

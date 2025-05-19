@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Academic Paper Summarizer - Benchmarking LLMs using Academic Talks</title>
+    <title>Academic Talk Summarizer - Benchmarking LLMs using Academic </div>Talks</title>
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown.min.css">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
@@ -237,12 +237,21 @@
         #pdf-dropdown {
             margin-top: 10px;
         }
+
+        /* Ensure leaderboard table is white with black text */
+        #leaderboard-tab .form-section,
+        #leaderboardTable,
+        #leaderboardTable th,
+        #leaderboardTable td {
+            background-color: #ffffff !important;
+            color: #000000 !important;
+        }
     </style>
 </head>
 
 <body>
     <div class="container markdown-body">
-        <h1>Academic Paper Summarizer</h1>
+        <h1>Academic Talk Summarizer</h1>
         <div>
             <span class="tab active" id="questions-tab-btn">Questions</span>
             <span class="tab" id="answers-tab-btn">Answers</span>
@@ -291,7 +300,7 @@
                     <div class="form-group">
                         <label for="nickname">Nickname:</label>
                         <input type="text" id="nickname" name="nickname" required
-                            style="background-color: #ffffff !important; -webkit-appearance: none; color: #000000;">
+                            style="background-color: #ffffff !important; appearance: none; -webkit-appearance: none; color: #000000;">
                     </div>
                     <button type="submit" id="submit-btn">Submit Question</button>
                 </form>
@@ -303,16 +312,15 @@
             <div class="form-section">
                 <form id="answersForm">
                     <div class="form-group">
-                        <label for="ans-nickname">Nickname:</label>
-                        <input type="text" id="ans-nickname" name="nickname" required
-                            style="background-color: #ffffff !important; color: #000000; width: 100%; padding: 0.75rem; border: 1px solid #d0d7de; border-radius: 6px;">
+                        <label for="ans-nickname">Nickname</label>
+                        <input type="text" id="ans-nickname" name="nickname" placeholder="Enter your nickname"
+                            required />
                     </div>
                     <div class="form-group">
-                        <label for="extra-num">Extra Questions (number):</label>
-                        <input type="number" id="extra-num" name="extra" min="0" value="0" required
-                            style="background-color: #ffffff !important; color: #000000; width: 100%; padding: 0.75rem; border: 1px solid #d0d7de; border-radius: 6px;">
+                        <label for="extra-num">Extra Questions</label>
+                        <input type="number" id="extra-num" name="extra" min="0" value="0" />
                     </div>
-                    <button type="submit" id="fetch-requests-btn">Get Requests</button>
+                    <button type="submit" id="load-answers-btn">Load Answers</button>
                 </form>
             </div>
             <!-- Removed the select request menu; all rating panels will be displayed below automatically -->
@@ -324,26 +332,20 @@
         <!-- Leaderboard Tab -->
         <div id="leaderboard-tab" class="tab-content">
             <div class="form-section">
-                <div class="form-group">
-                    <label for="difficulty-filter">Question Difficulty:</label>
-                    <select id="difficulty-filter" class="quality-score">
-                        <option value="">All</option>
-                        <option>Easy</option>
-                        <option>Medium</option>
-                        <option>Hard</option>
-                    </select>
-                    <button id="load-leaderboard" type="button">Load Leaderboard</button>
-                </div>
-                <div class="form-group">
-                    <h3>Quality Score Distribution</h3>
-                    <canvas id="histogramChart"></canvas>
-                </div>
-                <div class="form-group">
-                    <h3>Win Counts (Rank #1)</h3>
-                    <canvas id="rankingChart"></canvas>
-                </div>
+                <table id="leaderboardTable" style="width:100%;border-collapse:collapse;background:white;color:#333;">
+                    <thead>
+                        <tr>
+                            <th style="border:1px solid #ddd;padding:8px;background-color:#f8f8f8;">Model</th>
+                            <th style="border:1px solid #ddd;padding:8px;background-color:#f8f8f8;">Easy (µ±SEM)</th>
+                            <th style="border:1px solid #ddd;padding:8px;background-color:#f8f8f8;">Hard (µ±SEM)</th>
+                            <th style="border:1px solid #ddd;padding:8px;background-color:#f8f8f8;">All (µ±SEM)</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
             </div>
         </div>
+    </div>
     </div>
     <script>
         // Tab switching
@@ -481,7 +483,7 @@
                 const data = await response.json();
                 if (!response.ok) throw new Error(data.error || 'Failed to submit question');
                 // Simply display a confirmation message and clear the form
-                document.getElementById('question-status').innerText = 'Question submitted successfully!';
+                document.getElementById('question-status').innerText = 'Question submitted successfully! Answers take 30-60 seconds to generate.';
                 e.target.reset();
                 // Reset PDF source to upload
                 document.querySelector('input[name="pdf_source"][value="upload"]').checked = true;
@@ -551,22 +553,22 @@
                         <button type="button" class="toggle-details">Show Details</button>
                       </div>
                       <div class="summary-content hidden">
-                        <div><strong>${model1}:</strong>${marked.parse(answer1)}</div>
-                        <div><strong>${model2}:</strong>${marked.parse(answer2)}</div>
+                        <div><strong>Model 1:</strong>${marked.parse(answer1)}</div>
+                        <div><strong>Model 2:</strong>${marked.parse(answer2)}</div>
                         <div class="form-group">
                           <label for="preferred-${reqId}">Preferred Answer:</label>
                           <select id="preferred-${reqId}" class="preferred-dropdown">
                             <option value="">--Select--</option>
-                            <option value="answer1">First (${model1})</option>
-                            <option value="answer2">Second (${model2})</option>
+                            <option value="answer1">Model 1</option>
+                            <option value="answer2">Model 2</option>
                           </select>
                         </div>
                         <div class="form-group">
-                          <label for="quality1-${reqId}">Quality ${model1} (1-10):</label>
+                          <label for="quality1-${reqId}">Quality Model 1 (1-10):</label>
                           <input type="number" id="quality1-${reqId}" class="quality-input" min="1" max="10">
                         </div>
                         <div class="form-group">
-                          <label for="quality2-${reqId}">Quality ${model2} (1-10):</label>
+                          <label for="quality2-${reqId}">Quality Model 2 (1-10):</label>
                           <input type="number" id="quality2-${reqId}" class="quality-input" min="1" max="10">
                         </div>
                       </div>
@@ -603,30 +605,38 @@
                 const quality1 = panel.querySelector(`#quality1-${reqId}`).value;
                 const quality2 = panel.querySelector(`#quality2-${reqId}`).value;
 
-                // ...existing empty‐field check...
-                if (!reqId || !preferred || quality1 === '' || quality2 === '') {
-                    alert(`Please complete ratings for request ${reqId}.`);
+                // Only check if request ID is present, make preferred model optional
+                if (!reqId) {
+                    alert(`Missing request ID. Please reload the page and try again.`);
                     cancel = true;
                     return;
                 }
 
-                const q1 = parseInt(quality1, 10);
-                const q2 = parseInt(quality2, 10);
-                // consistency check
-                if ((preferred === 'answer1' && q1 <= q2) ||
-                    (preferred === 'answer2' && q2 <= q1)) {
-                    const highModel = (preferred === 'answer1') ? model1 : model2;
-                    const lowModel = (preferred === 'answer1') ? model2 : model1;
-                    const highScore = (preferred === 'answer1') ? q1 : q2;
-                    const lowScore = (preferred === 'answer1') ? q2 : q1;
-                    if (!confirm(
-                        `You ranked ${highModel} as preferred (score ${highScore}) but its quality ` +
-                        `score is not higher than ${lowModel} (score ${lowScore}).\nContinue?`
-                    )) {
+                const q1 = quality1 === '' ? null : parseInt(quality1, 10);
+                const q2 = quality2 === '' ? null : parseInt(quality2, 10);
+
+                // Only perform consistency check if preferred model is selected and both scores provided
+                if (preferred && q1 !== null && q2 !== null) {
+                    if ((preferred === 'answer1' && q1 <= q2) ||
+                        (preferred === 'answer2' && q2 <= q1)) {
+                        const highModel = (preferred === 'answer1') ? model1 : model2;
+                        const lowModel = (preferred === 'answer1') ? model2 : model1;
+                        const highScore = (preferred === 'answer1') ? q1 : q2;
+                        const lowScore = (preferred === 'answer1') ? q2 : q1;
+                        alert(
+                            `Inconsistent ratings detected!\n\nYou ranked ${highModel} as preferred but its quality ` +
+                            `score (${highScore}) is not higher than ${lowModel} (${lowScore}).\n\n` +
+                            `Please fix this inconsistency before submitting.`
+                        );
                         cancel = true;
                         return;
                     }
                 }
+
+                // Prepare rankings object only if a preference was selected
+                const rankings = preferred ?
+                    (preferred === 'answer1') ? { "Model 1": 1, "Model 2": 2 } : { "Model 2": 1, "Model 1": 2 }
+                    : {};
 
                 // ...existing fetch logic...
                 const p = fetch('/rankings/', {
@@ -634,13 +644,15 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         request_id: reqId,
-                        rankings: (preferred === 'answer1')
-                            ? { [model1]: 1, [model2]: 2 }
-                            : { [model2]: 1, [model1]: 2 },
-                        quality_scores: { [model1]: q1, [model2]: q2 },
+                        rankings: rankings,
+                        quality_scores: { "Model 1": q1, "Model 2": q2 },
                         model_answers: {
-                            [model1]: panel.getAttribute('data-model1-answer'),
-                            [model2]: panel.getAttribute('data-model2-answer')
+                            "Model 1": panel.getAttribute('data-model1-answer'),
+                            "Model 2": panel.getAttribute('data-model2-answer')
+                        },
+                        real_model_mapping: {
+                            "Model 1": model1,
+                            "Model 2": model2
                         }
                     })
                 }).then(res => {
@@ -664,58 +676,55 @@
             }
         });
 
-        document.getElementById('load-leaderboard').addEventListener('click', () => {
-            const diff = document.getElementById('difficulty-filter').value;
-            fetch(`/leaderboard?difficulty=${encodeURIComponent(diff)}`)
-                .then(r => r.json())
-                .then(renderLeaderboard)
-                .catch(e => console.error(e));
-        });
+        function renderTable(data) {
+            const tbody = document.querySelector('#leaderboardTable tbody');
+            tbody.innerHTML = '';
+            if (!data || !data.models || !Array.isArray(data.models)) {
+                console.error('Invalid leaderboard data structure:', data);
+                tbody.innerHTML = '<tr><td colspan="4">Error loading leaderboard data</td></tr>';
+                return;
+            }
 
-        let histChart, rankChart;
-        function renderLeaderboard(data) {
-            // prepare labels 1–10
-            const scoreLabels = Array.from({ length: 10 }, (_, i) => String(i + 1));
-            // build frequency arrays
-            const histDatasets = data.models.map((m, i) => {
-                const freq = Array(10).fill(0);
-                m.quality_scores.forEach(s => { if (s >= 1 && s <= 10) freq[s - 1]++; });
-                return {
-                    label: m.name,
-                    data: freq,
-                    backgroundColor: `hsla(${i * 60},70%,50%,0.6)`
-                };
-            });
-            const ctx1 = document.getElementById('histogramChart').getContext('2d');
-            if (histChart) histChart.destroy();
-            histChart = new Chart(ctx1, {
-                type: 'bar',
-                data: { labels: scoreLabels, datasets: histDatasets },
-                options: {
-                    responsive: true,
-                    plugins: { title: { display: true, text: 'Quality Score Histogram' } },
-                    scales: {
-                        x: { stacked: true, title: { display: true, text: 'Score' } },
-                        y: { stacked: true, beginAtZero: true, title: { display: true, text: 'Count' } }
-                    }
-                }
-            });
-
-            // wins bar chart
-            const labels = data.models.map(m => m.name);
-            const wins = data.models.map(m => m.wins);
-            const ctx2 = document.getElementById('rankingChart').getContext('2d');
-            if (rankChart) rankChart.destroy();
-            rankChart = new Chart(ctx2, {
-                type: 'bar',
-                data: { labels, datasets: [{ label: 'Wins (#1)', data: wins, backgroundColor: '#4a90e2' }] },
-                options: {
-                    responsive: true,
-                    plugins: { title: { display: true, text: 'First-place Counts by Model' } },
-                    scales: { y: { beginAtZero: true, title: { display: true, text: 'Wins' } } }
-                }
+            data.models.forEach(m => {
+                const { name, stats } = m;
+                const row = document.createElement('tr');
+                ['Easy', 'Hard', 'All'].forEach(key => {
+                    const s = stats[key] || { mean: null, sem: null };
+                    const text = s.mean !== null ? `${s.mean}±${s.sem}` : '–';
+                    const cell = document.createElement('td');
+                    cell.style.border = '1px solid #ddd';
+                    cell.style.padding = '8px';
+                    cell.textContent = text;
+                    row.appendChild(cell);
+                });
+                const nameCell = document.createElement('td');
+                nameCell.style.border = '1px solid #ddd'; nameCell.style.padding = '8px'; nameCell.textContent = name;
+                row.insertBefore(nameCell, row.firstChild);
+                tbody.appendChild(row);
             });
         }
+
+        // Automatically fetch and populate table
+        function loadTable() {
+            fetch('/leaderboard')
+                .then(r => {
+                    if (!r.ok) throw new Error(`HTTP error ${r.status}`);
+                    return r.json();
+                })
+                .then(data => {
+                    console.log('Loaded leaderboard data:', data);
+                    renderTable(data);
+                })
+                .catch(e => {
+                    console.error('Error loading leaderboard:', e);
+                    document.querySelector('#leaderboardTable tbody').innerHTML =
+                        `<tr><td colspan="4">Error loading leaderboard: ${e.message}</td></tr>`;
+                });
+        }
+        // Load on tab click
+        lbBtn.addEventListener('click', loadTable);
+        // Load on initial page load if leaderboard is active
+        if (leaderboardTab.classList.contains('active')) loadTable();
     </script>
 </body>
 
