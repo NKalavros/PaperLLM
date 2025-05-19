@@ -336,49 +336,32 @@ def process_summary(self, text, prompt_prefix, model, request_id=None, display_n
         elif model == "grok2":
             content = response_json['choices'][0]['message']['content']
         
-        # Store result in Redis
+        # Store result in Redis using the REAL model name
         result_data = {
-            'model': display_name,
-            'real_model': model,
+            'model': model,                     # was display_name
             'summary': content,
             'status': 'success',
             'request_id': request_id,
             'nickname': nickname,
             'timestamp': datetime.now().isoformat()
         }
-        
-        # Store in Redis with TTL of 1 hour
         result_key = f"result:{request_id}:{model}"
-        redis_client.setex(
-            result_key,
-            3600,  # Expire after 1 hour
-            json.dumps(result_data)
-        )
-        
-        # Also log to file for backwards compatibility
+        redis_client.setex(result_key, 3600, json.dumps(result_data))
+
+        # Log to file for compatibility, also tag by real model
         log_entry = {
             'timestamp': datetime.now().isoformat(),
             'request_id': request_id,
             'nickname': nickname,
-            'model': display_name,
-            'real_model': model,
+            'model': model,                     # was display_name
             'summary': content
         }
-        
         try:
             with open('requests_questions.log', 'a') as f:
                 f.write(json.dumps(log_entry) + '\n')
-        except Exception as e:
-            logger.error(f"Logging model response failed: {str(e)}")
-        
+        except Exception:
+            logger.error("Logging model response failed")
         return result_data
-
-    except requests.exceptions.HTTPError as e:
-        if e.response.status_code == 429:
-            retry_after = int(e.response.headers.get('Retry-After', random.choice(API_RETRY_DELAYS)))
-            logger.warning(f"Rate limited. Retrying in {retry_after}s")
-            raise self.retry(exc=e, countdown=retry_after)
-        raise
 
     except Exception as e:
         retry_index = min(self.request.retries, len(API_RETRY_DELAYS)-1)
@@ -478,20 +461,18 @@ def summarize():
         if not nickname.strip():
             return jsonify({"error": "Nickname cannot be empty"}), 400
 
-        all_models = ['perplexity','openai']
+        # choose real model names only
+        all_models = ['perplexity', 'openai']
         selected_models = random.sample(all_models, 2)
-        display_names = [f"Model {i+1}" for i in range(2)]
-        
         tasks = []
-        for model, display_name in zip(selected_models, display_names):
+        for model in selected_models:
             task = process_summary.apply_async(
-                args=(text, prompt_prefix, model, request_id, display_name, nickname)
+                args=(text, prompt_prefix, model, request_id, None, nickname)
             )
             tasks.append(task)
             request_tracker[request_id].append({
                 'task_id': task.id,
-                'real_model': model,
-                'display_name': display_name
+                'real_model': model
             })
 
         log_request(
@@ -716,6 +697,55 @@ def save_rankings():
 
     logger.info(f"Successfully saved rankings for request {request_id}")
     return jsonify({'status': 'success'})
+
+@app.route('/leaderboard', methods=['GET'])
+@login_required
+def leaderboard():
+    # map request_id → difficulty
+    diff_map = {}
+    try:
+        with open('requests_questions.log','r') as fq:
+            for line in fq:
+                e = json.loads(line)
+                if 'request_id' in e and 'question_difficulty' in e:
+                    diff_map[e['request_id']] = e['question_difficulty']
+    except FileNotFoundError:
+        pass
+
+    # aggregate per real_model
+    agg = defaultdict(lambda: {'quality_scores': [], 'wins': 0})
+    sel_diff = request.args.get('difficulty','').strip()
+    try:
+        with open('requests_answers.log','r') as fa:
+            for line in fa:
+                e = json.loads(line)
+                rid = e.get('request_id')
+                if sel_diff and diff_map.get(rid) != sel_diff:
+                    continue
+
+                # Use the real_model field under 'summaries'
+                if 'summaries' in e:
+                    for disp, info in e['summaries'].items():
+                        real = info.get('real_model')
+                        # append quality score
+                        score = e.get('quality_scores', {}).get(disp)
+                        if score is not None:
+                            agg[real]['quality_scores'].append(score)
+                        # count wins
+                        if e.get('rankings', {}).get(disp) == 1:
+                            agg[real]['wins'] += 1
+
+    except FileNotFoundError:
+        pass
+
+    models = []
+    for name, stats in agg.items():
+        models.append({
+            'name': name,
+            'quality_scores': stats['quality_scores'],
+            'wins': stats['wins']
+        })
+    return jsonify({'models': models})
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5100)
