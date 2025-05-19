@@ -2,10 +2,11 @@
 <html>
 
 <head>
-    <title>Academic Paper Summarizer</title>
+    <title>Academic Paper Summarizer - Benchmarking LLMs using Academic Talks</title>
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown.min.css">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
             background-color: #f0f4f8;
@@ -149,7 +150,8 @@
 
         .summary-content {
             margin-top: 1rem;
-            color: #4a5568;
+            color: #2c3e50;
+            /* Even darker shade for better readability */
         }
 
         h1 {
@@ -172,271 +174,548 @@
             font-size: 0.875rem;
             margin-top: 0.25rem;
         }
+
+        .tab {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            margin-right: 1rem;
+            background: #4a90e2;
+            color: white;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .tab.active {
+            background: #357abd;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .markdown-body {
+            background-color: white;
+        }
+
+        /* New styles for PDF source selection */
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            margin: 10px 0;
+        }
+
+        .radio-group label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .radio-group input[type="radio"] {
+            margin-right: 5px;
+        }
+
+        select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d0d7de;
+            border-radius: 6px;
+            background: white;
+            transition: border-color 0.3s ease;
+            color: #4a5568;
+        }
+
+        select:focus {
+            border-color: #4a90e2;
+            outline: none;
+        }
+
+        #pdf-dropdown {
+            margin-top: 10px;
+        }
     </style>
 </head>
 
 <body>
     <div class="container markdown-body">
         <h1>Academic Paper Summarizer</h1>
-
-        <div class="form-section">
-            <form id="summarizeForm">
+        <div>
+            <span class="tab active" id="questions-tab-btn">Questions</span>
+            <span class="tab" id="answers-tab-btn">Answers</span>
+            <span class="tab" id="leaderboard-tab-btn">Leaderboard</span>
+        </div>
+        <!-- Questions Tab: upload file, nickname, prompt -->
+        <div id="questions-tab" class="tab-content active">
+            <div class="form-section">
+                <form id="summarizeForm" method="POST" enctype="multipart/form-data" action="/summarize">
+                    <div class="form-group">
+                        <label>Source:</label>
+                        <div class="radio-group">
+                            <label>
+                                <input type="radio" name="pdf_source" value="upload" checked>
+                                Upload new talk PDF
+                            </label>
+                            <label>
+                                <input type="radio" name="pdf_source" value="existing">
+                                Select existing talk
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group" id="upload-section">
+                        <label for="file">Upload talk PDF:</label>
+                        <input type="file" id="file" name="file" accept=".pdf">
+                    </div>
+                    <div class="form-group hidden" id="dropdown-section">
+                        <label for="pdf-dropdown">Select existing talk:</label>
+                        <select id="pdf-dropdown" name="selected_pdf">
+                            <option value="">-- Select a talk --</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="prompt_prefix">Ask your question on the talk:</label>
+                        <input type="text" id="prompt_prefix" name="prompt_prefix"
+                            value="Summarize the following papers key findings within 5 lines">
+                    </div>
+                    <div class="form-group">
+                        <label for="question_difficulty">Question Difficulty:</label>
+                        <select id="question_difficulty" name="question_difficulty" required>
+                            <option value="Easy">Easy</option>
+                            <option value="Hard">Hard</option>
+                        </select>
+                        <div id="difficulty-error" class="validation-error hidden"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="nickname">Nickname:</label>
+                        <input type="text" id="nickname" name="nickname" required
+                            style="background-color: #ffffff !important; -webkit-appearance: none; color: #000000;">
+                    </div>
+                    <button type="submit" id="submit-btn">Submit Question</button>
+                </form>
+                <div id="question-status"></div>
+            </div>
+        </div>
+        <!-- Answers Tab modifications -->
+        <div id="answers-tab" class="tab-content">
+            <div class="form-section">
+                <form id="answersForm">
+                    <div class="form-group">
+                        <label for="ans-nickname">Nickname:</label>
+                        <input type="text" id="ans-nickname" name="nickname" required
+                            style="background-color: #ffffff !important; color: #000000; width: 100%; padding: 0.75rem; border: 1px solid #d0d7de; border-radius: 6px;">
+                    </div>
+                    <div class="form-group">
+                        <label for="extra-num">Extra Questions (number):</label>
+                        <input type="number" id="extra-num" name="extra" min="0" value="0" required
+                            style="background-color: #ffffff !important; color: #000000; width: 100%; padding: 0.75rem; border: 1px solid #d0d7de; border-radius: 6px;">
+                    </div>
+                    <button type="submit" id="fetch-requests-btn">Get Requests</button>
+                </form>
+            </div>
+            <!-- Removed the select request menu; all rating panels will be displayed below automatically -->
+            <div id="ratings-panels"></div>
+            <div id="all-ratings-submit" class="hidden">
+                <button id="submit-all-ratings-btn">Submit All Ratings</button>
+            </div>
+        </div>
+        <!-- Leaderboard Tab -->
+        <div id="leaderboard-tab" class="tab-content">
+            <div class="form-section">
                 <div class="form-group">
-                    <label for="file">Upload PDF:</label>
-                    <input type="file" id="file" name="file" accept=".pdf" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="prompt_prefix">Summary Prompt:</label>
-                    <input type="text" id="prompt_prefix" name="prompt_prefix"
-                        value="Summarize the following papers key findings within 5 lines">
-                </div>
-                <div class="form-group">
-                    <label for="question_difficulty">Question Difficulty:</label>
-                    <select id="question_difficulty" name="question_difficulty" required>
-                        <option value="Easy">Easy</option>
-                        <option value="Medium" selected>Medium</option>
-                        <option value="Hard">Hard</option>
+                    <label for="difficulty-filter">Question Difficulty:</label>
+                    <select id="difficulty-filter" class="quality-score">
+                        <option value="">All</option>
+                        <option>Easy</option>
+                        <option>Medium</option>
+                        <option>Hard</option>
                     </select>
-                    <div id="difficulty-error" class="validation-error hidden"></div>
+                    <button id="load-leaderboard" type="button">Load Leaderboard</button>
                 </div>
-                <button type="submit" id="submit-btn">Generate Summaries</button>
-            </form>
+                <div class="form-group">
+                    <h3>Quality Score Distribution</h3>
+                    <canvas id="histogramChart"></canvas>
+                </div>
+                <div class="form-group">
+                    <h3>Win Counts (Rank #1)</h3>
+                    <canvas id="rankingChart"></canvas>
+                </div>
+            </div>
         </div>
     </div>
-
-    <div id="progress-container" class="hidden">
-        <h2>Processing Progress</h2>
-        <div id="progress-list"></div>
-    </div>
-
-    <div id="ranking-container" class="hidden">
-
-        <h2>Generated Summaries</h2>
-        <form id="ranking-form">
-            <div id="summaries-list"></div>
-            <button type="submit" id="rank-submit-btn">Submit Rankings</button>
-        </form>
-    </div>
-    </div>
-
     <script>
+        // Tab switching
+        const questionsTabBtn = document.getElementById('questions-tab-btn');
+        const answersTabBtn = document.getElementById('answers-tab-btn');
+        const lbBtn = document.getElementById('leaderboard-tab-btn');
+        const questionsTab = document.getElementById('questions-tab');
+        const answersTab = document.getElementById('answers-tab');
+        const leaderboardTab = document.getElementById('leaderboard-tab');
+
+        questionsTabBtn.addEventListener('click', () => {
+            questionsTabBtn.classList.add('active');
+            answersTabBtn.classList.remove('active');
+            lbBtn.classList.remove('active');
+            questionsTab.classList.add('active');
+            answersTab.classList.remove('active');
+            leaderboardTab.classList.remove('active');
+        });
+
+        answersTabBtn.addEventListener('click', () => {
+            answersTabBtn.classList.add('active');
+            questionsTabBtn.classList.remove('active');
+            lbBtn.classList.remove('active');
+            answersTab.classList.add('active');
+            questionsTab.classList.remove('active');
+            leaderboardTab.classList.remove('active');
+        });
+
+        lbBtn.addEventListener('click', () => {
+            questionsTabBtn.classList.remove('active');
+            answersTabBtn.classList.remove('active');
+            lbBtn.classList.add('active');
+            questionsTab.classList.remove('active');
+            answersTab.classList.remove('active');
+            leaderboardTab.classList.add('active');
+        });
+
+        // Handle PDF source selection (new functionality)
+        document.querySelectorAll('input[name="pdf_source"]').forEach(radio => {
+            radio.addEventListener('change', function () {
+                if (this.value === 'upload') {
+                    document.getElementById('upload-section').classList.remove('hidden');
+                    document.getElementById('dropdown-section').classList.add('hidden');
+                    document.getElementById('file').required = true;
+                    document.getElementById('pdf-dropdown').required = false;
+                } else {
+                    document.getElementById('upload-section').classList.add('hidden');
+                    document.getElementById('dropdown-section').classList.remove('hidden');
+                    document.getElementById('file').required = false;
+                    document.getElementById('pdf-dropdown').required = true;
+                    loadAvailablePDFs();
+                }
+            });
+        });
+
+        // Load available PDFs (new function)
+        async function loadAvailablePDFs() {
+            try {
+                const response = await fetch('/available_pdfs');
+                const data = await response.json();
+                const dropdown = document.getElementById('pdf-dropdown');
+
+                // Clear existing options except the first one
+                dropdown.innerHTML = '<option value="">-- Select a Talk --</option>';
+
+                if (data.pdfs) {
+                    data.pdfs.forEach(pdf => {
+                        const option = document.createElement('option');
+                        option.value = pdf.filename;
+                        option.textContent = `${pdf.filename} (${formatFileSize(pdf.size)})`;
+                        dropdown.appendChild(option);
+                    });
+                }
+            } catch (error) {
+                console.error('Error loading PDFs:', error);
+                document.getElementById('question-status').innerText = 'Error loading available PDFs';
+            }
+        }
+
+        // Format file size (new function)
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return Math.round(bytes / Math.pow(k, i) * 100) / 100 + ' ' + sizes[i];
+        }
+
+        // Existing summarizeForm JS with modifications
         marked.setOptions({
             breaks: true,
             sanitize: true
         });
-
         let currentRequestId = '';
         document.getElementById('summarizeForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const submitBtn = document.getElementById('submit-btn');
             submitBtn.disabled = true;
-            submitBtn.textContent = 'Processing...';
-
+            submitBtn.textContent = 'Submitting...';
             const formData = new FormData(e.target);
+            const nickname = document.getElementById('nickname').value; // Get nickname from form
+            formData.append('nickname', nickname); // Append nickname to form data
+
+            // Handle PDF source selection
+            const pdfSource = document.querySelector('input[name="pdf_source"]:checked').value;
+            if (pdfSource === 'existing') {
+                const selectedPdf = document.getElementById('pdf-dropdown').value;
+                if (!selectedPdf) {
+                    alert('Please select a PDF from the dropdown');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Submit Question';
+                    return;
+                }
+                formData.set('selected_pdf', selectedPdf);
+            } else {
+                const fileInput = document.getElementById('file');
+                if (!fileInput.files[0]) {
+                    alert('Please select a PDF file to upload');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Submit Question';
+                    return;
+                }
+            }
 
             try {
-                // Single fetch call to /summarize
                 const response = await fetch('/summarize', {
                     method: 'POST',
                     body: formData
                 });
-
                 if (response.status === 401) {
                     alert('Please log in to use this feature');
                     window.location.href = '/login';
                     return;
                 }
-
                 const data = await response.json();
-                if (!response.ok) {
-                    throw new Error(data.error || 'Failed to start processing');
-                }
-
-                if (response.status === 202) {
-                    currentRequestId = data.request_id;
-                    document.getElementById('progress-container').classList.remove('hidden');
-                    monitorProgress(data.status_urls);
-                }
+                if (!response.ok) throw new Error(data.error || 'Failed to submit question');
+                // Simply display a confirmation message and clear the form
+                document.getElementById('question-status').innerText = 'Question submitted successfully!';
+                e.target.reset();
+                // Reset PDF source to upload
+                document.querySelector('input[name="pdf_source"][value="upload"]').checked = true;
+                document.getElementById('upload-section').classList.remove('hidden');
+                document.getElementById('dropdown-section').classList.add('hidden');
             } catch (error) {
                 console.error('Fetch Error:', error);
+                document.getElementById('question-status').innerText = 'Submission failed: ' + error.message;
             } finally {
                 submitBtn.disabled = false;
-                submitBtn.textContent = 'Generate Summaries';
+                submitBtn.textContent = 'Submit Question';
+            }
+        });
+        // Answer tab JS
+        document.getElementById('answersForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const nickname = document.getElementById('ans-nickname').value;
+            const extra = parseInt(document.getElementById('extra-num').value, 10);
+            document.getElementById('ratings-panels').innerHTML = '<p>Loading questions...</p>';
+            document.getElementById('all-ratings-submit').classList.add('hidden');
+
+            try {
+                const resp = await fetch(`/get_answers?nickname=${encodeURIComponent(nickname)}&extra=${extra}`);
+                if (!resp.ok) throw new Error(`Status ${resp.status}`);
+
+                const jsonData = await resp.json();
+                // support both array‐only and object shapes
+                let userResults = [], extraResults = [];
+                if (Array.isArray(jsonData)) {
+                    userResults = jsonData;
+                } else {
+                    userResults = jsonData.user_questions || [];
+                    extraResults = jsonData.extra_questions || [];
+                }
+
+                // nothing to show?
+                if (userResults.length === 0 && extraResults.length === 0) {
+                    document.getElementById('ratings-panels').innerHTML = '<p>No questions found.</p>';
+                    return;
+                }
+
+                const allItems = [...userResults, ...extraResults];
+                let panelsHtml = '';
+                allItems.forEach(item => {
+                    const reqId = item.request_id;
+                    const promptText = item.prompt || 'No prompt';
+                    const fileText = item.file || 'File unavailable';
+                    const answers = item.model_answers || {};
+                    if (Object.keys(answers).length < 2) return;
+
+                    const [model1, model2] = Object.keys(answers);
+                    const answer1 = answers[model1];
+                    const answer2 = answers[model2];
+
+                    panelsHtml += `
+                    <div class="summary-box"
+                         data-request-id="${reqId}"
+                         data-model1-name="${model1}"
+                         data-model2-name="${model2}"
+                         data-model1-answer="${answer1.replace(/"/g, '&quot;')}"
+                         data-model2-answer="${answer2.replace(/"/g, '&quot;')}">
+                      <div class="summary-header">
+                        <div>
+                          <h3>${promptText}</h3>
+                          <p>${fileText}</p>
+                        </div>
+                        <button type="button" class="toggle-details">Show Details</button>
+                      </div>
+                      <div class="summary-content hidden">
+                        <div><strong>${model1}:</strong>${marked.parse(answer1)}</div>
+                        <div><strong>${model2}:</strong>${marked.parse(answer2)}</div>
+                        <div class="form-group">
+                          <label for="preferred-${reqId}">Preferred Answer:</label>
+                          <select id="preferred-${reqId}" class="preferred-dropdown">
+                            <option value="">--Select--</option>
+                            <option value="answer1">First (${model1})</option>
+                            <option value="answer2">Second (${model2})</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label for="quality1-${reqId}">Quality ${model1} (1-10):</label>
+                          <input type="number" id="quality1-${reqId}" class="quality-input" min="1" max="10">
+                        </div>
+                        <div class="form-group">
+                          <label for="quality2-${reqId}">Quality ${model2} (1-10):</label>
+                          <input type="number" id="quality2-${reqId}" class="quality-input" min="1" max="10">
+                        </div>
+                      </div>
+                    </div>`;
+                });
+
+                document.getElementById('ratings-panels').innerHTML = panelsHtml;
+                document.getElementById('all-ratings-submit').classList.toggle('hidden', panelsHtml === '');
+
+                document.querySelectorAll('.toggle-details').forEach(btn =>
+                    btn.addEventListener('click', () => {
+                        const c = btn.closest('.summary-box').querySelector('.summary-content');
+                        c.classList.toggle('hidden');
+                        btn.textContent = c.classList.contains('hidden') ? 'Show Details' : 'Hide Details';
+                    })
+                );
+            } catch (err) {
+                console.error(err);
+                document.getElementById('ratings-panels').innerHTML = `<p>Error: ${err.message}</p>`;
             }
         });
 
-        async function monitorProgress(taskIds) {
-            const progressList = document.getElementById('progress-list');
-            const results = {};
-            const taskStates = new Map();
+        // Submit all ratings from each complete panel
+        document.getElementById('submit-all-ratings-btn').addEventListener('click', async () => {
+            const panels = document.querySelectorAll('#ratings-panels .summary-box');
+            let promises = [];
+            let cancel = false;
 
-            taskIds.forEach(taskId => {
-                taskStates.set(taskId, { completed: false, attempts: 0 });
-            });
+            panels.forEach(panel => {
+                const reqId = panel.getAttribute('data-request-id');
+                const model1 = panel.getAttribute('data-model1-name');
+                const model2 = panel.getAttribute('data-model2-name');
+                const preferred = panel.querySelector('.preferred-dropdown').value;
+                const quality1 = panel.querySelector(`#quality1-${reqId}`).value;
+                const quality2 = panel.querySelector(`#quality2-${reqId}`).value;
 
-            progressList.innerHTML = taskIds.map(taskId => `
-            <div class="progress-item" id="task-${taskId}">
-                ⏳ Initializing task ${taskId.slice(-6)}
-            </div>
-            `).join('');
-
-            const interval = setInterval(async () => {
-                const checks = Array.from(taskStates).map(async ([taskId, state]) => {
-                    if (state.completed) return true;
-
-                    try {
-                        const response = await fetch(`/status/${taskId}`);
-                        if (!response.ok) throw new Error('Network error');
-
-                        const status = await response.json();
-                        taskStates.get(taskId).attempts++;
-
-                        const item = document.getElementById(`task-${taskId}`);
-                        if (!item) return false;
-
-                        switch (status.status) {
-                            case 'completed':
-                                item.innerHTML = `✅ ${status.model} completed`;
-                                results[status.model] = status.summary;
-                                taskStates.get(taskId).completed = true;
-                                return true;
-                            case 'failed':
-                                item.innerHTML = `❌ ${status.model} failed: ${status.error}`;
-                                taskStates.get(taskId).completed = true;
-                                return true;
-                            default:
-                                item.innerHTML = `⏳ ${status.model || 'Task'} processing (attempt ${taskStates.get(taskId).attempts})`;
-                                return false;
-                        }
-                    } catch (error) {
-                        console.error(`Error checking ${taskId}:`, error);
-                        return false;
-                    }
-                });
-
-                try {
-                    const statuses = await Promise.all(checks);
-                    const allDone = statuses.every(s => s === true);
-
-                    if (allDone || Array.from(taskStates.values()).every(t => t.attempts >= 10)) {
-                        clearInterval(interval);
-                        showRankingForm(results);
-                    }
-                } catch (error) {
-                    console.error('Polling error:', error);
-                    clearInterval(interval);
+                // ...existing empty‐field check...
+                if (!reqId || !preferred || quality1 === '' || quality2 === '') {
+                    alert(`Please complete ratings for request ${reqId}.`);
+                    cancel = true;
+                    return;
                 }
-            }, 2000);
-        }
 
-        // Update the ranking select options generation
-        function showRankingForm(results) {
-            const list = document.getElementById('summaries-list');
-            list.innerHTML = '';
-            const modelCount = Object.keys(results).length;
-
-            Object.entries(results).forEach(([modelId, result], index) => {
-                const div = document.createElement('div');
-                div.className = 'summary-box';
-                div.innerHTML = `
-            <div class="summary-header">
-                <h3>Summary ${index + 1}</h3>
-                <div>
-                    <select class="ranking-select" name="${modelId}">
-                        <option value="">Select Rank</option>
-                        ${Array.from({ length: modelCount }, (_, i) => `
-                <option value="${i + 1}">${i + 1}</option>
-                `).join('')}
-                    </select>
-                    <input type="number" class="quality-score" name="quality-${modelId}" min="0" max="10"
-                        placeholder="Score (0-10)">
-                </div>
-            </div>
-            <div class="summary-content">${marked.parse(result)}</div>
-            `;
-                list.appendChild(div);
-            });
-
-            // Update validation message
-            document.querySelector('#ranking-form button').insertAdjacentHTML('beforebegin',
-                `<p class="ranking-instruction">Assign unique ranks (1-${modelCount}) and scores</p>`
-            );
-
-            document.getElementById('ranking-container').classList.remove('hidden');
-            document.getElementById('progress-container').classList.add('hidden');
-        }
-
-        // Update form validation
-        document.getElementById('ranking-form').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const rankings = {};
-            const qualityScores = {};
-            const selects = document.querySelectorAll('.ranking-select');
-            const scores = document.querySelectorAll('.quality-score');
-            const modelCount = selects.length;
-            const ranks = new Set();
-
-            // Validate rankings
-            selects.forEach(select => {
-                if (select.value) {
-                    const rank = parseInt(select.value);
-                    if (rank < 1 || rank > modelCount) {
-                        alert(`Rank must be between 1 and ${modelCount}`);
-                        select.value = '';
+                const q1 = parseInt(quality1, 10);
+                const q2 = parseInt(quality2, 10);
+                // consistency check
+                if ((preferred === 'answer1' && q1 <= q2) ||
+                    (preferred === 'answer2' && q2 <= q1)) {
+                    const highModel = (preferred === 'answer1') ? model1 : model2;
+                    const lowModel = (preferred === 'answer1') ? model2 : model1;
+                    const highScore = (preferred === 'answer1') ? q1 : q2;
+                    const lowScore = (preferred === 'answer1') ? q2 : q1;
+                    if (!confirm(
+                        `You ranked ${highModel} as preferred (score ${highScore}) but its quality ` +
+                        `score is not higher than ${lowModel} (score ${lowScore}).\nContinue?`
+                    )) {
+                        cancel = true;
                         return;
                     }
-                    if (ranks.has(rank)) {
-                        alert('Please assign unique ranks!');
-                        select.value = '';
-                        return;
-                    }
-                    ranks.add(rank);
-                    rankings[select.name] = rank;
                 }
-            });
 
-            // Validate scores
-            scores.forEach(score => {
-                if (score.value) {
-                    const modelId = score.name.replace('quality-', '');
-                    const scoreValue = parseInt(score.value);
-                    if (scoreValue < 0 || scoreValue > 10) {
-                        alert('Score must be between 0-10');
-                        score.value = '';
-                        return;
-                    }
-                    qualityScores[modelId] = scoreValue;
-                }
-            });
-
-            if (Object.keys(rankings).length !== modelCount ||
-                Object.keys(qualityScores).length !== modelCount) {
-                alert(`Please rank all ${modelCount} summaries and provide quality scores!`);
-                return;
-            }
-
-            // Submit data
-            try {
-                const response = await fetch('/rankings', {
+                // ...existing fetch logic...
+                const p = fetch('/rankings/', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                        request_id: currentRequestId,
-                        rankings: rankings,
-                        quality_scores: qualityScores
+                        request_id: reqId,
+                        rankings: (preferred === 'answer1')
+                            ? { [model1]: 1, [model2]: 2 }
+                            : { [model2]: 1, [model1]: 2 },
+                        quality_scores: { [model1]: q1, [model2]: q2 },
+                        model_answers: {
+                            [model1]: panel.getAttribute('data-model1-answer'),
+                            [model2]: panel.getAttribute('data-model2-answer')
+                        }
                     })
+                }).then(res => {
+                    if (!res.ok) throw new Error(`Failed: ${res.status}`);
+                    return res.json();
+                }).then(data => {
+                    if (data.status !== 'success') throw new Error(data.status);
                 });
+                promises.push(p);
+            });
 
-                if (response.ok) {
-                    alert('Thank you for your rankings and quality scores!');
-                    window.location.href = '/';
-                }
+            if (cancel) return;
+
+            try {
+                await Promise.all(promises);
+                alert('All ratings submitted successfully!');
+                // ...existing post‐submit cleanup...
             } catch (error) {
-                console.error('Submission failed:', error);
-                alert('Submission failed. Please try again.');
+                console.error('Error submitting ratings:', error);
+                alert(`Error submitting ratings: ${error.message}`);
             }
         });
+
+        document.getElementById('load-leaderboard').addEventListener('click', () => {
+            const diff = document.getElementById('difficulty-filter').value;
+            fetch(`/leaderboard?difficulty=${encodeURIComponent(diff)}`)
+                .then(r => r.json())
+                .then(renderLeaderboard)
+                .catch(e => console.error(e));
+        });
+
+        let histChart, rankChart;
+        function renderLeaderboard(data) {
+            // prepare labels 1–10
+            const scoreLabels = Array.from({ length: 10 }, (_, i) => String(i + 1));
+            // build frequency arrays
+            const histDatasets = data.models.map((m, i) => {
+                const freq = Array(10).fill(0);
+                m.quality_scores.forEach(s => { if (s >= 1 && s <= 10) freq[s - 1]++; });
+                return {
+                    label: m.name,
+                    data: freq,
+                    backgroundColor: `hsla(${i * 60},70%,50%,0.6)`
+                };
+            });
+            const ctx1 = document.getElementById('histogramChart').getContext('2d');
+            if (histChart) histChart.destroy();
+            histChart = new Chart(ctx1, {
+                type: 'bar',
+                data: { labels: scoreLabels, datasets: histDatasets },
+                options: {
+                    responsive: true,
+                    plugins: { title: { display: true, text: 'Quality Score Histogram' } },
+                    scales: {
+                        x: { stacked: true, title: { display: true, text: 'Score' } },
+                        y: { stacked: true, beginAtZero: true, title: { display: true, text: 'Count' } }
+                    }
+                }
+            });
+
+            // wins bar chart
+            const labels = data.models.map(m => m.name);
+            const wins = data.models.map(m => m.wins);
+            const ctx2 = document.getElementById('rankingChart').getContext('2d');
+            if (rankChart) rankChart.destroy();
+            rankChart = new Chart(ctx2, {
+                type: 'bar',
+                data: { labels, datasets: [{ label: 'Wins (#1)', data: wins, backgroundColor: '#4a90e2' }] },
+                options: {
+                    responsive: true,
+                    plugins: { title: { display: true, text: 'First-place Counts by Model' } },
+                    scales: { y: { beginAtZero: true, title: { display: true, text: 'Wins' } } }
+                }
+            });
+        }
     </script>
 </body>
 
