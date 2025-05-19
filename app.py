@@ -110,7 +110,7 @@ class Recipe(typing.TypedDict):
 geminimodel = genai.GenerativeModel("gemini-exp-1206")
 
 # Constants
-prompt_suffix = 'Please keep your answer to less than 200 words.'
+prompt_suffix = 'Make sure your answers are 5 sentences or less.'
 MAX_API_TIMEOUT = 45
 MAX_TEXT_LENGTH = 1200000
 API_RETRY_DELAYS = [5, 15, 45]
@@ -189,12 +189,15 @@ def process_summary(self, text, prompt_prefix, model, request_id=None, display_n
         payload = {}
         logger.info("Text Used: " + text[min(len(text), MAX_TEXT_LENGTH)-100:min(len(text), MAX_TEXT_LENGTH)])
         
+        # Append prompt_suffix to user's prompt for all models
+        full_prompt = f"{prompt_prefix}\n{prompt_suffix}"
+        
         if model == "openai":
             # try primary client
             try:
                 completion = oaiclient.chat.completions.create(
                     model="gpt-4o",
-                    messages=[{"role": "system","content": prompt_prefix},
+                    messages=[{"role": "system","content": full_prompt},
                               {"role": "user","content": text[:MAX_TEXT_LENGTH]}]
                 )
                 resp = json.loads(completion.json())
@@ -204,7 +207,7 @@ def process_summary(self, text, prompt_prefix, model, request_id=None, display_n
                 logger.warning(f"Primary OpenAI failed: {e}, retrying with fallback client")
                 completion = oaiclient2.chat.completions.create(
                     model="gpt-4o",
-                    messages=[{"role":"system","content":prompt_prefix},
+                    messages=[{"role":"system","content": full_prompt},
                               {"role":"user","content": text[:MAX_TEXT_LENGTH]}]
                 )
                 resp = json.loads(completion.json())
@@ -217,7 +220,7 @@ def process_summary(self, text, prompt_prefix, model, request_id=None, display_n
                 "model": "deepseek-chat",
                 "messages": [{
                     "role": "user", 
-                    "content": f"{prompt_prefix}\n{prompt_suffix}\n{ text[:min(len(text),MAX_TEXT_LENGTH)]}"
+                    "content": f"{full_prompt}\n{ text[:min(len(text),MAX_TEXT_LENGTH)]}"
                 }]
             }
 
@@ -233,7 +236,7 @@ def process_summary(self, text, prompt_prefix, model, request_id=None, display_n
                 "max_tokens": 1000,
                 "messages": [{
                     "role": "user",
-                    "content": f"{prompt_prefix}\n\n{ text[:min(len(text),MAX_TEXT_LENGTH)]}"
+                    "content": f"{full_prompt}\n\n{ text[:min(len(text),MAX_TEXT_LENGTH)]}"
                 }]
             }
         elif model == "perplexity":
@@ -248,7 +251,7 @@ def process_summary(self, text, prompt_prefix, model, request_id=None, display_n
                         json={
                             "model":"sonar-pro",
                             "messages":[{"role":"user",
-                                         "content":f"{prompt_prefix}\n{text[:MAX_TEXT_LENGTH]}"}]
+                                         "content":f"{full_prompt}\n{text[:MAX_TEXT_LENGTH]}"}]
                         },
                         timeout=(3.05, MAX_API_TIMEOUT)
                     )
@@ -271,7 +274,7 @@ def process_summary(self, text, prompt_prefix, model, request_id=None, display_n
                 "model": "llama3.3-70b",
                 "messages": [{
                     "role": "user",
-                    "content": f"{prompt_prefix}\n\n{ text[:min(len(text),MAX_TEXT_LENGTH)]}"
+                    "content": f"{full_prompt}\n\n{ text[:min(len(text),MAX_TEXT_LENGTH)]}"
                 }],
                 "temperature": 0.7,
                 "max_tokens": 1000,
@@ -287,14 +290,14 @@ def process_summary(self, text, prompt_prefix, model, request_id=None, display_n
                 "messages": [
                     {
                     "role": "user",
-                    "content": f"{prompt_prefix}\n\n{ text[:min(len(text),MAX_TEXT_LENGTH)]}"
+                    "content": f"{full_prompt}\n\n{ text[:min(len(text),MAX_TEXT_LENGTH)]}"
                 }],
                 "model": "grok-2-latest",
                 "temperature": 0,
                 "stream": False,
             }
         elif model == "gemini":
-            geminiresponse = geminimodel.generate_content(f"{prompt_prefix}\n\n{ text[:min(len(text),MAX_TEXT_LENGTH)]}")
+            geminiresponse = geminimodel.generate_content(f"{full_prompt}\n\n{ text[:min(len(text),MAX_TEXT_LENGTH)]}")
 
         # Handle model responses
         if model == "openai":
@@ -454,7 +457,7 @@ def summarize():
 
         text = extract_text_from_pdf(pdf_path)
         prompt_prefix = request.form.get('prompt_prefix', 'Summarize this academic paper:')
-        question_difficulty = request.form.get('question_difficulty', 'Medium')
+        question_difficulty = request.form.get('question_difficulty', 'Easy')
         
         # Get nickname from form and validate
         nickname = request.form.get('nickname', '')
@@ -579,13 +582,13 @@ def get_answers():
             }
             
             # Separate user questions from potential extra questions
-            question_nickname = question.get('nickname')
-            if question_nickname == nickname:
+            qn = question.get('nickname','').strip().lower()
+            if qn == nickname.strip().lower():
                 user_results.append(item)
                 logger.debug(f"Added user question: {request_id}")
             else:
                 extra_results.append(item)
-                logger.debug(f"Added to extra questions pool: {request_id} from {question_nickname}")
+                logger.debug(f"Added to extra questions pool: {request_id} from {question.get('nickname')}")
     
     # If extra > 0, randomly select that many extra questions
     selected_extras = []
@@ -625,7 +628,10 @@ def get_questions():
     except FileNotFoundError:
         questions = []
         
-    user_questions = [q for q in questions if q.get('nickname') == nickname]
+    user_questions = [
+        q for q in questions
+        if q.get('nickname','').strip().lower() == nickname.strip().lower()
+    ]
     extra_questions = []
     
     # Only select extra questions if explicitly requested
@@ -679,14 +685,71 @@ def save_rankings():
     rankings = data.get('rankings', {})
     quality_scores = data.get('quality_scores', {})
     model_answers = data.get('model_answers', {})
+    real_model_mapping = data.get('real_model_mapping', {})
+    
+    # Calculate real_rankings and real_quality_scores using real_model_mapping
+    real_rankings = {}
+    real_quality_scores = {}
+    
+    # Transform rankings to use real model names (only if rankings were provided)
+    if rankings:
+        for display_name, rank in rankings.items():
+            real_model = real_model_mapping.get(display_name)
+            if real_model:
+                real_rankings[real_model] = rank
+    
+    # Transform quality scores to use real model names (skip null/empty values)
+    for display_name, score in quality_scores.items():
+        real_model = real_model_mapping.get(display_name)
+        if real_model and score is not None:
+            real_quality_scores[real_model] = score
+    
+    # Retrieve question difficulty from requests_questions.log
+    question_difficulty = "Easy"  # Default if not found
+    try:
+        with open('requests_questions.log', 'r') as f:
+            for line in f:
+                try:
+                    entry = json.loads(line)
+                    if entry.get('request_id') == request_id and 'question_difficulty' in entry:
+                        question_difficulty = entry['question_difficulty']
+                        break
+                except json.JSONDecodeError:
+                    continue
+    except FileNotFoundError:
+        logger.warning("requests_questions.log not found when retrieving question difficulty")
 
+    # Retrieve asker's nickname from requests_questions.log
+    asker_nickname = None
+    try:
+        with open('requests_questions.log', 'r') as f:
+            for line in f:
+                try:
+                    entry = json.loads(line)
+                    # look only at question entries
+                    if entry.get('request_id') == request_id and 'prompt' in entry:
+                        asker_nickname = entry.get('nickname')
+                        break
+                except json.JSONDecodeError:
+                    continue
+    except FileNotFoundError:
+        logger.warning("requests_questions.log not found when retrieving asker nickname")
+    
+    # Build and log the answer entry, now including asker_nickname
     answer_entry = {
         'timestamp': datetime.now().isoformat(),
         'request_id': request_id,
-        'nickname': current_user.id,
+        'ranker_nickname': current_user.id,
+        'asker_nickname': asker_nickname,
         'rankings': rankings,
         'quality_scores': quality_scores,
-        'model_answers': model_answers
+        'model_answers': {  # truncated versions
+            model: ans[:100] + '...' if len(ans) > 100 else ans
+            for model, ans in model_answers.items()
+        },
+        'real_rankings': real_rankings,
+        'real_quality_scores': real_quality_scores,
+        'question_difficulty': question_difficulty
     }
     try:
         with open('requests_answers.log', 'a') as f:
@@ -701,7 +764,7 @@ def save_rankings():
 @app.route('/leaderboard', methods=['GET'])
 @login_required
 def leaderboard():
-    # map request_id → difficulty
+    # map request_id → question_difficulty
     diff_map = {}
     try:
         with open('requests_questions.log','r') as fq:
@@ -712,40 +775,75 @@ def leaderboard():
     except FileNotFoundError:
         pass
 
-    # aggregate per real_model
-    agg = defaultdict(lambda: {'quality_scores': [], 'wins': 0})
-    sel_diff = request.args.get('difficulty','').strip()
+    # collect scores per model and per difficulty and overall
+    agg = defaultdict(lambda: defaultdict(list))  # agg[model][difficulty]
     try:
         with open('requests_answers.log','r') as fa:
             for line in fa:
                 e = json.loads(line)
                 rid = e.get('request_id')
-                if sel_diff and diff_map.get(rid) != sel_diff:
-                    continue
-
-                # Use the real_model field under 'summaries'
-                if 'summaries' in e:
-                    for disp, info in e['summaries'].items():
+                
+                # First try to get difficulty directly from the answer entry (new format)
+                # If not available, fall back to the difficulty map (old format)
+                diff = e.get('question_difficulty')
+                if diff is None:
+                    diff = diff_map.get(rid, 'All')
+                
+                # Handle all formats:
+                # 1. Old format with 'summaries' containing 'real_model'
+                # 2. New format with real_quality_scores
+                # 3. Transitional format with direct model names in quality_scores
+                
+                # First try the newest format with real_quality_scores
+                if 'real_quality_scores' in e:
+                    for model, score in e.get('real_quality_scores', {}).items():
+                        # Only include valid numeric scores
+                        if score is not None and isinstance(score, (int, float)):
+                            agg[model][diff].append(score)
+                            agg[model]['All'].append(score)
+                
+                # Then try the old format with summaries
+                elif 'summaries' in e:
+                    for disp, info in e.get('summaries', {}).items():
                         real = info.get('real_model')
-                        # append quality score
                         score = e.get('quality_scores', {}).get(disp)
-                        if score is not None:
-                            agg[real]['quality_scores'].append(score)
-                        # count wins
-                        if e.get('rankings', {}).get(disp) == 1:
-                            agg[real]['wins'] += 1
-
+                        # Only include valid numeric scores
+                        if score is not None and isinstance(score, (int, float)) and real is not None:
+                            agg[real][diff].append(score)
+                            agg[real]['All'].append(score)
+                
+                # Finally try the transitional format with direct model names in quality_scores
+                else:
+                    for model, score in e.get('quality_scores', {}).items():
+                        # Only include valid numeric scores and real model names
+                        if score is not None and isinstance(score, (int, float)) and not model.startswith('Model '):
+                            agg[model][diff].append(score)
+                            agg[model]['All'].append(score)
     except FileNotFoundError:
         pass
 
-    models = []
-    for name, stats in agg.items():
-        models.append({
-            'name': name,
-            'quality_scores': stats['quality_scores'],
-            'wins': stats['wins']
+    # compute mean and sem
+    import math
+    def stats_list(lst):
+        n = len(lst)
+        if n == 0:
+            return {'mean': None, 'sem': None}
+        m = sum(lst) / n
+        var = sum((x - m) ** 2 for x in lst) / n
+        sem = math.sqrt(var) / math.sqrt(n)
+        return {'mean': round(m, 2), 'sem': round(sem, 2)}
+
+    results = []
+    for model, diffs in agg.items():
+        results.append({
+            'name': model.replace('openai','OpenAI').replace('perplexity','Perplexity'),
+            'stats': {
+                'Easy': stats_list(diffs.get('Easy', [])),
+                'Hard': stats_list(diffs.get('Hard', [])),
+                'All': stats_list(diffs.get('All', []))
+            }
         })
-    return jsonify({'models': models})
+    return jsonify({'models': results})
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5100)
