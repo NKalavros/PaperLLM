@@ -49,7 +49,7 @@ app.secret_key = os.getenv('SECRET_KEY', 'dev-key-change-in-prod')
 # Initialize login manager
 login_manager = LoginManager()
 login_manager.init_app(app)
-login_manager.login_view = 'auth.login'
+login_manager.login_view = 'auth.login' #type: ignore
 
 # Initialize the login manager with user loader
 init_login_manager(login_manager)
@@ -373,6 +373,7 @@ def process_summary(self, text, prompt_prefix, model, request_id=None, display_n
         raise self.retry(exc=e, countdown=delay)
 
 def log_question(request_id, text, prompt_prefix, question_difficulty, nickname, filename):
+    speaker = os.path.splitext(filename)[0]   # derive speaker identifier
     log_entry = {
         'timestamp': datetime.now().isoformat(),
         'request_id': request_id,
@@ -380,6 +381,7 @@ def log_question(request_id, text, prompt_prefix, question_difficulty, nickname,
         'prompt': prompt_prefix,
         'question_difficulty': question_difficulty,
         'file': filename,
+        'speaker': speaker,                    # new field
         'text_preview': text[:200] + '...' if len(text) > 200 else text
     }
     try:
@@ -433,7 +435,7 @@ def summarize():
             if file.filename == '':
                 return jsonify({"error": "No selected file"}), 400
 
-            filename = secure_filename(file.filename)
+            filename = secure_filename(file.filename) #type: ignore
             temp_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             file.save(temp_path)
             
@@ -531,7 +533,13 @@ def task_status(task_id):
 @app.route('/get_answers', methods=['GET'])
 @login_required
 def get_answers():
-    nickname = request.args.get('nickname', '')
+    raw_nick = request.args.get('nickname', '').strip()
+    # strip author_ prefix if present
+    if raw_nick.startswith('author_'):
+        nickname = raw_nick[len('author_'):]
+    else:
+        nickname = raw_nick
+    nickname = nickname.lower()
     extra = request.args.get('extra', '0')
     try:
         extra = int(extra)
@@ -560,33 +568,52 @@ def get_answers():
     extra_results = []
     
     for question in questions:
-        request_id = question['request_id']
+        qn = question.get('nickname','').strip().lower()
+        # match against stripped nickname
+        if qn == nickname:
+            request_id = question['request_id']
         
-        # Get all answers for this request from Redis
-        pattern = f"result:{request_id}:*"
-        model_answers = {}
-        
-        for key in redis_client.scan_iter(match=pattern):
-            result_data = redis_client.get(key)
-            if result_data:
-                result = json.loads(result_data)
-                model_answers[result['model']] = result['summary']
-        
-        # Only include questions that have at least 2 answers
-        if len(model_answers) >= 2:
-            item = {
-                'request_id': request_id,
-                'prompt': question.get('prompt', 'No prompt available'),
-                'file': question.get('file', 'File: Unavailable'),
-                'model_answers': model_answers
-            }
+            # Get all answers for this request from Redis
+            pattern = f"result:{request_id}:*"
+            model_answers = {}
             
-            # Separate user questions from potential extra questions
-            qn = question.get('nickname','').strip().lower()
-            if qn == nickname.strip().lower():
+            for key in redis_client.scan_iter(match=pattern):
+                result_data = redis_client.get(key)
+                if result_data:
+                    result = json.loads(result_data)
+                    model_answers[result['model']] = result['summary']
+            
+            # Only include questions that have at least 2 answers
+            if len(model_answers) >= 2:
+                item = {
+                    'request_id': request_id,
+                    'prompt': question.get('prompt', 'No prompt available'),
+                    'file': question.get('file', 'File: Unavailable'),
+                    'model_answers': model_answers
+                }
                 user_results.append(item)
                 logger.debug(f"Added user question: {request_id}")
-            else:
+        else:
+            request_id = question['request_id']
+        
+            # Get all answers for this request from Redis
+            pattern = f"result:{request_id}:*"
+            model_answers = {}
+            
+            for key in redis_client.scan_iter(match=pattern):
+                result_data = redis_client.get(key)
+                if result_data:
+                    result = json.loads(result_data)
+                    model_answers[result['model']] = result['summary']
+            
+            # Only include questions that have at least 2 answers
+            if len(model_answers) >= 2:
+                item = {
+                    'request_id': request_id,
+                    'prompt': question.get('prompt', 'No prompt available'),
+                    'file': question.get('file', 'File: Unavailable'),
+                    'model_answers': model_answers
+                }
                 extra_results.append(item)
                 logger.debug(f"Added to extra questions pool: {request_id} from {question.get('nickname')}")
     
@@ -651,7 +678,7 @@ def get_questions():
 @login_required
 def save_ratings():
     data = request.json
-    ratings = data.get('ratings', {})
+    ratings = data.get('ratings', {}) # type: ignore
     saved = []
     
     for request_id, score in ratings.items():
@@ -681,11 +708,12 @@ def index():
 @login_required
 def save_rankings():
     data = request.json
-    request_id = data.get('request_id')
-    rankings = data.get('rankings', {})
-    quality_scores = data.get('quality_scores', {})
-    model_answers = data.get('model_answers', {})
-    real_model_mapping = data.get('real_model_mapping', {})
+    request_id = data.get('request_id') # type: ignore
+    rankings = data.get('rankings', {}) # type: ignore
+    quality_scores = data.get('quality_scores', {}) # type: ignore
+    model_answers = data.get('model_answers', {}) # type: ignore
+    real_model_mapping = data.get('real_model_mapping', {}) # type: ignore
+    is_speaker = data.get('is_speaker', False)    # type: ignore
     
     # Calculate real_rankings and real_quality_scores using real_model_mapping
     real_rankings = {}
@@ -734,6 +762,10 @@ def save_rankings():
                     continue
     except FileNotFoundError:
         logger.warning("requests_questions.log not found when retrieving asker nickname")
+    
+    # Prepend author_ to the asker’s name when logging if is_speaker flag is set
+    if asker_nickname and is_speaker:
+        asker_nickname = f"author_{asker_nickname}"
     
     # Build and log the answer entry, now including asker_nickname
     answer_entry = {
@@ -844,6 +876,116 @@ def leaderboard():
             }
         })
     return jsonify({'models': results})
+
+@app.route('/leaderboard/speaker', methods=['GET'])
+@login_required
+def speaker_leaderboard():
+    # read only answers with asker_nickname starting "author_"
+    agg = defaultdict(lambda: defaultdict(list))
+    try:
+        with open('requests_answers.log','r') as fa:
+            for line in fa:
+                e = json.loads(line)
+                asker = e.get('asker_nickname','')
+                if not asker.startswith('author_'):
+                    continue
+                # same aggregation logic as /leaderboard
+                diff = e.get('question_difficulty') or 'All'
+                for model, score in e.get('real_quality_scores', {}).items():
+                    if isinstance(score,(int,float)):
+                        agg[model][diff].append(score)
+                        agg[model]['All'].append(score)
+    except FileNotFoundError:
+        pass
+
+    import math
+    def stats_list(lst):
+        n=len(lst)
+        if n==0: return {'mean':None,'sem':None}
+        m=sum(lst)/n
+        sem=math.sqrt(sum((x-m)**2 for x in lst)/n)/math.sqrt(n)
+        return {'mean':round(m,2),'sem':round(sem,2)}
+
+    results=[]
+    for model,diffs in agg.items():
+        results.append({
+            'name': model.replace('openai','OpenAI').replace('perplexity','Perplexity'),
+            'stats': {
+                'Easy': stats_list(diffs.get('Easy',[])),
+                'Hard': stats_list(diffs.get('Hard',[])),
+                'All': stats_list(diffs.get('All',[]))
+            }
+        })
+    return jsonify({'models':results})
+
+@app.route('/speaker_talks', methods=['GET'])
+@login_required
+def speaker_talks():
+    """Return list of all talk filenames seen in requests_questions.log"""
+    talks = set()
+    try:
+        with open('requests_questions.log', 'r') as f:
+            for line in f:
+                try:
+                    e = json.loads(line)
+                    if 'file' in e:
+                        talks.add(e['file'])
+                except json.JSONDecodeError:
+                    continue
+    except FileNotFoundError:
+        return jsonify({'talks': []})
+    return jsonify({'talks': sorted(talks)})
+
+@app.route('/speaker_questions', methods=['GET'])
+@login_required
+def speaker_questions():
+    """
+    Return up to `num` random questions (with >=2 answers) for the given talk.
+    Query params: talk=<filename>, num=<int>
+    """
+    talk = request.args.get('talk', '')
+    try:
+        num = max(0, int(request.args.get('num', '0')))
+    except ValueError:
+        num = 0
+
+    # collect question entries for this talk
+    qs = []
+    try:
+        with open('requests_questions.log', 'r') as f:
+            for line in f:
+                try:
+                    e = json.loads(line)
+                    if e.get('file') == talk and 'prompt' in e:
+                        qs.append(e)
+                except json.JSONDecodeError:
+                    continue
+    except FileNotFoundError:
+        return jsonify({'questions': []})
+
+    # attach answers from Redis, only keep those with >=2
+    results = []
+    for q in qs:
+        rid = q['request_id']
+        pattern = f"result:{rid}:*"
+        m_ans = {}
+        for key in redis_client.scan_iter(match=pattern):
+            data = redis_client.get(key)
+            if not data: continue
+            r = json.loads(data)
+            m_ans[r['model']] = r['summary']
+        if len(m_ans) >= 2:
+            results.append({
+                'request_id': rid,
+                'prompt': q.get('prompt'),
+                'file': q.get('file'),
+                'model_answers': m_ans
+            })
+
+    # random subset
+    if num > 0 and results:
+        results = random.sample(results, min(num, len(results)))
+    return jsonify({'questions': results})
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5100)
