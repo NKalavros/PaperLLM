@@ -7391,3 +7391,71 @@ json.decoder.JSONDecodeError: Extra data: line 1 column 635 (char 634)
 2025-05-27 14:29:52,349 INFO 127.0.0.1 - - [27/May/2025 14:29:52] "GET /leaderboard HTTP/1.1" 200 -
 2025-05-27 14:30:02,381 INFO 127.0.0.1 - - [27/May/2025 14:30:02] "GET /leaderboard/speaker HTTP/1.1" 200 -
 2025-05-27 14:30:02,382 INFO 127.0.0.1 - - [27/May/2025 14:30:02] "GET /leaderboard HTTP/1.1" 200 -
+2025-06-02 13:10:05,901 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.148.171.150:5100
+2025-06-02 13:10:05,901 INFO [33mPress CTRL+C to quit[0m
+2025-06-02 13:10:07,633 INFO 127.0.0.1 - - [02/Jun/2025 13:10:07] "GET / HTTP/1.1" 200 -
+2025-06-02 13:10:07,735 INFO 127.0.0.1 - - [02/Jun/2025 13:10:07] "GET /speaker_talks HTTP/1.1" 200 -
+2025-06-02 13:10:07,753 INFO 127.0.0.1 - - [02/Jun/2025 13:10:07] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-06-02 13:10:17,357 INFO 127.0.0.1 - - [02/Jun/2025 13:10:17] "GET /leaderboard HTTP/1.1" 200 -
+2025-06-02 13:10:17,357 INFO 127.0.0.1 - - [02/Jun/2025 13:10:17] "GET /leaderboard/speaker HTTP/1.1" 200 -
+2025-06-02 13:11:01,181 INFO 127.0.0.1 - - [02/Jun/2025 13:11:01] "GET /speaker_questions?talk=A_community_computational_challenge_to_predict_the_activity_of_pairs_of_compounds_Gustavo_Stolovitzky_Highlights_ISMB_ECCB_2015.pdf&num=1 HTTP/1.1" 200 -
+2025-06-02 13:11:04,736 INFO 127.0.0.1 - - [02/Jun/2025 13:11:04] "GET /speaker_questions?talk=HITS_colloquium-_Julio_Saez-Rodriguez_on_models_for_personalized_medicine.pdf&num=2 HTTP/1.1" 200 -
+2025-06-02 13:11:06,401 INFO 127.0.0.1 - - [02/Jun/2025 13:11:06] "GET /speaker_questions?talk=HITS_colloquium-_Julio_Saez-Rodriguez_on_models_for_personalized_medicine.pdf&num=1 HTTP/1.1" 200 -
+2025-06-02 13:11:12,270 INFO 127.0.0.1 - - [02/Jun/2025 13:11:12] "GET /leaderboard/speaker HTTP/1.1" 200 -
+2025-06-02 13:11:12,270 INFO 127.0.0.1 - - [02/Jun/2025 13:11:12] "GET /leaderboard HTTP/1.1" 200 -
+2025-06-02 13:11:17,801 INFO 127.0.0.1 - - [02/Jun/2025 13:11:17] "GET /available_pdfs HTTP/1.1" 200 -
+2025-06-02 13:11:33,542 INFO Extracted 55889 characters from PDF
+2025-06-02 13:11:33,543 INFO Extracted 7198 words from PDF
+2025-06-02 13:11:33,631 INFO 127.0.0.1 - - [02/Jun/2025 13:11:33] "[35m[1mPOST /summarize HTTP/1.1[0m" 202 -
+2025-06-02 13:11:53,127 INFO get_answers called with nickname=nikolas13, extra=0
+2025-06-02 13:11:53,137 INFO 127.0.0.1 - - [02/Jun/2025 13:11:53] "GET /get_answers?nickname=author_Nikolas13&extra=0 HTTP/1.1" 200 -
+2025-06-02 13:11:59,405 INFO 127.0.0.1 - - [02/Jun/2025 13:11:59] "GET /speaker_questions?talk=HITS_colloquium-_Julio_Saez-Rodriguez_on_models_for_personalized_medicine.pdf&num=1 HTTP/1.1" 200 -
+2025-06-02 13:12:19,105 INFO Successfully saved rankings for request b86714c9-fdcf-496d-8d4a-f25b434cc321
+2025-06-02 13:12:19,106 INFO 127.0.0.1 - - [02/Jun/2025 13:12:19] "POST /rankings/ HTTP/1.1" 200 -
+2025-06-02 13:14:26,030 INFO Successfully saved rankings for request b86714c9-fdcf-496d-8d4a-f25b434cc321
+2025-06-02 13:14:26,033 INFO 127.0.0.1 - - [02/Jun/2025 13:14:26] "POST /rankings/ HTTP/1.1" 200 -
+2025-06-02 13:15:19,179 INFO 127.0.0.1 - - [02/Jun/2025 13:15:19] "GET /leaderboard/speaker HTTP/1.1" 200 -
+2025-06-02 13:15:19,180 INFO 127.0.0.1 - - [02/Jun/2025 13:15:19] "GET /leaderboard HTTP/1.1" 200 -
+2025-06-02 13:16:24,640 INFO 127.0.0.1 - - [02/Jun/2025 13:16:24] "GET /available_pdfs HTTP/1.1" 200 -
+2025-06-02 13:20:09,200 INFO 127.0.0.1 - - [02/Jun/2025 13:20:09] "GET /speaker_questions?talk=HITS_colloquium-_Julio_Saez-Rodriguez_on_models_for_personalized_medicine.pdf&num=0 HTTP/1.1" 200 -
+2025-06-02 13:20:11,524 INFO 127.0.0.1 - - [02/Jun/2025 13:20:11] "GET /speaker_questions?talk=HITS_colloquium-_Julio_Saez-Rodriguez_on_models_for_personalized_medicine.pdf&num=1 HTTP/1.1" 200 -
+2025-06-02 13:20:16,305 INFO 127.0.0.1 - - [02/Jun/2025 13:20:16] "GET / HTTP/1.1" 200 -
+2025-06-02 13:20:16,396 INFO 127.0.0.1 - - [02/Jun/2025 13:20:16] "GET /speaker_talks HTTP/1.1" 200 -
+2025-06-02 13:20:21,906 INFO 127.0.0.1 - - [02/Jun/2025 13:20:21] "GET /speaker_questions?talk=HITS_colloquium-_Julio_Saez-Rodriguez_on_models_for_personalized_medicine.pdf&num=1 HTTP/1.1" 200 -
+2025-06-02 13:20:57,879 INFO 127.0.0.1 - - [02/Jun/2025 13:20:57] "GET /leaderboard/speaker HTTP/1.1" 200 -
+2025-06-02 13:20:57,880 INFO 127.0.0.1 - - [02/Jun/2025 13:20:57] "GET /leaderboard HTTP/1.1" 200 -
+2025-06-02 13:22:16,622 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.148.171.150:5100
+2025-06-02 13:22:16,622 INFO [33mPress CTRL+C to quit[0m
+2025-06-02 13:22:17,467 INFO 127.0.0.1 - - [02/Jun/2025 13:22:17] "GET / HTTP/1.1" 200 -
+2025-06-02 13:22:17,545 INFO 127.0.0.1 - - [02/Jun/2025 13:22:17] "GET /speaker_talks HTTP/1.1" 200 -
+2025-06-02 13:23:33,117 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.148.171.150:5100
+2025-06-02 13:23:33,117 INFO [33mPress CTRL+C to quit[0m
+2025-06-02 13:23:34,207 INFO 127.0.0.1 - - [02/Jun/2025 13:23:34] "GET / HTTP/1.1" 200 -
+2025-06-02 13:23:34,259 INFO 127.0.0.1 - - [02/Jun/2025 13:23:34] "GET /speaker_talks HTTP/1.1" 200 -
+2025-06-02 13:24:01,051 INFO 127.0.0.1 - - [02/Jun/2025 13:24:01] "GET /leaderboard/speaker HTTP/1.1" 200 -
+2025-06-02 13:24:01,054 INFO 127.0.0.1 - - [02/Jun/2025 13:24:01] "GET /leaderboard HTTP/1.1" 200 -
+2025-06-02 13:24:36,850 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.148.171.150:5100
+2025-06-02 13:24:36,851 INFO [33mPress CTRL+C to quit[0m
+2025-06-02 13:24:39,006 INFO 127.0.0.1 - - [02/Jun/2025 13:24:39] "GET / HTTP/1.1" 200 -
+2025-06-02 13:24:39,126 INFO 127.0.0.1 - - [02/Jun/2025 13:24:39] "GET /speaker_talks HTTP/1.1" 200 -
+2025-06-02 13:24:41,742 INFO 127.0.0.1 - - [02/Jun/2025 13:24:41] "GET /leaderboard/speaker HTTP/1.1" 200 -
+2025-06-02 13:24:41,743 INFO 127.0.0.1 - - [02/Jun/2025 13:24:41] "GET /leaderboard HTTP/1.1" 200 -
+2025-06-02 13:24:55,409 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.148.171.150:5100
+2025-06-02 13:24:55,409 INFO [33mPress CTRL+C to quit[0m
+2025-06-02 13:24:58,244 INFO 127.0.0.1 - - [02/Jun/2025 13:24:58] "GET / HTTP/1.1" 200 -
+2025-06-02 13:24:58,288 INFO 127.0.0.1 - - [02/Jun/2025 13:24:58] "GET /speaker_talks HTTP/1.1" 200 -

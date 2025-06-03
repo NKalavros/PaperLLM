@@ -256,10 +256,10 @@
     <div class="container markdown-body">
         <h1>Academic Talk Summarizer</h1>
         <div>
-            <span class="tab active" id="questions-tab-btn">Questions</span>
-            <span class="tab" id="answers-tab-btn">Answers</span>
+            <span class="tab active" id="questions-tab-btn"> Audience Questions</span>
+            <span class="tab" id="answers-tab-btn">LLM Answers</span>
+            <span class="tab" id="speaker-tab-btn">Speaker-only interface</span>
             <span class="tab" id="leaderboard-tab-btn">Leaderboard</span>
-            <span class="tab" id="speaker-tab-btn">Speaker</span>
             <!-- removed speaker-lb-tab-btn -->
         </div>
         <!-- Questions Tab: upload file, nickname, prompt -->
@@ -376,7 +376,7 @@
                     <label for="speaker-num">Number of questions:</label>
                     <input type="number" id="speaker-num" class="quality-score" min="1" value="5">
                 </div>
-                <button type="button" id="load-speaker-btn">Load Questions</button>
+                <button type="button" id="load-speaker-btn">Load Audience Questions & LLM Answers</button>
             </div>
             <div id="speaker-panels"></div>
             <div id="speaker-ratings-submit" class="hidden">
