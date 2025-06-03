@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Academic Paper Summarizer - Benchmarking LLMs using Academic Talks</title>
+    <title>Academic Talk Summarizer - Benchmarking LLMs using Academic </div>Talks</title>
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown.min.css">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
@@ -237,16 +237,30 @@
         #pdf-dropdown {
             margin-top: 10px;
         }
+
+        /* Ensure leaderboard table is white with black text */
+        #leaderboard-tab .form-section,
+        #audienceLeaderboardTable,
+        #audienceLeaderboardTable th,
+        #audienceLeaderboardTable td,
+        #speakerLeaderboardTable,
+        #speakerLeaderboardTable th,
+        #speakerLeaderboardTable td {
+            background-color: #ffffff !important;
+            color: #000000 !important;
+        }
     </style>
 </head>
 
 <body>
     <div class="container markdown-body">
-        <h1>Academic Paper Summarizer</h1>
+        <h1>Academic Talk Summarizer</h1>
         <div>
-            <span class="tab active" id="questions-tab-btn">Questions</span>
-            <span class="tab" id="answers-tab-btn">Answers</span>
+            <span class="tab active" id="questions-tab-btn"> Audience Questions</span>
+            <span class="tab" id="answers-tab-btn">LLM Answers</span>
+            <span class="tab" id="speaker-tab-btn">Speaker-only interface</span>
             <span class="tab" id="leaderboard-tab-btn">Leaderboard</span>
+            <!-- removed speaker-lb-tab-btn -->
         </div>
         <!-- Questions Tab: upload file, nickname, prompt -->
         <div id="questions-tab" class="tab-content active">
@@ -291,7 +305,7 @@
                     <div class="form-group">
                         <label for="nickname">Nickname:</label>
                         <input type="text" id="nickname" name="nickname" required
-                            style="background-color: #ffffff !important; -webkit-appearance: none; color: #000000;">
+                            style="background-color: #ffffff !important; appearance: none; -webkit-appearance: none; color: #000000;">
                     </div>
                     <button type="submit" id="submit-btn">Submit Question</button>
                 </form>
@@ -303,16 +317,15 @@
             <div class="form-section">
                 <form id="answersForm">
                     <div class="form-group">
-                        <label for="ans-nickname">Nickname:</label>
-                        <input type="text" id="ans-nickname" name="nickname" required
-                            style="background-color: #ffffff !important; color: #000000; width: 100%; padding: 0.75rem; border: 1px solid #d0d7de; border-radius: 6px;">
+                        <label for="ans-nickname">Nickname</label>
+                        <input type="text" id="ans-nickname" name="nickname" placeholder="Enter your nickname"
+                            required />
                     </div>
                     <div class="form-group">
-                        <label for="extra-num">Extra Questions (number):</label>
-                        <input type="number" id="extra-num" name="extra" min="0" value="0" required
-                            style="background-color: #ffffff !important; color: #000000; width: 100%; padding: 0.75rem; border: 1px solid #d0d7de; border-radius: 6px;">
+                        <label for="extra-num">Extra Questions</label>
+                        <input type="number" id="extra-num" name="extra" min="0" value="0" />
                     </div>
-                    <button type="submit" id="fetch-requests-btn">Get Requests</button>
+                    <button type="submit" id="load-answers-btn">Load Answers</button>
                 </form>
             </div>
             <!-- Removed the select request menu; all rating panels will be displayed below automatically -->
@@ -324,61 +337,103 @@
         <!-- Leaderboard Tab -->
         <div id="leaderboard-tab" class="tab-content">
             <div class="form-section">
-                <div class="form-group">
-                    <label for="difficulty-filter">Question Difficulty:</label>
-                    <select id="difficulty-filter" class="quality-score">
-                        <option value="">All</option>
-                        <option>Easy</option>
-                        <option>Medium</option>
-                        <option>Hard</option>
-                    </select>
-                    <button id="load-leaderboard" type="button">Load Leaderboard</button>
-                </div>
-                <div class="form-group">
-                    <h3>Quality Score Distribution</h3>
-                    <canvas id="histogramChart"></canvas>
-                </div>
-                <div class="form-group">
-                    <h3>Win Counts (Rank #1)</h3>
-                    <canvas id="rankingChart"></canvas>
-                </div>
+                <h2>Audience Leaderboard</h2>
+                <table id="audienceLeaderboardTable" style="width:100%;border-collapse:collapse;">
+                    <thead>
+                        <tr>
+                            <th>Model</th>
+                            <th>Easy</th>
+                            <th>Hard</th>
+                            <th>All</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div class="form-section">
+                <h2>Speaker Leaderboard</h2>
+                <table id="speakerLeaderboardTable" style="width:100%;border-collapse:collapse;">
+                    <thead>
+                        <tr>
+                            <th>Model</th>
+                            <th>Easy</th>
+                            <th>Hard</th>
+                            <th>All</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
             </div>
         </div>
+        <!-- Speaker Tab -->
+        <div id="speaker-tab" class="tab-content">
+            <div class="form-section">
+                <div class="form-group">
+                    <label for="speaker-talks">Talk:</label>
+                    <select id="speaker-talks" class="ranking-select"></select>
+                </div>
+                <div class="form-group">
+                    <label for="speaker-num">Number of questions:</label>
+                    <input type="number" id="speaker-num" class="quality-score" min="1" value="5">
+                </div>
+                <button type="button" id="load-speaker-btn">Load Audience Questions & LLM Answers</button>
+            </div>
+            <div id="speaker-panels"></div>
+            <div id="speaker-ratings-submit" class="hidden">
+                <button id="submit-speaker-ratings-btn">Submit Ratings</button>
+            </div>
+        </div>
+    </div>
     </div>
     <script>
         // Tab switching
         const questionsTabBtn = document.getElementById('questions-tab-btn');
         const answersTabBtn = document.getElementById('answers-tab-btn');
         const lbBtn = document.getElementById('leaderboard-tab-btn');
+        const speakerTabBtn = document.getElementById('speaker-tab-btn');
         const questionsTab = document.getElementById('questions-tab');
         const answersTab = document.getElementById('answers-tab');
         const leaderboardTab = document.getElementById('leaderboard-tab');
+        const speakerTab = document.getElementById('speaker-tab');
 
         questionsTabBtn.addEventListener('click', () => {
             questionsTabBtn.classList.add('active');
             answersTabBtn.classList.remove('active');
             lbBtn.classList.remove('active');
+            speakerTabBtn.classList.remove('active');
             questionsTab.classList.add('active');
             answersTab.classList.remove('active');
             leaderboardTab.classList.remove('active');
+            speakerTab.classList.remove('active');
         });
 
         answersTabBtn.addEventListener('click', () => {
             answersTabBtn.classList.add('active');
             questionsTabBtn.classList.remove('active');
             lbBtn.classList.remove('active');
+            speakerTabBtn.classList.remove('active');
             answersTab.classList.add('active');
             questionsTab.classList.remove('active');
             leaderboardTab.classList.remove('active');
+            speakerTab.classList.remove('active');
         });
 
         lbBtn.addEventListener('click', () => {
             questionsTabBtn.classList.remove('active');
             answersTabBtn.classList.remove('active');
             lbBtn.classList.add('active');
+            speakerTabBtn.classList.remove('active');
             questionsTab.classList.remove('active');
             answersTab.classList.remove('active');
             leaderboardTab.classList.add('active');
+            speakerTab.classList.remove('active');
+        });
+
+        speakerTabBtn.addEventListener('click', () => {
+            [questionsTabBtn, answersTabBtn, lbBtn, speakerTabBtn].forEach(b => b.classList.remove('active'));
+            speakerTabBtn.classList.add('active');
+            [questionsTab, answersTab, leaderboardTab, speakerTab].forEach(d => d.classList.remove('active'));
+            speakerTab.classList.add('active');
         });
 
         // Handle PDF source selection (new functionality)
@@ -481,7 +536,7 @@
                 const data = await response.json();
                 if (!response.ok) throw new Error(data.error || 'Failed to submit question');
                 // Simply display a confirmation message and clear the form
-                document.getElementById('question-status').innerText = 'Question submitted successfully!';
+                document.getElementById('question-status').innerText = 'Question submitted successfully! Answers take 30-60 seconds to generate.';
                 e.target.reset();
                 // Reset PDF source to upload
                 document.querySelector('input[name="pdf_source"][value="upload"]').checked = true;
@@ -498,7 +553,8 @@
         // Answer tab JS
         document.getElementById('answersForm').addEventListener('submit', async (e) => {
             e.preventDefault();
-            const nickname = document.getElementById('ans-nickname').value;
+            let nickname = document.getElementById('ans-nickname').value.trim();
+            nickname = `author_${nickname}`;               // prepend author_
             const extra = parseInt(document.getElementById('extra-num').value, 10);
             document.getElementById('ratings-panels').innerHTML = '<p>Loading questions...</p>';
             document.getElementById('all-ratings-submit').classList.add('hidden');
@@ -551,22 +607,22 @@
                         <button type="button" class="toggle-details">Show Details</button>
                       </div>
                       <div class="summary-content hidden">
-                        <div><strong>${model1}:</strong>${marked.parse(answer1)}</div>
-                        <div><strong>${model2}:</strong>${marked.parse(answer2)}</div>
+                        <div><strong>Model 1:</strong>${marked.parse(answer1)}</div>
+                        <div><strong>Model 2:</strong>${marked.parse(answer2)}</div>
                         <div class="form-group">
                           <label for="preferred-${reqId}">Preferred Answer:</label>
                           <select id="preferred-${reqId}" class="preferred-dropdown">
                             <option value="">--Select--</option>
-                            <option value="answer1">First (${model1})</option>
-                            <option value="answer2">Second (${model2})</option>
+                            <option value="answer1">Model 1</option>
+                            <option value="answer2">Model 2</option>
                           </select>
                         </div>
                         <div class="form-group">
-                          <label for="quality1-${reqId}">Quality ${model1} (1-10):</label>
+                          <label for="quality1-${reqId}">Quality Model 1 (1-10):</label>
                           <input type="number" id="quality1-${reqId}" class="quality-input" min="1" max="10">
                         </div>
                         <div class="form-group">
-                          <label for="quality2-${reqId}">Quality ${model2} (1-10):</label>
+                          <label for="quality2-${reqId}">Quality Model 2 (1-10):</label>
                           <input type="number" id="quality2-${reqId}" class="quality-input" min="1" max="10">
                         </div>
                       </div>
@@ -603,30 +659,38 @@
                 const quality1 = panel.querySelector(`#quality1-${reqId}`).value;
                 const quality2 = panel.querySelector(`#quality2-${reqId}`).value;
 
-                // ...existing empty‐field check...
-                if (!reqId || !preferred || quality1 === '' || quality2 === '') {
-                    alert(`Please complete ratings for request ${reqId}.`);
+                // Only check if request ID is present, make preferred model optional
+                if (!reqId) {
+                    alert(`Missing request ID. Please reload the page and try again.`);
                     cancel = true;
                     return;
                 }
 
-                const q1 = parseInt(quality1, 10);
-                const q2 = parseInt(quality2, 10);
-                // consistency check
-                if ((preferred === 'answer1' && q1 <= q2) ||
-                    (preferred === 'answer2' && q2 <= q1)) {
-                    const highModel = (preferred === 'answer1') ? model1 : model2;
-                    const lowModel = (preferred === 'answer1') ? model2 : model1;
-                    const highScore = (preferred === 'answer1') ? q1 : q2;
-                    const lowScore = (preferred === 'answer1') ? q2 : q1;
-                    if (!confirm(
-                        `You ranked ${highModel} as preferred (score ${highScore}) but its quality ` +
-                        `score is not higher than ${lowModel} (score ${lowScore}).\nContinue?`
-                    )) {
+                const q1 = quality1 === '' ? null : parseInt(quality1, 10);
+                const q2 = quality2 === '' ? null : parseInt(quality2, 10);
+
+                // Only perform consistency check if preferred model is selected and both scores provided
+                if (preferred && q1 !== null && q2 !== null) {
+                    if ((preferred === 'answer1' && q1 <= q2) ||
+                        (preferred === 'answer2' && q2 <= q1)) {
+                        const highModel = (preferred === 'answer1') ? model1 : model2;
+                        const lowModel = (preferred === 'answer1') ? model2 : model1;
+                        const highScore = (preferred === 'answer1') ? q1 : q2;
+                        const lowScore = (preferred === 'answer1') ? q2 : q1;
+                        alert(
+                            `Inconsistent ratings detected!\n\nYou ranked ${highModel} as preferred but its quality ` +
+                            `score (${highScore}) is not higher than ${lowModel} (${lowScore}).\n\n` +
+                            `Please fix this inconsistency before submitting.`
+                        );
                         cancel = true;
                         return;
                     }
                 }
+
+                // Prepare rankings object only if a preference was selected
+                const rankings = preferred ?
+                    (preferred === 'answer1') ? { "Model 1": 1, "Model 2": 2 } : { "Model 2": 1, "Model 1": 2 }
+                    : {};
 
                 // ...existing fetch logic...
                 const p = fetch('/rankings/', {
@@ -634,13 +698,15 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         request_id: reqId,
-                        rankings: (preferred === 'answer1')
-                            ? { [model1]: 1, [model2]: 2 }
-                            : { [model2]: 1, [model1]: 2 },
-                        quality_scores: { [model1]: q1, [model2]: q2 },
+                        rankings: rankings,
+                        quality_scores: { "Model 1": q1, "Model 2": q2 },
                         model_answers: {
-                            [model1]: panel.getAttribute('data-model1-answer'),
-                            [model2]: panel.getAttribute('data-model2-answer')
+                            "Model 1": panel.getAttribute('data-model1-answer'),
+                            "Model 2": panel.getAttribute('data-model2-answer')
+                        },
+                        real_model_mapping: {
+                            "Model 1": model1,
+                            "Model 2": model2
                         }
                     })
                 }).then(res => {
@@ -664,58 +730,178 @@
             }
         });
 
-        document.getElementById('load-leaderboard').addEventListener('click', () => {
-            const diff = document.getElementById('difficulty-filter').value;
-            fetch(`/leaderboard?difficulty=${encodeURIComponent(diff)}`)
-                .then(r => r.json())
-                .then(renderLeaderboard)
-                .catch(e => console.error(e));
-        });
-
-        let histChart, rankChart;
-        function renderLeaderboard(data) {
-            // prepare labels 1–10
-            const scoreLabels = Array.from({ length: 10 }, (_, i) => String(i + 1));
-            // build frequency arrays
-            const histDatasets = data.models.map((m, i) => {
-                const freq = Array(10).fill(0);
-                m.quality_scores.forEach(s => { if (s >= 1 && s <= 10) freq[s - 1]++; });
-                return {
-                    label: m.name,
-                    data: freq,
-                    backgroundColor: `hsla(${i * 60},70%,50%,0.6)`
-                };
-            });
-            const ctx1 = document.getElementById('histogramChart').getContext('2d');
-            if (histChart) histChart.destroy();
-            histChart = new Chart(ctx1, {
-                type: 'bar',
-                data: { labels: scoreLabels, datasets: histDatasets },
-                options: {
-                    responsive: true,
-                    plugins: { title: { display: true, text: 'Quality Score Histogram' } },
-                    scales: {
-                        x: { stacked: true, title: { display: true, text: 'Score' } },
-                        y: { stacked: true, beginAtZero: true, title: { display: true, text: 'Count' } }
-                    }
-                }
-            });
-
-            // wins bar chart
-            const labels = data.models.map(m => m.name);
-            const wins = data.models.map(m => m.wins);
-            const ctx2 = document.getElementById('rankingChart').getContext('2d');
-            if (rankChart) rankChart.destroy();
-            rankChart = new Chart(ctx2, {
-                type: 'bar',
-                data: { labels, datasets: [{ label: 'Wins (#1)', data: wins, backgroundColor: '#4a90e2' }] },
-                options: {
-                    responsive: true,
-                    plugins: { title: { display: true, text: 'First-place Counts by Model' } },
-                    scales: { y: { beginAtZero: true, title: { display: true, text: 'Wins' } } }
-                }
+        function renderLeaderboard(tableId, models) {
+            const tbody = document.querySelector(`#${tableId} tbody`);
+            tbody.innerHTML = '';
+            models.forEach(m => {
+                const row = document.createElement('tr');
+                ['Easy', 'Hard', 'All'].forEach(k => {
+                    const s = m.stats[k] || { mean: null, sem: null };
+                    const td = document.createElement('td');
+                    td.textContent = s.mean !== null ? `${s.mean}±${s.sem}` : '–';
+                    row.appendChild(td);
+                });
+                const nameCell = document.createElement('td');
+                nameCell.textContent = m.name;
+                row.insertBefore(nameCell, row.firstChild);
+                tbody.appendChild(row);
             });
         }
+
+        function loadAudienceLeaderboard() {
+            fetch('/leaderboard')
+                .then(r => r.json())
+                .then(data => renderLeaderboard('audienceLeaderboardTable', data.models))
+                .catch(console.error);
+        }
+        function loadSpeakerLeaderboard() {
+            fetch('/leaderboard/speaker')
+                .then(r => r.json())
+                .then(data => renderLeaderboard('speakerLeaderboardTable', data.models))
+                .catch(console.error);
+        }
+
+        // Automatically fetch and populate table
+        function loadTable() {
+            fetch('/leaderboard')
+                .then(r => {
+                    if (!r.ok) throw new Error(`HTTP error ${r.status}`);
+                    return r.json();
+                })
+                .then(data => {
+                    console.log('Loaded leaderboard data:', data);
+                    renderTable(data);
+                })
+                .catch(e => {
+                    console.error('Error loading leaderboard:', e);
+                    document.querySelector('#leaderboardTable tbody').innerHTML =
+                        `<tr><td colspan="4">Error loading leaderboard: ${e.message}</td></tr>`;
+                });
+        }
+        // Load on tab click
+        lbBtn.addEventListener('click', () => {
+            loadAudienceLeaderboard();
+            loadSpeakerLeaderboard();
+        });
+        // Load on initial page load if leaderboard is active
+        if (leaderboardTab.classList.contains('active')) {
+            loadAudienceLeaderboard();
+            loadSpeakerLeaderboard();
+        }
+
+        // Populate talks dropdown
+        async function loadSpeakerTalks() {
+            try {
+                const { talks } = await fetch('/speaker_talks').then(r => r.json());
+                const sel = document.getElementById('speaker-talks');
+                sel.innerHTML = '<option value="">-- Select talk --</option>';
+                talks.forEach(t => sel.append(new Option(t, t)));
+            } catch { /* ignore */ }
+        }
+        loadSpeakerTalks();
+
+        // Load and render speaker questions
+        document.getElementById('load-speaker-btn').addEventListener('click', async () => {
+            const talk = document.getElementById('speaker-talks').value;
+            const num = document.getElementById('speaker-num').value;
+            if (!talk) return alert('Select a talk');
+            const { questions } = await fetch(`/speaker_questions?talk=${encodeURIComponent(talk)}&num=${num}`)
+                .then(r => r.json());
+            let html = '';
+            questions.forEach(item => {
+                const [m1, m2] = Object.keys(item.model_answers);
+                html += `
+                  <div class="summary-box"
+                       data-request-id="${item.request_id}"
+                       data-model1-name="${m1}"
+                       data-model2-name="${m2}"
+                       data-model1-answer="${item.model_answers[m1].replace(/"/g, '&quot;')}"
+                       data-model2-answer="${item.model_answers[m2].replace(/"/g, '&quot;')}">
+                    <div class="summary-header">
+                      <div><h3>${item.prompt}</h3><p>${item.file}</p></div>
+                      <button class="toggle-details">Show Details</button>
+                    </div>
+                    <div class="summary-content hidden">
+                      <div><strong>Model 1:</strong>${marked.parse(item.model_answers[m1])}</div>
+                      <div><strong>Model 2:</strong>${marked.parse(item.model_answers[m2])}</div>
+                      <div class="form-group">
+                        <label>Preferred:</label>
+                        <select class="preferred-dropdown">
+                          <option value="">--Select--</option>
+                          <option value="answer1">Model 1</option>
+                          <option value="answer2">Model 2</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label>Quality Model 1 (1-10):</label>
+                        <input type="number" id="sp-quality1-${item.request_id}" class="quality-input" min="1" max="10">
+                      </div>
+                      <div class="form-group">
+                        <label>Quality Model 2 (1-10):</label>
+                        <input type="number" id="sp-quality2-${item.request_id}" class="quality-input" min="1" max="10">
+                      </div>
+                    </div>
+                  </div>`;
+            });
+            const container = document.getElementById('speaker-panels');
+            container.innerHTML = html;
+            document.getElementById('speaker-ratings-submit')
+                .classList.toggle('hidden', html === '');
+
+            document.querySelectorAll('#speaker-panels .toggle-details').forEach(btn =>
+                btn.addEventListener('click', () => {
+                    const c = btn.closest('.summary-box').querySelector('.summary-content');
+                    c.classList.toggle('hidden');
+                    btn.textContent = c.classList.contains('hidden') ? 'Show Details' : 'Hide Details';
+                })
+            );
+        });
+
+        // Submit speaker ratings
+        document.getElementById('submit-speaker-ratings-btn').addEventListener('click', async () => {
+            const panels = document.querySelectorAll('#speaker-panels .summary-box');
+            let promises = [], cancel = false;
+            panels.forEach(panel => {
+                const reqId = panel.getAttribute('data-request-id');
+                const model1 = panel.getAttribute('data-model1-name');
+                const model2 = panel.getAttribute('data-model2-name');
+                const preferred = panel.querySelector('.preferred-dropdown').value;
+                const q1 = panel.querySelector(`#sp-quality1-${reqId}`).value || null;
+                const q2 = panel.querySelector(`#sp-quality2-${reqId}`).value || null;
+                if (!reqId) { cancel = true; return; }
+                const quality1 = q1 === null ? null : parseInt(q1, 10);
+                const quality2 = q2 === null ? null : parseInt(q2, 10);
+                const rankings = preferred
+                    ? (preferred === 'answer1' ? { [model1]: 1, [model2]: 2 } : { [model2]: 1, [model1]: 2 })
+                    : {};
+                const body = {
+                    request_id: reqId,
+                    rankings: rankings,
+                    quality_scores: { [model1]: quality1, [model2]: quality2 },
+                    model_answers: {
+                        [model1]: panel.getAttribute('data-model1-answer'),
+                        [model2]: panel.getAttribute('data-model2-answer')
+                    },
+                    real_model_mapping: { [model1]: model1, [model2]: model2 },
+                    is_speaker: true    // <--- flag this as speaker-tab submission
+                };
+                promises.push(
+                    fetch('/rankings/', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(body)
+                    }).then(r => { if (!r.ok) throw r; return r.json(); })
+                );
+            });
+            if (cancel) return;
+            try {
+                await Promise.all(promises);
+                alert('Speaker ratings submitted successfully!');
+            } catch (e) {
+                console.error(e);
+                alert('Error submitting speaker ratings');
+            }
+        });
     </script>
 </body>
 
