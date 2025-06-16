@@ -748,16 +748,46 @@
             });
         }
 
+        // insert or update a t-test footer row
+        function renderTTestRow(tableId, ttest) {
+            const tbody = document.querySelector(`#${tableId} tbody`);
+            const existing = tbody.querySelector('.ttest-row');
+            if (existing) existing.remove();
+            if (!ttest) return;
+            const tr = document.createElement('tr');
+            tr.classList.add('ttest-row');
+            // label cell
+            const label = document.createElement('td');
+            label.textContent = 't-test p-value';
+            tr.appendChild(label);
+            // one cell per difficulty
+            ['Easy', 'Hard', 'All'].forEach(diff => {
+                const cell = document.createElement('td');
+                const e = ttest[diff];
+                cell.textContent = e
+                    ? `N=${e.N}, p=${e.p_value}`
+                    : '–';
+                tr.appendChild(cell);
+            });
+            tbody.appendChild(tr);
+        }
+
         function loadAudienceLeaderboard() {
             fetch('/leaderboard')
                 .then(r => r.json())
-                .then(data => renderLeaderboard('audienceLeaderboardTable', data.models))
+                .then(data => {
+                    renderLeaderboard('audienceLeaderboardTable', data.models);
+                    renderTTestRow('audienceLeaderboardTable', data.ttest);
+                })
                 .catch(console.error);
         }
         function loadSpeakerLeaderboard() {
             fetch('/leaderboard/speaker')
                 .then(r => r.json())
-                .then(data => renderLeaderboard('speakerLeaderboardTable', data.models))
+                .then(data => {
+                    renderLeaderboard('speakerLeaderboardTable', data.models);
+                    renderTTestRow('speakerLeaderboardTable', data.ttest);
+                })
                 .catch(console.error);
         }
 

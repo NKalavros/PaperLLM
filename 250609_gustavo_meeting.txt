@@ -1,0 +1,3 @@
+- Add third row with N=whatever and p-value= (from t-test)
+
+- Instructions video

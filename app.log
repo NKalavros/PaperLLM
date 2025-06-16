@@ -7459,3 +7459,79 @@ json.decoder.JSONDecodeError: Extra data: line 1 column 635 (char 634)
 2025-06-02 13:24:55,409 INFO [33mPress CTRL+C to quit[0m
 2025-06-02 13:24:58,244 INFO 127.0.0.1 - - [02/Jun/2025 13:24:58] "GET / HTTP/1.1" 200 -
 2025-06-02 13:24:58,288 INFO 127.0.0.1 - - [02/Jun/2025 13:24:58] "GET /speaker_talks HTTP/1.1" 200 -
+2025-06-16 08:58:10,454 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.148.170.168:5100
+2025-06-16 08:58:10,454 INFO [33mPress CTRL+C to quit[0m
+2025-06-16 08:58:16,277 INFO 127.0.0.1 - - [16/Jun/2025 08:58:16] "GET / HTTP/1.1" 200 -
+2025-06-16 08:58:16,370 INFO 127.0.0.1 - - [16/Jun/2025 08:58:16] "GET /speaker_talks HTTP/1.1" 200 -
+2025-06-16 08:58:16,390 INFO 127.0.0.1 - - [16/Jun/2025 08:58:16] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-06-16 08:58:20,153 INFO 127.0.0.1 - - [16/Jun/2025 08:58:20] "GET /leaderboard/speaker HTTP/1.1" 200 -
+2025-06-16 08:58:20,154 INFO 127.0.0.1 - - [16/Jun/2025 08:58:20] "GET /leaderboard HTTP/1.1" 200 -
+2025-06-16 08:58:23,038 INFO 127.0.0.1 - - [16/Jun/2025 08:58:23] "GET /available_pdfs HTTP/1.1" 200 -
+2025-06-16 08:58:45,784 INFO Extracted 55889 characters from PDF
+2025-06-16 08:58:45,784 INFO Extracted 7198 words from PDF
+2025-06-16 08:58:45,833 INFO 127.0.0.1 - - [16/Jun/2025 08:58:45] "[35m[1mPOST /summarize HTTP/1.1[0m" 202 -
+2025-06-16 08:58:48,732 INFO 127.0.0.1 - - [16/Jun/2025 08:58:48] "GET /available_pdfs HTTP/1.1" 200 -
+2025-06-16 08:59:24,540 INFO Extracted 69693 characters from PDF
+2025-06-16 08:59:24,541 INFO Extracted 8780 words from PDF
+2025-06-16 08:59:24,567 INFO 127.0.0.1 - - [16/Jun/2025 08:59:24] "[35m[1mPOST /summarize HTTP/1.1[0m" 202 -
+2025-06-16 08:59:26,729 INFO get_answers called with nickname=brunobucciarati, extra=0
+2025-06-16 08:59:26,734 INFO 127.0.0.1 - - [16/Jun/2025 08:59:26] "GET /get_answers?nickname=author_BrunoBucciarati&extra=0 HTTP/1.1" 200 -
+2025-06-16 08:59:27,528 INFO get_answers called with nickname=brunobucciarati, extra=0
+2025-06-16 08:59:27,531 INFO 127.0.0.1 - - [16/Jun/2025 08:59:27] "GET /get_answers?nickname=author_BrunoBucciarati&extra=0 HTTP/1.1" 200 -
+2025-06-16 08:59:29,777 INFO get_answers called with nickname=gustavo, extra=0
+2025-06-16 08:59:29,781 INFO 127.0.0.1 - - [16/Jun/2025 08:59:29] "GET /get_answers?nickname=author_Gustavo&extra=0 HTTP/1.1" 200 -
+2025-06-16 08:59:35,462 INFO Successfully saved rankings for request 62ac6a79-3774-43d7-9146-a7938b04f260
+2025-06-16 08:59:35,463 INFO 127.0.0.1 - - [16/Jun/2025 08:59:35] "POST /rankings/ HTTP/1.1" 200 -
+2025-06-16 08:59:39,162 INFO get_answers called with nickname=brunobucciarati, extra=0
+2025-06-16 08:59:39,165 INFO 127.0.0.1 - - [16/Jun/2025 08:59:39] "GET /get_answers?nickname=author_BrunoBucciarati&extra=0 HTTP/1.1" 200 -
+2025-06-16 08:59:39,844 INFO get_answers called with nickname=brunobucciarati, extra=0
+2025-06-16 08:59:39,848 INFO 127.0.0.1 - - [16/Jun/2025 08:59:39] "GET /get_answers?nickname=author_BrunoBucciarati&extra=0 HTTP/1.1" 200 -
+2025-06-16 08:59:40,147 INFO get_answers called with nickname=brunobucciarati, extra=0
+2025-06-16 08:59:40,151 INFO 127.0.0.1 - - [16/Jun/2025 08:59:40] "GET /get_answers?nickname=author_BrunoBucciarati&extra=0 HTTP/1.1" 200 -
+2025-06-16 08:59:40,300 INFO get_answers called with nickname=brunobucciarati, extra=0
+2025-06-16 08:59:40,306 INFO 127.0.0.1 - - [16/Jun/2025 08:59:40] "GET /get_answers?nickname=author_BrunoBucciarati&extra=0 HTTP/1.1" 200 -
+2025-06-16 08:59:48,900 INFO get_answers called with nickname=brunobucciarati, extra=0
+2025-06-16 08:59:48,904 INFO 127.0.0.1 - - [16/Jun/2025 08:59:48] "GET /get_answers?nickname=author_BrunoBucciarati&extra=0 HTTP/1.1" 200 -
+2025-06-16 08:59:55,328 INFO Successfully saved rankings for request c314e4b8-1cd3-49b6-ba8e-6a212090de7a
+2025-06-16 08:59:55,329 INFO 127.0.0.1 - - [16/Jun/2025 08:59:55] "POST /rankings/ HTTP/1.1" 200 -
+2025-06-16 08:59:57,268 INFO 127.0.0.1 - - [16/Jun/2025 08:59:57] "GET /leaderboard/speaker HTTP/1.1" 200 -
+2025-06-16 08:59:57,272 INFO 127.0.0.1 - - [16/Jun/2025 08:59:57] "GET /leaderboard HTTP/1.1" 200 -
+2025-06-16 09:01:51,789 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.148.170.168:5100
+2025-06-16 09:01:51,789 INFO [33mPress CTRL+C to quit[0m
+2025-06-16 09:01:56,919 INFO 127.0.0.1 - - [16/Jun/2025 09:01:56] "GET / HTTP/1.1" 200 -
+2025-06-16 09:02:01,071 INFO 127.0.0.1 - - [16/Jun/2025 09:02:01] "GET / HTTP/1.1" 200 -
+2025-06-16 09:02:04,448 INFO 127.0.0.1 - - [16/Jun/2025 09:02:04] "GET / HTTP/1.1" 200 -
+2025-06-16 09:02:05,404 INFO 127.0.0.1 - - [16/Jun/2025 09:02:05] "GET / HTTP/1.1" 200 -
+2025-06-16 09:02:18,770 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.148.170.168:5100
+2025-06-16 09:02:18,770 INFO [33mPress CTRL+C to quit[0m
+2025-06-16 09:02:23,475 INFO 127.0.0.1 - - [16/Jun/2025 09:02:23] "GET / HTTP/1.1" 200 -
+2025-06-16 09:02:23,557 INFO 127.0.0.1 - - [16/Jun/2025 09:02:23] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-06-16 09:03:35,114 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.148.170.168:5100
+2025-06-16 09:03:35,114 INFO [33mPress CTRL+C to quit[0m
+2025-06-16 09:03:35,422 INFO 127.0.0.1 - - [16/Jun/2025 09:03:35] "GET / HTTP/1.1" 200 -
+2025-06-16 09:03:35,465 INFO 127.0.0.1 - - [16/Jun/2025 09:03:35] "GET /speaker_talks HTTP/1.1" 200 -
+2025-06-16 09:03:37,492 INFO 127.0.0.1 - - [16/Jun/2025 09:03:37] "GET /leaderboard/speaker HTTP/1.1" 200 -
+2025-06-16 09:03:37,494 INFO 127.0.0.1 - - [16/Jun/2025 09:03:37] "GET /leaderboard HTTP/1.1" 200 -
+2025-06-16 09:03:53,618 INFO 127.0.0.1 - - [16/Jun/2025 09:03:53] "GET /speaker_questions?talk=Next_generation_tools_for_spatial_and_temporal_genomics_Speaker-_Fei_Chen_Broad_Institute.pdf&num=0 HTTP/1.1" 200 -
+2025-06-16 09:04:00,012 INFO Successfully saved rankings for request c314e4b8-1cd3-49b6-ba8e-6a212090de7a
+2025-06-16 09:04:00,014 INFO 127.0.0.1 - - [16/Jun/2025 09:04:00] "POST /rankings/ HTTP/1.1" 200 -
+2025-06-16 09:04:01,941 INFO 127.0.0.1 - - [16/Jun/2025 09:04:01] "GET /leaderboard HTTP/1.1" 200 -
+2025-06-16 09:04:01,948 INFO 127.0.0.1 - - [16/Jun/2025 09:04:01] "GET /leaderboard/speaker HTTP/1.1" 200 -
+2025-06-16 09:04:09,149 INFO 127.0.0.1 - - [16/Jun/2025 09:04:09] "GET /speaker_questions?talk=Next_generation_tools_for_spatial_and_temporal_genomics_Speaker-_Fei_Chen_Broad_Institute.pdf&num=0 HTTP/1.1" 200 -
+2025-06-16 09:04:11,782 INFO 127.0.0.1 - - [16/Jun/2025 09:04:11] "GET /speaker_questions?talk=HITS_colloquium-_Julio_Saez-Rodriguez_on_models_for_personalized_medicine.pdf&num=0 HTTP/1.1" 200 -
+2025-06-16 09:04:17,802 INFO Successfully saved rankings for request 62ac6a79-3774-43d7-9146-a7938b04f260
+2025-06-16 09:04:17,803 INFO 127.0.0.1 - - [16/Jun/2025 09:04:17] "POST /rankings/ HTTP/1.1" 200 -
+2025-06-16 09:04:20,336 INFO 127.0.0.1 - - [16/Jun/2025 09:04:20] "GET /leaderboard/speaker HTTP/1.1" 200 -
+2025-06-16 09:04:20,342 INFO 127.0.0.1 - - [16/Jun/2025 09:04:20] "GET /leaderboard HTTP/1.1" 200 -
