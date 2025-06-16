@@ -26,7 +26,7 @@ echo "Final transcription will be saved to: $FINAL_OUTPUT_PATH"
 # --- Check if Python script exists ---
 if [ ! -f "$SCRIPT_NAME" ]; then
     echo "Error: Python script '$SCRIPT_NAME' not found in the current directory."
-    exit 1
+    exit 1  
 fi
 
 # --- Execute Python Script ---

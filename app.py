@@ -877,7 +877,7 @@ def leaderboard():
         })
     
     # compute t-tests per difficulty
-    from scipy.stats import ttest_ind
+    from scipy.stats import ttest_ind #type: ignore
     ttest = {}
     model_keys = list(agg.keys())[:2]
     for diff in ('Easy','Hard','All'):
@@ -930,7 +930,7 @@ def speaker_leaderboard():
         })
     
     # compute t-tests per difficulty
-    from scipy.stats import ttest_ind
+    from scipy.stats import ttest_ind # type: ignore
     ttest = {}
     model_keys = list(agg.keys())[:2]
     for diff in ('Easy','Hard','All'):
@@ -1012,4 +1012,3 @@ def speaker_questions():
     return jsonify({'questions': results})
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5100)
