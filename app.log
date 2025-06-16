@@ -7535,3 +7535,46 @@ json.decoder.JSONDecodeError: Extra data: line 1 column 635 (char 634)
 2025-06-16 09:04:17,803 INFO 127.0.0.1 - - [16/Jun/2025 09:04:17] "POST /rankings/ HTTP/1.1" 200 -
 2025-06-16 09:04:20,336 INFO 127.0.0.1 - - [16/Jun/2025 09:04:20] "GET /leaderboard/speaker HTTP/1.1" 200 -
 2025-06-16 09:04:20,342 INFO 127.0.0.1 - - [16/Jun/2025 09:04:20] "GET /leaderboard HTTP/1.1" 200 -
+2025-06-16 13:26:21,794 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.148.170.168:5100
+2025-06-16 13:26:21,795 INFO [33mPress CTRL+C to quit[0m
+2025-06-16 13:26:26,417 INFO 10.148.170.168 - - [16/Jun/2025 13:26:26] "[32mGET / HTTP/1.1[0m" 302 -
+2025-06-16 13:26:26,436 INFO 10.148.170.168 - - [16/Jun/2025 13:26:26] "GET /login HTTP/1.1" 200 -
+2025-06-16 13:26:26,562 INFO 10.148.170.168 - - [16/Jun/2025 13:26:26] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-06-16 13:26:32,245 INFO 127.0.0.1 - - [16/Jun/2025 13:26:32] "GET / HTTP/1.1" 200 -
+2025-06-16 13:26:32,314 INFO 127.0.0.1 - - [16/Jun/2025 13:26:32] "GET /speaker_talks HTTP/1.1" 200 -
+2025-06-16 13:26:34,640 INFO 127.0.0.1 - - [16/Jun/2025 13:26:34] "GET /leaderboard/speaker HTTP/1.1" 200 -
+2025-06-16 13:26:34,643 INFO 127.0.0.1 - - [16/Jun/2025 13:26:34] "GET /leaderboard HTTP/1.1" 200 -
+2025-06-16 13:26:35,926 INFO 127.0.0.1 - - [16/Jun/2025 13:26:35] "GET /available_pdfs HTTP/1.1" 200 -
+2025-06-16 13:30:55,124 INFO 127.0.0.1 - - [16/Jun/2025 13:30:55] "GET /leaderboard/speaker HTTP/1.1" 200 -
+2025-06-16 13:30:55,130 INFO 127.0.0.1 - - [16/Jun/2025 13:30:55] "GET /leaderboard HTTP/1.1" 200 -
+2025-06-16 14:03:36,768 INFO 127.0.0.1 - - [16/Jun/2025 14:03:36] "[32mGET / HTTP/1.1[0m" 302 -
+2025-06-16 14:03:36,771 INFO 127.0.0.1 - - [16/Jun/2025 14:03:36] "GET /login HTTP/1.1" 200 -
+2025-06-16 14:03:36,822 INFO 127.0.0.1 - - [16/Jun/2025 14:03:36] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-06-16 14:03:39,076 INFO 127.0.0.1 - - [16/Jun/2025 14:03:39] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-06-16 14:03:39,078 INFO 127.0.0.1 - - [16/Jun/2025 14:03:39] "GET / HTTP/1.1" 200 -
+2025-06-16 14:03:39,156 INFO 127.0.0.1 - - [16/Jun/2025 14:03:39] "GET /speaker_talks HTTP/1.1" 200 -
+2025-06-16 14:03:41,287 INFO 127.0.0.1 - - [16/Jun/2025 14:03:41] "GET /leaderboard/speaker HTTP/1.1" 200 -
+2025-06-16 14:03:41,295 INFO 127.0.0.1 - - [16/Jun/2025 14:03:41] "GET /leaderboard HTTP/1.1" 200 -
+2025-06-16 14:03:43,623 INFO 127.0.0.1 - - [16/Jun/2025 14:03:43] "GET /leaderboard/speaker HTTP/1.1" 200 -
+2025-06-16 14:03:43,630 INFO 127.0.0.1 - - [16/Jun/2025 14:03:43] "GET /leaderboard HTTP/1.1" 200 -
+2025-06-16 14:03:55,538 INFO 127.0.0.1 - - [16/Jun/2025 14:03:55] "GET /available_pdfs HTTP/1.1" 200 -
+2025-06-16 14:04:04,348 INFO Extracted 62699 characters from PDF
+2025-06-16 14:04:04,349 INFO Extracted 7927 words from PDF
+2025-06-16 14:04:04,441 INFO 127.0.0.1 - - [16/Jun/2025 14:04:04] "[35m[1mPOST /summarize HTTP/1.1[0m" 202 -
+2025-06-16 14:04:10,087 INFO get_answers called with nickname=hi, extra=0
+2025-06-16 14:04:10,091 INFO 127.0.0.1 - - [16/Jun/2025 14:04:10] "GET /get_answers?nickname=author_Hi&extra=0 HTTP/1.1" 200 -
+2025-06-16 14:04:10,830 INFO get_answers called with nickname=hi, extra=0
+2025-06-16 14:04:10,832 INFO 127.0.0.1 - - [16/Jun/2025 14:04:10] "GET /get_answers?nickname=author_Hi&extra=0 HTTP/1.1" 200 -
+2025-06-16 14:04:11,500 INFO get_answers called with nickname=hi, extra=0
+2025-06-16 14:04:11,501 INFO 127.0.0.1 - - [16/Jun/2025 14:04:11] "GET /get_answers?nickname=author_Hi&extra=0 HTTP/1.1" 200 -
+2025-06-16 14:04:12,087 INFO get_answers called with nickname=hi, extra=0
+2025-06-16 14:04:12,090 INFO 127.0.0.1 - - [16/Jun/2025 14:04:12] "GET /get_answers?nickname=author_Hi&extra=0 HTTP/1.1" 200 -
+2025-06-16 14:04:12,633 INFO get_answers called with nickname=hi, extra=0
+2025-06-16 14:04:12,635 INFO 127.0.0.1 - - [16/Jun/2025 14:04:12] "GET /get_answers?nickname=author_Hi&extra=0 HTTP/1.1" 200 -
+2025-06-16 14:04:21,470 INFO Successfully saved rankings for request c40cdc8c-99b5-4868-ba1c-ae88ff18dfa9
+2025-06-16 14:04:21,471 INFO 127.0.0.1 - - [16/Jun/2025 14:04:21] "POST /rankings/ HTTP/1.1" 200 -
+2025-06-16 14:04:23,942 INFO 127.0.0.1 - - [16/Jun/2025 14:04:23] "GET /leaderboard HTTP/1.1" 200 -
+2025-06-16 14:04:23,949 INFO 127.0.0.1 - - [16/Jun/2025 14:04:23] "GET /leaderboard/speaker HTTP/1.1" 200 -
