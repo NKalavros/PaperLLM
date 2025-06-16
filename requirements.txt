@@ -8,3 +8,4 @@ pymupdf4llm
 flask-login
 redis
 gunicorn
+scipy
