@@ -875,7 +875,19 @@ def leaderboard():
                 'All': stats_list(diffs.get('All', []))
             }
         })
-    return jsonify({'models': results})
+    
+    # compute t-tests per difficulty
+    from scipy.stats import ttest_ind
+    ttest = {}
+    model_keys = list(agg.keys())[:2]
+    for diff in ('Easy','Hard','All'):
+        if len(model_keys)==2:
+            x = agg[model_keys[0]][diff]
+            y = agg[model_keys[1]][diff]
+            if x and y:
+                _, p = ttest_ind(x, y, equal_var=False)
+                ttest[diff] = {'N': min(len(x), len(y)), 'p_value': round(p,4)}
+    return jsonify({'models': results, 'ttest': ttest})
 
 @app.route('/leaderboard/speaker', methods=['GET'])
 @login_required
@@ -916,7 +928,19 @@ def speaker_leaderboard():
                 'All': stats_list(diffs.get('All',[]))
             }
         })
-    return jsonify({'models':results})
+    
+    # compute t-tests per difficulty
+    from scipy.stats import ttest_ind
+    ttest = {}
+    model_keys = list(agg.keys())[:2]
+    for diff in ('Easy','Hard','All'):
+        if len(model_keys)==2:
+            x = agg[model_keys[0]][diff]
+            y = agg[model_keys[1]][diff]
+            if x and y:
+                _, p = ttest_ind(x, y, equal_var=False)
+                ttest[diff] = {'N': min(len(x), len(y)), 'p_value': round(p,4)}
+    return jsonify({'models': results, 'ttest': ttest})
 
 @app.route('/speaker_talks', methods=['GET'])
 @login_required
