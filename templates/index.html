@@ -254,16 +254,25 @@
 
 <body>
     <div class="container markdown-body">
+        <!-- add logout button aligned right -->
+        <div style="text-align: right; margin-bottom: 1rem;">
+            <a href="{{ url_for('auth.logout') }}"><button>Logout</button></a>
+        </div>
         <h1>Academic Talk Summarizer</h1>
         <div id="repo-status" style="margin-bottom:1rem;">
             Last repo sync: <span id="last-update">--</span>
         </div>
         <div>
-            <span class="tab active" id="questions-tab-btn"> Audience Questions</span>
+            {% if username in ['gustavo', 'audience'] %}
+            <span class="tab active" id="questions-tab-btn">Audience Questions</span>
             <span class="tab" id="answers-tab-btn">LLM Answers</span>
-            <span class="tab" id="leaderboard-tab-btn">Leaderboard</span>
-            {% if username in ['gustavo','speaker'] %}
-            <span class="tab" id="speaker-tab-btn">Speaker-only interface</span>
+            {% endif %}
+            {% if username in ['gustavo', 'audience', 'speaker'] %}
+            <span class="tab {% if username=='speaker' %}active{% endif %}" id="leaderboard-tab-btn">Leaderboard</span>
+            {% endif %}
+            {% if username in ['gustavo', 'speaker'] %}
+            <span class="tab {% if username=='speaker' %}active{% endif %}" id="speaker-tab-btn">Speaker-only
+                interface</span>
             {% endif %}
         </div>
         <!-- Questions Tab: upload file, nickname, prompt -->
@@ -383,7 +392,7 @@
         <div id="speaker-tab" class="tab-content">
             <div class="form-section">
                 <div class="form-group">
-                    <label for="speaker-talks">Talk:</label>
+                    <label for="speaker-talks">Select your own talk:</label>
                     <select id="speaker-talks" class="ranking-select"></select>
                 </div>
                 <div class="form-group">
@@ -401,7 +410,7 @@
     </div>
     </div>
     <script>
-        // Tab switching
+        // Tab elements
         const questionsTabBtn = document.getElementById('questions-tab-btn');
         const answersTabBtn = document.getElementById('answers-tab-btn');
         const lbBtn = document.getElementById('leaderboard-tab-btn');
@@ -411,45 +420,59 @@
         const leaderboardTab = document.getElementById('leaderboard-tab');
         const speakerTab = document.getElementById('speaker-tab');
 
-        questionsTabBtn.addEventListener('click', () => {
-            questionsTabBtn.classList.add('active');
-            answersTabBtn.classList.remove('active');
-            lbBtn.classList.remove('active');
-            speakerTabBtn.classList.remove('active');
-            questionsTab.classList.add('active');
-            answersTab.classList.remove('active');
-            leaderboardTab.classList.remove('active');
-            speakerTab.classList.remove('active');
-        });
+        if (questionsTabBtn) {
+            questionsTabBtn.addEventListener('click', () => {
+                questionsTabBtn.classList.add('active');
+                answersTabBtn?.classList.remove('active');
+                lbBtn?.classList.remove('active');
+                speakerTabBtn?.classList.remove('active');
+                questionsTab.classList.add('active');
+                answersTab?.classList.remove('active');
+                leaderboardTab?.classList.remove('active');
+                speakerTab?.classList.remove('active');
+            });
+        }
 
-        answersTabBtn.addEventListener('click', () => {
-            answersTabBtn.classList.add('active');
-            questionsTabBtn.classList.remove('active');
-            lbBtn.classList.remove('active');
-            speakerTabBtn.classList.remove('active');
-            answersTab.classList.add('active');
-            questionsTab.classList.remove('active');
-            leaderboardTab.classList.remove('active');
-            speakerTab.classList.remove('active');
-        });
+        if (answersTabBtn) {
+            answersTabBtn.addEventListener('click', () => {
+                answersTabBtn.classList.add('active');
+                questionsTabBtn?.classList.remove('active');
+                lbBtn?.classList.remove('active');
+                speakerTabBtn?.classList.remove('active');
+                answersTab.classList.add('active');
+                questionsTab?.classList.remove('active');
+                leaderboardTab?.classList.remove('active');
+                speakerTab?.classList.remove('active');
+            });
+        }
 
-        lbBtn.addEventListener('click', () => {
-            questionsTabBtn.classList.remove('active');
-            answersTabBtn.classList.remove('active');
-            lbBtn.classList.add('active');
-            speakerTabBtn.classList.remove('active');
-            questionsTab.classList.remove('active');
-            answersTab.classList.remove('active');
-            leaderboardTab.classList.add('active');
-            speakerTab.classList.remove('active');
-        });
+        if (lbBtn) {
+            lbBtn.addEventListener('click', () => {
+                lbBtn.classList.add('active');
+                questionsTabBtn?.classList.remove('active');
+                answersTabBtn?.classList.remove('active');
+                speakerTabBtn?.classList.remove('active');
+                leaderboardTab.classList.add('active');
+                questionsTab?.classList.remove('active');
+                answersTab?.classList.remove('active');
+                speakerTab?.classList.remove('active');
+                loadAudienceLeaderboard();
+                loadSpeakerLeaderboard();
+            });
+        }
 
-        speakerTabBtn.addEventListener('click', () => {
-            [questionsTabBtn, answersTabBtn, lbBtn, speakerTabBtn].forEach(b => b.classList.remove('active'));
-            speakerTabBtn.classList.add('active');
-            [questionsTab, answersTab, leaderboardTab, speakerTab].forEach(d => d.classList.remove('active'));
-            speakerTab.classList.add('active');
-        });
+        if (speakerTabBtn) {
+            speakerTabBtn.addEventListener('click', () => {
+                speakerTabBtn.classList.add('active');
+                questionsTabBtn?.classList.remove('active');
+                answersTabBtn?.classList.remove('active');
+                lbBtn?.classList.remove('active');
+                speakerTab.classList.add('active');
+                questionsTab?.classList.remove('active');
+                answersTab?.classList.remove('active');
+                leaderboardTab?.classList.remove('active');
+            });
+        }
 
         // Handle PDF source selection (new functionality)
         document.querySelectorAll('input[name="pdf_source"]').forEach(radio => {
