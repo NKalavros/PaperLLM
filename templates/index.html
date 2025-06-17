@@ -494,25 +494,40 @@
 
         // Load available PDFs (new function)
         async function loadAvailablePDFs() {
+            console.log('loadAvailablePDFs called');
             try {
                 const response = await fetch('/available_pdfs');
+                console.log('Response status:', response.status);
                 const data = await response.json();
+                console.log('Received data:', data);
                 const dropdown = document.getElementById('pdf-dropdown');
+                console.log('Dropdown element:', dropdown);
+
+                if (!dropdown) {
+                    console.error('pdf-dropdown element not found!');
+                    return;
+                }
 
                 // Clear existing options except the first one
                 dropdown.innerHTML = '<option value="">-- Select a Talk --</option>';
 
                 if (data.pdfs) {
+                    console.log('Adding', data.pdfs.length, 'PDFs to dropdown');
                     data.pdfs.forEach(pdf => {
                         const option = document.createElement('option');
                         option.value = pdf.filename;
                         option.textContent = `${pdf.filename} (${formatFileSize(pdf.size)})`;
                         dropdown.appendChild(option);
                     });
+                } else {
+                    console.log('No PDFs found in response');
                 }
             } catch (error) {
                 console.error('Error loading PDFs:', error);
-                document.getElementById('question-status').innerText = 'Error loading available PDFs';
+                const statusElement = document.getElementById('question-status');
+                if (statusElement) {
+                    statusElement.innerText = 'Error loading available PDFs';
+                }
             }
         }
 
@@ -537,12 +552,35 @@
             submitBtn.disabled = true;
             submitBtn.textContent = 'Submitting...';
             const formData = new FormData(e.target);
-            const nickname = document.getElementById('nickname').value; // Get nickname from form
-            formData.append('nickname', nickname); // Append nickname to form data
+            const nickname = document.getElementById('nickname').value;
+            formData.append('nickname', nickname);
 
-            // Handle PDF source selection
-            const pdfSource = document.querySelector('input[name="pdf_source"]:checked').value;
-            if (pdfSource === 'existing') {
+            // Handle PDF source selection - check if radio buttons exist (Gustavo) or not (audience)
+            const pdfSourceRadio = document.querySelector('input[name="pdf_source"]:checked');
+
+            if (pdfSourceRadio) {
+                // Gustavo user with radio buttons
+                const pdfSource = pdfSourceRadio.value;
+                if (pdfSource === 'existing') {
+                    const selectedPdf = document.getElementById('pdf-dropdown').value;
+                    if (!selectedPdf) {
+                        alert('Please select a PDF from the dropdown');
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Submit Question';
+                        return;
+                    }
+                    formData.set('selected_pdf', selectedPdf);
+                } else {
+                    const fileInput = document.getElementById('file');
+                    if (!fileInput.files[0]) {
+                        alert('Please select a PDF file to upload');
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Submit Question';
+                        return;
+                    }
+                }
+            } else {
+                // Audience user without radio buttons - always using existing PDF
                 const selectedPdf = document.getElementById('pdf-dropdown').value;
                 if (!selectedPdf) {
                     alert('Please select a PDF from the dropdown');
@@ -551,14 +589,6 @@
                     return;
                 }
                 formData.set('selected_pdf', selectedPdf);
-            } else {
-                const fileInput = document.getElementById('file');
-                if (!fileInput.files[0]) {
-                    alert('Please select a PDF file to upload');
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = 'Submit Question';
-                    return;
-                }
             }
 
             try {
@@ -573,13 +603,17 @@
                 }
                 const data = await response.json();
                 if (!response.ok) throw new Error(data.error || 'Failed to submit question');
-                // Simply display a confirmation message and clear the form
+
                 document.getElementById('question-status').innerText = 'Question submitted successfully! Answers take 30-60 seconds to generate.';
                 e.target.reset();
-                // Reset PDF source to upload
-                document.querySelector('input[name="pdf_source"][value="upload"]').checked = true;
-                document.getElementById('upload-section').classList.remove('hidden');
-                document.getElementById('dropdown-section').classList.add('hidden');
+
+                // Reset PDF source to upload only if radio buttons exist (Gustavo)
+                const uploadRadio = document.querySelector('input[name="pdf_source"][value="upload"]');
+                if (uploadRadio) {
+                    uploadRadio.checked = true;
+                    document.getElementById('upload-section').classList.remove('hidden');
+                    document.getElementById('dropdown-section').classList.add('hidden');
+                }
             } catch (error) {
                 console.error('Fetch Error:', error);
                 document.getElementById('question-status').innerText = 'Submission failed: ' + error.message;
@@ -862,23 +896,32 @@
             try {
                 const { talks } = await fetch('/speaker_talks').then(r => r.json());
                 const sel = document.getElementById('speaker-talks');
-                sel.innerHTML = '<option value="">-- Select talk --</option>';
-                talks.forEach(t => sel.append(new Option(t, t)));
+                if (sel) {
+                    sel.innerHTML = '<option value="">-- Select talk --</option>';
+                    talks.forEach(t => sel.append(new Option(t, t)));
+                }
             } catch { /* ignore */ }
         }
-        loadSpeakerTalks();
+
+        // Only call loadSpeakerTalks if the element exists
+        const speakerTalksElement = document.getElementById('speaker-talks');
+        if (speakerTalksElement) {
+            loadSpeakerTalks();
+        }
 
         // Load and render speaker questions
-        document.getElementById('load-speaker-btn').addEventListener('click', async () => {
-            const talk = document.getElementById('speaker-talks').value;
-            const num = document.getElementById('speaker-num').value;
-            if (!talk) return alert('Select a talk');
-            const { questions } = await fetch(`/speaker_questions?talk=${encodeURIComponent(talk)}&num=${num}`)
-                .then(r => r.json());
-            let html = '';
-            questions.forEach(item => {
-                const [m1, m2] = Object.keys(item.model_answers);
-                html += `
+        const loadSpeakerBtn = document.getElementById('load-speaker-btn');
+        if (loadSpeakerBtn) {
+            loadSpeakerBtn.addEventListener('click', async () => {
+                const talk = document.getElementById('speaker-talks').value;
+                const num = document.getElementById('speaker-num').value;
+                if (!talk) return alert('Select a talk');
+                const { questions } = await fetch(`/speaker_questions?talk=${encodeURIComponent(talk)}&num=${num}`)
+                    .then(r => r.json());
+                let html = '';
+                questions.forEach(item => {
+                    const [m1, m2] = Object.keys(item.model_answers);
+                    html += `
                   <div class="summary-box"
                        data-request-id="${item.request_id}"
                        data-model1-name="${m1}"
@@ -910,66 +953,70 @@
                       </div>
                     </div>
                   </div>`;
-            });
-            const container = document.getElementById('speaker-panels');
-            container.innerHTML = html;
-            document.getElementById('speaker-ratings-submit')
-                .classList.toggle('hidden', html === '');
+                });
+                const container = document.getElementById('speaker-panels');
+                container.innerHTML = html;
+                document.getElementById('speaker-ratings-submit')
+                    .classList.toggle('hidden', html === '');
 
-            document.querySelectorAll('#speaker-panels .toggle-details').forEach(btn =>
-                btn.addEventListener('click', () => {
-                    const c = btn.closest('.summary-box').querySelector('.summary-content');
-                    c.classList.toggle('hidden');
-                    btn.textContent = c.classList.contains('hidden') ? 'Show Details' : 'Hide Details';
-                })
-            );
-        });
-
-        // Submit speaker ratings
-        document.getElementById('submit-speaker-ratings-btn').addEventListener('click', async () => {
-            const panels = document.querySelectorAll('#speaker-panels .summary-box');
-            let promises = [], cancel = false;
-            panels.forEach(panel => {
-                const reqId = panel.getAttribute('data-request-id');
-                const model1 = panel.getAttribute('data-model1-name');
-                const model2 = panel.getAttribute('data-model2-name');
-                const preferred = panel.querySelector('.preferred-dropdown').value;
-                const q1 = panel.querySelector(`#sp-quality1-${reqId}`).value || null;
-                const q2 = panel.querySelector(`#sp-quality2-${reqId}`).value || null;
-                if (!reqId) { cancel = true; return; }
-                const quality1 = q1 === null ? null : parseInt(q1, 10);
-                const quality2 = q2 === null ? null : parseInt(q2, 10);
-                const rankings = preferred
-                    ? (preferred === 'answer1' ? { [model1]: 1, [model2]: 2 } : { [model2]: 1, [model1]: 2 })
-                    : {};
-                const body = {
-                    request_id: reqId,
-                    rankings: rankings,
-                    quality_scores: { [model1]: quality1, [model2]: quality2 },
-                    model_answers: {
-                        [model1]: panel.getAttribute('data-model1-answer'),
-                        [model2]: panel.getAttribute('data-model2-answer')
-                    },
-                    real_model_mapping: { [model1]: model1, [model2]: model2 },
-                    is_speaker: true    // <--- flag this as speaker-tab submission
-                };
-                promises.push(
-                    fetch('/rankings/', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(body)
-                    }).then(r => { if (!r.ok) throw r; return r.json(); })
+                document.querySelectorAll('#speaker-panels .toggle-details').forEach(btn =>
+                    btn.addEventListener('click', () => {
+                        const c = btn.closest('.summary-box').querySelector('.summary-content');
+                        c.classList.toggle('hidden');
+                        btn.textContent = c.classList.contains('hidden') ? 'Show Details' : 'Hide Details';
+                    })
                 );
             });
-            if (cancel) return;
-            try {
-                await Promise.all(promises);
-                alert('Speaker ratings submitted successfully!');
-            } catch (e) {
-                console.error(e);
-                alert('Error submitting speaker ratings');
-            }
-        });
+        }
+
+        // Submit speaker ratings
+        const submitSpeakerRatingsBtn = document.getElementById('submit-speaker-ratings-btn');
+        if (submitSpeakerRatingsBtn) {
+            submitSpeakerRatingsBtn.addEventListener('click', async () => {
+                const panels = document.querySelectorAll('#speaker-panels .summary-box');
+                let promises = [], cancel = false;
+                panels.forEach(panel => {
+                    const reqId = panel.getAttribute('data-request-id');
+                    const model1 = panel.getAttribute('data-model1-name');
+                    const model2 = panel.getAttribute('data-model2-name');
+                    const preferred = panel.querySelector('.preferred-dropdown').value;
+                    const q1 = panel.querySelector(`#sp-quality1-${reqId}`).value || null;
+                    const q2 = panel.querySelector(`#sp-quality2-${reqId}`).value || null;
+                    if (!reqId) { cancel = true; return; }
+                    const quality1 = q1 === null ? null : parseInt(q1, 10);
+                    const quality2 = q2 === null ? null : parseInt(q2, 10);
+                    const rankings = preferred
+                        ? (preferred === 'answer1' ? { [model1]: 1, [model2]: 2 } : { [model2]: 1, [model1]: 2 })
+                        : {};
+                    const body = {
+                        request_id: reqId,
+                        rankings: rankings,
+                        quality_scores: { [model1]: quality1, [model2]: quality2 },
+                        model_answers: {
+                            [model1]: panel.getAttribute('data-model1-answer'),
+                            [model2]: panel.getAttribute('data-model2-answer')
+                        },
+                        real_model_mapping: { [model1]: model1, [model2]: model2 },
+                        is_speaker: true    // <--- flag this as speaker-tab submission
+                    };
+                    promises.push(
+                        fetch('/rankings/', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(body)
+                        }).then(r => { if (!r.ok) throw r; return r.json(); })
+                    );
+                });
+                if (cancel) return;
+                try {
+                    await Promise.all(promises);
+                    alert('Speaker ratings submitted successfully!');
+                } catch (e) {
+                    console.error(e);
+                    alert('Error submitting speaker ratings');
+                }
+            });
+        }
 
         async function fetchRepoStatus() {
             try {
@@ -980,6 +1027,31 @@
         }
         fetchRepoStatus();
         setInterval(fetchRepoStatus, 60000);
+
+        // auto‐populate existing talks for audience when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('DOM loaded, checking for pdf_source radios');
+            const radioButtons = document.querySelector('input[name="pdf_source"]');
+            console.log('Found radio buttons:', radioButtons);
+
+            if (!radioButtons) {
+                console.log('No radio buttons found, loading PDFs for audience');
+                // Add a small delay to ensure all elements are rendered
+                setTimeout(() => {
+                    loadAvailablePDFs();
+                }, 100);
+            } else {
+                console.log('Radio buttons found, not loading PDFs automatically');
+            }
+        });
+
+        // Also try loading immediately after script runs (backup)
+        window.addEventListener('load', () => {
+            if (!document.querySelector('input[name="pdf_source"]')) {
+                console.log('Window loaded, trying to load PDFs again');
+                loadAvailablePDFs();
+            }
+        });
     </script>
 </body>
 
