@@ -255,6 +255,9 @@
 <body>
     <div class="container markdown-body">
         <h1>Academic Talk Summarizer</h1>
+        <div id="repo-status" style="margin-bottom:1rem;">
+            Last repo sync: <span id="last-update">--</span>
+        </div>
         <div>
             <span class="tab active" id="questions-tab-btn"> Audience Questions</span>
             <span class="tab" id="answers-tab-btn">LLM Answers</span>
@@ -932,6 +935,16 @@
                 alert('Error submitting speaker ratings');
             }
         });
+
+        async function fetchRepoStatus() {
+            try {
+                const r = await fetch('/repo_status');
+                const j = await r.json();
+                document.getElementById('last-update').textContent = j.last_update || 'Unknown';
+            } catch { }
+        }
+        fetchRepoStatus();
+        setInterval(fetchRepoStatus, 60000);
     </script>
 </body>
 
