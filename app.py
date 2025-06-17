@@ -90,6 +90,16 @@ celery.conf.update(
 
 # Load environment variables
 load_dotenv()
+
+# --- new: gather multiple API keys/clients ---
+OPENAI_API_KEYS = [os.getenv(f'OPENAI_API_KEY{i}') for i in range(1,6)]
+OPENAI_API_KEYS = [k for k in OPENAI_API_KEYS if k]
+OPENAI_CLIENTS = [OpenAI(api_key=k) for k in OPENAI_API_KEYS]
+
+PERPLEXITY_API_KEYS = [os.getenv(f'PERPLEXITY_API_KEY{i}') for i in range(1,6)]
+PERPLEXITY_API_KEYS = [k for k in PERPLEXITY_API_KEYS if k]
+# --- end new ---
+
 oaiclient = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 oaiclient2 = OpenAI(api_key=os.getenv('OPENAI_API_KEY2'))
 DEEPSEEK_API_KEY = os.getenv('DEEPSEEK_API_KEY')
@@ -193,26 +203,26 @@ def process_summary(self, text, prompt_prefix, model, request_id=None, display_n
         full_prompt = f"{prompt_prefix}\n{prompt_suffix}"
         
         if model == "openai":
-            # try primary client
-            try:
-                completion = oaiclient.chat.completions.create(
-                    model="gpt-4o",
-                    messages=[{"role": "system","content": full_prompt},
-                              {"role": "user","content": text[:MAX_TEXT_LENGTH]}]
-                )
-                resp = json.loads(completion.json())
-                if not resp.get('choices'):
-                    raise ValueError("Empty primary OpenAI response")
-            except Exception as e:
-                logger.warning(f"Primary OpenAI failed: {e}, retrying with fallback client")
-                completion = oaiclient2.chat.completions.create(
-                    model="gpt-4o",
-                    messages=[{"role":"system","content": full_prompt},
-                              {"role":"user","content": text[:MAX_TEXT_LENGTH]}]
-                )
-                resp = json.loads(completion.json())
-            response_json = resp
-
+            # rotate through all configured OpenAI keys
+            response_json = None
+            for client in OPENAI_CLIENTS:
+                try:
+                    completion = client.chat.completions.create(
+                        model="gpt-4o",
+                        messages=[
+                            {"role": "system", "content": f"{prompt_prefix}\n{prompt_suffix}"},
+                            {"role": "user",   "content": text[:MAX_TEXT_LENGTH]}
+                        ]
+                    )
+                    resp = json.loads(completion.json())
+                    if resp.get('choices'):
+                        response_json = resp
+                        break
+                except Exception as e:
+                    logger.warning(f"OpenAI key failed, trying next: {e}")
+            if not response_json:
+                raise ValueError("All OpenAI API keys failed")
+        
         elif model == "deepseek":
             endpoint = "https://api.deepseek.com/v1/chat/completions"
             headers = {"Authorization": f"Bearer {DEEPSEEK_API_KEY}"}
@@ -240,30 +250,32 @@ def process_summary(self, text, prompt_prefix, model, request_id=None, display_n
                 }]
             }
         elif model == "perplexity":
-            # try primary key
-            headers = {"Authorization": f"Bearer {PERPLEXITY_API_KEY2}"}
-            for key in (PERPLEXITY_API_KEY, PERPLEXITY_API_KEY2):
-                headers["Authorization"] = f"Bearer {key}"
+            # rotate through all configured Perplexity keys
+            response_json = None
+            session = requests.Session()
+            for key in PERPLEXITY_API_KEYS:
                 try:
-                    response = session.post(
+                    resp_raw = session.post(
                         "https://api.perplexity.ai/chat/completions",
-                        headers=headers,
+                        headers={"Authorization": f"Bearer {key}"},
                         json={
                             "model":"sonar-pro",
-                            "messages":[{"role":"user",
-                                         "content":f"{full_prompt}\n{text[:MAX_TEXT_LENGTH]}"}]
+                            "messages":[
+                                {"role":"user",
+                                 "content":f"{prompt_prefix}\n{prompt_suffix}\n{text[:MAX_TEXT_LENGTH]}"}
+                            ]
                         },
                         timeout=(3.05, MAX_API_TIMEOUT)
                     )
-                    response.raise_for_status()
-                    resp = response.json()
+                    resp_raw.raise_for_status()
+                    resp = resp_raw.json()
                     if resp.get('choices'):
                         response_json = resp
                         break
                 except Exception as e:
-                    logger.warning(f"Perplexity with key {key} failed: {e}")
-            else:
-                raise ValueError("Both Perplexity keys failed")
+                    logger.warning(f"Perplexity key {key} failed: {e}")
+            if not response_json:
+                raise ValueError("All Perplexity API keys failed")
         elif model == "llama3":
             endpoint = 'https://api.llama-api.com/chat/completions'
             headers = {
