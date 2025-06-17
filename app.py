@@ -419,9 +419,12 @@ def summarize():
     try:
         # Check if user selected an existing PDF
         selected_pdf = request.form.get('selected_pdf')
-        
+        # only Gustavo may upload new PDFs
+        if not selected_pdf and current_user.id != 'gustavo':
+            return jsonify({'error': 'Only Gustavo can upload new PDFs'}), 403
+
         if selected_pdf and selected_pdf != 'upload':
-            # User selected an existing PDF
+             # User selected an existing PDF
             pdf_path = os.path.join(app.config['PDF_STORAGE_FOLDER'], selected_pdf)
             if not os.path.exists(pdf_path):
                 return jsonify({"error": "Selected PDF not found"}), 404
@@ -701,7 +704,7 @@ def save_ratings():
 def index():
     if not current_user.is_authenticated:
         return redirect(url_for('auth.login'))
-    return render_template('index.html')
+    return render_template('index.html', username=current_user.id)
 
 @app.route('/rankings', methods=['POST'])
 @app.route('/rankings/', methods=['POST'])

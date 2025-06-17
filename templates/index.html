@@ -261,14 +261,16 @@
         <div>
             <span class="tab active" id="questions-tab-btn"> Audience Questions</span>
             <span class="tab" id="answers-tab-btn">LLM Answers</span>
-            <span class="tab" id="speaker-tab-btn">Speaker-only interface</span>
             <span class="tab" id="leaderboard-tab-btn">Leaderboard</span>
-            <!-- removed speaker-lb-tab-btn -->
+            {% if username in ['gustavo','speaker'] %}
+            <span class="tab" id="speaker-tab-btn">Speaker-only interface</span>
+            {% endif %}
         </div>
         <!-- Questions Tab: upload file, nickname, prompt -->
         <div id="questions-tab" class="tab-content active">
             <div class="form-section">
                 <form id="summarizeForm" method="POST" enctype="multipart/form-data" action="/summarize">
+                    {% if username == 'gustavo' %}
                     <div class="form-group">
                         <label>Source:</label>
                         <div class="radio-group">
@@ -292,6 +294,14 @@
                             <option value="">-- Select a talk --</option>
                         </select>
                     </div>
+                    {% else %}
+                    <div class="form-group">
+                        <label for="pdf-dropdown">Select existing talk:</label>
+                        <select id="pdf-dropdown" name="selected_pdf" required>
+                            <option value="">-- Select a talk --</option>
+                        </select>
+                    </div>
+                    {% endif %}
                     <div class="form-group">
                         <label for="prompt_prefix">Ask your question on the talk:</label>
                         <input type="text" id="prompt_prefix" name="prompt_prefix"
@@ -368,6 +378,7 @@
                 </table>
             </div>
         </div>
+        {% if username in ['gustavo','speaker'] %}
         <!-- Speaker Tab -->
         <div id="speaker-tab" class="tab-content">
             <div class="form-section">
@@ -386,6 +397,7 @@
                 <button id="submit-speaker-ratings-btn">Submit Ratings</button>
             </div>
         </div>
+        {% endif %}
     </div>
     </div>
     <script>
