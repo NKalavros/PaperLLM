@@ -1011,5 +1011,46 @@ def speaker_questions():
         results = random.sample(results, min(num, len(results)))
     return jsonify({'questions': results})
 
+# load GitHub repo URL
+GITHUB_REPO_URL = os.getenv('GITHUB_REPO_URL', 'https://github.com/your-org/your-repo.git')
+
+# configure periodic clone every 60s
+celery.conf.beat_schedule = {
+    'periodic-repo-sync': {
+        'task': 'app.update_repo',
+        'schedule': 60.0
+    }
+}
+
+@celery.task(name='app.update_repo')
+def update_repo():
+    tmpdir = tempfile.mkdtemp()
+    # clone or pull latest
+    subprocess.run(['git', 'clone', GITHUB_REPO_URL, tmpdir], check=True)
+    dest = app.config['UPLOAD_FOLDER']
+    # clear old uploads
+    for name in os.listdir(dest):
+        path = os.path.join(dest, name)
+        if os.path.isdir(path):
+            shutil.rmtree(path, ignore_errors=True)
+        else:
+            os.remove(path)
+    # copy fresh contents
+    for name in os.listdir(tmpdir):
+        src = os.path.join(tmpdir, name)
+        dst = os.path.join(dest, name)
+        if os.path.isdir(src):
+            shutil.copytree(src, dst)
+        else:
+            shutil.copy2(src, dst)
+    # record sync time
+    redis_client.set('repo_last_update', datetime.now().isoformat())
+
+@app.route('/repo_status', methods=['GET'])
+@login_required
+def repo_status():
+    last = redis_client.get('repo_last_update')
+    return jsonify({'last_update': last.decode() if last else None})
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5100)
