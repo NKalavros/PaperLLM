@@ -11,6 +11,7 @@ import queue
 import argparse
 from pathlib import Path
 from datetime import datetime
+from deepmultilingualpunctuation import PunctuationModel  # type: ignore
 
 # --- Configuration ---
 RECORD_INTERVAL_SECONDS = 30
@@ -37,7 +38,14 @@ FASTER_WHISPER_COMPUTE_TYPE_MPS = "float16"
 FASTER_WHISPER_COMPUTE_TYPE_CPU = "float32" # Use "float32" for better accuracy on CPU
 
 # Beam size for transcription (higher = potentially more accurate but slower)
-BEAM_SIZE = 5
+BEAM_SIZE = 15
+
+# Toggle VAD filter via env (default: off to preserve context)
+VAD_FILTER_ENABLED = os.environ.get("FWS_USE_VAD", "false").lower() in ("true","1","yes")
+
+# Toggle punctuation restoration via env (default: off)
+PUNCTUATE_TRANSCRIPTION = os.environ.get("FWS_PUNCTUATE", "false").lower() in ("true","1","yes")
+punct_model = PunctuationModel() if PUNCTUATE_TRANSCRIPTION else None  # instantiate once
 
 # --- OpenAI API Configuration --- (Only if TRANSCRIPTION_MODE = 'api')
 # os.environ["OPENAI_API_KEY"] = "your-api-key-here"
@@ -86,7 +94,9 @@ if PLATFORM_NEEDS_MANUAL_CONFIG:
 
 FFMPEG_COMMAND_BASE = [
     'ffmpeg', '-loglevel', 'error', '-f', FFMPEG_INPUT_FORMAT,
-    '-i', AUDIO_DEVICE, '-t', str(RECORD_INTERVAL_SECONDS),
+    '-i', AUDIO_DEVICE,
+    '-af', 'afftdn',            # simple noise reduction
+    '-t', str(RECORD_INTERVAL_SECONDS),
     '-codec:a', 'libmp3lame', '-q:a', '4', # MP3 output
 ]
 
@@ -138,7 +148,7 @@ def transcribe_api(audio_path):
     """Transcribes audio using the OpenAI Whisper API."""
     # (This function remains the same as the previous version)
     try:
-        from openai import OpenAI
+        from openai import OpenAI #type: ignore
     except ImportError:
         print("\nERROR: 'openai' library not found. (pip install -U openai)")
         return None # Indicate failure
@@ -157,6 +167,11 @@ def transcribe_api(audio_path):
                 file=audio_file
             )
         transcription = response.text.strip()
+
+        # Restore punctuation if enabled
+        if transcription and punct_model:
+            transcription = punct_model.restore(transcription)
+
         print(f"  > API Transcription successful: {audio_path.name}")
         return transcription
     except Exception as e:
@@ -174,17 +189,21 @@ def transcribe_faster_whisper(model, audio_path):
 
     print(f"Transcribing {audio_path.name} (faster-whisper)...")
     try:
-        # Use VAD filter for potentially faster processing of silence
+        # build VAD args only if enabled
+        vad_kwargs = {"vad_filter": VAD_FILTER_ENABLED,
+                      "vad_parameters": {"min_silence_duration_ms": 500}} if VAD_FILTER_ENABLED else {}
         segments, info = model.transcribe(
             str(audio_path),
             beam_size=BEAM_SIZE,
-            vad_filter=True,
-            vad_parameters=dict(min_silence_duration_ms=500) # Adjust VAD as needed
+            **vad_kwargs
         )
         # Concatenate segments into a single string
         full_transcription = " ".join([segment.text for segment in segments]).strip()
 
-        # print(f"  > Detected language '{info.language}' with probability {info.language_probability:.2f}")
+        # apply punctuation if enabled
+        if punct_model:
+            full_transcription = punct_model.restore(full_transcription)
+
         print(f"  > faster-whisper Transcription successful: {audio_path.name}")
         return full_transcription
     except Exception as e:
@@ -341,14 +360,14 @@ def main(args): # <-- Added args parameter
     worker_thread = None
     if TRANSCRIPTION_MODE == 'faster-whisper':
         try:
-            from faster_whisper import WhisperModel
+            from faster_whisper import WhisperModel #type: ignore
             device = "cpu" # Force CPU as per previous request
             compute_type = FASTER_WHISPER_COMPUTE_TYPE_CPU
             system = platform.system()
             print(f"Configuring faster-whisper for CPU execution.")
             if system == "Linux": # Optional CUDA check for Linux
                  try:
-                      import torch
+                      import torch #type: ignore
                       if torch.cuda.is_available():
                            print("NVIDIA CUDA available, attempting to use GPU.")
                            device = "cuda"; compute_type = FASTER_WHISPER_COMPUTE_TYPE_MPS

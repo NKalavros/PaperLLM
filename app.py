@@ -90,6 +90,16 @@ celery.conf.update(
 
 # Load environment variables
 load_dotenv()
+
+# --- new: gather multiple API keys/clients ---
+OPENAI_API_KEYS = [os.getenv(f'OPENAI_API_KEY{i}') for i in range(1,6)]
+OPENAI_API_KEYS = [k for k in OPENAI_API_KEYS if k]
+OPENAI_CLIENTS = [OpenAI(api_key=k) for k in OPENAI_API_KEYS]
+
+PERPLEXITY_API_KEYS = [os.getenv(f'PERPLEXITY_API_KEY{i}') for i in range(1,6)]
+PERPLEXITY_API_KEYS = [k for k in PERPLEXITY_API_KEYS if k]
+# --- end new ---
+
 oaiclient = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 oaiclient2 = OpenAI(api_key=os.getenv('OPENAI_API_KEY2'))
 DEEPSEEK_API_KEY = os.getenv('DEEPSEEK_API_KEY')
@@ -193,26 +203,26 @@ def process_summary(self, text, prompt_prefix, model, request_id=None, display_n
         full_prompt = f"{prompt_prefix}\n{prompt_suffix}"
         
         if model == "openai":
-            # try primary client
-            try:
-                completion = oaiclient.chat.completions.create(
-                    model="gpt-4o",
-                    messages=[{"role": "system","content": full_prompt},
-                              {"role": "user","content": text[:MAX_TEXT_LENGTH]}]
-                )
-                resp = json.loads(completion.json())
-                if not resp.get('choices'):
-                    raise ValueError("Empty primary OpenAI response")
-            except Exception as e:
-                logger.warning(f"Primary OpenAI failed: {e}, retrying with fallback client")
-                completion = oaiclient2.chat.completions.create(
-                    model="gpt-4o",
-                    messages=[{"role":"system","content": full_prompt},
-                              {"role":"user","content": text[:MAX_TEXT_LENGTH]}]
-                )
-                resp = json.loads(completion.json())
-            response_json = resp
-
+            # rotate through all configured OpenAI keys
+            response_json = None
+            for client in OPENAI_CLIENTS:
+                try:
+                    completion = client.chat.completions.create(
+                        model="gpt-4o",
+                        messages=[
+                            {"role": "system", "content": f"{prompt_prefix}\n{prompt_suffix}"},
+                            {"role": "user",   "content": text[:MAX_TEXT_LENGTH]}
+                        ]
+                    )
+                    resp = json.loads(completion.json())
+                    if resp.get('choices'):
+                        response_json = resp
+                        break
+                except Exception as e:
+                    logger.warning(f"OpenAI key failed, trying next: {e}")
+            if not response_json:
+                raise ValueError("All OpenAI API keys failed")
+        
         elif model == "deepseek":
             endpoint = "https://api.deepseek.com/v1/chat/completions"
             headers = {"Authorization": f"Bearer {DEEPSEEK_API_KEY}"}
@@ -240,30 +250,32 @@ def process_summary(self, text, prompt_prefix, model, request_id=None, display_n
                 }]
             }
         elif model == "perplexity":
-            # try primary key
-            headers = {"Authorization": f"Bearer {PERPLEXITY_API_KEY2}"}
-            for key in (PERPLEXITY_API_KEY, PERPLEXITY_API_KEY2):
-                headers["Authorization"] = f"Bearer {key}"
+            # rotate through all configured Perplexity keys
+            response_json = None
+            session = requests.Session()
+            for key in PERPLEXITY_API_KEYS:
                 try:
-                    response = session.post(
+                    resp_raw = session.post(
                         "https://api.perplexity.ai/chat/completions",
-                        headers=headers,
+                        headers={"Authorization": f"Bearer {key}"},
                         json={
                             "model":"sonar-pro",
-                            "messages":[{"role":"user",
-                                         "content":f"{full_prompt}\n{text[:MAX_TEXT_LENGTH]}"}]
+                            "messages":[
+                                {"role":"user",
+                                 "content":f"{prompt_prefix}\n{prompt_suffix}\n{text[:MAX_TEXT_LENGTH]}"}
+                            ]
                         },
                         timeout=(3.05, MAX_API_TIMEOUT)
                     )
-                    response.raise_for_status()
-                    resp = response.json()
+                    resp_raw.raise_for_status()
+                    resp = resp_raw.json()
                     if resp.get('choices'):
                         response_json = resp
                         break
                 except Exception as e:
-                    logger.warning(f"Perplexity with key {key} failed: {e}")
-            else:
-                raise ValueError("Both Perplexity keys failed")
+                    logger.warning(f"Perplexity key {key} failed: {e}")
+            if not response_json:
+                raise ValueError("All Perplexity API keys failed")
         elif model == "llama3":
             endpoint = 'https://api.llama-api.com/chat/completions'
             headers = {
@@ -419,9 +431,12 @@ def summarize():
     try:
         # Check if user selected an existing PDF
         selected_pdf = request.form.get('selected_pdf')
-        
+        # only Gustavo may upload new PDFs
+        if not selected_pdf and current_user.id != 'gustavo':
+            return jsonify({'error': 'Only Gustavo can upload new PDFs'}), 403
+
         if selected_pdf and selected_pdf != 'upload':
-            # User selected an existing PDF
+             # User selected an existing PDF
             pdf_path = os.path.join(app.config['PDF_STORAGE_FOLDER'], selected_pdf)
             if not os.path.exists(pdf_path):
                 return jsonify({"error": "Selected PDF not found"}), 404
@@ -701,7 +716,7 @@ def save_ratings():
 def index():
     if not current_user.is_authenticated:
         return redirect(url_for('auth.login'))
-    return render_template('index.html')
+    return render_template('index.html', username=current_user.id)
 
 @app.route('/rankings', methods=['POST'])
 @app.route('/rankings/', methods=['POST'])
@@ -875,7 +890,19 @@ def leaderboard():
                 'All': stats_list(diffs.get('All', []))
             }
         })
-    return jsonify({'models': results})
+    
+    # compute t-tests per difficulty
+    from scipy.stats import ttest_ind #type: ignore
+    ttest = {}
+    model_keys = list(agg.keys())[:2]
+    for diff in ('Easy','Hard','All'):
+        if len(model_keys)==2:
+            x = agg[model_keys[0]][diff]
+            y = agg[model_keys[1]][diff]
+            if x and y:
+                _, p = ttest_ind(x, y, equal_var=False)
+                ttest[diff] = {'N': min(len(x), len(y)), 'p_value': round(p,4)}
+    return jsonify({'models': results, 'ttest': ttest})
 
 @app.route('/leaderboard/speaker', methods=['GET'])
 @login_required
@@ -916,7 +943,19 @@ def speaker_leaderboard():
                 'All': stats_list(diffs.get('All',[]))
             }
         })
-    return jsonify({'models':results})
+    
+    # compute t-tests per difficulty
+    from scipy.stats import ttest_ind # type: ignore
+    ttest = {}
+    model_keys = list(agg.keys())[:2]
+    for diff in ('Easy','Hard','All'):
+        if len(model_keys)==2:
+            x = agg[model_keys[0]][diff]
+            y = agg[model_keys[1]][diff]
+            if x and y:
+                _, p = ttest_ind(x, y, equal_var=False)
+                ttest[diff] = {'N': min(len(x), len(y)), 'p_value': round(p,4)}
+    return jsonify({'models': results, 'ttest': ttest})
 
 @app.route('/speaker_talks', methods=['GET'])
 @login_required
@@ -986,6 +1025,47 @@ def speaker_questions():
     if num > 0 and results:
         results = random.sample(results, min(num, len(results)))
     return jsonify({'questions': results})
+
+# load GitHub repo URL
+GITHUB_REPO_URL = os.getenv('GITHUB_REPO_URL', 'https://github.com/your-org/your-repo.git')
+
+# configure periodic clone every 60s
+celery.conf.beat_schedule = {
+    'periodic-repo-sync': {
+        'task': 'app.update_repo',
+        'schedule': 60.0
+    }
+}
+
+@celery.task(name='app.update_repo')
+def update_repo():
+    tmpdir = tempfile.mkdtemp()
+    # clone or pull latest
+    subprocess.run(['git', 'clone', GITHUB_REPO_URL, tmpdir], check=True)
+    dest = app.config['UPLOAD_FOLDER']
+    # clear old uploads
+    for name in os.listdir(dest):
+        path = os.path.join(dest, name)
+        if os.path.isdir(path):
+            shutil.rmtree(path, ignore_errors=True)
+        else:
+            os.remove(path)
+    # copy fresh contents
+    for name in os.listdir(tmpdir):
+        src = os.path.join(tmpdir, name)
+        dst = os.path.join(dest, name)
+        if os.path.isdir(src):
+            shutil.copytree(src, dst)
+        else:
+            shutil.copy2(src, dst)
+    # record sync time
+    redis_client.set('repo_last_update', datetime.now().isoformat())
+
+@app.route('/repo_status', methods=['GET'])
+@login_required
+def repo_status():
+    last = redis_client.get('repo_last_update')
+    return jsonify({'last_update': last.decode() if last else None})
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5100)

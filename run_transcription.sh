@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# Load environment variables for configuration (if a .env file exists)
+if [ -f ".env" ]; then
+  echo "Loading configuration from .env"
+  set -o allexport
+  source .env
+  set +o allexport
+fi
+
 # --- Configuration ---
 PYTHON_EXE="python3" # Or just "python" if that's your env
 SCRIPT_NAME="transcribe_monitor.py"
@@ -26,7 +34,7 @@ echo "Final transcription will be saved to: $FINAL_OUTPUT_PATH"
 # --- Check if Python script exists ---
 if [ ! -f "$SCRIPT_NAME" ]; then
     echo "Error: Python script '$SCRIPT_NAME' not found in the current directory."
-    exit 1
+    exit 1  
 fi
 
 # --- Execute Python Script ---
