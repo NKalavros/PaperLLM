@@ -11,5 +11,16 @@ USER_DATABASE = {
         "password": generate_password_hash(os.getenv("ADMIN_PASSWORD", "changeme")),
         "role": "admin"
     },
-    # Add more users as needed
+    os.getenv("GUSTAVO_USERNAME", "gustavo"): {
+        "password": generate_password_hash(os.getenv("GUSTAVO_PASSWORD", "gustavopass")),
+        "role": "gustavo"
+    },
+    os.getenv("AUDIENCE_USERNAME", "audience"): {
+        "password": generate_password_hash(os.getenv("AUDIENCE_PASSWORD", "audiencepass")),
+        "role": "audience"
+    },
+    os.getenv("SPEAKER_USERNAME", "speaker"): {
+        "password": generate_password_hash(os.getenv("SPEAKER_PASSWORD", "speakerpass")),
+        "role": "speaker"
+    }
 }
