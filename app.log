@@ -7578,3 +7578,49 @@ json.decoder.JSONDecodeError: Extra data: line 1 column 635 (char 634)
 2025-06-16 14:04:21,471 INFO 127.0.0.1 - - [16/Jun/2025 14:04:21] "POST /rankings/ HTTP/1.1" 200 -
 2025-06-16 14:04:23,942 INFO 127.0.0.1 - - [16/Jun/2025 14:04:23] "GET /leaderboard HTTP/1.1" 200 -
 2025-06-16 14:04:23,949 INFO 127.0.0.1 - - [16/Jun/2025 14:04:23] "GET /leaderboard/speaker HTTP/1.1" 200 -
+2025-06-17 12:01:01,630 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.15.15.6:5100
+2025-06-17 12:01:01,631 INFO [33mPress CTRL+C to quit[0m
+2025-06-17 12:01:05,393 INFO 127.0.0.1 - - [17/Jun/2025 12:01:05] "GET / HTTP/1.1" 200 -
+2025-06-17 12:01:05,439 INFO 127.0.0.1 - - [17/Jun/2025 12:01:05] "GET /repo_status HTTP/1.1" 200 -
+2025-06-17 12:01:05,440 INFO 127.0.0.1 - - [17/Jun/2025 12:01:05] "GET /speaker_talks HTTP/1.1" 200 -
+2025-06-17 12:01:18,631 INFO 127.0.0.1 - - [17/Jun/2025 12:01:18] "GET /leaderboard/speaker HTTP/1.1" 200 -
+2025-06-17 12:01:18,633 INFO 127.0.0.1 - - [17/Jun/2025 12:01:18] "GET /leaderboard HTTP/1.1" 200 -
+2025-06-17 12:02:05,459 INFO 127.0.0.1 - - [17/Jun/2025 12:02:05] "GET /repo_status HTTP/1.1" 200 -
+2025-06-17 12:03:05,465 INFO 127.0.0.1 - - [17/Jun/2025 12:03:05] "GET /repo_status HTTP/1.1" 200 -
+2025-06-17 12:03:39,634 INFO 127.0.0.1 - - [17/Jun/2025 12:03:39] "GET /leaderboard/speaker HTTP/1.1" 200 -
+2025-06-17 12:03:39,642 INFO 127.0.0.1 - - [17/Jun/2025 12:03:39] "GET /leaderboard HTTP/1.1" 200 -
+2025-06-17 12:03:55,525 INFO 127.0.0.1 - - [17/Jun/2025 12:03:55] "[32mGET / HTTP/1.1[0m" 302 -
+2025-06-17 12:03:55,529 INFO 127.0.0.1 - - [17/Jun/2025 12:03:55] "GET /login HTTP/1.1" 200 -
+2025-06-17 12:03:55,632 INFO 127.0.0.1 - - [17/Jun/2025 12:03:55] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-06-17 12:04:05,467 INFO 127.0.0.1 - - [17/Jun/2025 12:04:05] "GET /repo_status HTTP/1.1" 200 -
+2025-06-17 12:04:14,776 INFO 127.0.0.1 - - [17/Jun/2025 12:04:14] "GET /login HTTP/1.1" 200 -
+2025-06-17 12:04:26,151 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.15.15.6:5100
+2025-06-17 12:04:26,151 INFO [33mPress CTRL+C to quit[0m
+2025-06-17 12:04:28,833 INFO 127.0.0.1 - - [17/Jun/2025 12:04:28] "GET /login HTTP/1.1" 200 -
+2025-06-17 12:05:05,476 INFO 127.0.0.1 - - [17/Jun/2025 12:05:05] "GET /repo_status HTTP/1.1" 200 -
+2025-06-17 12:06:05,479 INFO 127.0.0.1 - - [17/Jun/2025 12:06:05] "GET /repo_status HTTP/1.1" 200 -
+2025-06-17 12:07:05,484 INFO 127.0.0.1 - - [17/Jun/2025 12:07:05] "GET /repo_status HTTP/1.1" 200 -
+2025-06-17 12:07:58,406 INFO 127.0.0.1 - - [17/Jun/2025 12:07:58] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-06-17 12:07:58,414 INFO 127.0.0.1 - - [17/Jun/2025 12:07:58] "GET / HTTP/1.1" 200 -
+2025-06-17 12:08:04,990 INFO 127.0.0.1 - - [17/Jun/2025 12:08:04] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-06-17 12:08:04,992 INFO 127.0.0.1 - - [17/Jun/2025 12:08:04] "GET / HTTP/1.1" 200 -
+2025-06-17 12:08:05,040 INFO 127.0.0.1 - - [17/Jun/2025 12:08:05] "GET /repo_status HTTP/1.1" 200 -
+2025-06-17 12:08:05,041 INFO 127.0.0.1 - - [17/Jun/2025 12:08:05] "GET /speaker_talks HTTP/1.1" 200 -
+2025-06-17 12:08:05,486 INFO 127.0.0.1 - - [17/Jun/2025 12:08:05] "GET /repo_status HTTP/1.1" 200 -
+2025-06-17 12:08:12,219 INFO 127.0.0.1 - - [17/Jun/2025 12:08:12] "[31m[1mPOST /login HTTP/1.1[0m" 401 -
+2025-06-17 12:08:14,830 INFO 127.0.0.1 - - [17/Jun/2025 12:08:14] "GET /login HTTP/1.1" 200 -
+2025-06-17 12:08:17,044 INFO 127.0.0.1 - - [17/Jun/2025 12:08:17] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-06-17 12:08:17,046 INFO 127.0.0.1 - - [17/Jun/2025 12:08:17] "GET / HTTP/1.1" 200 -
+2025-06-17 12:08:17,095 INFO 127.0.0.1 - - [17/Jun/2025 12:08:17] "GET /repo_status HTTP/1.1" 200 -
+2025-06-17 12:08:17,095 INFO 127.0.0.1 - - [17/Jun/2025 12:08:17] "GET /speaker_talks HTTP/1.1" 200 -
+2025-06-17 12:08:21,399 INFO 127.0.0.1 - - [17/Jun/2025 12:08:21] "GET /leaderboard/speaker HTTP/1.1" 200 -
+2025-06-17 12:08:21,402 INFO 127.0.0.1 - - [17/Jun/2025 12:08:21] "GET /leaderboard HTTP/1.1" 200 -
+2025-06-17 12:08:23,790 INFO 127.0.0.1 - - [17/Jun/2025 12:08:23] "GET /leaderboard/speaker HTTP/1.1" 200 -
+2025-06-17 12:08:23,799 INFO 127.0.0.1 - - [17/Jun/2025 12:08:23] "GET /leaderboard HTTP/1.1" 200 -
+2025-06-17 12:08:26,043 INFO 127.0.0.1 - - [17/Jun/2025 12:08:26] "GET /available_pdfs HTTP/1.1" 200 -
