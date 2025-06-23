@@ -386,6 +386,15 @@
                     <tbody></tbody>
                 </table>
             </div>
+            <div class="form-section">
+                <h3>Statistical Significance Legend</h3>
+                <p style="font-size: 0.9em; color: #4a5568;">
+                    <strong>N.S.</strong> = Not significant (p > 0.05) |
+                    <strong>*</strong> = p ≤ 0.05 |
+                    <strong>**</strong> = p ≤ 0.01 |
+                    <strong>***</strong> = p ≤ 0.001
+                </p>
+            </div>
         </div>
         {% if username in ['gustavo','speaker'] %}
         <!-- Speaker Tab -->
@@ -836,9 +845,11 @@
             ['Easy', 'Hard', 'All'].forEach(diff => {
                 const cell = document.createElement('td');
                 const e = ttest[diff];
-                cell.textContent = e
-                    ? `N=${e.N}, p=${e.p_value}`
-                    : '–';
+                if (e) {
+                    cell.textContent = `N=${e.N}, p=${e.p_value} ${e.notation}`;
+                } else {
+                    cell.textContent = '–';
+                }
                 tr.appendChild(cell);
             });
             tbody.appendChild(tr);

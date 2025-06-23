@@ -8098,3 +8098,29 @@ json.decoder.JSONDecodeError: Extra data: line 1 column 635 (char 634)
 2025-06-17 14:31:31,964 INFO 127.0.0.1 - - [17/Jun/2025 14:31:31] "GET /leaderboard HTTP/1.1" 200 -
 2025-06-17 14:31:31,974 INFO 127.0.0.1 - - [17/Jun/2025 14:31:31] "GET /leaderboard HTTP/1.1" 200 -
 2025-06-17 14:31:31,981 INFO 127.0.0.1 - - [17/Jun/2025 14:31:31] "GET /leaderboard/speaker HTTP/1.1" 200 -
+2025-06-23 11:51:01,475 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.164.2.24:5100
+2025-06-23 11:51:01,476 INFO [33mPress CTRL+C to quit[0m
+2025-06-23 11:51:04,701 INFO 127.0.0.1 - - [23/Jun/2025 11:51:04] "GET / HTTP/1.1" 200 -
+2025-06-23 11:51:04,943 INFO 127.0.0.1 - - [23/Jun/2025 11:51:04] "GET /speaker_talks HTTP/1.1" 200 -
+2025-06-23 11:51:04,945 INFO 127.0.0.1 - - [23/Jun/2025 11:51:04] "GET /repo_status HTTP/1.1" 200 -
+2025-06-23 11:51:04,951 INFO 127.0.0.1 - - [23/Jun/2025 11:51:04] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-06-23 11:51:04,953 INFO 127.0.0.1 - - [23/Jun/2025 11:51:04] "GET /available_pdfs HTTP/1.1" 200 -
+2025-06-23 11:51:05,067 INFO 127.0.0.1 - - [23/Jun/2025 11:51:05] "GET /available_pdfs HTTP/1.1" 200 -
+2025-06-23 11:51:07,672 INFO 127.0.0.1 - - [23/Jun/2025 11:51:07] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-06-23 11:51:07,677 INFO 127.0.0.1 - - [23/Jun/2025 11:51:07] "[32mGET / HTTP/1.1[0m" 302 -
+2025-06-23 11:51:07,711 INFO 127.0.0.1 - - [23/Jun/2025 11:51:07] "GET /login HTTP/1.1" 200 -
+2025-06-23 11:51:09,245 INFO 127.0.0.1 - - [23/Jun/2025 11:51:09] "GET /leaderboard HTTP/1.1" 200 -
+2025-06-23 11:51:09,248 INFO 127.0.0.1 - - [23/Jun/2025 11:51:09] "GET /leaderboard/speaker HTTP/1.1" 200 -
+2025-06-23 11:51:12,693 INFO 127.0.0.1 - - [23/Jun/2025 11:51:12] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-06-23 11:51:12,697 INFO 127.0.0.1 - - [23/Jun/2025 11:51:12] "GET / HTTP/1.1" 200 -
+2025-06-23 11:51:12,764 INFO 127.0.0.1 - - [23/Jun/2025 11:51:12] "GET /repo_status HTTP/1.1" 200 -
+2025-06-23 11:51:12,765 INFO 127.0.0.1 - - [23/Jun/2025 11:51:12] "GET /available_pdfs HTTP/1.1" 200 -
+2025-06-23 11:51:12,866 INFO 127.0.0.1 - - [23/Jun/2025 11:51:12] "GET /available_pdfs HTTP/1.1" 200 -
+2025-06-23 11:51:19,570 INFO 127.0.0.1 - - [23/Jun/2025 11:51:19] "GET /leaderboard HTTP/1.1" 200 -
+2025-06-23 11:51:19,582 INFO 127.0.0.1 - - [23/Jun/2025 11:51:19] "GET /leaderboard/speaker HTTP/1.1" 200 -
+2025-06-23 11:51:19,590 INFO 127.0.0.1 - - [23/Jun/2025 11:51:19] "GET /leaderboard HTTP/1.1" 200 -
+2025-06-23 11:51:19,595 INFO 127.0.0.1 - - [23/Jun/2025 11:51:19] "GET /leaderboard/speaker HTTP/1.1" 200 -
+2025-06-23 11:52:15,913 INFO 127.0.0.1 - - [23/Jun/2025 11:52:15] "GET /repo_status HTTP/1.1" 200 -

@@ -893,6 +893,19 @@ def leaderboard():
     
     # compute t-tests per difficulty
     from scipy.stats import ttest_ind #type: ignore
+    
+    def format_p_value(p):
+        """Format p-value with scientific notation"""
+        p_rounded = round(p, 2)
+        if p > 0.05:
+            return {'p_value': p_rounded, 'notation': 'N.S.'}
+        elif p > 0.01:
+            return {'p_value': p_rounded, 'notation': '*'}
+        elif p > 0.001:
+            return {'p_value': p_rounded, 'notation': '**'}
+        else:
+            return {'p_value': p_rounded, 'notation': '***'}
+    
     ttest = {}
     model_keys = list(agg.keys())[:2]
     for diff in ('Easy','Hard','All'):
@@ -901,7 +914,8 @@ def leaderboard():
             y = agg[model_keys[1]][diff]
             if x and y:
                 _, p = ttest_ind(x, y, equal_var=False)
-                ttest[diff] = {'N': min(len(x), len(y)), 'p_value': round(p,4)}
+                p_formatted = format_p_value(p)
+                ttest[diff] = {'N': min(len(x), len(y)), **p_formatted}
     return jsonify({'models': results, 'ttest': ttest})
 
 @app.route('/leaderboard/speaker', methods=['GET'])
@@ -946,6 +960,19 @@ def speaker_leaderboard():
     
     # compute t-tests per difficulty
     from scipy.stats import ttest_ind # type: ignore
+    
+    def format_p_value(p):
+        """Format p-value with scientific notation"""
+        p_rounded = round(p, 2)
+        if p > 0.05:
+            return {'p_value': p_rounded, 'notation': 'N.S.'}
+        elif p > 0.01:
+            return {'p_value': p_rounded, 'notation': '*'}
+        elif p > 0.001:
+            return {'p_value': p_rounded, 'notation': '**'}
+        else:
+            return {'p_value': p_rounded, 'notation': '***'}
+    
     ttest = {}
     model_keys = list(agg.keys())[:2]
     for diff in ('Easy','Hard','All'):
@@ -954,7 +981,8 @@ def speaker_leaderboard():
             y = agg[model_keys[1]][diff]
             if x and y:
                 _, p = ttest_ind(x, y, equal_var=False)
-                ttest[diff] = {'N': min(len(x), len(y)), 'p_value': round(p,4)}
+                p_formatted = format_p_value(p)
+                ttest[diff] = {'N': min(len(x), len(y)), **p_formatted}
     return jsonify({'models': results, 'ttest': ttest})
 
 @app.route('/speaker_talks', methods=['GET'])
