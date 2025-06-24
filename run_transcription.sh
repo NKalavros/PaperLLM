@@ -1,62 +1,82 @@
 #!/bin/bash
+set -euo pipefail
+IFS=$'\n\t'
+trap 'echo "Interrupted. Exiting."; exit 1' SIGINT SIGTERM
 
-# Load environment variables for configuration (if a .env file exists)
+# Load .env if present
 if [ -f ".env" ]; then
   echo "Loading configuration from .env"
-  set -o allexport
-  source .env
-  set +o allexport
+  set -o allexport; source .env; set +o allexport
 fi
 
-# --- Configuration ---
-PYTHON_EXE="python3" # Or just "python" if that's your env
-SCRIPT_NAME="transcribe_monitor.py"
-TARGET_DIR="complete_transcription" # Directory for final outputs
+# Allow overrides via env or defaults
+PYTHON_EXE="${PYTHON_EXE:-python3}"
+SCRIPT_NAME="${SCRIPT_NAME:-transcribe_monitor.py}"
+TARGET_DIR="${TARGET_DIR:-complete_transcription}"
 
-# --- Argument Check ---
+# Dependency checks
+command -v ffmpeg >/dev/null 2>&1 || { echo "ERROR: ffmpeg not found in PATH"; exit 1; }
+command -v "$PYTHON_EXE" >/dev/null 2>&1 || { echo "ERROR: $PYTHON_EXE not found"; exit 1; }
+
+# Arg check
 if [ "$#" -ne 1 ]; then
     echo "Usage: $0 <transcription_base_name>"
-    echo "  Example: $0 my_meeting_notes"
     exit 1
 fi
 
 TRANSCRIPTION_NAME="$1"
 echo "Starting transcription process for: $TRANSCRIPTION_NAME"
 
-# --- Prepare Output Path ---
-echo "Creating output directory (if needed): $TARGET_DIR"
-mkdir -p "$TARGET_DIR" # Create directory and parent dirs if they don't exist
-
-# Construct the full path for the final .txt file
+mkdir -p "$TARGET_DIR"
 FINAL_OUTPUT_PATH="$TARGET_DIR/$TRANSCRIPTION_NAME.txt"
-echo "Final transcription will be saved to: $FINAL_OUTPUT_PATH"
+echo "Output will be: $FINAL_OUTPUT_PATH"
 
-# --- Check if Python script exists ---
-if [ ! -f "$SCRIPT_NAME" ]; then
-    echo "Error: Python script '$SCRIPT_NAME' not found in the current directory."
-    exit 1  
+[ -f "$SCRIPT_NAME" ] || { echo "Error: $SCRIPT_NAME not found"; exit 1; }
+
+# If not already set, list and ask for ffmpeg format & device
+system="$(uname)"
+if [ -z "${FFMPEG_INPUT_FORMAT:-}" ]; then
+    echo "Detected platform: $system"
+    if [ "$system" = "Darwin" ]; then
+        echo "Available audio devices (ffmpeg avfoundation):"
+        ffmpeg -f avfoundation -list_devices true -i "" 2>&1 \
+          | grep '\[AVFoundation indev' || true
+    elif [ "$system" = "Linux" ]; then
+        echo "Available audio devices (arecord):"
+        arecord -l
+    fi
+    read -rp "Enter capture format (e.g. avfoundation, alsa): " FFMPEG_INPUT_FORMAT
+    echo "Selected input format: $FFMPEG_INPUT_FORMAT"
 fi
 
-# --- Execute Python Script ---
-echo "Running Python transcription script..."
-echo "Press Ctrl+C in the terminal running the Python script to stop recording."
+if [ -z "${FFMPEG_DEVICE:-}" ]; then
+    if [ "$FFMPEG_INPUT_FORMAT" = "avfoundation" ]; then
+        read -rp "Enter audio device index number (e.g. 1 for [1] MacBook Air Microphone): " idx
+        # prefix with ':' if missing
+        FFMPEG_DEVICE=":${idx#*:}"
+    else
+        read -rp "Enter ffmpeg audio device (e.g. 'hw:1,0'): " FFMPEG_DEVICE
+    fi
+    echo "Selected audio device: $FFMPEG_DEVICE"
+fi
 
-# Execute the python script, passing the final desired output path as an argument
-"$PYTHON_EXE" "$SCRIPT_NAME" "$FINAL_OUTPUT_PATH"
+# Build optional Python args from env vars:
+PYTHON_ARGS=()
+if [ -n "${FFMPEG_INPUT_FORMAT:-}" ]; then
+    PYTHON_ARGS+=(--input-format "$FFMPEG_INPUT_FORMAT")
+fi
+if [ -n "${FFMPEG_DEVICE:-}" ]; then
+    PYTHON_ARGS+=(--audio-device "$FFMPEG_DEVICE")
+fi
 
-# Capture the exit status of the python script
+echo "Running transcription script..."
+"$PYTHON_EXE" "$SCRIPT_NAME" "$FINAL_OUTPUT_PATH" "${PYTHON_ARGS[@]}"
 EXIT_STATUS=$?
 
-# --- Check Exit Status ---
-if [ $EXIT_STATUS -eq 0 ]; then
-    echo "Python script finished successfully."
-    echo "Final transcription saved to: $FINAL_OUTPUT_PATH"
-else
-    echo "Error: Python script exited with status $EXIT_STATUS."
-    # Note: The python script might have still created a partial file or logs.
-    # The temporary directory might still exist if cleanup is disabled or failed.
-    exit $EXIT_STATUS # Propagate the error status
+if [ $EXIT_STATUS -ne 0 ]; then
+    echo "Python script failed (status $EXIT_STATUS)."
+    exit $EXIT_STATUS
 fi
 
-echo "Transcription process complete for: $TRANSCRIPTION_NAME"
+echo "Transcription saved to: $FINAL_OUTPUT_PATH"
 exit 0
