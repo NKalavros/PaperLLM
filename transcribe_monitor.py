@@ -12,6 +12,8 @@ import argparse
 from pathlib import Path
 from datetime import datetime
 from deepmultilingualpunctuation import PunctuationModel  # type: ignore
+import logging
+import shutil
 
 # --- Configuration ---
 RECORD_INTERVAL_SECONDS = 30
@@ -108,14 +110,18 @@ transcription_queue = queue.Queue()
 
 # --- Helper Functions ---
 
-def setup_directories():
-    """Creates necessary output directories."""
-    print("Setting up directories...")
-    AUDIO_SEGMENTS_DIR.mkdir(parents=True, exist_ok=True)
-    TRANSCRIPTION_SEGMENTS_DIR.mkdir(parents=True, exist_ok=True)
-    print(f" - Audio segments: {AUDIO_SEGMENTS_DIR}")
-    print(f" - Transcription segments: {TRANSCRIPTION_SEGMENTS_DIR}")
-    print(f" - Final transcription: {FINAL_TRANSCRIPTION_FILE}")
+def setup_directories(base_dir):
+    """Creates (or resets) necessary output directories."""
+    if base_dir.exists():
+        logging.info(f"Clearing old output directory: {base_dir}")
+        shutil.rmtree(base_dir)
+    audio_dir = base_dir / "audio_segments"
+    txt_dir   = base_dir / "transcription_segments"
+    audio_dir.mkdir(parents=True, exist_ok=True)
+    txt_dir.mkdir(parents=True, exist_ok=True)
+    logging.info(f"Audio segments -> {audio_dir}")
+    logging.info(f"Transcripts     -> {txt_dir}")
+    return audio_dir, txt_dir
 
 def record_audio(output_filename):
     """Records audio using ffmpeg. Returns True on success, False on failure."""
@@ -170,7 +176,7 @@ def transcribe_api(audio_path):
 
         # Restore punctuation if enabled
         if transcription and punct_model:
-            transcription = punct_model.restore(transcription)
+            transcription = punct_model.punctuate(transcription)
 
         print(f"  > API Transcription successful: {audio_path.name}")
         return transcription
@@ -202,7 +208,7 @@ def transcribe_faster_whisper(model, audio_path):
 
         # apply punctuation if enabled
         if punct_model:
-            full_transcription = punct_model.restore(full_transcription)
+            full_transcription = punct_model.punctuate(full_transcription)
 
         print(f"  > faster-whisper Transcription successful: {audio_path.name}")
         return full_transcription
@@ -349,11 +355,32 @@ def signal_handler(sig, frame):
 # --- Main Execution ---
 
 def main(args): # <-- Added args parameter
-    global segment_counter
-    global keep_running
+    global segment_counter, keep_running
+    global FFMPEG_INPUT_FORMAT, AUDIO_DEVICE, FFMPEG_COMMAND_BASE
+    global OUTPUT_BASE_DIR, AUDIO_SEGMENTS_DIR, TRANSCRIPTION_SEGMENTS_DIR, FINAL_TRANSCRIPTION_FILE
 
     signal.signal(signal.SIGINT, signal_handler)
-    setup_directories() # Sets up temporary directories
+
+    # --- Prepare and reset directories ---
+    if hasattr(args, "output_base_dir") and args.output_base_dir:
+        OUTPUT_BASE_DIR = args.output_base_dir
+    AUDIO_SEGMENTS_DIR, TRANSCRIPTION_SEGMENTS_DIR = setup_directories(OUTPUT_BASE_DIR)
+    FINAL_TRANSCRIPTION_FILE = args.final_output_path
+
+    # --- Apply User Overrides ---
+    if args.input_format:
+        FFMPEG_INPUT_FORMAT = args.input_format
+    if args.audio_device:
+        AUDIO_DEVICE = args.audio_device
+
+    logging.info(f"Using ffmpeg format: {FFMPEG_INPUT_FORMAT}, device: {AUDIO_DEVICE}")
+
+    FFMPEG_COMMAND_BASE = [
+        'ffmpeg', '-loglevel', 'error',
+        '-f', FFMPEG_INPUT_FORMAT, '-i', AUDIO_DEVICE,
+        '-af', 'afftdn', '-t', str(RECORD_INTERVAL_SECONDS),
+        '-codec:a', 'libmp3lame', '-q:a', '4',
+    ]
 
     # --- Load Model or Prep API (Keep as is) ---
     whisper_model = None
@@ -419,7 +446,9 @@ def main(args): # <-- Added args parameter
          print("Transcription worker finished.")
 
     # Call collation with the final path from arguments
-    collate_transcriptions(args.final_output_path) # <-- Use parsed arg
+    logging.info("Collating final transcription...")
+    collate_transcriptions(FINAL_TRANSCRIPTION_FILE)
+    logging.info("Done.")
 
     # Optional: Clean up temporary directory
     # print(f"Cleaning up temporary directory: {OUTPUT_BASE_DIR}")
@@ -439,6 +468,25 @@ if __name__ == "__main__":
         "final_output_path",
         type=Path, # Use pathlib for path handling
         help="The final path (including filename) for the collated transcription text file."
+    )
+    parser.add_argument(
+        "--output-base-dir", type=Path,
+        default=Path("audio_transcription_output_concurrent"),
+        help="Workspace for segments"
+    )
+    parser.add_argument(
+        "--interval", type=int, default=30,
+        help="Recording length in seconds"
+    )
+    parser.add_argument(
+        "--input-format",
+        type=str,
+        help="Override ffmpeg input format (e.g. avfoundation, alsa)"
+    )
+    parser.add_argument(
+        "--audio-device",
+        type=str,
+        help="Override ffmpeg audio device (e.g. ':0' or 'hw:1,0')"
     )
     parsed_args = parser.parse_args()
 
