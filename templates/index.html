@@ -529,9 +529,9 @@
                         // Display title to user, with availability indicator
                         let displayText = pdf.display_name || pdf.title;
                         if (!pdf.available) {
-                            displayText += ' (Not yet available)';
-                            option.disabled = true;
-                            option.style.color = '#999';
+                            displayText += ' (PDF not yet available - questions will be queued)';
+                            option.style.color = '#666';
+                            option.style.fontStyle = 'italic';
                         } else {
                             displayText += ` (${formatFileSize(pdf.size)})`;
                         }
@@ -624,7 +624,15 @@
                 const data = await response.json();
                 if (!response.ok) throw new Error(data.error || 'Failed to submit question');
 
-                document.getElementById('question-status').innerText = 'Question submitted successfully! Answers take 30-60 seconds to generate.';
+                // Handle different response statuses
+                if (data.status === 'pending') {
+                    document.getElementById('question-status').innerText = data.message;
+                    document.getElementById('question-status').style.color = '#ff8c00'; // Orange color for pending
+                } else {
+                    document.getElementById('question-status').innerText = 'Question submitted successfully! Answers take 30-60 seconds to generate.';
+                    document.getElementById('question-status').style.color = '#28a745'; // Green color for success
+                }
+                
                 e.target.reset();
 
                 // Reset PDF source to upload only if radio buttons exist (Gustavo)
@@ -637,6 +645,7 @@
             } catch (error) {
                 console.error('Fetch Error:', error);
                 document.getElementById('question-status').innerText = 'Submission failed: ' + error.message;
+                document.getElementById('question-status').style.color = '#dc3545'; // Red color for errors
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Submit Question';

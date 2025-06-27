@@ -472,11 +472,35 @@ def summarize():
         if selected_pdf and selected_pdf != 'upload':
              # User selected an existing PDF
             pdf_path = os.path.join(app.config['PDF_STORAGE_FOLDER'], selected_pdf)
+            
+            # Get form data first
+            prompt_prefix = request.form.get('prompt_prefix', 'Summarize this academic paper:')
+            question_difficulty = request.form.get('question_difficulty', 'Easy')
+            nickname = request.form.get('nickname', '')
+            
+            if not nickname.strip():
+                return jsonify({"error": "Nickname cannot be empty"}), 400
+            
             if not os.path.exists(pdf_path):
                 # Check if it's a predefined talk that hasn't been uploaded yet
                 if selected_pdf in PREDEFINED_TALKS:
                     talk_title = PREDEFINED_TALKS[selected_pdf]
-                    return jsonify({"error": f"The talk '{talk_title}' has not been uploaded yet. Please check back after the talk ends."}), 404
+                    
+                    # Store as pending question
+                    store_pending_question(
+                        request_id=request_id,
+                        selected_pdf=selected_pdf,
+                        prompt_prefix=prompt_prefix,
+                        question_difficulty=question_difficulty,
+                        nickname=nickname,
+                        username=current_user.id
+                    )
+                    
+                    return jsonify({
+                        "request_id": request_id,
+                        "status": "pending",
+                        "message": f"Question submitted for '{talk_title}'. It will be processed automatically once the talk PDF is uploaded."
+                    }), 202
                 else:
                     return jsonify({"error": "Selected PDF not found"}), 404
             filename = selected_pdf
@@ -510,7 +534,13 @@ def summarize():
                 pdf_path = os.path.join(app.config['PDF_STORAGE_FOLDER'], filename)
                 shutil.move(temp_path, pdf_path)
                 logger.info(f"New PDF stored: {filename}")
+                
+                # Check if there are pending questions for this PDF
+                pending_count = process_pending_questions_for_pdf(filename)
+                if pending_count > 0:
+                    logger.info(f"Automatically processed {pending_count} pending questions for {filename}")
 
+        # Continue with normal processing for available PDFs
         text = extract_text_from_pdf(pdf_path)
         prompt_prefix = request.form.get('prompt_prefix', 'Summarize this academic paper:')
         question_difficulty = request.form.get('question_difficulty', 'Easy')
