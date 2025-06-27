@@ -8283,3 +8283,4 @@ json.decoder.JSONDecodeError: Extra data: line 1 column 635 (char 634)
 2025-06-27 08:43:00,491 INFO 127.0.0.1 - - [27/Jun/2025 08:43:00] "GET /available_pdfs HTTP/1.1" 200 -
 2025-06-27 08:43:00,492 INFO 127.0.0.1 - - [27/Jun/2025 08:43:00] "GET /repo_status HTTP/1.1" 200 -
 2025-06-27 08:43:00,580 INFO 127.0.0.1 - - [27/Jun/2025 08:43:00] "GET /available_pdfs HTTP/1.1" 200 -
+2025-06-27 08:44:00,510 INFO 127.0.0.1 - - [27/Jun/2025 08:44:00] "GET /repo_status HTTP/1.1" 200 -
