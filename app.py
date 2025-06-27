@@ -1134,5 +1134,93 @@ def repo_status():
     last = redis_client.get('repo_last_update')
     return jsonify({'last_update': last.decode() if last else None})
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5100)
+# Store for pending questions (questions submitted before PDF is available)
+PENDING_QUESTIONS_KEY = "pending_questions"
+
+def store_pending_question(request_id, selected_pdf, prompt_prefix, question_difficulty, nickname, username):
+    """Store a question that's waiting for the PDF to become available"""
+    pending_question = {
+        'request_id': request_id,
+        'selected_pdf': selected_pdf,
+        'prompt_prefix': prompt_prefix,
+        'question_difficulty': question_difficulty,
+        'nickname': nickname,
+        'username': username,
+        'timestamp': datetime.now().isoformat(),
+        'status': 'waiting_for_pdf'
+    }
+    
+    # Store in Redis list
+    redis_client.lpush(PENDING_QUESTIONS_KEY, json.dumps(pending_question))
+    
+    # Also log to file
+    try:
+        with open('pending_questions.log', 'a') as f:
+            f.write(json.dumps(pending_question) + '\n')
+    except Exception as e:
+        logger.error(f"Failed to log pending question: {str(e)}")
+
+def process_pending_questions_for_pdf(pdf_filename):
+    """Process all pending questions for a specific PDF that just became available"""
+    processed_count = 0
+    
+    # Get all pending questions
+    pending_questions_raw = redis_client.lrange(PENDING_QUESTIONS_KEY, 0, -1)
+    
+    for question_raw in pending_questions_raw:
+        try:
+            question = json.loads(question_raw)
+            
+            if question.get('selected_pdf') == pdf_filename:
+                # This question was waiting for this PDF
+                request_id = question['request_id']
+                pdf_path = os.path.join(app.config['PDF_STORAGE_FOLDER'], pdf_filename)
+                
+                if os.path.exists(pdf_path):
+                    # Extract text and process
+                    text = extract_text_from_pdf(pdf_path)
+                    
+                    # Choose models and create tasks
+                    all_models = ['perplexity', 'openai']
+                    selected_models = random.sample(all_models, 2)
+                    tasks = []
+                    
+                    for model in selected_models:
+                        task = process_summary.apply_async(
+                            args=(text, question['prompt_prefix'], model, request_id, None, question['nickname'])
+                        )
+                        tasks.append(task)
+                        request_tracker[request_id].append({
+                            'task_id': task.id,
+                            'real_model': model
+                        })
+                    
+                    # Log the request and question
+                    log_request(
+                        request_id=request_id,
+                        text=text,
+                        prompt_prefix=question['prompt_prefix'],
+                        summaries=[],
+                        question_difficulty=question['question_difficulty'],
+                        username=question['username'],
+                        nickname=question['nickname']
+                    )
+                    
+                    log_question(
+                        request_id, text, question['prompt_prefix'], 
+                        question['question_difficulty'], question['nickname'], pdf_filename
+                    )
+                    
+                    # Remove from pending list
+                    redis_client.lrem(PENDING_QUESTIONS_KEY, 1, question_raw)
+                    processed_count += 1
+                    
+                    logger.info(f"Processed pending question {request_id} for PDF {pdf_filename}")
+                    
+        except Exception as e:
+            logger.error(f"Error processing pending question: {str(e)}")
+    
+    if processed_count > 0:
+        logger.info(f"Processed {processed_count} pending questions for {pdf_filename}")
+    
+    return processed_count
