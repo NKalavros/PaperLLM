@@ -148,6 +148,16 @@ def record_audio(output_filename):
         print(f"  > An unexpected error occurred during recording: {e}")
         return False
 
+def apply_punctuation(text):
+    """Apply punctuation using whatever method the PunctuationModel provides."""
+    if not punct_model:
+        return text
+    for fn in ('punctuate', 'restore'):
+        method = getattr(punct_model, fn, None)
+        if callable(method):
+            return method(text)
+    return text
+
 # --- Transcription Functions ---
 
 def transcribe_api(audio_path):
@@ -174,9 +184,8 @@ def transcribe_api(audio_path):
             )
         transcription = response.text.strip()
 
-        # Restore punctuation if enabled
-        if transcription and punct_model:
-            transcription = punct_model.punctuate(transcription)
+        # Apply punctuation if enabled
+        transcription = apply_punctuation(transcription)
 
         print(f"  > API Transcription successful: {audio_path.name}")
         return transcription
@@ -207,8 +216,7 @@ def transcribe_faster_whisper(model, audio_path):
         full_transcription = " ".join([segment.text for segment in segments]).strip()
 
         # apply punctuation if enabled
-        if punct_model:
-            full_transcription = punct_model.punctuate(full_transcription)
+        full_transcription = apply_punctuation(full_transcription)
 
         print(f"  > faster-whisper Transcription successful: {audio_path.name}")
         return full_transcription

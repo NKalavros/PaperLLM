@@ -525,7 +525,26 @@
                     data.pdfs.forEach(pdf => {
                         const option = document.createElement('option');
                         option.value = pdf.filename;
-                        option.textContent = `${pdf.filename} (${formatFileSize(pdf.size)})`;
+                        
+                        // Use display_name for predefined talks, filename for others
+                        let displayText = pdf.is_predefined ? pdf.display_name : pdf.filename;
+                        
+                        // Add status indicator for predefined talks
+                        if (pdf.is_predefined) {
+                            displayText += pdf.pdf_exists ? ' ✓' : ' (PDF pending)';
+                        } else {
+                            displayText += ` (${formatFileSize(pdf.size)})`;
+                        }
+                        
+                        option.textContent = displayText;
+                        
+                        // Disable option if it's a predefined talk without PDF (for non-Gustavo users)
+                        const username = '{{ username }}';
+                        if (pdf.is_predefined && !pdf.pdf_exists && username !== 'gustavo') {
+                            option.disabled = true;
+                            option.style.color = '#999';
+                        }
+                        
                         dropdown.appendChild(option);
                     });
                 } else {
@@ -597,6 +616,16 @@
                     submitBtn.textContent = 'Submit Question';
                     return;
                 }
+                
+                // Check if selected option is disabled (pending PDF)
+                const selectedOption = document.querySelector(`#pdf-dropdown option[value="${selectedPdf}"]`);
+                if (selectedOption && selectedOption.disabled) {
+                    alert('This talk\'s PDF is not yet available. Please choose a different talk or wait for the PDF to be uploaded.');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Submit Question';
+                    return;
+                }
+                
                 formData.set('selected_pdf', selectedPdf);
             }
 
@@ -613,7 +642,15 @@
                 const data = await response.json();
                 if (!response.ok) throw new Error(data.error || 'Failed to submit question');
 
-                document.getElementById('question-status').innerText = 'Question submitted successfully! Answers take 30-60 seconds to generate.';
+                // Show appropriate status message
+                let statusMessage = 'Question submitted successfully!';
+                if (data.message && data.message.includes('PDF not yet available')) {
+                    statusMessage += ' Your question will be processed once the PDF is uploaded. This may take some time.';
+                } else {
+                    statusMessage += ' Answers take 30-60 seconds to generate.';
+                }
+                
+                document.getElementById('question-status').innerText = statusMessage;
                 e.target.reset();
 
                 // Reset PDF source to upload only if radio buttons exist (Gustavo)
@@ -845,7 +882,7 @@
             ['Easy', 'Hard', 'All'].forEach(diff => {
                 const cell = document.createElement('td');
                 const e = ttest[diff];
-                if (e) {
+                if e) {
                     cell.textContent = `N=${e.N}, p=${e.p_value} ${e.notation}`;
                 } else {
                     cell.textContent = '–';

@@ -130,6 +130,17 @@ RPM_LIMIT = 3500
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 os.makedirs(app.config['PDF_STORAGE_FOLDER'], exist_ok=True)
 
+# Add predefined talks mapping after the constants section
+PREDEFINED_TALKS = {
+    'Dr. Julio Saez Rodriguez - "Benchmarking foundation models in biology: where we are, and where we want to go with the community"': 'talk1.pdf',
+    'Keynote Presentation: Dr. Bo Wang (Univ of Toronto) – "Building Foundation Models for Single-cell Omics and Imaging"': 'talk2.pdf', 
+    'Dr. Maria Brbic – "Predicting Perturbation Effects: Are We Really There?"': 'talk3.pdf',
+    'Dr. Pablo Meyer Rojas – "The AI Alliance and the benchmarking of foundation models for drug discovery"': 'talk4.pdf',
+    'Dr. Katrina Kalantar – "Benchmarking in Service of Virtual Cell Models: Challenges, Opportunities, and a Path Forward"': 'talk5.pdf',
+    'Dr. Anshul Kundaje - "Deep learning models of regulatory DNA: A critical analysis of model design choices"': 'talk6.pdf',
+    'Dr. Justin Guinney (Tempus AI) – "Benchmarking Multi-Modal Large Language Models for Metastatic Breast Cancer Prognosis"': 'talk7.pdf'
+}
+
 def calculate_md5(file_path):
     """Calculate MD5 hash of a file"""
     hash_md5 = hashlib.md5()
@@ -180,245 +191,42 @@ def extract_text_from_pdf(pdf_path):
         logger.error(f"PDF extraction failed: {str(e)}")
         raise
 
-@celery.task(
-    bind=True,
-    max_retries=2,
-    time_limit=MAX_API_TIMEOUT*2,
-    soft_time_limit=MAX_API_TIMEOUT+5,
-    rate_limit=f"{RPM_LIMIT//60}/s",
-    autoretry_for=(Exception,),
-    retry_backoff=5,
-    retry_jitter=True
-)
-def process_summary(self, text, prompt_prefix, model, request_id=None, display_name=None, nickname=None):
-    try:
-        logger.info(f"Starting {model} processing (attempt {self.request.retries + 1})")
-        session = requests.Session()
-        endpoint = None
-        headers = {}
-        payload = {}
-        logger.info("Text Used: " + text[min(len(text), MAX_TEXT_LENGTH)-100:min(len(text), MAX_TEXT_LENGTH)])
-        
-        # Append prompt_suffix to user's prompt for all models
-        full_prompt = f"{prompt_prefix}\n{prompt_suffix}"
-        
-        if model == "openai":
-            # rotate through all configured OpenAI keys
-            response_json = None
-            for client in OPENAI_CLIENTS:
-                try:
-                    completion = client.chat.completions.create(
-                        model="gpt-4o",
-                        messages=[
-                            {"role": "system", "content": f"{prompt_prefix}\n{prompt_suffix}"},
-                            {"role": "user",   "content": text[:MAX_TEXT_LENGTH]}
-                        ]
-                    )
-                    resp = json.loads(completion.json())
-                    if resp.get('choices'):
-                        response_json = resp
-                        break
-                except Exception as e:
-                    logger.warning(f"OpenAI key failed, trying next: {e}")
-            if not response_json:
-                raise ValueError("All OpenAI API keys failed")
-        
-        elif model == "deepseek":
-            endpoint = "https://api.deepseek.com/v1/chat/completions"
-            headers = {"Authorization": f"Bearer {DEEPSEEK_API_KEY}"}
-            payload = {
-                "model": "deepseek-chat",
-                "messages": [{
-                    "role": "user", 
-                    "content": f"{full_prompt}\n{ text[:min(len(text),MAX_TEXT_LENGTH)]}"
-                }]
-            }
-
-        elif model == "claude":
-            endpoint = "https://api.anthropic.com/v1/messages"
-            headers = {
-                "x-api-key": CLAUDE_API_KEY,
-                "anthropic-version": "2023-06-01",
-                "Content-Type": "application/json"
-            }
-            payload = {
-                "model": "claude-3-5-sonnet-20241022",
-                "max_tokens": 1000,
-                "messages": [{
-                    "role": "user",
-                    "content": f"{full_prompt}\n\n{ text[:min(len(text),MAX_TEXT_LENGTH)]}"
-                }]
-            }
-        elif model == "perplexity":
-            # rotate through all configured Perplexity keys
-            response_json = None
-            session = requests.Session()
-            for key in PERPLEXITY_API_KEYS:
-                try:
-                    resp_raw = session.post(
-                        "https://api.perplexity.ai/chat/completions",
-                        headers={"Authorization": f"Bearer {key}"},
-                        json={
-                            "model":"sonar-pro",
-                            "messages":[
-                                {"role":"user",
-                                 "content":f"{prompt_prefix}\n{prompt_suffix}\n{text[:MAX_TEXT_LENGTH]}"}
-                            ]
-                        },
-                        timeout=(3.05, MAX_API_TIMEOUT)
-                    )
-                    resp_raw.raise_for_status()
-                    resp = resp_raw.json()
-                    if resp.get('choices'):
-                        response_json = resp
-                        break
-                except Exception as e:
-                    logger.warning(f"Perplexity key {key} failed: {e}")
-            if not response_json:
-                raise ValueError("All Perplexity API keys failed")
-        elif model == "llama3":
-            endpoint = 'https://api.llama-api.com/chat/completions'
-            headers = {
-                "Authorization": f"Bearer {os.getenv('LLAMA_API_KEY')}",
-                "Content-Type": "application/json"
-            }
-            payload = {
-                "model": "llama3.3-70b",
-                "messages": [{
-                    "role": "user",
-                    "content": f"{full_prompt}\n\n{ text[:min(len(text),MAX_TEXT_LENGTH)]}"
-                }],
-                "temperature": 0.7,
-                "max_tokens": 1000,
-                "stream": False,
-            }
-        elif model == "grok2":
-            endpoint = "https://api.x.ai/v1/chat/completions"
-            headers = {
-                "Authorization": f"Bearer {GROQ_API_KEY}",
-                "Content-Type": "application/json"
-            }
-            payload = {
-                "messages": [
-                    {
-                    "role": "user",
-                    "content": f"{full_prompt}\n\n{ text[:min(len(text),MAX_TEXT_LENGTH)]}"
-                }],
-                "model": "grok-2-latest",
-                "temperature": 0,
-                "stream": False,
-            }
-        elif model == "gemini":
-            geminiresponse = geminimodel.generate_content(f"{full_prompt}\n\n{ text[:min(len(text),MAX_TEXT_LENGTH)]}")
-
-        # Handle model responses
-        if model == "openai":
-            response_json = json.loads(completion.json())
-        elif model == "gemini":
-            response_json = geminiresponse
-        elif model == "perplexity":
-            # already set response_json in the Perplexity branch above
-            pass
-        else:
-            # all other models use endpoint/payload
-            response = session.post(
-                endpoint,  # type: ignore
-                headers=headers,
-                json=payload,
-                timeout=(3.05, MAX_API_TIMEOUT)
-            )
-            response.raise_for_status()
-            response_json = response.json()
-            
-        # Extract content based on model
-        if model == "openai":
-            if not response_json.get('choices'):
-                raise ValueError("Empty OpenAI response")
-            content = response_json['choices'][0]['message']['content']
-        elif model == "deepseek":
-            content = response_json['choices'][0]['message']['content']
-        elif model == "claude":
-            content = response_json['content'][0]['text']
-        elif model == "gemini":
-            content = response_json.text
-            logger.info("Gemini response: " + content)
-            if isinstance(content, list):
-                content = "\n".join(content)
-        elif model == "perplexity":
-            content = response_json['choices'][0]['message']['content']
-        elif model == "llama3":
-            content = response_json['choices'][0]['message']['content']
-        elif model == "grok2":
-            content = response_json['choices'][0]['message']['content']
-        
-        # Store result in Redis using the REAL model name
-        result_data = {
-            'model': model,                     # was display_name
-            'summary': content,
-            'status': 'success',
-            'request_id': request_id,
-            'nickname': nickname,
-            'timestamp': datetime.now().isoformat()
-        }
-        result_key = f"result:{request_id}:{model}"
-        redis_client.setex(result_key, 3600, json.dumps(result_data))
-
-        # Log to file for compatibility, also tag by real model
-        log_entry = {
-            'timestamp': datetime.now().isoformat(),
-            'request_id': request_id,
-            'nickname': nickname,
-            'model': model,                     # was display_name
-            'summary': content
-        }
-        try:
-            with open('requests_questions.log', 'a') as f:
-                f.write(json.dumps(log_entry) + '\n')
-        except Exception:
-            logger.error("Logging model response failed")
-        return result_data
-
-    except Exception as e:
-        retry_index = min(self.request.retries, len(API_RETRY_DELAYS)-1)
-        delay = API_RETRY_DELAYS[retry_index] + random.uniform(0, 2)
-        logger.error(f"{model} error: {str(e)}. Retrying in {delay}s")
-        raise self.retry(exc=e, countdown=delay)
-
-def log_question(request_id, text, prompt_prefix, question_difficulty, nickname, filename):
-    speaker = os.path.splitext(filename)[0]   # derive speaker identifier
-    log_entry = {
-        'timestamp': datetime.now().isoformat(),
-        'request_id': request_id,
-        'nickname': nickname,
-        'prompt': prompt_prefix,
-        'question_difficulty': question_difficulty,
-        'file': filename,
-        'speaker': speaker,                    # new field
-        'text_preview': text[:200] + '...' if len(text) > 200 else text
-    }
-    try:
-        with open('requests_questions.log', 'a') as f:
-            f.write(json.dumps(log_entry) + '\n')
-    except Exception as e:
-        logger.error(f"Question log failed: {str(e)}")
-
 @app.route('/available_pdfs', methods=['GET'])
 @login_required
 def get_available_pdfs():
-    """Get list of available PDFs in storage"""
+    """Get list of available PDFs in storage, including predefined talks"""
     try:
         pdf_files = []
+        
+        # Add predefined talks (always show them, mark if PDF exists)
+        for talk_title, filename in PREDEFINED_TALKS.items():
+            file_path = os.path.join(app.config['PDF_STORAGE_FOLDER'], filename)
+            pdf_exists = os.path.exists(file_path)
+            
+            pdf_files.append({
+                'filename': filename,
+                'display_name': talk_title,
+                'size': os.path.getsize(file_path) if pdf_exists else 0,
+                'modified': datetime.fromtimestamp(os.path.getmtime(file_path)).isoformat() if pdf_exists else None,
+                'is_predefined': True,
+                'pdf_exists': pdf_exists
+            })
+        
+        # Add other uploaded PDFs
         for filename in os.listdir(app.config['PDF_STORAGE_FOLDER']):
-            if filename.endswith('.pdf'):
+            if filename.endswith('.pdf') and filename not in PREDEFINED_TALKS.values():
                 file_path = os.path.join(app.config['PDF_STORAGE_FOLDER'], filename)
                 pdf_files.append({
                     'filename': filename,
+                    'display_name': filename,
                     'size': os.path.getsize(file_path),
-                    'modified': datetime.fromtimestamp(os.path.getmtime(file_path)).isoformat()
+                    'modified': datetime.fromtimestamp(os.path.getmtime(file_path)).isoformat(),
+                    'is_predefined': False,
+                    'pdf_exists': True
                 })
         
-        # Sort by modified date, newest first
-        pdf_files.sort(key=lambda x: x['modified'], reverse=True)
+        # Sort predefined talks first, then by modified date
+        pdf_files.sort(key=lambda x: (not x['is_predefined'], x['modified'] or ''), reverse=True)
         return jsonify({'pdfs': pdf_files})
     except Exception as e:
         logger.error(f"Error listing PDFs: {str(e)}")
@@ -438,8 +246,17 @@ def summarize():
         if selected_pdf and selected_pdf != 'upload':
              # User selected an existing PDF
             pdf_path = os.path.join(app.config['PDF_STORAGE_FOLDER'], selected_pdf)
+            
+            # Check if it's a predefined talk
+            is_predefined = selected_pdf in PREDEFINED_TALKS.values()
+            
             if not os.path.exists(pdf_path):
-                return jsonify({"error": "Selected PDF not found"}), 404
+                if is_predefined:
+                    # For predefined talks, queue the task anyway - it will wait for PDF
+                    filename = selected_pdf
+                    pdf_path = None  # Signal that PDF doesn't exist yet
+                else:
+                    return jsonify({"error": "Selected PDF not found"}), 404
             filename = selected_pdf
         else:
             # User is uploading a new PDF
@@ -472,7 +289,12 @@ def summarize():
                 shutil.move(temp_path, pdf_path)
                 logger.info(f"New PDF stored: {filename}")
 
-        text = extract_text_from_pdf(pdf_path)
+        # Extract text only if PDF exists
+        if pdf_path and os.path.exists(pdf_path):
+            text = extract_text_from_pdf(pdf_path)
+        else:
+            text = None  # Will be handled by the Celery task
+
         prompt_prefix = request.form.get('prompt_prefix', 'Summarize this academic paper:')
         question_difficulty = request.form.get('question_difficulty', 'Easy')
         
@@ -487,7 +309,7 @@ def summarize():
         tasks = []
         for model in selected_models:
             task = process_summary.apply_async(
-                args=(text, prompt_prefix, model, request_id, None, nickname)
+                args=(text, prompt_prefix, model, request_id, None, nickname, filename)
             )
             tasks.append(task)
             request_tracker[request_id].append({
@@ -497,7 +319,7 @@ def summarize():
 
         log_request(
             request_id=request_id,
-            text=text,
+            text=text or f"PDF pending for {filename}",
             prompt_prefix=prompt_prefix,
             summaries=[],
             question_difficulty=question_difficulty,
@@ -506,11 +328,16 @@ def summarize():
         )
         
         # Log the question details
-        log_question(request_id, text, prompt_prefix, question_difficulty, nickname, filename)
+        log_question(request_id, text or f"PDF pending for {filename}", prompt_prefix, question_difficulty, nickname, filename)
+        
+        status_message = "Processing started. Check individual model statuses."
+        if not text:
+            status_message += f" Note: PDF {filename} not yet available - task will wait for upload."
+            
         return jsonify({
             "request_id": request_id,
             "status_urls": [task.id for task in tasks],
-            "message": "Processing started. Check individual model statuses."
+            "message": status_message
         }), 202
 
     except Exception as e:
@@ -924,6 +751,179 @@ def speaker_leaderboard():
     # read only answers with asker_nickname starting "author_"
     agg = defaultdict(lambda: defaultdict(list))
     try:
+        with open('requests_answers.log','r') as fa:
+            for line in fa:
+                e = json.loads(line)
+                asker = e.get('asker_nickname','')
+                if not asker.startswith('author_'):
+                    continue
+                # same aggregation logic as /leaderboard
+                diff = e.get('question_difficulty') or 'All'
+                for model, score in e.get('real_quality_scores', {}).items():
+                    if isinstance(score,(int,float)):
+                        agg[model][diff].append(score)
+                        agg[model]['All'].append(score)
+    except FileNotFoundError:
+        pass
+
+    import math
+    def stats_list(lst):
+        n=len(lst)
+        if n==0: return {'mean':None,'sem':None}
+        m=sum(lst)/n
+        sem=math.sqrt(sum((x-m)**2 for x in lst)/n)/math.sqrt(n)
+        return {'mean':round(m,2),'sem':round(sem,2)}
+
+    results=[]
+    for model,diffs in agg.items():
+        results.append({
+            'name': model.replace('openai','OpenAI').replace('perplexity','Perplexity'),
+            'stats': {
+                'Easy': stats_list(diffs.get('Easy',[])),
+                'Hard': stats_list(diffs.get('Hard',[])),
+                'All': stats_list(diffs.get('All',[]))
+            }
+        })
+    
+    # compute t-tests per difficulty
+    from scipy.stats import ttest_ind # type: ignore
+    
+    def format_p_value(p):
+        """Format p-value with scientific notation"""
+        p_rounded = round(p, 2)
+        if p > 0.05:
+            return {'p_value': p_rounded, 'notation': 'N.S.'}
+        elif p > 0.01:
+            return {'p_value': p_rounded, 'notation': '*'}
+        elif p > 0.001:
+            return {'p_value': p_rounded, 'notation': '**'}
+        else:
+            return {'p_value': p_rounded, 'notation': '***'}
+    
+    ttest = {}
+    model_keys = list(agg.keys())[:2]
+    for diff in ('Easy','Hard','All'):
+        if len(model_keys)==2:
+            x = agg[model_keys[0]][diff]
+            y = agg[model_keys[1]][diff]
+            if x and y:
+                _, p = ttest_ind(x, y, equal_var=False)
+                p_formatted = format_p_value(p)
+                ttest[diff] = {'N': min(len(x), len(y)), **p_formatted}
+    return jsonify({'models': results, 'ttest': ttest})
+
+@app.route('/speaker_talks', methods=['GET'])
+@login_required
+def speaker_talks():
+    """Return list of all talk filenames seen in requests_questions.log"""
+    talks = set()
+    try:
+        with open('requests_questions.log', 'r') as f:
+            for line in f:
+                try:
+                    e = json.loads(line)
+                    if 'file' in e:
+                        talks.add(e['file'])
+                except json.JSONDecodeError:
+                    continue
+    except FileNotFoundError:
+        return jsonify({'talks': []})
+    return jsonify({'talks': sorted(talks)})
+
+@app.route('/speaker_questions', methods=['GET'])
+@login_required
+def speaker_questions():
+    """
+    Return up to `num` random questions (with >=2 answers) for the given talk.
+    Query params: talk=<filename>, num=<int>
+    """
+    talk = request.args.get('talk', '')
+    try:
+        num = max(0, int(request.args.get('num', '0')))
+    except ValueError:
+        num = 0
+
+    # collect question entries for this talk
+    qs = []
+    try:
+        with open('requests_questions.log', 'r') as f:
+            for line in f:
+                try:
+                    e = json.loads(line)
+                    if e.get('file') == talk and 'prompt' in e:
+                        qs.append(e)
+                except json.JSONDecodeError:
+                    continue
+    except FileNotFoundError:
+        return jsonify({'questions': []})
+
+    # attach answers from Redis, only keep those with >=2
+    results = []
+    for q in qs:
+        rid = q['request_id']
+        pattern = f"result:{rid}:*"
+        m_ans = {}
+        for key in redis_client.scan_iter(match=pattern):
+            data = redis_client.get(key)
+            if not data: continue
+            r = json.loads(data)
+            m_ans[r['model']] = r['summary']
+        if len(m_ans) >= 2:
+            results.append({
+                'request_id': rid,
+                'prompt': q.get('prompt'),
+                'file': q.get('file'),
+                'model_answers': m_ans
+            })
+
+    # random subset
+    if num > 0 and results:
+        results = random.sample(results, min(num, len(results)))
+    return jsonify({'questions': results})
+
+# load GitHub repo URL
+GITHUB_REPO_URL = os.getenv('GITHUB_REPO_URL', 'https://github.com/your-org/your-repo.git')
+
+# configure periodic clone every 60s
+celery.conf.beat_schedule = {
+    'periodic-repo-sync': {
+        'task': 'app.update_repo',
+        'schedule': 60.0
+    }
+}
+
+@celery.task(name='app.update_repo')
+def update_repo():
+    tmpdir = tempfile.mkdtemp()
+    # clone or pull latest
+    subprocess.run(['git', 'clone', GITHUB_REPO_URL, tmpdir], check=True)
+    dest = app.config['UPLOAD_FOLDER']
+    # clear old uploads
+    for name in os.listdir(dest):
+        path = os.path.join(dest, name)
+        if os.path.isdir(path):
+            shutil.rmtree(path, ignore_errors=True)
+        else:
+            os.remove(path)
+    # copy fresh contents
+    for name in os.listdir(tmpdir):
+        src = os.path.join(tmpdir, name)
+        dst = os.path.join(dest, name)
+        if os.path.isdir(src):
+            shutil.copytree(src, dst)
+        else:
+            shutil.copy2(src, dst)
+    # record sync time
+    redis_client.set('repo_last_update', datetime.now().isoformat())
+
+@app.route('/repo_status', methods=['GET'])
+@login_required
+def repo_status():
+    last = redis_client.get('repo_last_update')
+    return jsonify({'last_update': last.decode() if last else None})
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5100)
         with open('requests_answers.log','r') as fa:
             for line in fa:
                 e = json.loads(line)
