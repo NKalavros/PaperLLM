@@ -680,12 +680,24 @@
                     return;
                 }
 
+                // Get talk titles mapping
+                const talksResponse = await fetch('/available_pdfs');
+                const talksData = await talksResponse.json();
+                const talkTitles = {};
+                if (talksData.pdfs) {
+                    talksData.pdfs.forEach(pdf => {
+                        talkTitles[pdf.filename] = pdf.display_name || pdf.title;
+                    });
+                }
+
                 const allItems = [...userResults, ...extraResults];
                 let panelsHtml = '';
                 allItems.forEach(item => {
                     const reqId = item.request_id;
                     const promptText = item.prompt || 'No prompt';
-                    const fileText = item.file || 'File unavailable';
+                    const fileName = item.file || 'File unavailable';
+                    // Convert filename to talk title if available
+                    const fileDisplayText = talkTitles[fileName] || fileName;
                     const answers = item.model_answers || {};
                     if (Object.keys(answers).length < 2) return;
 
@@ -703,7 +715,7 @@
                       <div class="summary-header">
                         <div>
                           <h3>${promptText}</h3>
-                          <p>${fileText}</p>
+                          <p>${fileDisplayText}</p>
                         </div>
                         <button type="button" class="toggle-details">Show Details</button>
                       </div>
@@ -949,9 +961,23 @@
                 if (!talk) return alert('Select a talk');
                 const { questions } = await fetch(`/speaker_questions?talk=${encodeURIComponent(talk)}&num=${num}`)
                     .then(r => r.json());
+                
+                // Get talk titles mapping
+                const talksResponse = await fetch('/available_pdfs');
+                const talksData = await talksResponse.json();
+                const talkTitles = {};
+                if (talksData.pdfs) {
+                    talksData.pdfs.forEach(pdf => {
+                        talkTitles[pdf.filename] = pdf.display_name || pdf.title;
+                    });
+                }
+                
                 let html = '';
                 questions.forEach(item => {
                     const [m1, m2] = Object.keys(item.model_answers);
+                    const fileName = item.file || 'File unavailable';
+                    const fileDisplayText = talkTitles[fileName] || fileName;
+                    
                     html += `
                   <div class="summary-box"
                        data-request-id="${item.request_id}"
@@ -960,7 +986,7 @@
                        data-model1-answer="${item.model_answers[m1].replace(/"/g, '&quot;')}"
                        data-model2-answer="${item.model_answers[m2].replace(/"/g, '&quot;')}">
                     <div class="summary-header">
-                      <div><h3>${item.prompt}</h3><p>${item.file}</p></div>
+                      <div><h3>${item.prompt}</h3><p>${fileDisplayText}</p></div>
                       <button class="toggle-details">Show Details</button>
                     </div>
                     <div class="summary-content hidden">

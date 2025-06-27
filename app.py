@@ -18,6 +18,8 @@ from collections import defaultdict
 import hashlib
 import shutil
 import redis #type: ignore
+import tempfile #type: ignore
+import subprocess #type: ignore
 from flask_login import ( #type: ignore
     LoginManager,
     UserMixin,
@@ -1254,3 +1256,6 @@ def process_pending_questions_for_pdf(pdf_filename):
         logger.info(f"Processed {processed_count} pending questions for {pdf_filename}")
     
     return processed_count
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5100)

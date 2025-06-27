@@ -8289,3 +8289,113 @@ json.decoder.JSONDecodeError: Extra data: line 1 column 635 (char 634)
 2025-06-27 08:47:00,517 INFO 127.0.0.1 - - [27/Jun/2025 08:47:00] "GET /repo_status HTTP/1.1" 200 -
 2025-06-27 08:48:01,085 INFO 127.0.0.1 - - [27/Jun/2025 08:48:01] "GET /repo_status HTTP/1.1" 200 -
 2025-06-27 08:49:01,091 INFO 127.0.0.1 - - [27/Jun/2025 08:49:01] "GET /repo_status HTTP/1.1" 200 -
+2025-06-27 08:51:45,333 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.148.173.133:5100
+2025-06-27 08:51:45,334 INFO [33mPress CTRL+C to quit[0m
+2025-06-27 08:51:51,199 INFO 127.0.0.1 - - [27/Jun/2025 08:51:51] "GET / HTTP/1.1" 200 -
+2025-06-27 08:51:51,297 INFO 127.0.0.1 - - [27/Jun/2025 08:51:51] "GET /repo_status HTTP/1.1" 200 -
+2025-06-27 08:51:51,308 INFO 127.0.0.1 - - [27/Jun/2025 08:51:51] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-06-27 08:51:51,319 INFO 127.0.0.1 - - [27/Jun/2025 08:51:51] "GET /available_pdfs HTTP/1.1" 200 -
+2025-06-27 08:51:51,422 INFO 127.0.0.1 - - [27/Jun/2025 08:51:51] "GET /available_pdfs HTTP/1.1" 200 -
+2025-06-27 08:52:05,383 INFO 127.0.0.1 - - [27/Jun/2025 08:52:05] "[35m[1mPOST /summarize HTTP/1.1[0m" 202 -
+2025-06-27 08:52:16,399 INFO 127.0.0.1 - - [27/Jun/2025 08:52:16] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-06-27 08:52:16,408 INFO 127.0.0.1 - - [27/Jun/2025 08:52:16] "[32mGET / HTTP/1.1[0m" 302 -
+2025-06-27 08:52:16,414 INFO 127.0.0.1 - - [27/Jun/2025 08:52:16] "GET /login HTTP/1.1" 200 -
+2025-06-27 08:52:18,295 INFO 127.0.0.1 - - [27/Jun/2025 08:52:18] "[31m[1mPOST /login HTTP/1.1[0m" 401 -
+2025-06-27 08:52:23,392 INFO 127.0.0.1 - - [27/Jun/2025 08:52:23] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-06-27 08:52:23,397 INFO 127.0.0.1 - - [27/Jun/2025 08:52:23] "GET / HTTP/1.1" 200 -
+2025-06-27 08:52:23,457 INFO 127.0.0.1 - - [27/Jun/2025 08:52:23] "GET /repo_status HTTP/1.1" 200 -
+2025-06-27 08:52:23,458 INFO 127.0.0.1 - - [27/Jun/2025 08:52:23] "GET /speaker_talks HTTP/1.1" 200 -
+2025-06-27 08:53:13,987 INFO New PDF stored: Talk1.pdf
+2025-06-27 08:53:20,202 INFO Extracted 41249 characters from PDF
+2025-06-27 08:53:20,202 INFO Extracted 4979 words from PDF
+2025-06-27 08:53:20,241 INFO Processed pending question aedb66cc-f433-44f3-9a9a-4705cbaea400 for PDF Talk1.pdf
+2025-06-27 08:53:20,241 INFO Processed 1 pending questions for Talk1.pdf
+2025-06-27 08:53:20,241 INFO Automatically processed 1 pending questions for Talk1.pdf
+2025-06-27 08:53:23,599 INFO 127.0.0.1 - - [27/Jun/2025 08:53:23] "GET /repo_status HTTP/1.1" 200 -
+2025-06-27 08:53:26,119 INFO Extracted 41249 characters from PDF
+2025-06-27 08:53:26,119 INFO Extracted 4979 words from PDF
+2025-06-27 08:53:26,126 INFO 127.0.0.1 - - [27/Jun/2025 08:53:26] "[35m[1mPOST /summarize HTTP/1.1[0m" 202 -
+2025-06-27 08:53:45,145 INFO 127.0.0.1 - - [27/Jun/2025 08:53:45] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-06-27 08:53:45,155 INFO 127.0.0.1 - - [27/Jun/2025 08:53:45] "[32mGET / HTTP/1.1[0m" 302 -
+2025-06-27 08:53:45,158 INFO 127.0.0.1 - - [27/Jun/2025 08:53:45] "GET /login HTTP/1.1" 200 -
+2025-06-27 08:53:49,932 INFO 127.0.0.1 - - [27/Jun/2025 08:53:49] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-06-27 08:53:49,936 INFO 127.0.0.1 - - [27/Jun/2025 08:53:49] "GET / HTTP/1.1" 200 -
+2025-06-27 08:53:49,988 INFO 127.0.0.1 - - [27/Jun/2025 08:53:49] "GET /repo_status HTTP/1.1" 200 -
+2025-06-27 08:53:49,992 INFO 127.0.0.1 - - [27/Jun/2025 08:53:49] "GET /available_pdfs HTTP/1.1" 200 -
+2025-06-27 08:53:50,096 INFO 127.0.0.1 - - [27/Jun/2025 08:53:50] "GET /available_pdfs HTTP/1.1" 200 -
+2025-06-27 08:54:10,948 INFO 127.0.0.1 - - [27/Jun/2025 08:54:10] "[35m[1mPOST /summarize HTTP/1.1[0m" 202 -
+2025-06-27 08:54:14,809 INFO 127.0.0.1 - - [27/Jun/2025 08:54:14] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-06-27 08:54:14,814 INFO 127.0.0.1 - - [27/Jun/2025 08:54:14] "[32mGET / HTTP/1.1[0m" 302 -
+2025-06-27 08:54:14,824 INFO 127.0.0.1 - - [27/Jun/2025 08:54:14] "GET /login HTTP/1.1" 200 -
+2025-06-27 08:54:19,143 INFO 127.0.0.1 - - [27/Jun/2025 08:54:19] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-06-27 08:54:19,147 INFO 127.0.0.1 - - [27/Jun/2025 08:54:19] "GET / HTTP/1.1" 200 -
+2025-06-27 08:54:19,206 INFO 127.0.0.1 - - [27/Jun/2025 08:54:19] "GET /repo_status HTTP/1.1" 200 -
+2025-06-27 08:54:19,209 INFO 127.0.0.1 - - [27/Jun/2025 08:54:19] "GET /available_pdfs HTTP/1.1" 200 -
+2025-06-27 08:54:19,313 INFO 127.0.0.1 - - [27/Jun/2025 08:54:19] "GET /available_pdfs HTTP/1.1" 200 -
+2025-06-27 08:54:22,896 INFO 127.0.0.1 - - [27/Jun/2025 08:54:22] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-06-27 08:54:22,909 INFO 127.0.0.1 - - [27/Jun/2025 08:54:22] "[32mGET / HTTP/1.1[0m" 302 -
+2025-06-27 08:54:22,914 INFO 127.0.0.1 - - [27/Jun/2025 08:54:22] "GET /login HTTP/1.1" 200 -
+2025-06-27 08:54:26,156 INFO 127.0.0.1 - - [27/Jun/2025 08:54:26] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-06-27 08:54:26,159 INFO 127.0.0.1 - - [27/Jun/2025 08:54:26] "GET / HTTP/1.1" 200 -
+2025-06-27 08:54:26,207 INFO 127.0.0.1 - - [27/Jun/2025 08:54:26] "GET /repo_status HTTP/1.1" 200 -
+2025-06-27 08:54:26,207 INFO 127.0.0.1 - - [27/Jun/2025 08:54:26] "GET /speaker_talks HTTP/1.1" 200 -
+2025-06-27 08:55:19,047 INFO New PDF stored: Talk2.pdf
+2025-06-27 08:55:26,691 INFO 127.0.0.1 - - [27/Jun/2025 08:55:26] "GET /repo_status HTTP/1.1" 200 -
+2025-06-27 08:56:26,540 INFO 127.0.0.1 - - [27/Jun/2025 08:56:26] "GET /repo_status HTTP/1.1" 200 -
+2025-06-27 08:57:06,786 INFO 127.0.0.1 - - [27/Jun/2025 08:57:06] "GET / HTTP/1.1" 200 -
+2025-06-27 08:57:06,890 INFO 127.0.0.1 - - [27/Jun/2025 08:57:06] "GET /repo_status HTTP/1.1" 200 -
+2025-06-27 08:57:06,948 INFO 127.0.0.1 - - [27/Jun/2025 08:57:06] "GET /speaker_talks HTTP/1.1" 200 -
+2025-06-27 08:57:24,539 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.148.173.133:5100
+2025-06-27 08:57:24,539 INFO [33mPress CTRL+C to quit[0m
+2025-06-27 08:57:26,315 INFO 127.0.0.1 - - [27/Jun/2025 08:57:26] "GET / HTTP/1.1" 200 -
+2025-06-27 08:57:26,358 INFO 127.0.0.1 - - [27/Jun/2025 08:57:26] "GET /speaker_talks HTTP/1.1" 200 -
+2025-06-27 08:57:26,359 INFO 127.0.0.1 - - [27/Jun/2025 08:57:26] "GET /repo_status HTTP/1.1" 200 -
+2025-06-27 08:57:31,563 INFO Duplicate PDF detected. Using existing file: Talk2.pdf
+2025-06-27 08:58:17,119 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.148.173.133:5100
+2025-06-27 08:58:17,119 INFO [33mPress CTRL+C to quit[0m
+2025-06-27 08:58:18,667 INFO 127.0.0.1 - - [27/Jun/2025 08:58:18] "GET / HTTP/1.1" 200 -
+2025-06-27 08:58:18,710 INFO 127.0.0.1 - - [27/Jun/2025 08:58:18] "GET /speaker_talks HTTP/1.1" 200 -
+2025-06-27 08:58:18,711 INFO 127.0.0.1 - - [27/Jun/2025 08:58:18] "GET /repo_status HTTP/1.1" 200 -
+2025-06-27 08:58:18,723 INFO 127.0.0.1 - - [27/Jun/2025 08:58:18] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-06-27 08:58:22,501 INFO New PDF stored: Talk2.pdf
+2025-06-27 08:58:25,213 INFO Extracted 52123 characters from PDF
+2025-06-27 08:58:25,214 INFO Extracted 6498 words from PDF
+2025-06-27 08:58:25,243 INFO Processed pending question d9ab733a-6554-4ecc-95af-1babf9ea81e7 for PDF Talk2.pdf
+2025-06-27 08:58:25,243 INFO Processed 1 pending questions for Talk2.pdf
+2025-06-27 08:58:25,243 INFO Automatically processed 1 pending questions for Talk2.pdf
+2025-06-27 08:58:27,857 INFO Extracted 52123 characters from PDF
+2025-06-27 08:58:27,857 INFO Extracted 6498 words from PDF
+2025-06-27 08:58:27,865 INFO 127.0.0.1 - - [27/Jun/2025 08:58:27] "[35m[1mPOST /summarize HTTP/1.1[0m" 202 -
+2025-06-27 08:58:35,599 INFO 127.0.0.1 - - [27/Jun/2025 08:58:35] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-06-27 08:58:35,610 INFO 127.0.0.1 - - [27/Jun/2025 08:58:35] "[32mGET / HTTP/1.1[0m" 302 -
+2025-06-27 08:58:35,616 INFO 127.0.0.1 - - [27/Jun/2025 08:58:35] "GET /login HTTP/1.1" 200 -
+2025-06-27 08:58:39,770 INFO 127.0.0.1 - - [27/Jun/2025 08:58:39] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-06-27 08:58:39,774 INFO 127.0.0.1 - - [27/Jun/2025 08:58:39] "GET / HTTP/1.1" 200 -
+2025-06-27 08:58:39,841 INFO 127.0.0.1 - - [27/Jun/2025 08:58:39] "GET /repo_status HTTP/1.1" 200 -
+2025-06-27 08:58:39,843 INFO 127.0.0.1 - - [27/Jun/2025 08:58:39] "GET /available_pdfs HTTP/1.1" 200 -
+2025-06-27 08:58:39,946 INFO 127.0.0.1 - - [27/Jun/2025 08:58:39] "GET /available_pdfs HTTP/1.1" 200 -
+2025-06-27 08:58:55,645 INFO get_answers called with nickname=arivederci, extra=0
+2025-06-27 08:58:55,654 INFO 127.0.0.1 - - [27/Jun/2025 08:58:55] "GET /get_answers?nickname=author_Arivederci&extra=0 HTTP/1.1" 200 -
+2025-06-27 08:59:40,177 INFO 127.0.0.1 - - [27/Jun/2025 08:59:40] "GET /repo_status HTTP/1.1" 200 -
+2025-06-27 09:00:40,182 INFO 127.0.0.1 - - [27/Jun/2025 09:00:40] "GET /repo_status HTTP/1.1" 200 -
+2025-06-27 09:01:02,581 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.148.173.133:5100
+2025-06-27 09:01:02,582 INFO [33mPress CTRL+C to quit[0m
+2025-06-27 09:01:05,904 INFO 127.0.0.1 - - [27/Jun/2025 09:01:05] "GET / HTTP/1.1" 200 -
+2025-06-27 09:01:05,940 INFO 127.0.0.1 - - [27/Jun/2025 09:01:05] "GET /repo_status HTTP/1.1" 200 -
+2025-06-27 09:01:05,943 INFO 127.0.0.1 - - [27/Jun/2025 09:01:05] "GET /available_pdfs HTTP/1.1" 200 -
+2025-06-27 09:01:06,049 INFO 127.0.0.1 - - [27/Jun/2025 09:01:06] "GET /available_pdfs HTTP/1.1" 200 -
+2025-06-27 09:01:07,517 INFO get_answers called with nickname=arivederci, extra=0
+2025-06-27 09:01:07,524 INFO 127.0.0.1 - - [27/Jun/2025 09:01:07] "GET /get_answers?nickname=author_Arivederci&extra=0 HTTP/1.1" 200 -
+2025-06-27 09:01:07,532 INFO 127.0.0.1 - - [27/Jun/2025 09:01:07] "GET /available_pdfs HTTP/1.1" 200 -
