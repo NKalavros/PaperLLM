@@ -1,1 +1,7 @@
-.env
+.*
+uploads
+dump.rdb
+audio_transcription_output_concurrent
+*gustavo*.txt
+complete_transcription/
+audio_transcription_output_concurrent/
