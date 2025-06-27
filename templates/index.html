@@ -524,8 +524,19 @@
                     console.log('Adding', data.pdfs.length, 'PDFs to dropdown');
                     data.pdfs.forEach(pdf => {
                         const option = document.createElement('option');
-                        option.value = pdf.filename;
-                        option.textContent = `${pdf.filename} (${formatFileSize(pdf.size)})`;
+                        option.value = pdf.filename;  // Backend expects filename (Talk1.pdf, etc.)
+
+                        // Display title to user, with availability indicator
+                        let displayText = pdf.display_name || pdf.title;
+                        if (!pdf.available) {
+                            displayText += ' (Not yet available)';
+                            option.disabled = true;
+                            option.style.color = '#999';
+                        } else {
+                            displayText += ` (${formatFileSize(pdf.size)})`;
+                        }
+
+                        option.textContent = displayText;
                         dropdown.appendChild(option);
                     });
                 } else {

@@ -8240,3 +8240,46 @@ json.decoder.JSONDecodeError: Extra data: line 1 column 635 (char 634)
 2025-06-23 14:28:18,690 INFO 127.0.0.1 - - [23/Jun/2025 14:28:18] "GET /repo_status HTTP/1.1" 200 -
 2025-06-23 14:36:31,669 INFO 127.0.0.1 - - [23/Jun/2025 14:36:31] "GET /repo_status HTTP/1.1" 200 -
 2025-06-23 14:38:32,404 INFO 127.0.0.1 - - [23/Jun/2025 14:38:32] "GET /repo_status HTTP/1.1" 200 -
+2025-06-27 08:34:15,647 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.148.173.133:5100
+2025-06-27 08:34:15,647 INFO [33mPress CTRL+C to quit[0m
+2025-06-27 08:34:19,224 INFO 127.0.0.1 - - [27/Jun/2025 08:34:19] "[32mGET / HTTP/1.1[0m" 302 -
+2025-06-27 08:34:19,235 INFO 127.0.0.1 - - [27/Jun/2025 08:34:19] "GET /login HTTP/1.1" 200 -
+2025-06-27 08:34:19,320 INFO 127.0.0.1 - - [27/Jun/2025 08:34:19] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-06-27 08:34:24,282 INFO 127.0.0.1 - - [27/Jun/2025 08:34:24] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-06-27 08:34:24,297 INFO 127.0.0.1 - - [27/Jun/2025 08:34:24] "GET / HTTP/1.1" 200 -
+2025-06-27 08:34:24,397 INFO 127.0.0.1 - - [27/Jun/2025 08:34:24] "GET /repo_status HTTP/1.1" 200 -
+2025-06-27 08:34:24,411 INFO 127.0.0.1 - - [27/Jun/2025 08:34:24] "GET /available_pdfs HTTP/1.1" 200 -
+2025-06-27 08:34:24,506 INFO 127.0.0.1 - - [27/Jun/2025 08:34:24] "GET /available_pdfs HTTP/1.1" 200 -
+2025-06-27 08:34:27,444 INFO 127.0.0.1 - - [27/Jun/2025 08:34:27] "GET /leaderboard/speaker HTTP/1.1" 200 -
+2025-06-27 08:34:27,446 INFO 127.0.0.1 - - [27/Jun/2025 08:34:27] "GET /leaderboard/speaker HTTP/1.1" 200 -
+2025-06-27 08:34:27,448 INFO 127.0.0.1 - - [27/Jun/2025 08:34:27] "GET /leaderboard HTTP/1.1" 200 -
+2025-06-27 08:34:27,455 INFO 127.0.0.1 - - [27/Jun/2025 08:34:27] "GET /leaderboard HTTP/1.1" 200 -
+2025-06-27 08:34:28,119 INFO 127.0.0.1 - - [27/Jun/2025 08:34:28] "GET /leaderboard/speaker HTTP/1.1" 200 -
+2025-06-27 08:34:28,128 INFO 127.0.0.1 - - [27/Jun/2025 08:34:28] "GET /leaderboard HTTP/1.1" 200 -
+2025-06-27 08:34:28,137 INFO 127.0.0.1 - - [27/Jun/2025 08:34:28] "GET /leaderboard HTTP/1.1" 200 -
+2025-06-27 08:34:28,142 INFO 127.0.0.1 - - [27/Jun/2025 08:34:28] "GET /leaderboard/speaker HTTP/1.1" 200 -
+2025-06-27 08:40:47,350 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.148.173.133:5100
+2025-06-27 08:40:47,350 INFO [33mPress CTRL+C to quit[0m
+2025-06-27 08:40:52,833 INFO 127.0.0.1 - - [27/Jun/2025 08:40:52] "[32mGET / HTTP/1.1[0m" 302 -
+2025-06-27 08:40:52,856 INFO 127.0.0.1 - - [27/Jun/2025 08:40:52] "GET /login HTTP/1.1" 200 -
+2025-06-27 08:40:56,707 INFO 127.0.0.1 - - [27/Jun/2025 08:40:56] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-06-27 08:40:56,718 INFO 127.0.0.1 - - [27/Jun/2025 08:40:56] "GET / HTTP/1.1" 200 -
+2025-06-27 08:40:56,785 INFO 127.0.0.1 - - [27/Jun/2025 08:40:56] "GET /repo_status HTTP/1.1" 200 -
+2025-06-27 08:40:56,787 INFO 127.0.0.1 - - [27/Jun/2025 08:40:56] "GET /available_pdfs HTTP/1.1" 200 -
+2025-06-27 08:40:56,915 INFO 127.0.0.1 - - [27/Jun/2025 08:40:56] "GET /available_pdfs HTTP/1.1" 200 -
+2025-06-27 08:41:56,804 INFO 127.0.0.1 - - [27/Jun/2025 08:41:56] "GET /repo_status HTTP/1.1" 200 -
+2025-06-27 08:42:58,400 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.148.173.133:5100
+2025-06-27 08:42:58,400 INFO [33mPress CTRL+C to quit[0m
+2025-06-27 08:43:00,425 INFO 127.0.0.1 - - [27/Jun/2025 08:43:00] "GET / HTTP/1.1" 200 -
+2025-06-27 08:43:00,491 INFO 127.0.0.1 - - [27/Jun/2025 08:43:00] "GET /available_pdfs HTTP/1.1" 200 -
+2025-06-27 08:43:00,492 INFO 127.0.0.1 - - [27/Jun/2025 08:43:00] "GET /repo_status HTTP/1.1" 200 -
+2025-06-27 08:43:00,580 INFO 127.0.0.1 - - [27/Jun/2025 08:43:00] "GET /available_pdfs HTTP/1.1" 200 -

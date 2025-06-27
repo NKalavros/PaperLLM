@@ -91,6 +91,17 @@ celery.conf.update(
 # Load environment variables
 load_dotenv()
 
+# Predefined talks mapping
+PREDEFINED_TALKS = {
+    'Talk1.pdf': 'Saez Rodriguez - "Benchmarking foundation models in biology: where we are, and where we want to go with the community"',
+    'Talk2.pdf': 'Dr. Wang – "Building Foundation Models for Single-cell Omics and Imaging"',
+    'Talk3.pdf': 'Dr. Brbic – "Predicting Perturbation Effects: Are We Really There?"',
+    'Talk4.pdf': 'Dr. Meyer Rojas – "The AI Alliance and the benchmarking of foundation models for drug discovery"',
+    'Talk5.pdf': 'Dr. Kalantar – "Benchmarking in Service of Virtual Cell Models: Challenges, Opportunities, and a Path Forward"',
+    'Talk6.pdf': 'Dr. Kundaje – "Deep learning models of regulatory DNA: A critical analysis of model design choices"',
+    'Talk7.pdf': 'Dr. Guinney - "Benchmarking Multi-Modal Large Language Models for Metastatic Breast Cancer Prognosis"'
+}
+
 # --- new: gather multiple API keys/clients ---
 OPENAI_API_KEYS = [os.getenv(f'OPENAI_API_KEY{i}') for i in range(1,6)]
 OPENAI_API_KEYS = [k for k in OPENAI_API_KEYS if k]
@@ -408,17 +419,40 @@ def get_available_pdfs():
     """Get list of available PDFs in storage"""
     try:
         pdf_files = []
+        existing_files = set()
+        
+        # Get existing uploaded PDFs
         for filename in os.listdir(app.config['PDF_STORAGE_FOLDER']):
             if filename.endswith('.pdf'):
+                existing_files.add(filename)
                 file_path = os.path.join(app.config['PDF_STORAGE_FOLDER'], filename)
+                
+                # Use title as display name if it's a predefined talk, otherwise use filename
+                display_title = PREDEFINED_TALKS.get(filename, filename)
+                
                 pdf_files.append({
                     'filename': filename,
+                    'title': display_title,
+                    'display_name': display_title,  # What users see
                     'size': os.path.getsize(file_path),
-                    'modified': datetime.fromtimestamp(os.path.getmtime(file_path)).isoformat()
+                    'modified': datetime.fromtimestamp(os.path.getmtime(file_path)).isoformat(),
+                    'available': True
                 })
         
-        # Sort by modified date, newest first
-        pdf_files.sort(key=lambda x: x['modified'], reverse=True)
+        # Add predefined talks that don't exist yet
+        for pdf_filename, title in PREDEFINED_TALKS.items():
+            if pdf_filename not in existing_files:
+                pdf_files.append({
+                    'filename': pdf_filename,
+                    'title': title,
+                    'display_name': title,  # What users see
+                    'size': 0,
+                    'modified': '',
+                    'available': False
+                })
+        
+        # Sort by filename to maintain consistent order
+        pdf_files.sort(key=lambda x: x['filename'])
         return jsonify({'pdfs': pdf_files})
     except Exception as e:
         logger.error(f"Error listing PDFs: {str(e)}")
@@ -439,7 +473,12 @@ def summarize():
              # User selected an existing PDF
             pdf_path = os.path.join(app.config['PDF_STORAGE_FOLDER'], selected_pdf)
             if not os.path.exists(pdf_path):
-                return jsonify({"error": "Selected PDF not found"}), 404
+                # Check if it's a predefined talk that hasn't been uploaded yet
+                if selected_pdf in PREDEFINED_TALKS:
+                    talk_title = PREDEFINED_TALKS[selected_pdf]
+                    return jsonify({"error": f"The talk '{talk_title}' has not been uploaded yet. Please check back after the talk ends."}), 404
+                else:
+                    return jsonify({"error": "Selected PDF not found"}), 404
             filename = selected_pdf
         else:
             # User is uploading a new PDF
