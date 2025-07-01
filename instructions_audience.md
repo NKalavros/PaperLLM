@@ -4,66 +4,38 @@
 
 This platform evaluates how well different AI models understand academic talks. You'll ask questions about talks and rate the AI responses.
 
-### Step 1: Ask Questions (Audience Questions Tab)
+### Step 0: Log in the platform
+
+Use username: audience
+Use password: audiencepass
+
+### Step 1: Ask Questions (Even while the talk is ongoing!) in the Audience Questions Tab
 
 1. **Select a talk** from the dropdown
-2. **Enter your question** (default: "Summarize the following papers key findings within 5 lines")
-3. **Set difficulty**: Easy (basic) or Hard (complex analysis)
-4. **Enter nickname** (use consistently - you'll need it later)
-5. **Submit** - AI answers generate in 30-60 seconds
+2. **Enter your question** (Default Example: "Summarize the following talks key findings within 5 lines")
+3. **Select difficulty of your question**: Easy (basic) or Hard (complex analysis)
+4. **Enter your nickname** (use consistently - you'll need it later)
+5. **Submit** - AI answers generate in 30-60 seconds after talk is uploaded
 
 ### Step 2: Rate AI Answers (LLM Answers Tab)
 
-1. **Enter nickname** (system adds "author_" prefix automatically)
-2. **Set extra questions**: Enter 0 for only your questions, or a number to rate others' questions too
+1. **Enter nickname** 
+2. **Choose questions**: Enter 0 in the Extra Questions field to retrieve only your questions, or a number (k) to retrieve k questions from other users in addition to yours.
 3. **Load Answers** and rate each question:
    - **Preferred Answer**: Choose Model 1 or Model 2 (optional)
    - **Quality Scores**: Rate each model 1-10 (optional)
-4. **Submit All Ratings**
+   - **NOTE** Rate both model preference and quality score, or your ratings' will not be considered for the leaderboard.
+4. **Press Submit All Ratings**
 
 ### Step 3: View Results (Leaderboard Tab)
 
-- **Audience Leaderboard**: Shows ratings from all audience members
-- **Speaker Leaderboard**: Shows ratings from talk speakers only
+- **Audience Leaderboard**: Shows ratings from all audience members in real time, as questions come in.
+- **Speaker Leaderboard**: Shows ratings from the speaker only (ground truth)
 
 ## Tips
 
 - Ask specific questions about content the speaker mentioned
 - Use the same nickname consistently
-- Both preference selection and quality scoring are optional but helpful
-
-5. **Submit Question**
-   - Answers typically generate in 30-60 seconds
-   - Two LLMs (currently OpenAI and Perplexity models) will answer your question
-
-### Step 2: Rate LLM Answers (LLM Answers Tab)
-
-1. **Enter your nickname** 
-   - Use the same base nickname you used for questions
-
-2. **Set "Extra Questions"** (optional):
-   - Enter 0 to see only your questions
-   - Enter a number (e.g., 5) to also rate other people's questions randomly selected
-
-3. **Click "Load Answers"**
-
-4. **For each question:**
-   - Click "Show Details" to see both model responses
-   - **Select Preferred Answer**: Choose Model 1 or Model 2 (optional)
-   - **Rate Quality**: Score each model 1-10 (both scores are optional)
-   - If you select a preferred model, ensure its quality score is higher than the other
-
-5. **Submit All Ratings** when complete
-   - You can submit even if some fields are incomplete
-   - Only valid numeric scores are recorded
-
-### Step 3: View Results (Leaderboard Tab)
-
-- **Audience Leaderboard**: Shows average quality scores by difficulty level from all audience ratings
-- **Speaker Leaderboard**: Shows scores from speaker evaluations only  
-- **Statistical Significance Legend**:
-  - **N.S.** = Not significant (p > 0.05)
-  - **\*** = p ≤ 0.05
-  - **\*\*** = p ≤ 0.01  
-  - **\*\*\*** = p ≤ 0.001
-- Results show Mean ± Standard Error of the Mean for each difficulty level
+- Both preference selection and quality scoring are optional but your answers will not be scored unless you complete them
+- Answers typically generate in 30-60 seconds after talk upload (approximately one-two minutes after talk end)
+- Two LLMs (currently OpenAI and Perplexity models) will answer your question

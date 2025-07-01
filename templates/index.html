@@ -314,7 +314,7 @@
                     <div class="form-group">
                         <label for="prompt_prefix">Ask your question on the talk:</label>
                         <input type="text" id="prompt_prefix" name="prompt_prefix"
-                            value="Summarize the following papers key findings within 5 lines">
+                            value="Summarize the following talks key findings within 5 lines">
                     </div>
                     <div class="form-group">
                         <label for="question_difficulty">Question Difficulty:</label>
@@ -632,7 +632,7 @@
                     document.getElementById('question-status').innerText = 'Question submitted successfully! Answers take 30-60 seconds to generate.';
                     document.getElementById('question-status').style.color = '#28a745'; // Green color for success
                 }
-                
+
                 e.target.reset();
 
                 // Reset PDF source to upload only if radio buttons exist (Gustavo)
@@ -961,7 +961,7 @@
                 if (!talk) return alert('Select a talk');
                 const { questions } = await fetch(`/speaker_questions?talk=${encodeURIComponent(talk)}&num=${num}`)
                     .then(r => r.json());
-                
+
                 // Get talk titles mapping
                 const talksResponse = await fetch('/available_pdfs');
                 const talksData = await talksResponse.json();
@@ -971,13 +971,13 @@
                         talkTitles[pdf.filename] = pdf.display_name || pdf.title;
                     });
                 }
-                
+
                 let html = '';
                 questions.forEach(item => {
                     const [m1, m2] = Object.keys(item.model_answers);
                     const fileName = item.file || 'File unavailable';
                     const fileDisplayText = talkTitles[fileName] || fileName;
-                    
+
                     html += `
                   <div class="summary-box"
                        data-request-id="${item.request_id}"

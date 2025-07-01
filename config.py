@@ -7,8 +7,8 @@ load_dotenv()
 
 # User credentials from .env file or environment variables
 USER_DATABASE = {
-    os.getenv("ADMIN_USERNAME", "admin"): {
-        "password": generate_password_hash(os.getenv("ADMIN_PASSWORD", "changeme")),
+    'admin': {
+        "password": generate_password_hash(os.getenv("ADMIN_PASSWORD", "adminpass")),
         "role": "admin"
     },
     os.getenv("GUSTAVO_USERNAME", "gustavo"): {

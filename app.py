@@ -95,7 +95,7 @@ load_dotenv()
 
 # Predefined talks mapping
 PREDEFINED_TALKS = {
-    'Talk1.pdf': 'Saez Rodriguez - "Benchmarking foundation models in biology: where we are, and where we want to go with the community"',
+    'Talk1.pdf': 'Dr. Saez Rodriguez - "Benchmarking foundation models in biology: where we are, and where we want to go with the community"',
     'Talk2.pdf': 'Dr. Wang – "Building Foundation Models for Single-cell Omics and Imaging"',
     'Talk3.pdf': 'Dr. Brbic – "Predicting Perturbation Effects: Are We Really There?"',
     'Talk4.pdf': 'Dr. Meyer Rojas – "The AI Alliance and the benchmarking of foundation models for drug discovery"',
@@ -133,7 +133,7 @@ class Recipe(typing.TypedDict):
 geminimodel = genai.GenerativeModel("gemini-exp-1206")
 
 # Constants
-prompt_suffix = 'Make sure your answers are 5 sentences or less. Ensure that your answer contains information from the above provided text.'
+prompt_suffix = 'Make sure your answers are 5 sentences or less. Your answer **MUST** contain information from the provided text.'
 MAX_API_TIMEOUT = 45
 MAX_TEXT_LENGTH = 1200000
 API_RETRY_DELAYS = [5, 15, 45]
