@@ -8992,3 +8992,963 @@ json.decoder.JSONDecodeError: Extra data: line 1 column 635 (char 634)
 2025-07-02 14:17:48,534 INFO get_answers called with nickname=bruno, extra=0
 2025-07-02 14:17:48,537 INFO 127.0.0.1 - - [02/Jul/2025 14:17:48] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
 2025-07-02 14:18:36,189 INFO 127.0.0.1 - - [02/Jul/2025 14:18:36] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 14:27:10,662 INFO 127.0.0.1 - - [02/Jul/2025 14:27:10] "GET / HTTP/1.1" 200 -
+2025-07-02 14:27:10,711 INFO 127.0.0.1 - - [02/Jul/2025 14:27:10] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 14:27:10,725 INFO 127.0.0.1 - - [02/Jul/2025 14:27:10] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-07-02 14:27:10,726 INFO 127.0.0.1 - - [02/Jul/2025 14:27:10] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 14:27:10,820 INFO 127.0.0.1 - - [02/Jul/2025 14:27:10] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 14:27:14,463 INFO get_answers called with nickname=iamqueue, extra=0
+2025-07-02 14:27:14,466 INFO 127.0.0.1 - - [02/Jul/2025 14:27:14] "GET /get_answers?nickname=IamQueue&extra=0 HTTP/1.1" 200 -
+2025-07-02 14:27:14,475 INFO 127.0.0.1 - - [02/Jul/2025 14:27:14] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 14:27:15,257 INFO get_answers called with nickname=iamqueue, extra=0
+2025-07-02 14:27:15,260 INFO 127.0.0.1 - - [02/Jul/2025 14:27:15] "GET /get_answers?nickname=IamQueue&extra=0 HTTP/1.1" 200 -
+2025-07-02 14:27:15,269 INFO 127.0.0.1 - - [02/Jul/2025 14:27:15] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 14:27:15,394 INFO get_answers called with nickname=iamqueue, extra=0
+2025-07-02 14:27:15,398 INFO 127.0.0.1 - - [02/Jul/2025 14:27:15] "GET /get_answers?nickname=IamQueue&extra=0 HTTP/1.1" 200 -
+2025-07-02 14:27:15,407 INFO 127.0.0.1 - - [02/Jul/2025 14:27:15] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 14:27:15,536 INFO get_answers called with nickname=iamqueue, extra=0
+2025-07-02 14:27:15,539 INFO 127.0.0.1 - - [02/Jul/2025 14:27:15] "GET /get_answers?nickname=IamQueue&extra=0 HTTP/1.1" 200 -
+2025-07-02 14:27:15,548 INFO 127.0.0.1 - - [02/Jul/2025 14:27:15] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 14:27:15,686 INFO get_answers called with nickname=iamqueue, extra=0
+2025-07-02 14:27:15,689 INFO 127.0.0.1 - - [02/Jul/2025 14:27:15] "GET /get_answers?nickname=IamQueue&extra=0 HTTP/1.1" 200 -
+2025-07-02 14:27:15,697 INFO 127.0.0.1 - - [02/Jul/2025 14:27:15] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 14:27:15,825 INFO get_answers called with nickname=iamqueue, extra=0
+2025-07-02 14:27:15,829 INFO 127.0.0.1 - - [02/Jul/2025 14:27:15] "GET /get_answers?nickname=IamQueue&extra=0 HTTP/1.1" 200 -
+2025-07-02 14:27:15,838 INFO 127.0.0.1 - - [02/Jul/2025 14:27:15] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 14:27:15,956 INFO get_answers called with nickname=iamqueue, extra=0
+2025-07-02 14:27:15,959 INFO 127.0.0.1 - - [02/Jul/2025 14:27:15] "GET /get_answers?nickname=IamQueue&extra=0 HTTP/1.1" 200 -
+2025-07-02 14:27:15,970 INFO 127.0.0.1 - - [02/Jul/2025 14:27:15] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 14:27:16,087 INFO get_answers called with nickname=iamqueue, extra=0
+2025-07-02 14:27:16,090 INFO 127.0.0.1 - - [02/Jul/2025 14:27:16] "GET /get_answers?nickname=IamQueue&extra=0 HTTP/1.1" 200 -
+2025-07-02 14:27:16,098 INFO 127.0.0.1 - - [02/Jul/2025 14:27:16] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 14:27:16,220 INFO get_answers called with nickname=iamqueue, extra=0
+2025-07-02 14:27:16,223 INFO 127.0.0.1 - - [02/Jul/2025 14:27:16] "GET /get_answers?nickname=IamQueue&extra=0 HTTP/1.1" 200 -
+2025-07-02 14:27:16,229 INFO 127.0.0.1 - - [02/Jul/2025 14:27:16] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 14:27:16,378 INFO get_answers called with nickname=iamqueue, extra=0
+2025-07-02 14:27:16,382 INFO 127.0.0.1 - - [02/Jul/2025 14:27:16] "GET /get_answers?nickname=IamQueue&extra=0 HTTP/1.1" 200 -
+2025-07-02 14:27:16,390 INFO 127.0.0.1 - - [02/Jul/2025 14:27:16] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 14:27:16,519 INFO get_answers called with nickname=iamqueue, extra=0
+2025-07-02 14:27:16,521 INFO 127.0.0.1 - - [02/Jul/2025 14:27:16] "GET /get_answers?nickname=IamQueue&extra=0 HTTP/1.1" 200 -
+2025-07-02 14:27:16,551 INFO 127.0.0.1 - - [02/Jul/2025 14:27:16] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 14:27:16,648 INFO get_answers called with nickname=iamqueue, extra=0
+2025-07-02 14:27:16,651 INFO 127.0.0.1 - - [02/Jul/2025 14:27:16] "GET /get_answers?nickname=IamQueue&extra=0 HTTP/1.1" 200 -
+2025-07-02 14:27:16,661 INFO 127.0.0.1 - - [02/Jul/2025 14:27:16] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 14:27:16,782 INFO get_answers called with nickname=iamqueue, extra=0
+2025-07-02 14:27:16,784 INFO 127.0.0.1 - - [02/Jul/2025 14:27:16] "GET /get_answers?nickname=IamQueue&extra=0 HTTP/1.1" 200 -
+2025-07-02 14:27:16,790 INFO 127.0.0.1 - - [02/Jul/2025 14:27:16] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 18:56:56,855 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.138.7.248:5100
+2025-07-02 18:56:56,856 INFO [33mPress CTRL+C to quit[0m
+2025-07-02 18:56:57,978 INFO 127.0.0.1 - - [02/Jul/2025 18:56:57] "GET / HTTP/1.1" 200 -
+2025-07-02 18:56:58,035 INFO 127.0.0.1 - - [02/Jul/2025 18:56:58] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 18:56:58,041 INFO 127.0.0.1 - - [02/Jul/2025 18:56:58] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-07-02 18:56:58,056 INFO 127.0.0.1 - - [02/Jul/2025 18:56:58] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 18:56:58,169 INFO 127.0.0.1 - - [02/Jul/2025 18:56:58] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 18:56:59,789 INFO 127.0.0.1 - - [02/Jul/2025 18:56:59] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-07-02 18:56:59,794 INFO 127.0.0.1 - - [02/Jul/2025 18:56:59] "[32mGET / HTTP/1.1[0m" 302 -
+2025-07-02 18:56:59,803 INFO 127.0.0.1 - - [02/Jul/2025 18:56:59] "GET /login HTTP/1.1" 200 -
+2025-07-02 18:57:04,674 INFO 127.0.0.1 - - [02/Jul/2025 18:57:04] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-07-02 18:57:04,678 INFO 127.0.0.1 - - [02/Jul/2025 18:57:04] "GET / HTTP/1.1" 200 -
+2025-07-02 18:57:04,734 INFO 127.0.0.1 - - [02/Jul/2025 18:57:04] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 18:57:04,735 INFO 127.0.0.1 - - [02/Jul/2025 18:57:04] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 18:57:04,838 INFO 127.0.0.1 - - [02/Jul/2025 18:57:04] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 18:57:07,657 INFO get_answers called with nickname=iamqueue, extra=0
+2025-07-02 18:57:07,661 INFO 127.0.0.1 - - [02/Jul/2025 18:57:07] "GET /get_answers?nickname=IamQueue&extra=0 HTTP/1.1" 200 -
+2025-07-02 18:57:08,474 INFO get_answers called with nickname=iamqueue, extra=0
+2025-07-02 18:57:08,476 INFO 127.0.0.1 - - [02/Jul/2025 18:57:08] "GET /get_answers?nickname=IamQueue&extra=0 HTTP/1.1" 200 -
+2025-07-02 18:57:10,689 INFO 127.0.0.1 - - [02/Jul/2025 18:57:10] "GET /leaderboard/speaker HTTP/1.1" 200 -
+2025-07-02 18:57:10,691 INFO 127.0.0.1 - - [02/Jul/2025 18:57:10] "GET /leaderboard HTTP/1.1" 200 -
+2025-07-02 18:57:10,691 INFO 127.0.0.1 - - [02/Jul/2025 18:57:10] "GET /leaderboard/speaker HTTP/1.1" 200 -
+2025-07-02 18:57:10,692 INFO 127.0.0.1 - - [02/Jul/2025 18:57:10] "GET /leaderboard HTTP/1.1" 200 -
+2025-07-02 18:57:11,586 INFO 127.0.0.1 - - [02/Jul/2025 18:57:11] "GET /leaderboard HTTP/1.1" 200 -
+2025-07-02 18:57:11,588 INFO 127.0.0.1 - - [02/Jul/2025 18:57:11] "GET /leaderboard/speaker HTTP/1.1" 200 -
+2025-07-02 18:57:11,591 INFO 127.0.0.1 - - [02/Jul/2025 18:57:11] "GET /leaderboard/speaker HTTP/1.1" 200 -
+2025-07-02 18:57:11,597 INFO 127.0.0.1 - - [02/Jul/2025 18:57:11] "GET /leaderboard HTTP/1.1" 200 -
+2025-07-02 18:57:17,946 INFO 127.0.0.1 - - [02/Jul/2025 18:57:17] "GET /leaderboard/speaker HTTP/1.1" 200 -
+2025-07-02 18:57:17,955 INFO 127.0.0.1 - - [02/Jul/2025 18:57:17] "GET /leaderboard HTTP/1.1" 200 -
+2025-07-02 18:57:17,956 INFO 127.0.0.1 - - [02/Jul/2025 18:57:17] "GET /leaderboard/speaker HTTP/1.1" 200 -
+2025-07-02 18:57:17,961 INFO 127.0.0.1 - - [02/Jul/2025 18:57:17] "GET /leaderboard HTTP/1.1" 200 -
+2025-07-02 18:57:25,890 INFO get_answers called with nickname=iamqueue, extra=0
+2025-07-02 18:57:25,893 INFO 127.0.0.1 - - [02/Jul/2025 18:57:25] "GET /get_answers?nickname=IamQueue&extra=0 HTTP/1.1" 200 -
+2025-07-02 18:57:26,439 INFO get_answers called with nickname=iamqueue, extra=0
+2025-07-02 18:57:26,441 INFO 127.0.0.1 - - [02/Jul/2025 18:57:26] "GET /get_answers?nickname=IamQueue&extra=0 HTTP/1.1" 200 -
+2025-07-02 18:57:26,556 INFO get_answers called with nickname=iamqueue, extra=0
+2025-07-02 18:57:26,559 INFO 127.0.0.1 - - [02/Jul/2025 18:57:26] "GET /get_answers?nickname=IamQueue&extra=0 HTTP/1.1" 200 -
+2025-07-02 18:57:28,270 INFO get_answers called with nickname=bruno, extra=0
+2025-07-02 18:57:28,273 INFO 127.0.0.1 - - [02/Jul/2025 18:57:28] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 18:57:29,456 INFO get_answers called with nickname=bruno, extra=0
+2025-07-02 18:57:29,459 INFO 127.0.0.1 - - [02/Jul/2025 18:57:29] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 18:57:29,627 INFO get_answers called with nickname=bruno, extra=0
+2025-07-02 18:57:29,629 INFO 127.0.0.1 - - [02/Jul/2025 18:57:29] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 18:58:05,403 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.138.7.248:5100
+2025-07-02 18:58:05,403 INFO [33mPress CTRL+C to quit[0m
+2025-07-02 18:58:07,389 INFO 127.0.0.1 - - [02/Jul/2025 18:58:07] "GET / HTTP/1.1" 200 -
+2025-07-02 18:58:07,423 INFO 127.0.0.1 - - [02/Jul/2025 18:58:07] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 18:58:07,436 INFO 127.0.0.1 - - [02/Jul/2025 18:58:07] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 18:58:07,548 INFO 127.0.0.1 - - [02/Jul/2025 18:58:07] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 18:58:08,673 INFO 127.0.0.1 - - [02/Jul/2025 18:58:08] "GET /leaderboard/speaker HTTP/1.1" 200 -
+2025-07-02 18:58:08,675 INFO 127.0.0.1 - - [02/Jul/2025 18:58:08] "GET /leaderboard HTTP/1.1" 200 -
+2025-07-02 18:58:08,675 INFO 127.0.0.1 - - [02/Jul/2025 18:58:08] "GET /leaderboard/speaker HTTP/1.1" 200 -
+2025-07-02 18:58:08,676 INFO 127.0.0.1 - - [02/Jul/2025 18:58:08] "GET /leaderboard HTTP/1.1" 200 -
+2025-07-02 18:58:09,608 INFO get_answers called with nickname=bruno, extra=0
+2025-07-02 18:58:09,611 INFO 127.0.0.1 - - [02/Jul/2025 18:58:09] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 18:59:55,017 INFO 127.0.0.1 - - [02/Jul/2025 18:59:55] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 19:00:55,026 INFO 127.0.0.1 - - [02/Jul/2025 19:00:55] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 19:01:41,587 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.138.7.248:5100
+2025-07-02 19:01:41,588 INFO [33mPress CTRL+C to quit[0m
+2025-07-02 19:01:45,988 INFO 127.0.0.1 - - [02/Jul/2025 19:01:45] "GET / HTTP/1.1" 200 -
+2025-07-02 19:01:46,040 INFO 127.0.0.1 - - [02/Jul/2025 19:01:46] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 19:01:46,054 INFO 127.0.0.1 - - [02/Jul/2025 19:01:46] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 19:01:46,154 INFO 127.0.0.1 - - [02/Jul/2025 19:01:46] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 19:01:47,845 INFO get_answers called with nickname=bruno, extra=0
+2025-07-02 19:01:47,848 INFO 127.0.0.1 - - [02/Jul/2025 19:01:47] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:01:48,139 INFO get_answers called with nickname=bruno, extra=0
+2025-07-02 19:01:48,142 INFO 127.0.0.1 - - [02/Jul/2025 19:01:48] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:01:48,291 INFO get_answers called with nickname=bruno, extra=0
+2025-07-02 19:01:48,296 INFO 127.0.0.1 - - [02/Jul/2025 19:01:48] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:01:48,440 INFO get_answers called with nickname=bruno, extra=0
+2025-07-02 19:01:48,442 INFO 127.0.0.1 - - [02/Jul/2025 19:01:48] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:01:59,452 INFO Extracted 41249 characters from PDF
+2025-07-02 19:01:59,453 INFO Extracted 4979 words from PDF
+2025-07-02 19:01:59,494 INFO 127.0.0.1 - - [02/Jul/2025 19:01:59] "[35m[1mPOST /summarize HTTP/1.1[0m" 202 -
+2025-07-02 19:02:23,591 INFO get_answers called with nickname=bruno, extra=0
+2025-07-02 19:02:23,595 INFO 127.0.0.1 - - [02/Jul/2025 19:02:23] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:02:24,207 INFO get_answers called with nickname=bruno, extra=0
+2025-07-02 19:02:24,209 INFO 127.0.0.1 - - [02/Jul/2025 19:02:24] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:02:24,357 INFO get_answers called with nickname=bruno, extra=0
+2025-07-02 19:02:24,360 INFO 127.0.0.1 - - [02/Jul/2025 19:02:24] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:02:24,510 INFO get_answers called with nickname=bruno, extra=0
+2025-07-02 19:02:24,512 INFO 127.0.0.1 - - [02/Jul/2025 19:02:24] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:02:24,657 INFO get_answers called with nickname=bruno, extra=0
+2025-07-02 19:02:24,659 INFO 127.0.0.1 - - [02/Jul/2025 19:02:24] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:02:24,858 INFO get_answers called with nickname=bruno, extra=0
+2025-07-02 19:02:24,859 INFO 127.0.0.1 - - [02/Jul/2025 19:02:24] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:02:24,973 INFO get_answers called with nickname=bruno, extra=0
+2025-07-02 19:02:24,975 INFO 127.0.0.1 - - [02/Jul/2025 19:02:24] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:02:46,052 INFO 127.0.0.1 - - [02/Jul/2025 19:02:46] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 19:03:02,274 INFO get_answers called with nickname=bruno, extra=0
+2025-07-02 19:03:02,277 INFO 127.0.0.1 - - [02/Jul/2025 19:03:02] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:03:02,909 INFO 127.0.0.1 - - [02/Jul/2025 19:03:02] "GET / HTTP/1.1" 200 -
+2025-07-02 19:03:02,950 INFO 127.0.0.1 - - [02/Jul/2025 19:03:02] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 19:03:02,964 INFO 127.0.0.1 - - [02/Jul/2025 19:03:02] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 19:03:03,058 INFO 127.0.0.1 - - [02/Jul/2025 19:03:03] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 19:03:04,595 INFO get_answers called with nickname=bruno, extra=0
+2025-07-02 19:03:04,599 INFO 127.0.0.1 - - [02/Jul/2025 19:03:04] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:03:04,893 INFO get_answers called with nickname=bruno, extra=0
+2025-07-02 19:03:04,895 INFO 127.0.0.1 - - [02/Jul/2025 19:03:04] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:03:21,709 INFO get_answers called with nickname=bruno, extra=0
+2025-07-02 19:03:21,713 INFO 127.0.0.1 - - [02/Jul/2025 19:03:21] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:03:22,163 INFO get_answers called with nickname=bruno, extra=0
+2025-07-02 19:03:22,165 INFO 127.0.0.1 - - [02/Jul/2025 19:03:22] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:04:02,969 INFO 127.0.0.1 - - [02/Jul/2025 19:04:02] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 19:04:12,020 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.138.7.248:5100
+2025-07-02 19:04:12,020 INFO [33mPress CTRL+C to quit[0m
+2025-07-02 19:04:13,097 INFO 127.0.0.1 - - [02/Jul/2025 19:04:13] "GET / HTTP/1.1" 200 -
+2025-07-02 19:04:13,139 INFO 127.0.0.1 - - [02/Jul/2025 19:04:13] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 19:04:13,164 INFO 127.0.0.1 - - [02/Jul/2025 19:04:13] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 19:04:13,246 INFO 127.0.0.1 - - [02/Jul/2025 19:04:13] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 19:04:13,810 INFO 127.0.0.1 - - [02/Jul/2025 19:04:13] "GET / HTTP/1.1" 200 -
+2025-07-02 19:04:13,871 INFO 127.0.0.1 - - [02/Jul/2025 19:04:13] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 19:04:13,874 INFO 127.0.0.1 - - [02/Jul/2025 19:04:13] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 19:04:13,980 INFO 127.0.0.1 - - [02/Jul/2025 19:04:13] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 19:04:15,406 INFO get_answers called with nickname=bruno, extra=0
+2025-07-02 19:04:15,409 INFO 127.0.0.1 - - [02/Jul/2025 19:04:15] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:04:15,908 INFO get_answers called with nickname=bruno, extra=0
+2025-07-02 19:04:15,910 INFO 127.0.0.1 - - [02/Jul/2025 19:04:15] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:04:16,097 INFO get_answers called with nickname=bruno, extra=0
+2025-07-02 19:04:16,099 INFO 127.0.0.1 - - [02/Jul/2025 19:04:16] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:04:20,308 INFO get_answers called with nickname=bruno, extra=0
+2025-07-02 19:04:20,313 INFO 127.0.0.1 - - [02/Jul/2025 19:04:20] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:04:20,480 INFO get_answers called with nickname=bruno, extra=0
+2025-07-02 19:04:20,482 INFO 127.0.0.1 - - [02/Jul/2025 19:04:20] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:04:20,740 INFO get_answers called with nickname=bruno, extra=0
+2025-07-02 19:04:20,743 INFO 127.0.0.1 - - [02/Jul/2025 19:04:20] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:04:20,895 INFO get_answers called with nickname=bruno, extra=0
+2025-07-02 19:04:20,898 INFO 127.0.0.1 - - [02/Jul/2025 19:04:20] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:04:42,970 INFO Extracted 55889 characters from PDF
+2025-07-02 19:04:42,971 INFO Extracted 7198 words from PDF
+2025-07-02 19:04:43,013 INFO 127.0.0.1 - - [02/Jul/2025 19:04:43] "[35m[1mPOST /summarize HTTP/1.1[0m" 202 -
+2025-07-02 19:05:13,879 INFO 127.0.0.1 - - [02/Jul/2025 19:05:13] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 19:05:25,874 INFO get_answers called with nickname=bruno, extra=0
+2025-07-02 19:05:25,877 INFO 127.0.0.1 - - [02/Jul/2025 19:05:25] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:05:26,392 INFO get_answers called with nickname=bruno, extra=0
+2025-07-02 19:05:26,395 INFO 127.0.0.1 - - [02/Jul/2025 19:05:26] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:05:26,563 INFO get_answers called with nickname=bruno, extra=0
+2025-07-02 19:05:26,566 INFO 127.0.0.1 - - [02/Jul/2025 19:05:26] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:05:26,693 INFO get_answers called with nickname=bruno, extra=0
+2025-07-02 19:05:26,696 INFO 127.0.0.1 - - [02/Jul/2025 19:05:26] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:05:27,099 INFO get_answers called with nickname=bruno, extra=0
+2025-07-02 19:05:27,101 INFO 127.0.0.1 - - [02/Jul/2025 19:05:27] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:05:27,213 INFO get_answers called with nickname=bruno, extra=0
+2025-07-02 19:05:27,216 INFO 127.0.0.1 - - [02/Jul/2025 19:05:27] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:06:01,884 INFO get_answers called with nickname=bruno, extra=1
+2025-07-02 19:06:01,889 INFO 127.0.0.1 - - [02/Jul/2025 19:06:01] "GET /get_answers?nickname=Bruno&extra=1 HTTP/1.1" 200 -
+2025-07-02 19:06:02,343 INFO get_answers called with nickname=bruno, extra=1
+2025-07-02 19:06:02,346 INFO 127.0.0.1 - - [02/Jul/2025 19:06:02] "GET /get_answers?nickname=Bruno&extra=1 HTTP/1.1" 200 -
+2025-07-02 19:06:02,471 INFO get_answers called with nickname=bruno, extra=1
+2025-07-02 19:06:02,473 INFO 127.0.0.1 - - [02/Jul/2025 19:06:02] "GET /get_answers?nickname=Bruno&extra=1 HTTP/1.1" 200 -
+2025-07-02 19:06:02,744 INFO get_answers called with nickname=bruno, extra=1
+2025-07-02 19:06:02,746 INFO 127.0.0.1 - - [02/Jul/2025 19:06:02] "GET /get_answers?nickname=Bruno&extra=1 HTTP/1.1" 200 -
+2025-07-02 19:06:04,852 INFO 127.0.0.1 - - [02/Jul/2025 19:06:04] "GET /instructions HTTP/1.1" 200 -
+2025-07-02 19:06:34,925 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.138.7.248:5100
+2025-07-02 19:06:34,925 INFO [33mPress CTRL+C to quit[0m
+2025-07-02 19:06:44,009 INFO 127.0.0.1 - - [02/Jul/2025 19:06:44] "GET / HTTP/1.1" 200 -
+2025-07-02 19:06:44,074 INFO 127.0.0.1 - - [02/Jul/2025 19:06:44] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 19:06:44,098 INFO 127.0.0.1 - - [02/Jul/2025 19:06:44] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 19:06:44,188 INFO 127.0.0.1 - - [02/Jul/2025 19:06:44] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 19:06:56,946 INFO get_answers called with nickname=bruno, extra=0
+2025-07-02 19:06:56,949 INFO 127.0.0.1 - - [02/Jul/2025 19:06:56] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:07:19,063 INFO get_answers called with nickname=bruno, extra=0
+2025-07-02 19:07:19,067 INFO 127.0.0.1 - - [02/Jul/2025 19:07:19] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:07:44,125 INFO 127.0.0.1 - - [02/Jul/2025 19:07:44] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 19:08:44,123 INFO 127.0.0.1 - - [02/Jul/2025 19:08:44] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 19:08:55,937 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.138.7.248:5100
+2025-07-02 19:08:55,937 INFO [33mPress CTRL+C to quit[0m
+2025-07-02 19:08:57,477 DEBUG 
+def unlock_chord(self, group_id, callback, interval=0, max_retries=1, result=2, Result=3, GroupResult=4, result_from_tuple=5, **kwargs):
+    return 1
+
+2025-07-02 19:08:57,477 DEBUG 
+def group(self, tasks, result, group_id, partial_args, add_to_parent=0):
+    return 1
+
+2025-07-02 19:08:57,477 DEBUG 
+def xmap(task, it):
+    return 1
+
+2025-07-02 19:08:57,477 DEBUG 
+def chain(*args, **kwargs):
+    return 1
+
+2025-07-02 19:08:57,478 DEBUG 
+def backend_cleanup():
+    return 1
+
+2025-07-02 19:08:57,478 DEBUG 
+def update_repo():
+    return 1
+
+2025-07-02 19:08:57,478 DEBUG 
+def xstarmap(task, it):
+    return 1
+
+2025-07-02 19:08:57,478 DEBUG 
+def chord(self, header, body, partial_args=0, interval=1, countdown=2, max_retries=3, eager=4, **kwargs):
+    return 1
+
+2025-07-02 19:08:57,478 DEBUG 
+def accumulate(self, *args, **kwargs):
+    return 1
+
+2025-07-02 19:08:57,478 DEBUG 
+def process_summary(self, text, prompt_prefix, model, request_id=0, display_name=1, nickname=2):
+    return 1
+
+2025-07-02 19:08:57,478 DEBUG 
+def chunks(task, it, n):
+    return 1
+
+2025-07-02 19:08:58,603 INFO 127.0.0.1 - - [02/Jul/2025 19:08:58] "GET / HTTP/1.1" 200 -
+2025-07-02 19:08:58,721 INFO 127.0.0.1 - - [02/Jul/2025 19:08:58] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 19:08:58,721 INFO 127.0.0.1 - - [02/Jul/2025 19:08:58] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 19:08:58,812 INFO 127.0.0.1 - - [02/Jul/2025 19:08:58] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 19:09:00,648 INFO get_answers called with nickname=bruno, extra=0
+2025-07-02 19:09:00,651 INFO 127.0.0.1 - - [02/Jul/2025 19:09:00] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:09:05,870 INFO get_answers called with nickname=bruno, extra=0
+2025-07-02 19:09:05,872 INFO 127.0.0.1 - - [02/Jul/2025 19:09:05] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:09:06,067 INFO get_answers called with nickname=bruno, extra=0
+2025-07-02 19:09:06,069 INFO 127.0.0.1 - - [02/Jul/2025 19:09:06] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:09:06,200 INFO get_answers called with nickname=bruno, extra=0
+2025-07-02 19:09:06,203 INFO 127.0.0.1 - - [02/Jul/2025 19:09:06] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:09:06,349 INFO get_answers called with nickname=bruno, extra=0
+2025-07-02 19:09:06,351 INFO 127.0.0.1 - - [02/Jul/2025 19:09:06] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:09:06,483 INFO get_answers called with nickname=bruno, extra=0
+2025-07-02 19:09:06,486 INFO 127.0.0.1 - - [02/Jul/2025 19:09:06] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:09:06,631 INFO get_answers called with nickname=bruno, extra=0
+2025-07-02 19:09:06,640 INFO 127.0.0.1 - - [02/Jul/2025 19:09:06] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:10:00,795 INFO Flask app starting up - logging is working!
+2025-07-02 19:10:00,795 DEBUG Debug logging is enabled
+2025-07-02 19:10:00,931 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.138.7.248:5100
+2025-07-02 19:10:00,931 INFO [33mPress CTRL+C to quit[0m
+2025-07-02 19:10:00,932 INFO  * Restarting with stat
+2025-07-02 19:10:02,196 INFO Flask app starting up - logging is working!
+2025-07-02 19:10:02,196 DEBUG Debug logging is enabled
+2025-07-02 19:10:02,285 WARNING  * Debugger is active!
+2025-07-02 19:10:02,295 INFO  * Debugger PIN: 650-005-124
+2025-07-02 19:10:05,393 INFO 127.0.0.1 - - [02/Jul/2025 19:10:05] "GET / HTTP/1.1" 200 -
+2025-07-02 19:10:05,453 INFO 127.0.0.1 - - [02/Jul/2025 19:10:05] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 19:10:05,471 INFO 127.0.0.1 - - [02/Jul/2025 19:10:05] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 19:10:05,576 INFO 127.0.0.1 - - [02/Jul/2025 19:10:05] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 19:10:06,905 INFO get_answers called with nickname=bruno, extra=0
+2025-07-02 19:10:06,907 INFO 127.0.0.1 - - [02/Jul/2025 19:10:06] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:10:22,519 INFO  * Detected change in '/Users/nikolas/Desktop/Projects/PaperLLM/app.py', reloading
+2025-07-02 19:10:22,763 INFO  * Restarting with stat
+2025-07-02 19:10:24,073 INFO Flask app starting up - logging is working!
+2025-07-02 19:10:24,073 DEBUG Debug logging is enabled
+2025-07-02 19:10:24,171 WARNING  * Debugger is active!
+2025-07-02 19:10:24,178 INFO  * Debugger PIN: 650-005-124
+2025-07-02 19:10:31,284 INFO  * Detected change in '/Users/nikolas/Desktop/Projects/PaperLLM/app.py', reloading
+2025-07-02 19:10:31,479 INFO  * Restarting with stat
+2025-07-02 19:10:32,503 INFO Flask app starting up - logging is working!
+2025-07-02 19:10:32,504 DEBUG Debug logging is enabled
+2025-07-02 19:10:32,578 WARNING  * Debugger is active!
+2025-07-02 19:10:32,592 INFO  * Debugger PIN: 650-005-124
+2025-07-02 19:10:36,888 INFO Flask app starting up - logging is working!
+2025-07-02 19:10:36,888 DEBUG Debug logging is enabled
+2025-07-02 19:10:37,000 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.138.7.248:5100
+2025-07-02 19:10:37,001 INFO [33mPress CTRL+C to quit[0m
+2025-07-02 19:10:37,001 INFO  * Restarting with stat
+2025-07-02 19:10:37,983 INFO Flask app starting up - logging is working!
+2025-07-02 19:10:37,983 DEBUG Debug logging is enabled
+2025-07-02 19:10:38,049 WARNING  * Debugger is active!
+2025-07-02 19:10:38,055 INFO  * Debugger PIN: 650-005-124
+2025-07-02 19:10:42,619 INFO 127.0.0.1 - - [02/Jul/2025 19:10:42] "GET / HTTP/1.1" 200 -
+2025-07-02 19:10:42,667 INFO 127.0.0.1 - - [02/Jul/2025 19:10:42] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 19:10:42,681 INFO 127.0.0.1 - - [02/Jul/2025 19:10:42] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 19:10:42,777 INFO 127.0.0.1 - - [02/Jul/2025 19:10:42] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 19:10:44,206 INFO get_answers called with nickname=bruno, extra=0
+2025-07-02 19:10:44,210 INFO 127.0.0.1 - - [02/Jul/2025 19:10:44] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:10:44,657 INFO get_answers called with nickname=bruno, extra=0
+2025-07-02 19:10:44,660 INFO 127.0.0.1 - - [02/Jul/2025 19:10:44] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:10:44,818 INFO get_answers called with nickname=bruno, extra=0
+2025-07-02 19:10:44,821 INFO 127.0.0.1 - - [02/Jul/2025 19:10:44] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:10:44,966 INFO get_answers called with nickname=bruno, extra=0
+2025-07-02 19:10:44,969 INFO 127.0.0.1 - - [02/Jul/2025 19:10:44] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:10:45,101 INFO get_answers called with nickname=bruno, extra=0
+2025-07-02 19:10:45,104 INFO 127.0.0.1 - - [02/Jul/2025 19:10:45] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:10:46,523 INFO 127.0.0.1 - - [02/Jul/2025 19:10:46] "GET /leaderboard/speaker HTTP/1.1" 200 -
+2025-07-02 19:10:46,525 INFO 127.0.0.1 - - [02/Jul/2025 19:10:46] "GET /leaderboard HTTP/1.1" 200 -
+2025-07-02 19:10:46,526 INFO 127.0.0.1 - - [02/Jul/2025 19:10:46] "GET /leaderboard/speaker HTTP/1.1" 200 -
+2025-07-02 19:10:46,527 INFO 127.0.0.1 - - [02/Jul/2025 19:10:46] "GET /leaderboard HTTP/1.1" 200 -
+2025-07-02 19:10:46,627 INFO 127.0.0.1 - - [02/Jul/2025 19:10:46] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-07-02 19:10:46,631 INFO 127.0.0.1 - - [02/Jul/2025 19:10:46] "[32mGET / HTTP/1.1[0m" 302 -
+2025-07-02 19:10:46,637 INFO 127.0.0.1 - - [02/Jul/2025 19:10:46] "GET /login HTTP/1.1" 200 -
+2025-07-02 19:10:52,331 INFO 127.0.0.1 - - [02/Jul/2025 19:10:52] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-07-02 19:10:52,338 INFO 127.0.0.1 - - [02/Jul/2025 19:10:52] "GET / HTTP/1.1" 200 -
+2025-07-02 19:10:54,739 INFO 127.0.0.1 - - [02/Jul/2025 19:10:54] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-07-02 19:10:54,746 INFO 127.0.0.1 - - [02/Jul/2025 19:10:54] "[32mGET / HTTP/1.1[0m" 302 -
+2025-07-02 19:10:54,750 INFO 127.0.0.1 - - [02/Jul/2025 19:10:54] "GET /login HTTP/1.1" 200 -
+2025-07-02 19:10:57,564 INFO 127.0.0.1 - - [02/Jul/2025 19:10:57] "[31m[1mPOST /login HTTP/1.1[0m" 401 -
+2025-07-02 19:11:04,280 INFO 127.0.0.1 - - [02/Jul/2025 19:11:04] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-07-02 19:11:04,285 INFO 127.0.0.1 - - [02/Jul/2025 19:11:04] "GET / HTTP/1.1" 200 -
+2025-07-02 19:11:04,362 INFO 127.0.0.1 - - [02/Jul/2025 19:11:04] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 19:11:04,362 INFO 127.0.0.1 - - [02/Jul/2025 19:11:04] "GET /speaker_talks HTTP/1.1" 200 -
+2025-07-02 19:11:04,362 INFO 127.0.0.1 - - [02/Jul/2025 19:11:04] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 19:11:04,461 INFO 127.0.0.1 - - [02/Jul/2025 19:11:04] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 19:11:07,189 INFO 127.0.0.1 - - [02/Jul/2025 19:11:07] "GET /speaker_questions?talk=HITS_colloquium-_Julio_Saez-Rodriguez_on_models_for_personalized_medicine.pdf&num=5 HTTP/1.1" 200 -
+2025-07-02 19:11:07,199 INFO 127.0.0.1 - - [02/Jul/2025 19:11:07] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 19:11:09,537 INFO 127.0.0.1 - - [02/Jul/2025 19:11:09] "GET /speaker_questions?talk=A_community_computational_challenge_to_predict_the_activity_of_pairs_of_compounds_Gustavo_Stolovitzky_Highlights_ISMB_ECCB_2015.pdf&num=5 HTTP/1.1" 200 -
+2025-07-02 19:11:09,547 INFO 127.0.0.1 - - [02/Jul/2025 19:11:09] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 19:11:10,526 INFO 127.0.0.1 - - [02/Jul/2025 19:11:10] "GET /speaker_questions?talk=A_community_computational_challenge_to_predict_the_activity_of_pairs_of_compounds_Gustavo_Stolovitzky_Highlights_ISMB_ECCB_2015.pdf&num=5 HTTP/1.1" 200 -
+2025-07-02 19:11:10,535 INFO 127.0.0.1 - - [02/Jul/2025 19:11:10] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 19:11:10,704 INFO 127.0.0.1 - - [02/Jul/2025 19:11:10] "GET /speaker_questions?talk=A_community_computational_challenge_to_predict_the_activity_of_pairs_of_compounds_Gustavo_Stolovitzky_Highlights_ISMB_ECCB_2015.pdf&num=5 HTTP/1.1" 200 -
+2025-07-02 19:11:10,715 INFO 127.0.0.1 - - [02/Jul/2025 19:11:10] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 19:11:12,915 INFO 127.0.0.1 - - [02/Jul/2025 19:11:12] "GET /speaker_questions?talk=HITS_colloquium-_Julio_Saez-Rodriguez_on_models_for_personalized_medicine.pdf&num=5 HTTP/1.1" 200 -
+2025-07-02 19:11:12,925 INFO 127.0.0.1 - - [02/Jul/2025 19:11:12] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 19:11:13,525 INFO 127.0.0.1 - - [02/Jul/2025 19:11:13] "GET /leaderboard/speaker HTTP/1.1" 200 -
+2025-07-02 19:11:13,531 INFO 127.0.0.1 - - [02/Jul/2025 19:11:13] "GET /leaderboard HTTP/1.1" 200 -
+2025-07-02 19:11:13,537 INFO 127.0.0.1 - - [02/Jul/2025 19:11:13] "GET /leaderboard/speaker HTTP/1.1" 200 -
+2025-07-02 19:11:13,544 INFO 127.0.0.1 - - [02/Jul/2025 19:11:13] "GET /leaderboard HTTP/1.1" 200 -
+2025-07-02 19:11:14,198 INFO 127.0.0.1 - - [02/Jul/2025 19:11:14] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-07-02 19:11:14,202 INFO 127.0.0.1 - - [02/Jul/2025 19:11:14] "[32mGET / HTTP/1.1[0m" 302 -
+2025-07-02 19:11:14,210 INFO 127.0.0.1 - - [02/Jul/2025 19:11:14] "GET /login HTTP/1.1" 200 -
+2025-07-02 19:11:18,465 INFO 127.0.0.1 - - [02/Jul/2025 19:11:18] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-07-02 19:11:18,470 INFO 127.0.0.1 - - [02/Jul/2025 19:11:18] "GET / HTTP/1.1" 200 -
+2025-07-02 19:11:18,532 INFO 127.0.0.1 - - [02/Jul/2025 19:11:18] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 19:11:18,543 INFO 127.0.0.1 - - [02/Jul/2025 19:11:18] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 19:11:18,659 INFO 127.0.0.1 - - [02/Jul/2025 19:11:18] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 19:11:21,507 INFO get_answers called with nickname=bruno, extra=0
+2025-07-02 19:11:21,511 INFO 127.0.0.1 - - [02/Jul/2025 19:11:21] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:12:18,558 INFO 127.0.0.1 - - [02/Jul/2025 19:12:18] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 19:13:16,335 INFO  * Detected change in '/Users/nikolas/Desktop/Projects/PaperLLM/app.py', reloading
+2025-07-02 19:13:16,576 INFO  * Restarting with stat
+2025-07-02 19:13:18,009 INFO Flask app starting up - logging is working!
+2025-07-02 19:13:18,010 DEBUG Debug logging is enabled
+2025-07-02 19:13:18,105 WARNING  * Debugger is active!
+2025-07-02 19:13:18,112 INFO  * Debugger PIN: 650-005-124
+2025-07-02 19:13:18,678 INFO 127.0.0.1 - - [02/Jul/2025 19:13:18] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 19:13:44,791 INFO Flask app starting up - logging is working!
+2025-07-02 19:13:44,792 DEBUG Debug logging is enabled
+2025-07-02 19:13:44,885 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.138.7.248:5100
+2025-07-02 19:13:44,885 INFO [33mPress CTRL+C to quit[0m
+2025-07-02 19:13:44,886 INFO  * Restarting with stat
+2025-07-02 19:13:45,844 INFO Flask app starting up - logging is working!
+2025-07-02 19:13:45,844 DEBUG Debug logging is enabled
+2025-07-02 19:13:45,912 WARNING  * Debugger is active!
+2025-07-02 19:13:45,918 INFO  * Debugger PIN: 650-005-124
+2025-07-02 19:13:48,536 INFO 127.0.0.1 - - [02/Jul/2025 19:13:48] "GET / HTTP/1.1" 200 -
+2025-07-02 19:13:48,597 INFO 127.0.0.1 - - [02/Jul/2025 19:13:48] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 19:13:48,608 INFO 127.0.0.1 - - [02/Jul/2025 19:13:48] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 19:13:48,712 INFO 127.0.0.1 - - [02/Jul/2025 19:13:48] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 19:13:50,392 INFO get_answers called with raw_nick='Bruno', processed nickname='bruno'
+2025-07-02 19:13:50,393 DEBUG Line 1: Found question from IamQueue with request_id 08d424e4-f17b-4376-bae9-d805f2dcb88a
+2025-07-02 19:13:50,393 DEBUG Line 2: Skipped entry (no prompt field)
+2025-07-02 19:13:50,393 DEBUG Line 3: Skipped entry (no prompt field)
+2025-07-02 19:13:50,394 DEBUG Line 4: Found question from IamQueue with request_id fd962a94-92b5-40b7-8e0d-42438c5ab7bd
+2025-07-02 19:13:50,394 DEBUG Line 5: Found question from Bruno with request_id ed11524a-7438-482c-bc72-ef13a5c0febe
+2025-07-02 19:13:50,394 DEBUG Line 6: Skipped entry (no prompt field)
+2025-07-02 19:13:50,394 DEBUG Line 7: Skipped entry (no prompt field)
+2025-07-02 19:13:50,395 DEBUG Line 8: Found question from Bruno with request_id 30e67194-c4b1-4af4-a07e-ebd2bf894e02
+2025-07-02 19:13:50,395 DEBUG Line 9: Skipped entry (no prompt field)
+2025-07-02 19:13:50,395 DEBUG Line 10: Skipped entry (no prompt field)
+2025-07-02 19:13:50,395 INFO Processed 10 lines from requests_questions.log
+2025-07-02 19:13:50,395 INFO Found 4 total questions in log
+2025-07-02 19:13:50,395 INFO All nicknames found: ['IamQueue', 'IamQueue', 'Bruno', 'Bruno']
+2025-07-02 19:13:50,395 INFO Question 0: original='iamqueue' -> processed='iamqueue' vs target='bruno' | Match: False
+2025-07-02 19:13:50,397 INFO Question 0: Found 0 answers for request_id 08d424e4-f17b-4376-bae9-d805f2dcb88a
+2025-07-02 19:13:50,398 INFO Question 1: original='iamqueue' -> processed='iamqueue' vs target='bruno' | Match: False
+2025-07-02 19:13:50,399 INFO Final result: 0 user questions and 0 extra questions
+2025-07-02 19:13:50,400 INFO 127.0.0.1 - - [02/Jul/2025 19:13:50] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:13:51,159 INFO get_answers called with raw_nick='Bruno', processed nickname='bruno'
+2025-07-02 19:13:51,160 DEBUG Line 1: Found question from IamQueue with request_id 08d424e4-f17b-4376-bae9-d805f2dcb88a
+2025-07-02 19:13:51,160 DEBUG Line 2: Skipped entry (no prompt field)
+2025-07-02 19:13:51,160 DEBUG Line 3: Skipped entry (no prompt field)
+2025-07-02 19:13:51,160 DEBUG Line 4: Found question from IamQueue with request_id fd962a94-92b5-40b7-8e0d-42438c5ab7bd
+2025-07-02 19:13:51,160 DEBUG Line 5: Found question from Bruno with request_id ed11524a-7438-482c-bc72-ef13a5c0febe
+2025-07-02 19:13:51,160 DEBUG Line 6: Skipped entry (no prompt field)
+2025-07-02 19:13:51,160 DEBUG Line 7: Skipped entry (no prompt field)
+2025-07-02 19:13:51,161 DEBUG Line 8: Found question from Bruno with request_id 30e67194-c4b1-4af4-a07e-ebd2bf894e02
+2025-07-02 19:13:51,161 DEBUG Line 9: Skipped entry (no prompt field)
+2025-07-02 19:13:51,161 DEBUG Line 10: Skipped entry (no prompt field)
+2025-07-02 19:13:51,161 INFO Processed 10 lines from requests_questions.log
+2025-07-02 19:13:51,161 INFO Found 4 total questions in log
+2025-07-02 19:13:51,161 INFO All nicknames found: ['IamQueue', 'IamQueue', 'Bruno', 'Bruno']
+2025-07-02 19:13:51,161 INFO Question 0: original='iamqueue' -> processed='iamqueue' vs target='bruno' | Match: False
+2025-07-02 19:13:51,162 INFO Question 0: Found 0 answers for request_id 08d424e4-f17b-4376-bae9-d805f2dcb88a
+2025-07-02 19:13:51,163 INFO Question 1: original='iamqueue' -> processed='iamqueue' vs target='bruno' | Match: False
+2025-07-02 19:13:51,163 INFO Final result: 0 user questions and 0 extra questions
+2025-07-02 19:13:51,164 INFO 127.0.0.1 - - [02/Jul/2025 19:13:51] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:14:00,695 INFO get_answers called with raw_nick='IamQueue', processed nickname='iamqueue'
+2025-07-02 19:14:00,696 DEBUG Line 1: Found question from IamQueue with request_id 08d424e4-f17b-4376-bae9-d805f2dcb88a
+2025-07-02 19:14:00,696 DEBUG Line 2: Skipped entry (no prompt field)
+2025-07-02 19:14:00,696 DEBUG Line 3: Skipped entry (no prompt field)
+2025-07-02 19:14:00,696 DEBUG Line 4: Found question from IamQueue with request_id fd962a94-92b5-40b7-8e0d-42438c5ab7bd
+2025-07-02 19:14:00,697 DEBUG Line 5: Found question from Bruno with request_id ed11524a-7438-482c-bc72-ef13a5c0febe
+2025-07-02 19:14:00,697 DEBUG Line 6: Skipped entry (no prompt field)
+2025-07-02 19:14:00,697 DEBUG Line 7: Skipped entry (no prompt field)
+2025-07-02 19:14:00,697 DEBUG Line 8: Found question from Bruno with request_id 30e67194-c4b1-4af4-a07e-ebd2bf894e02
+2025-07-02 19:14:00,697 DEBUG Line 9: Skipped entry (no prompt field)
+2025-07-02 19:14:00,697 DEBUG Line 10: Skipped entry (no prompt field)
+2025-07-02 19:14:00,698 INFO Processed 10 lines from requests_questions.log
+2025-07-02 19:14:00,698 INFO Found 4 total questions in log
+2025-07-02 19:14:00,698 INFO All nicknames found: ['IamQueue', 'IamQueue', 'Bruno', 'Bruno']
+2025-07-02 19:14:00,698 INFO Question 0: original='iamqueue' -> processed='iamqueue' vs target='iamqueue' | Match: True
+2025-07-02 19:14:00,700 INFO Question 0: Found 0 answers for request_id 08d424e4-f17b-4376-bae9-d805f2dcb88a
+2025-07-02 19:14:00,700 INFO Question 1: original='iamqueue' -> processed='iamqueue' vs target='iamqueue' | Match: True
+2025-07-02 19:14:00,702 INFO Final result: 0 user questions and 0 extra questions
+2025-07-02 19:14:00,702 INFO 127.0.0.1 - - [02/Jul/2025 19:14:00] "GET /get_answers?nickname=IamQueue&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:14:01,636 INFO get_answers called with raw_nick='IamQueue', processed nickname='iamqueue'
+2025-07-02 19:14:01,637 DEBUG Line 1: Found question from IamQueue with request_id 08d424e4-f17b-4376-bae9-d805f2dcb88a
+2025-07-02 19:14:01,637 DEBUG Line 2: Skipped entry (no prompt field)
+2025-07-02 19:14:01,637 DEBUG Line 3: Skipped entry (no prompt field)
+2025-07-02 19:14:01,637 DEBUG Line 4: Found question from IamQueue with request_id fd962a94-92b5-40b7-8e0d-42438c5ab7bd
+2025-07-02 19:14:01,637 DEBUG Line 5: Found question from Bruno with request_id ed11524a-7438-482c-bc72-ef13a5c0febe
+2025-07-02 19:14:01,638 DEBUG Line 6: Skipped entry (no prompt field)
+2025-07-02 19:14:01,638 DEBUG Line 7: Skipped entry (no prompt field)
+2025-07-02 19:14:01,638 DEBUG Line 8: Found question from Bruno with request_id 30e67194-c4b1-4af4-a07e-ebd2bf894e02
+2025-07-02 19:14:01,638 DEBUG Line 9: Skipped entry (no prompt field)
+2025-07-02 19:14:01,638 DEBUG Line 10: Skipped entry (no prompt field)
+2025-07-02 19:14:01,638 INFO Processed 10 lines from requests_questions.log
+2025-07-02 19:14:01,638 INFO Found 4 total questions in log
+2025-07-02 19:14:01,638 INFO All nicknames found: ['IamQueue', 'IamQueue', 'Bruno', 'Bruno']
+2025-07-02 19:14:01,638 INFO Question 0: original='iamqueue' -> processed='iamqueue' vs target='iamqueue' | Match: True
+2025-07-02 19:14:01,639 INFO Question 0: Found 0 answers for request_id 08d424e4-f17b-4376-bae9-d805f2dcb88a
+2025-07-02 19:14:01,640 INFO Question 1: original='iamqueue' -> processed='iamqueue' vs target='iamqueue' | Match: True
+2025-07-02 19:14:01,640 INFO Final result: 0 user questions and 0 extra questions
+2025-07-02 19:14:01,641 INFO 127.0.0.1 - - [02/Jul/2025 19:14:01] "GET /get_answers?nickname=IamQueue&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:14:48,794 INFO 127.0.0.1 - - [02/Jul/2025 19:14:48] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 19:16:24,939 INFO 127.0.0.1 - - [02/Jul/2025 19:16:24] "GET / HTTP/1.1" 200 -
+2025-07-02 19:16:24,989 INFO 127.0.0.1 - - [02/Jul/2025 19:16:24] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 19:16:25,015 INFO 127.0.0.1 - - [02/Jul/2025 19:16:25] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 19:16:25,109 INFO 127.0.0.1 - - [02/Jul/2025 19:16:25] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 19:16:28,256 INFO get_answers called with raw_nick='Bruno', processed nickname='bruno'
+2025-07-02 19:16:28,257 DEBUG Line 1: Found question from IamQueue with request_id 08d424e4-f17b-4376-bae9-d805f2dcb88a
+2025-07-02 19:16:28,257 DEBUG Line 2: Skipped entry (no prompt field)
+2025-07-02 19:16:28,257 DEBUG Line 3: Skipped entry (no prompt field)
+2025-07-02 19:16:28,257 DEBUG Line 4: Found question from IamQueue with request_id fd962a94-92b5-40b7-8e0d-42438c5ab7bd
+2025-07-02 19:16:28,257 DEBUG Line 5: Found question from Bruno with request_id ed11524a-7438-482c-bc72-ef13a5c0febe
+2025-07-02 19:16:28,257 DEBUG Line 6: Skipped entry (no prompt field)
+2025-07-02 19:16:28,257 DEBUG Line 7: Skipped entry (no prompt field)
+2025-07-02 19:16:28,257 DEBUG Line 8: Found question from Bruno with request_id 30e67194-c4b1-4af4-a07e-ebd2bf894e02
+2025-07-02 19:16:28,258 DEBUG Line 9: Skipped entry (no prompt field)
+2025-07-02 19:16:28,258 DEBUG Line 10: Skipped entry (no prompt field)
+2025-07-02 19:16:28,258 INFO Processed 10 lines from requests_questions.log
+2025-07-02 19:16:28,258 INFO Found 4 total questions in log
+2025-07-02 19:16:28,258 INFO All nicknames found: ['IamQueue', 'IamQueue', 'Bruno', 'Bruno']
+2025-07-02 19:16:28,258 INFO Question 0: original='iamqueue' -> processed='iamqueue' vs target='bruno' | Match: False
+2025-07-02 19:16:28,259 INFO Question 0: Found 0 answers for request_id 08d424e4-f17b-4376-bae9-d805f2dcb88a
+2025-07-02 19:16:28,260 INFO Question 1: original='iamqueue' -> processed='iamqueue' vs target='bruno' | Match: False
+2025-07-02 19:16:28,260 INFO Final result: 0 user questions and 0 extra questions
+2025-07-02 19:16:28,261 INFO 127.0.0.1 - - [02/Jul/2025 19:16:28] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:16:58,140 INFO get_answers called with raw_nick='Bruno', processed nickname='bruno'
+2025-07-02 19:16:58,141 DEBUG Line 1: Found question from IamQueue with request_id 08d424e4-f17b-4376-bae9-d805f2dcb88a
+2025-07-02 19:16:58,141 DEBUG Line 2: Skipped entry (no prompt field)
+2025-07-02 19:16:58,141 DEBUG Line 3: Skipped entry (no prompt field)
+2025-07-02 19:16:58,141 DEBUG Line 4: Found question from IamQueue with request_id fd962a94-92b5-40b7-8e0d-42438c5ab7bd
+2025-07-02 19:16:58,141 DEBUG Line 5: Found question from Bruno with request_id ed11524a-7438-482c-bc72-ef13a5c0febe
+2025-07-02 19:16:58,141 DEBUG Line 6: Skipped entry (no prompt field)
+2025-07-02 19:16:58,141 DEBUG Line 7: Skipped entry (no prompt field)
+2025-07-02 19:16:58,141 DEBUG Line 8: Found question from Bruno with request_id 30e67194-c4b1-4af4-a07e-ebd2bf894e02
+2025-07-02 19:16:58,142 DEBUG Line 9: Skipped entry (no prompt field)
+2025-07-02 19:16:58,142 DEBUG Line 10: Skipped entry (no prompt field)
+2025-07-02 19:16:58,142 INFO Processed 10 lines from requests_questions.log
+2025-07-02 19:16:58,142 INFO Found 4 total questions in log
+2025-07-02 19:16:58,142 INFO All nicknames found: ['IamQueue', 'IamQueue', 'Bruno', 'Bruno']
+2025-07-02 19:16:58,142 INFO Question 0: original='iamqueue' -> processed='iamqueue' vs target='bruno' | Match: False
+2025-07-02 19:16:58,143 INFO Question 0: Found 0 answers for request_id 08d424e4-f17b-4376-bae9-d805f2dcb88a
+2025-07-02 19:16:58,144 INFO Question 1: original='iamqueue' -> processed='iamqueue' vs target='bruno' | Match: False
+2025-07-02 19:16:58,144 INFO Final result: 0 user questions and 0 extra questions
+2025-07-02 19:16:58,145 INFO 127.0.0.1 - - [02/Jul/2025 19:16:58] "GET /get_answers?nickname=Bruno&extra=1 HTTP/1.1" 200 -
+2025-07-02 19:16:58,512 INFO get_answers called with raw_nick='Bruno', processed nickname='bruno'
+2025-07-02 19:16:58,512 DEBUG Line 1: Found question from IamQueue with request_id 08d424e4-f17b-4376-bae9-d805f2dcb88a
+2025-07-02 19:16:58,513 DEBUG Line 2: Skipped entry (no prompt field)
+2025-07-02 19:16:58,513 DEBUG Line 3: Skipped entry (no prompt field)
+2025-07-02 19:16:58,513 DEBUG Line 4: Found question from IamQueue with request_id fd962a94-92b5-40b7-8e0d-42438c5ab7bd
+2025-07-02 19:16:58,513 DEBUG Line 5: Found question from Bruno with request_id ed11524a-7438-482c-bc72-ef13a5c0febe
+2025-07-02 19:16:58,514 DEBUG Line 6: Skipped entry (no prompt field)
+2025-07-02 19:16:58,514 DEBUG Line 7: Skipped entry (no prompt field)
+2025-07-02 19:16:58,514 DEBUG Line 8: Found question from Bruno with request_id 30e67194-c4b1-4af4-a07e-ebd2bf894e02
+2025-07-02 19:16:58,514 DEBUG Line 9: Skipped entry (no prompt field)
+2025-07-02 19:16:58,514 DEBUG Line 10: Skipped entry (no prompt field)
+2025-07-02 19:16:58,514 INFO Processed 10 lines from requests_questions.log
+2025-07-02 19:16:58,514 INFO Found 4 total questions in log
+2025-07-02 19:16:58,514 INFO All nicknames found: ['IamQueue', 'IamQueue', 'Bruno', 'Bruno']
+2025-07-02 19:16:58,514 INFO Question 0: original='iamqueue' -> processed='iamqueue' vs target='bruno' | Match: False
+2025-07-02 19:16:58,515 INFO Question 0: Found 0 answers for request_id 08d424e4-f17b-4376-bae9-d805f2dcb88a
+2025-07-02 19:16:58,516 INFO Question 1: original='iamqueue' -> processed='iamqueue' vs target='bruno' | Match: False
+2025-07-02 19:16:58,516 INFO Final result: 0 user questions and 0 extra questions
+2025-07-02 19:16:58,517 INFO 127.0.0.1 - - [02/Jul/2025 19:16:58] "GET /get_answers?nickname=Bruno&extra=1 HTTP/1.1" 200 -
+2025-07-02 19:16:58,655 INFO get_answers called with raw_nick='Bruno', processed nickname='bruno'
+2025-07-02 19:16:58,656 DEBUG Line 1: Found question from IamQueue with request_id 08d424e4-f17b-4376-bae9-d805f2dcb88a
+2025-07-02 19:16:58,656 DEBUG Line 2: Skipped entry (no prompt field)
+2025-07-02 19:16:58,656 DEBUG Line 3: Skipped entry (no prompt field)
+2025-07-02 19:16:58,656 DEBUG Line 4: Found question from IamQueue with request_id fd962a94-92b5-40b7-8e0d-42438c5ab7bd
+2025-07-02 19:16:58,657 DEBUG Line 5: Found question from Bruno with request_id ed11524a-7438-482c-bc72-ef13a5c0febe
+2025-07-02 19:16:58,657 DEBUG Line 6: Skipped entry (no prompt field)
+2025-07-02 19:16:58,657 DEBUG Line 7: Skipped entry (no prompt field)
+2025-07-02 19:16:58,657 DEBUG Line 8: Found question from Bruno with request_id 30e67194-c4b1-4af4-a07e-ebd2bf894e02
+2025-07-02 19:16:58,657 DEBUG Line 9: Skipped entry (no prompt field)
+2025-07-02 19:16:58,657 DEBUG Line 10: Skipped entry (no prompt field)
+2025-07-02 19:16:58,657 INFO Processed 10 lines from requests_questions.log
+2025-07-02 19:16:58,657 INFO Found 4 total questions in log
+2025-07-02 19:16:58,658 INFO All nicknames found: ['IamQueue', 'IamQueue', 'Bruno', 'Bruno']
+2025-07-02 19:16:58,658 INFO Question 0: original='iamqueue' -> processed='iamqueue' vs target='bruno' | Match: False
+2025-07-02 19:16:58,659 INFO Question 0: Found 0 answers for request_id 08d424e4-f17b-4376-bae9-d805f2dcb88a
+2025-07-02 19:16:58,659 INFO Question 1: original='iamqueue' -> processed='iamqueue' vs target='bruno' | Match: False
+2025-07-02 19:16:58,660 INFO Final result: 0 user questions and 0 extra questions
+2025-07-02 19:16:58,660 INFO 127.0.0.1 - - [02/Jul/2025 19:16:58] "GET /get_answers?nickname=Bruno&extra=1 HTTP/1.1" 200 -
+2025-07-02 19:16:58,775 INFO get_answers called with raw_nick='Bruno', processed nickname='bruno'
+2025-07-02 19:16:58,776 DEBUG Line 1: Found question from IamQueue with request_id 08d424e4-f17b-4376-bae9-d805f2dcb88a
+2025-07-02 19:16:58,776 DEBUG Line 2: Skipped entry (no prompt field)
+2025-07-02 19:16:58,776 DEBUG Line 3: Skipped entry (no prompt field)
+2025-07-02 19:16:58,776 DEBUG Line 4: Found question from IamQueue with request_id fd962a94-92b5-40b7-8e0d-42438c5ab7bd
+2025-07-02 19:16:58,776 DEBUG Line 5: Found question from Bruno with request_id ed11524a-7438-482c-bc72-ef13a5c0febe
+2025-07-02 19:16:58,777 DEBUG Line 6: Skipped entry (no prompt field)
+2025-07-02 19:16:58,777 DEBUG Line 7: Skipped entry (no prompt field)
+2025-07-02 19:16:58,777 DEBUG Line 8: Found question from Bruno with request_id 30e67194-c4b1-4af4-a07e-ebd2bf894e02
+2025-07-02 19:16:58,777 DEBUG Line 9: Skipped entry (no prompt field)
+2025-07-02 19:16:58,777 DEBUG Line 10: Skipped entry (no prompt field)
+2025-07-02 19:16:58,777 INFO Processed 10 lines from requests_questions.log
+2025-07-02 19:16:58,777 INFO Found 4 total questions in log
+2025-07-02 19:16:58,777 INFO All nicknames found: ['IamQueue', 'IamQueue', 'Bruno', 'Bruno']
+2025-07-02 19:16:58,777 INFO Question 0: original='iamqueue' -> processed='iamqueue' vs target='bruno' | Match: False
+2025-07-02 19:16:58,778 INFO Question 0: Found 0 answers for request_id 08d424e4-f17b-4376-bae9-d805f2dcb88a
+2025-07-02 19:16:58,779 INFO Question 1: original='iamqueue' -> processed='iamqueue' vs target='bruno' | Match: False
+2025-07-02 19:16:58,779 INFO Final result: 0 user questions and 0 extra questions
+2025-07-02 19:16:58,780 INFO 127.0.0.1 - - [02/Jul/2025 19:16:58] "GET /get_answers?nickname=Bruno&extra=1 HTTP/1.1" 200 -
+2025-07-02 19:17:25,008 INFO 127.0.0.1 - - [02/Jul/2025 19:17:25] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 19:17:50,266 INFO  * Detected change in '/Users/nikolas/Desktop/Projects/PaperLLM/app.py', reloading
+2025-07-02 19:17:50,460 INFO  * Restarting with stat
+2025-07-02 19:17:51,745 INFO Flask app starting up - logging is working!
+2025-07-02 19:17:51,745 DEBUG Debug logging is enabled
+2025-07-02 19:17:51,833 WARNING  * Debugger is active!
+2025-07-02 19:17:51,839 INFO  * Debugger PIN: 650-005-124
+2025-07-02 19:17:58,956 INFO  * Detected change in '/Users/nikolas/Desktop/Projects/PaperLLM/app.py', reloading
+2025-07-02 19:17:59,171 INFO  * Restarting with stat
+2025-07-02 19:18:00,196 INFO Flask app starting up - logging is working!
+2025-07-02 19:18:00,197 DEBUG Debug logging is enabled
+2025-07-02 19:18:00,267 WARNING  * Debugger is active!
+2025-07-02 19:18:00,273 INFO  * Debugger PIN: 650-005-124
+2025-07-02 19:18:02,308 INFO  * Detected change in '/Users/nikolas/Desktop/Projects/PaperLLM/app.py', reloading
+2025-07-02 19:18:02,488 INFO  * Restarting with stat
+2025-07-02 19:18:03,512 INFO Flask app starting up - logging is working!
+2025-07-02 19:18:03,512 DEBUG Debug logging is enabled
+2025-07-02 19:18:03,580 WARNING  * Debugger is active!
+2025-07-02 19:18:03,585 INFO  * Debugger PIN: 650-005-124
+2025-07-02 19:18:06,609 INFO Flask app starting up - logging is working!
+2025-07-02 19:18:06,609 DEBUG Debug logging is enabled
+2025-07-02 19:18:06,680 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.138.7.248:5100
+2025-07-02 19:18:06,680 INFO [33mPress CTRL+C to quit[0m
+2025-07-02 19:18:06,681 INFO  * Restarting with stat
+2025-07-02 19:18:07,615 INFO Flask app starting up - logging is working!
+2025-07-02 19:18:07,616 DEBUG Debug logging is enabled
+2025-07-02 19:18:07,681 WARNING  * Debugger is active!
+2025-07-02 19:18:07,687 INFO  * Debugger PIN: 650-005-124
+2025-07-02 19:18:08,484 INFO 127.0.0.1 - - [02/Jul/2025 19:18:08] "GET / HTTP/1.1" 200 -
+2025-07-02 19:18:08,529 INFO 127.0.0.1 - - [02/Jul/2025 19:18:08] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 19:18:08,530 INFO 127.0.0.1 - - [02/Jul/2025 19:18:08] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 19:18:08,622 INFO 127.0.0.1 - - [02/Jul/2025 19:18:08] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 19:18:10,213 INFO get_answers called with raw_nick='Bruno', processed nickname='bruno'
+2025-07-02 19:18:10,213 DEBUG Line 1: Found question from IamQueue with request_id 08d424e4-f17b-4376-bae9-d805f2dcb88a
+2025-07-02 19:18:10,213 DEBUG Line 2: Skipped entry (no prompt field)
+2025-07-02 19:18:10,213 DEBUG Line 3: Skipped entry (no prompt field)
+2025-07-02 19:18:10,214 DEBUG Line 4: Found question from IamQueue with request_id fd962a94-92b5-40b7-8e0d-42438c5ab7bd
+2025-07-02 19:18:10,214 DEBUG Line 5: Found question from Bruno with request_id ed11524a-7438-482c-bc72-ef13a5c0febe
+2025-07-02 19:18:10,214 DEBUG Line 6: Skipped entry (no prompt field)
+2025-07-02 19:18:10,214 DEBUG Line 7: Skipped entry (no prompt field)
+2025-07-02 19:18:10,214 DEBUG Line 8: Found question from Bruno with request_id 30e67194-c4b1-4af4-a07e-ebd2bf894e02
+2025-07-02 19:18:10,214 DEBUG Line 9: Skipped entry (no prompt field)
+2025-07-02 19:18:10,214 DEBUG Line 10: Skipped entry (no prompt field)
+2025-07-02 19:18:10,214 INFO Processed 10 lines from requests_questions.log
+2025-07-02 19:18:10,214 INFO Found 4 total questions in log
+2025-07-02 19:18:10,215 INFO All nicknames found: ['IamQueue', 'IamQueue', 'Bruno', 'Bruno']
+2025-07-02 19:18:10,215 INFO Question 0: original='iamqueue' -> processed='iamqueue' vs target='bruno' | Match: False
+2025-07-02 19:18:10,216 INFO Question 0: Found 0 answers for request_id 08d424e4-f17b-4376-bae9-d805f2dcb88a
+2025-07-02 19:18:10,216 INFO Question 1: original='iamqueue' -> processed='iamqueue' vs target='bruno' | Match: False
+2025-07-02 19:18:10,217 INFO Question 1: Found 2 answers for request_id fd962a94-92b5-40b7-8e0d-42438c5ab7bd
+2025-07-02 19:18:10,217 DEBUG Added to extra questions pool: fd962a94-92b5-40b7-8e0d-42438c5ab7bd from IamQueue
+2025-07-02 19:18:10,217 INFO Question 2: original='bruno' -> processed='bruno' vs target='bruno' | Match: True
+2025-07-02 19:18:10,218 INFO Question 2: Found 2 answers for request_id ed11524a-7438-482c-bc72-ef13a5c0febe
+2025-07-02 19:18:10,219 INFO ✓ Added user question: ed11524a-7438-482c-bc72-ef13a5c0febe from Bruno
+2025-07-02 19:18:10,219 INFO Question 3: original='bruno' -> processed='bruno' vs target='bruno' | Match: True
+2025-07-02 19:18:10,220 INFO Question 3: Found 2 answers for request_id 30e67194-c4b1-4af4-a07e-ebd2bf894e02
+2025-07-02 19:18:10,220 INFO ✓ Added user question: 30e67194-c4b1-4af4-a07e-ebd2bf894e02 from Bruno
+2025-07-02 19:18:10,220 INFO Selected 1 extra questions out of 1 available
+2025-07-02 19:18:10,220 INFO Final result: 2 user questions and 1 extra questions
+2025-07-02 19:18:10,221 INFO 127.0.0.1 - - [02/Jul/2025 19:18:10] "GET /get_answers?nickname=Bruno&extra=1 HTTP/1.1" 200 -
+2025-07-02 19:18:10,229 INFO 127.0.0.1 - - [02/Jul/2025 19:18:10] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 19:18:13,291 INFO get_answers called with raw_nick='Bruno', processed nickname='bruno'
+2025-07-02 19:18:13,292 DEBUG Line 1: Found question from IamQueue with request_id 08d424e4-f17b-4376-bae9-d805f2dcb88a
+2025-07-02 19:18:13,292 DEBUG Line 2: Skipped entry (no prompt field)
+2025-07-02 19:18:13,292 DEBUG Line 3: Skipped entry (no prompt field)
+2025-07-02 19:18:13,292 DEBUG Line 4: Found question from IamQueue with request_id fd962a94-92b5-40b7-8e0d-42438c5ab7bd
+2025-07-02 19:18:13,292 DEBUG Line 5: Found question from Bruno with request_id ed11524a-7438-482c-bc72-ef13a5c0febe
+2025-07-02 19:18:13,292 DEBUG Line 6: Skipped entry (no prompt field)
+2025-07-02 19:18:13,292 DEBUG Line 7: Skipped entry (no prompt field)
+2025-07-02 19:18:13,293 DEBUG Line 8: Found question from Bruno with request_id 30e67194-c4b1-4af4-a07e-ebd2bf894e02
+2025-07-02 19:18:13,293 DEBUG Line 9: Skipped entry (no prompt field)
+2025-07-02 19:18:13,293 DEBUG Line 10: Skipped entry (no prompt field)
+2025-07-02 19:18:13,293 INFO Processed 10 lines from requests_questions.log
+2025-07-02 19:18:13,293 INFO Found 4 total questions in log
+2025-07-02 19:18:13,293 INFO All nicknames found: ['IamQueue', 'IamQueue', 'Bruno', 'Bruno']
+2025-07-02 19:18:13,293 INFO Question 0: original='iamqueue' -> processed='iamqueue' vs target='bruno' | Match: False
+2025-07-02 19:18:13,294 INFO Question 0: Found 0 answers for request_id 08d424e4-f17b-4376-bae9-d805f2dcb88a
+2025-07-02 19:18:13,295 INFO Question 1: original='iamqueue' -> processed='iamqueue' vs target='bruno' | Match: False
+2025-07-02 19:18:13,295 INFO Question 1: Found 2 answers for request_id fd962a94-92b5-40b7-8e0d-42438c5ab7bd
+2025-07-02 19:18:13,295 DEBUG Added to extra questions pool: fd962a94-92b5-40b7-8e0d-42438c5ab7bd from IamQueue
+2025-07-02 19:18:13,296 INFO Question 2: original='bruno' -> processed='bruno' vs target='bruno' | Match: True
+2025-07-02 19:18:13,296 INFO Question 2: Found 2 answers for request_id ed11524a-7438-482c-bc72-ef13a5c0febe
+2025-07-02 19:18:13,297 INFO ✓ Added user question: ed11524a-7438-482c-bc72-ef13a5c0febe from Bruno
+2025-07-02 19:18:13,297 INFO Question 3: original='bruno' -> processed='bruno' vs target='bruno' | Match: True
+2025-07-02 19:18:13,297 INFO Question 3: Found 2 answers for request_id 30e67194-c4b1-4af4-a07e-ebd2bf894e02
+2025-07-02 19:18:13,298 INFO ✓ Added user question: 30e67194-c4b1-4af4-a07e-ebd2bf894e02 from Bruno
+2025-07-02 19:18:13,298 INFO Final result: 2 user questions and 0 extra questions
+2025-07-02 19:18:13,298 INFO 127.0.0.1 - - [02/Jul/2025 19:18:13] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:18:13,305 INFO 127.0.0.1 - - [02/Jul/2025 19:18:13] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 19:18:14,042 INFO get_answers called with raw_nick='Bruno', processed nickname='bruno'
+2025-07-02 19:18:14,042 DEBUG Line 1: Found question from IamQueue with request_id 08d424e4-f17b-4376-bae9-d805f2dcb88a
+2025-07-02 19:18:14,043 DEBUG Line 2: Skipped entry (no prompt field)
+2025-07-02 19:18:14,043 DEBUG Line 3: Skipped entry (no prompt field)
+2025-07-02 19:18:14,043 DEBUG Line 4: Found question from IamQueue with request_id fd962a94-92b5-40b7-8e0d-42438c5ab7bd
+2025-07-02 19:18:14,043 DEBUG Line 5: Found question from Bruno with request_id ed11524a-7438-482c-bc72-ef13a5c0febe
+2025-07-02 19:18:14,043 DEBUG Line 6: Skipped entry (no prompt field)
+2025-07-02 19:18:14,043 DEBUG Line 7: Skipped entry (no prompt field)
+2025-07-02 19:18:14,044 DEBUG Line 8: Found question from Bruno with request_id 30e67194-c4b1-4af4-a07e-ebd2bf894e02
+2025-07-02 19:18:14,044 DEBUG Line 9: Skipped entry (no prompt field)
+2025-07-02 19:18:14,044 DEBUG Line 10: Skipped entry (no prompt field)
+2025-07-02 19:18:14,044 INFO Processed 10 lines from requests_questions.log
+2025-07-02 19:18:14,044 INFO Found 4 total questions in log
+2025-07-02 19:18:14,044 INFO All nicknames found: ['IamQueue', 'IamQueue', 'Bruno', 'Bruno']
+2025-07-02 19:18:14,044 INFO Question 0: original='iamqueue' -> processed='iamqueue' vs target='bruno' | Match: False
+2025-07-02 19:18:14,046 INFO Question 0: Found 0 answers for request_id 08d424e4-f17b-4376-bae9-d805f2dcb88a
+2025-07-02 19:18:14,046 INFO Question 1: original='iamqueue' -> processed='iamqueue' vs target='bruno' | Match: False
+2025-07-02 19:18:14,047 INFO Question 1: Found 2 answers for request_id fd962a94-92b5-40b7-8e0d-42438c5ab7bd
+2025-07-02 19:18:14,047 DEBUG Added to extra questions pool: fd962a94-92b5-40b7-8e0d-42438c5ab7bd from IamQueue
+2025-07-02 19:18:14,047 INFO Question 2: original='bruno' -> processed='bruno' vs target='bruno' | Match: True
+2025-07-02 19:18:14,048 INFO Question 2: Found 2 answers for request_id ed11524a-7438-482c-bc72-ef13a5c0febe
+2025-07-02 19:18:14,048 INFO ✓ Added user question: ed11524a-7438-482c-bc72-ef13a5c0febe from Bruno
+2025-07-02 19:18:14,048 INFO Question 3: original='bruno' -> processed='bruno' vs target='bruno' | Match: True
+2025-07-02 19:18:14,049 INFO Question 3: Found 2 answers for request_id 30e67194-c4b1-4af4-a07e-ebd2bf894e02
+2025-07-02 19:18:14,049 INFO ✓ Added user question: 30e67194-c4b1-4af4-a07e-ebd2bf894e02 from Bruno
+2025-07-02 19:18:14,049 INFO Final result: 2 user questions and 0 extra questions
+2025-07-02 19:18:14,050 INFO 127.0.0.1 - - [02/Jul/2025 19:18:14] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:18:14,058 INFO 127.0.0.1 - - [02/Jul/2025 19:18:14] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 19:18:14,208 INFO get_answers called with raw_nick='Bruno', processed nickname='bruno'
+2025-07-02 19:18:14,209 DEBUG Line 1: Found question from IamQueue with request_id 08d424e4-f17b-4376-bae9-d805f2dcb88a
+2025-07-02 19:18:14,209 DEBUG Line 2: Skipped entry (no prompt field)
+2025-07-02 19:18:14,209 DEBUG Line 3: Skipped entry (no prompt field)
+2025-07-02 19:18:14,209 DEBUG Line 4: Found question from IamQueue with request_id fd962a94-92b5-40b7-8e0d-42438c5ab7bd
+2025-07-02 19:18:14,209 DEBUG Line 5: Found question from Bruno with request_id ed11524a-7438-482c-bc72-ef13a5c0febe
+2025-07-02 19:18:14,209 DEBUG Line 6: Skipped entry (no prompt field)
+2025-07-02 19:18:14,210 DEBUG Line 7: Skipped entry (no prompt field)
+2025-07-02 19:18:14,210 DEBUG Line 8: Found question from Bruno with request_id 30e67194-c4b1-4af4-a07e-ebd2bf894e02
+2025-07-02 19:18:14,210 DEBUG Line 9: Skipped entry (no prompt field)
+2025-07-02 19:18:14,210 DEBUG Line 10: Skipped entry (no prompt field)
+2025-07-02 19:18:14,210 INFO Processed 10 lines from requests_questions.log
+2025-07-02 19:18:14,210 INFO Found 4 total questions in log
+2025-07-02 19:18:14,210 INFO All nicknames found: ['IamQueue', 'IamQueue', 'Bruno', 'Bruno']
+2025-07-02 19:18:14,210 INFO Question 0: original='iamqueue' -> processed='iamqueue' vs target='bruno' | Match: False
+2025-07-02 19:18:14,212 INFO Question 0: Found 0 answers for request_id 08d424e4-f17b-4376-bae9-d805f2dcb88a
+2025-07-02 19:18:14,212 INFO Question 1: original='iamqueue' -> processed='iamqueue' vs target='bruno' | Match: False
+2025-07-02 19:18:14,212 INFO Question 1: Found 2 answers for request_id fd962a94-92b5-40b7-8e0d-42438c5ab7bd
+2025-07-02 19:18:14,212 DEBUG Added to extra questions pool: fd962a94-92b5-40b7-8e0d-42438c5ab7bd from IamQueue
+2025-07-02 19:18:14,212 INFO Question 2: original='bruno' -> processed='bruno' vs target='bruno' | Match: True
+2025-07-02 19:18:14,213 INFO Question 2: Found 2 answers for request_id ed11524a-7438-482c-bc72-ef13a5c0febe
+2025-07-02 19:18:14,214 INFO ✓ Added user question: ed11524a-7438-482c-bc72-ef13a5c0febe from Bruno
+2025-07-02 19:18:14,214 INFO Question 3: original='bruno' -> processed='bruno' vs target='bruno' | Match: True
+2025-07-02 19:18:14,215 INFO Question 3: Found 2 answers for request_id 30e67194-c4b1-4af4-a07e-ebd2bf894e02
+2025-07-02 19:18:14,215 INFO ✓ Added user question: 30e67194-c4b1-4af4-a07e-ebd2bf894e02 from Bruno
+2025-07-02 19:18:14,215 INFO Final result: 2 user questions and 0 extra questions
+2025-07-02 19:18:14,216 INFO 127.0.0.1 - - [02/Jul/2025 19:18:14] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:18:14,223 INFO 127.0.0.1 - - [02/Jul/2025 19:18:14] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 19:18:14,341 INFO get_answers called with raw_nick='Bruno', processed nickname='bruno'
+2025-07-02 19:18:14,342 DEBUG Line 1: Found question from IamQueue with request_id 08d424e4-f17b-4376-bae9-d805f2dcb88a
+2025-07-02 19:18:14,342 DEBUG Line 2: Skipped entry (no prompt field)
+2025-07-02 19:18:14,342 DEBUG Line 3: Skipped entry (no prompt field)
+2025-07-02 19:18:14,343 DEBUG Line 4: Found question from IamQueue with request_id fd962a94-92b5-40b7-8e0d-42438c5ab7bd
+2025-07-02 19:18:14,343 DEBUG Line 5: Found question from Bruno with request_id ed11524a-7438-482c-bc72-ef13a5c0febe
+2025-07-02 19:18:14,343 DEBUG Line 6: Skipped entry (no prompt field)
+2025-07-02 19:18:14,343 DEBUG Line 7: Skipped entry (no prompt field)
+2025-07-02 19:18:14,343 DEBUG Line 8: Found question from Bruno with request_id 30e67194-c4b1-4af4-a07e-ebd2bf894e02
+2025-07-02 19:18:14,343 DEBUG Line 9: Skipped entry (no prompt field)
+2025-07-02 19:18:14,343 DEBUG Line 10: Skipped entry (no prompt field)
+2025-07-02 19:18:14,343 INFO Processed 10 lines from requests_questions.log
+2025-07-02 19:18:14,344 INFO Found 4 total questions in log
+2025-07-02 19:18:14,344 INFO All nicknames found: ['IamQueue', 'IamQueue', 'Bruno', 'Bruno']
+2025-07-02 19:18:14,344 INFO Question 0: original='iamqueue' -> processed='iamqueue' vs target='bruno' | Match: False
+2025-07-02 19:18:14,345 INFO Question 0: Found 0 answers for request_id 08d424e4-f17b-4376-bae9-d805f2dcb88a
+2025-07-02 19:18:14,345 INFO Question 1: original='iamqueue' -> processed='iamqueue' vs target='bruno' | Match: False
+2025-07-02 19:18:14,346 INFO Question 1: Found 2 answers for request_id fd962a94-92b5-40b7-8e0d-42438c5ab7bd
+2025-07-02 19:18:14,346 DEBUG Added to extra questions pool: fd962a94-92b5-40b7-8e0d-42438c5ab7bd from IamQueue
+2025-07-02 19:18:14,347 INFO Question 2: original='bruno' -> processed='bruno' vs target='bruno' | Match: True
+2025-07-02 19:18:14,347 INFO Question 2: Found 2 answers for request_id ed11524a-7438-482c-bc72-ef13a5c0febe
+2025-07-02 19:18:14,348 INFO ✓ Added user question: ed11524a-7438-482c-bc72-ef13a5c0febe from Bruno
+2025-07-02 19:18:14,348 INFO Question 3: original='bruno' -> processed='bruno' vs target='bruno' | Match: True
+2025-07-02 19:18:14,349 INFO Question 3: Found 2 answers for request_id 30e67194-c4b1-4af4-a07e-ebd2bf894e02
+2025-07-02 19:18:14,349 INFO ✓ Added user question: 30e67194-c4b1-4af4-a07e-ebd2bf894e02 from Bruno
+2025-07-02 19:18:14,349 INFO Final result: 2 user questions and 0 extra questions
+2025-07-02 19:18:14,350 INFO 127.0.0.1 - - [02/Jul/2025 19:18:14] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:18:14,357 INFO 127.0.0.1 - - [02/Jul/2025 19:18:14] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 19:18:15,277 INFO get_answers called with raw_nick='Bruno', processed nickname='bruno'
+2025-07-02 19:18:15,278 DEBUG Line 1: Found question from IamQueue with request_id 08d424e4-f17b-4376-bae9-d805f2dcb88a
+2025-07-02 19:18:15,278 DEBUG Line 2: Skipped entry (no prompt field)
+2025-07-02 19:18:15,279 DEBUG Line 3: Skipped entry (no prompt field)
+2025-07-02 19:18:15,279 DEBUG Line 4: Found question from IamQueue with request_id fd962a94-92b5-40b7-8e0d-42438c5ab7bd
+2025-07-02 19:18:15,279 DEBUG Line 5: Found question from Bruno with request_id ed11524a-7438-482c-bc72-ef13a5c0febe
+2025-07-02 19:18:15,279 DEBUG Line 6: Skipped entry (no prompt field)
+2025-07-02 19:18:15,279 DEBUG Line 7: Skipped entry (no prompt field)
+2025-07-02 19:18:15,279 DEBUG Line 8: Found question from Bruno with request_id 30e67194-c4b1-4af4-a07e-ebd2bf894e02
+2025-07-02 19:18:15,280 DEBUG Line 9: Skipped entry (no prompt field)
+2025-07-02 19:18:15,280 DEBUG Line 10: Skipped entry (no prompt field)
+2025-07-02 19:18:15,280 INFO Processed 10 lines from requests_questions.log
+2025-07-02 19:18:15,280 INFO Found 4 total questions in log
+2025-07-02 19:18:15,280 INFO All nicknames found: ['IamQueue', 'IamQueue', 'Bruno', 'Bruno']
+2025-07-02 19:18:15,280 INFO Question 0: original='iamqueue' -> processed='iamqueue' vs target='bruno' | Match: False
+2025-07-02 19:18:15,281 INFO Question 0: Found 0 answers for request_id 08d424e4-f17b-4376-bae9-d805f2dcb88a
+2025-07-02 19:18:15,281 INFO Question 1: original='iamqueue' -> processed='iamqueue' vs target='bruno' | Match: False
+2025-07-02 19:18:15,282 INFO Question 1: Found 2 answers for request_id fd962a94-92b5-40b7-8e0d-42438c5ab7bd
+2025-07-02 19:18:15,282 DEBUG Added to extra questions pool: fd962a94-92b5-40b7-8e0d-42438c5ab7bd from IamQueue
+2025-07-02 19:18:15,282 INFO Question 2: original='bruno' -> processed='bruno' vs target='bruno' | Match: True
+2025-07-02 19:18:15,283 INFO Question 2: Found 2 answers for request_id ed11524a-7438-482c-bc72-ef13a5c0febe
+2025-07-02 19:18:15,284 INFO ✓ Added user question: ed11524a-7438-482c-bc72-ef13a5c0febe from Bruno
+2025-07-02 19:18:15,284 INFO Question 3: original='bruno' -> processed='bruno' vs target='bruno' | Match: True
+2025-07-02 19:18:15,285 INFO Question 3: Found 2 answers for request_id 30e67194-c4b1-4af4-a07e-ebd2bf894e02
+2025-07-02 19:18:15,285 INFO ✓ Added user question: 30e67194-c4b1-4af4-a07e-ebd2bf894e02 from Bruno
+2025-07-02 19:18:15,285 INFO Final result: 2 user questions and 0 extra questions
+2025-07-02 19:18:15,286 INFO 127.0.0.1 - - [02/Jul/2025 19:18:15] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:18:15,294 INFO 127.0.0.1 - - [02/Jul/2025 19:18:15] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 19:18:15,445 INFO get_answers called with raw_nick='Bruno', processed nickname='bruno'
+2025-07-02 19:18:15,446 DEBUG Line 1: Found question from IamQueue with request_id 08d424e4-f17b-4376-bae9-d805f2dcb88a
+2025-07-02 19:18:15,446 DEBUG Line 2: Skipped entry (no prompt field)
+2025-07-02 19:18:15,446 DEBUG Line 3: Skipped entry (no prompt field)
+2025-07-02 19:18:15,446 DEBUG Line 4: Found question from IamQueue with request_id fd962a94-92b5-40b7-8e0d-42438c5ab7bd
+2025-07-02 19:18:15,446 DEBUG Line 5: Found question from Bruno with request_id ed11524a-7438-482c-bc72-ef13a5c0febe
+2025-07-02 19:18:15,446 DEBUG Line 6: Skipped entry (no prompt field)
+2025-07-02 19:18:15,446 DEBUG Line 7: Skipped entry (no prompt field)
+2025-07-02 19:18:15,447 DEBUG Line 8: Found question from Bruno with request_id 30e67194-c4b1-4af4-a07e-ebd2bf894e02
+2025-07-02 19:18:15,447 DEBUG Line 9: Skipped entry (no prompt field)
+2025-07-02 19:18:15,447 DEBUG Line 10: Skipped entry (no prompt field)
+2025-07-02 19:18:15,447 INFO Processed 10 lines from requests_questions.log
+2025-07-02 19:18:15,447 INFO Found 4 total questions in log
+2025-07-02 19:18:15,447 INFO All nicknames found: ['IamQueue', 'IamQueue', 'Bruno', 'Bruno']
+2025-07-02 19:18:15,447 INFO Question 0: original='iamqueue' -> processed='iamqueue' vs target='bruno' | Match: False
+2025-07-02 19:18:15,448 INFO Question 0: Found 0 answers for request_id 08d424e4-f17b-4376-bae9-d805f2dcb88a
+2025-07-02 19:18:15,448 INFO Question 1: original='iamqueue' -> processed='iamqueue' vs target='bruno' | Match: False
+2025-07-02 19:18:15,449 INFO Question 1: Found 2 answers for request_id fd962a94-92b5-40b7-8e0d-42438c5ab7bd
+2025-07-02 19:18:15,449 DEBUG Added to extra questions pool: fd962a94-92b5-40b7-8e0d-42438c5ab7bd from IamQueue
+2025-07-02 19:18:15,449 INFO Question 2: original='bruno' -> processed='bruno' vs target='bruno' | Match: True
+2025-07-02 19:18:15,450 INFO Question 2: Found 2 answers for request_id ed11524a-7438-482c-bc72-ef13a5c0febe
+2025-07-02 19:18:15,451 INFO ✓ Added user question: ed11524a-7438-482c-bc72-ef13a5c0febe from Bruno
+2025-07-02 19:18:15,451 INFO Question 3: original='bruno' -> processed='bruno' vs target='bruno' | Match: True
+2025-07-02 19:18:15,452 INFO Question 3: Found 2 answers for request_id 30e67194-c4b1-4af4-a07e-ebd2bf894e02
+2025-07-02 19:18:15,453 INFO ✓ Added user question: 30e67194-c4b1-4af4-a07e-ebd2bf894e02 from Bruno
+2025-07-02 19:18:15,453 INFO Final result: 2 user questions and 0 extra questions
+2025-07-02 19:18:15,454 INFO 127.0.0.1 - - [02/Jul/2025 19:18:15] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:18:15,461 INFO 127.0.0.1 - - [02/Jul/2025 19:18:15] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 19:18:25,118 INFO get_answers called with raw_nick='IamQueue', processed nickname='iamqueue'
+2025-07-02 19:18:25,119 DEBUG Line 1: Found question from IamQueue with request_id 08d424e4-f17b-4376-bae9-d805f2dcb88a
+2025-07-02 19:18:25,119 DEBUG Line 2: Skipped entry (no prompt field)
+2025-07-02 19:18:25,119 DEBUG Line 3: Skipped entry (no prompt field)
+2025-07-02 19:18:25,120 DEBUG Line 4: Found question from IamQueue with request_id fd962a94-92b5-40b7-8e0d-42438c5ab7bd
+2025-07-02 19:18:25,120 DEBUG Line 5: Found question from Bruno with request_id ed11524a-7438-482c-bc72-ef13a5c0febe
+2025-07-02 19:18:25,120 DEBUG Line 6: Skipped entry (no prompt field)
+2025-07-02 19:18:25,120 DEBUG Line 7: Skipped entry (no prompt field)
+2025-07-02 19:18:25,120 DEBUG Line 8: Found question from Bruno with request_id 30e67194-c4b1-4af4-a07e-ebd2bf894e02
+2025-07-02 19:18:25,121 DEBUG Line 9: Skipped entry (no prompt field)
+2025-07-02 19:18:25,121 DEBUG Line 10: Skipped entry (no prompt field)
+2025-07-02 19:18:25,121 INFO Processed 10 lines from requests_questions.log
+2025-07-02 19:18:25,121 INFO Found 4 total questions in log
+2025-07-02 19:18:25,121 INFO All nicknames found: ['IamQueue', 'IamQueue', 'Bruno', 'Bruno']
+2025-07-02 19:18:25,122 INFO Question 0: original='iamqueue' -> processed='iamqueue' vs target='iamqueue' | Match: True
+2025-07-02 19:18:25,123 INFO Question 0: Found 0 answers for request_id 08d424e4-f17b-4376-bae9-d805f2dcb88a
+2025-07-02 19:18:25,123 INFO Question 1: original='iamqueue' -> processed='iamqueue' vs target='iamqueue' | Match: True
+2025-07-02 19:18:25,124 INFO Question 1: Found 2 answers for request_id fd962a94-92b5-40b7-8e0d-42438c5ab7bd
+2025-07-02 19:18:25,124 INFO ✓ Added user question: fd962a94-92b5-40b7-8e0d-42438c5ab7bd from IamQueue
+2025-07-02 19:18:25,125 INFO Question 2: original='bruno' -> processed='bruno' vs target='iamqueue' | Match: False
+2025-07-02 19:18:25,126 INFO Question 2: Found 2 answers for request_id ed11524a-7438-482c-bc72-ef13a5c0febe
+2025-07-02 19:18:25,126 DEBUG Added to extra questions pool: ed11524a-7438-482c-bc72-ef13a5c0febe from Bruno
+2025-07-02 19:18:25,126 INFO Question 3: original='bruno' -> processed='bruno' vs target='iamqueue' | Match: False
+2025-07-02 19:18:25,128 INFO Question 3: Found 2 answers for request_id 30e67194-c4b1-4af4-a07e-ebd2bf894e02
+2025-07-02 19:18:25,128 DEBUG Added to extra questions pool: 30e67194-c4b1-4af4-a07e-ebd2bf894e02 from Bruno
+2025-07-02 19:18:25,128 INFO Final result: 1 user questions and 0 extra questions
+2025-07-02 19:18:25,129 INFO 127.0.0.1 - - [02/Jul/2025 19:18:25] "GET /get_answers?nickname=IamQueue&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:18:25,133 INFO 127.0.0.1 - - [02/Jul/2025 19:18:25] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 19:18:35,747 INFO Extracted 26112 characters from PDF
+2025-07-02 19:18:35,747 INFO Extracted 3468 words from PDF
+2025-07-02 19:18:35,752 DEBUG 
+def process_summary(self, text, prompt_prefix, model, request_id=0, display_name=1, nickname=2):
+    return 1
+
+2025-07-02 19:18:35,778 INFO 127.0.0.1 - - [02/Jul/2025 19:18:35] "[35m[1mPOST /summarize HTTP/1.1[0m" 202 -
+2025-07-02 19:18:44,611 INFO get_answers called with raw_nick='Arivederci', processed nickname='arivederci'
+2025-07-02 19:18:44,613 DEBUG Line 1: Found question from IamQueue with request_id 08d424e4-f17b-4376-bae9-d805f2dcb88a
+2025-07-02 19:18:44,613 DEBUG Line 2: Skipped entry (no prompt field)
+2025-07-02 19:18:44,613 DEBUG Line 3: Skipped entry (no prompt field)
+2025-07-02 19:18:44,613 DEBUG Line 4: Found question from IamQueue with request_id fd962a94-92b5-40b7-8e0d-42438c5ab7bd
+2025-07-02 19:18:44,614 DEBUG Line 5: Found question from Bruno with request_id ed11524a-7438-482c-bc72-ef13a5c0febe
+2025-07-02 19:18:44,614 DEBUG Line 6: Skipped entry (no prompt field)
+2025-07-02 19:18:44,614 DEBUG Line 7: Skipped entry (no prompt field)
+2025-07-02 19:18:44,615 DEBUG Line 8: Found question from Bruno with request_id 30e67194-c4b1-4af4-a07e-ebd2bf894e02
+2025-07-02 19:18:44,615 DEBUG Line 9: Skipped entry (no prompt field)
+2025-07-02 19:18:44,615 DEBUG Line 10: Skipped entry (no prompt field)
+2025-07-02 19:18:44,615 DEBUG Line 11: Found question from Arivederci with request_id 514b89f3-15bf-4f83-9d18-25be94e21056
+2025-07-02 19:18:44,616 DEBUG Line 12: Skipped entry (no prompt field)
+2025-07-02 19:18:44,616 DEBUG Line 13: Skipped entry (no prompt field)
+2025-07-02 19:18:44,616 INFO Processed 13 lines from requests_questions.log
+2025-07-02 19:18:44,616 INFO Found 5 total questions in log
+2025-07-02 19:18:44,616 INFO All nicknames found: ['IamQueue', 'IamQueue', 'Bruno', 'Bruno', 'Arivederci']
+2025-07-02 19:18:44,617 INFO Question 0: original='iamqueue' -> processed='iamqueue' vs target='arivederci' | Match: False
+2025-07-02 19:18:44,618 INFO Question 0: Found 0 answers for request_id 08d424e4-f17b-4376-bae9-d805f2dcb88a
+2025-07-02 19:18:44,618 INFO Question 1: original='iamqueue' -> processed='iamqueue' vs target='arivederci' | Match: False
+2025-07-02 19:18:44,619 INFO Question 1: Found 2 answers for request_id fd962a94-92b5-40b7-8e0d-42438c5ab7bd
+2025-07-02 19:18:44,619 DEBUG Added to extra questions pool: fd962a94-92b5-40b7-8e0d-42438c5ab7bd from IamQueue
+2025-07-02 19:18:44,619 INFO Question 2: original='bruno' -> processed='bruno' vs target='arivederci' | Match: False
+2025-07-02 19:18:44,620 INFO Question 2: Found 2 answers for request_id ed11524a-7438-482c-bc72-ef13a5c0febe
+2025-07-02 19:18:44,620 DEBUG Added to extra questions pool: ed11524a-7438-482c-bc72-ef13a5c0febe from Bruno
+2025-07-02 19:18:44,620 INFO Question 3: original='bruno' -> processed='bruno' vs target='arivederci' | Match: False
+2025-07-02 19:18:44,621 INFO Question 3: Found 2 answers for request_id 30e67194-c4b1-4af4-a07e-ebd2bf894e02
+2025-07-02 19:18:44,621 DEBUG Added to extra questions pool: 30e67194-c4b1-4af4-a07e-ebd2bf894e02 from Bruno
+2025-07-02 19:18:44,621 INFO Question 4: original='arivederci' -> processed='arivederci' vs target='arivederci' | Match: True
+2025-07-02 19:18:44,622 INFO Question 4: Found 2 answers for request_id 514b89f3-15bf-4f83-9d18-25be94e21056
+2025-07-02 19:18:44,622 INFO ✓ Added user question: 514b89f3-15bf-4f83-9d18-25be94e21056 from Arivederci
+2025-07-02 19:18:44,622 INFO Final result: 1 user questions and 0 extra questions
+2025-07-02 19:18:44,624 INFO 127.0.0.1 - - [02/Jul/2025 19:18:44] "GET /get_answers?nickname=Arivederci&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:18:44,630 INFO 127.0.0.1 - - [02/Jul/2025 19:18:44] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 19:18:45,543 INFO get_answers called with raw_nick='Arivederci', processed nickname='arivederci'
+2025-07-02 19:18:45,544 DEBUG Line 1: Found question from IamQueue with request_id 08d424e4-f17b-4376-bae9-d805f2dcb88a
+2025-07-02 19:18:45,544 DEBUG Line 2: Skipped entry (no prompt field)
+2025-07-02 19:18:45,545 DEBUG Line 3: Skipped entry (no prompt field)
+2025-07-02 19:18:45,545 DEBUG Line 4: Found question from IamQueue with request_id fd962a94-92b5-40b7-8e0d-42438c5ab7bd
+2025-07-02 19:18:45,545 DEBUG Line 5: Found question from Bruno with request_id ed11524a-7438-482c-bc72-ef13a5c0febe
+2025-07-02 19:18:45,545 DEBUG Line 6: Skipped entry (no prompt field)
+2025-07-02 19:18:45,545 DEBUG Line 7: Skipped entry (no prompt field)
+2025-07-02 19:18:45,545 DEBUG Line 8: Found question from Bruno with request_id 30e67194-c4b1-4af4-a07e-ebd2bf894e02
+2025-07-02 19:18:45,545 DEBUG Line 9: Skipped entry (no prompt field)
+2025-07-02 19:18:45,546 DEBUG Line 10: Skipped entry (no prompt field)
+2025-07-02 19:18:45,546 DEBUG Line 11: Found question from Arivederci with request_id 514b89f3-15bf-4f83-9d18-25be94e21056
+2025-07-02 19:18:45,546 DEBUG Line 12: Skipped entry (no prompt field)
+2025-07-02 19:18:45,546 DEBUG Line 13: Skipped entry (no prompt field)
+2025-07-02 19:18:45,546 INFO Processed 13 lines from requests_questions.log
+2025-07-02 19:18:45,546 INFO Found 5 total questions in log
+2025-07-02 19:18:45,546 INFO All nicknames found: ['IamQueue', 'IamQueue', 'Bruno', 'Bruno', 'Arivederci']
+2025-07-02 19:18:45,547 INFO Question 0: original='iamqueue' -> processed='iamqueue' vs target='arivederci' | Match: False
+2025-07-02 19:18:45,548 INFO Question 0: Found 0 answers for request_id 08d424e4-f17b-4376-bae9-d805f2dcb88a
+2025-07-02 19:18:45,548 INFO Question 1: original='iamqueue' -> processed='iamqueue' vs target='arivederci' | Match: False
+2025-07-02 19:18:45,548 INFO Question 1: Found 2 answers for request_id fd962a94-92b5-40b7-8e0d-42438c5ab7bd
+2025-07-02 19:18:45,549 DEBUG Added to extra questions pool: fd962a94-92b5-40b7-8e0d-42438c5ab7bd from IamQueue
+2025-07-02 19:18:45,549 INFO Question 2: original='bruno' -> processed='bruno' vs target='arivederci' | Match: False
+2025-07-02 19:18:45,549 INFO Question 2: Found 2 answers for request_id ed11524a-7438-482c-bc72-ef13a5c0febe
+2025-07-02 19:18:45,550 DEBUG Added to extra questions pool: ed11524a-7438-482c-bc72-ef13a5c0febe from Bruno
+2025-07-02 19:18:45,550 INFO Question 3: original='bruno' -> processed='bruno' vs target='arivederci' | Match: False
+2025-07-02 19:18:45,551 INFO Question 3: Found 2 answers for request_id 30e67194-c4b1-4af4-a07e-ebd2bf894e02
+2025-07-02 19:18:45,551 DEBUG Added to extra questions pool: 30e67194-c4b1-4af4-a07e-ebd2bf894e02 from Bruno
+2025-07-02 19:18:45,551 INFO Question 4: original='arivederci' -> processed='arivederci' vs target='arivederci' | Match: True
+2025-07-02 19:18:45,552 INFO Question 4: Found 2 answers for request_id 514b89f3-15bf-4f83-9d18-25be94e21056
+2025-07-02 19:18:45,552 INFO ✓ Added user question: 514b89f3-15bf-4f83-9d18-25be94e21056 from Arivederci
+2025-07-02 19:18:45,552 INFO Final result: 1 user questions and 0 extra questions
+2025-07-02 19:18:45,553 INFO 127.0.0.1 - - [02/Jul/2025 19:18:45] "GET /get_answers?nickname=Arivederci&extra=0 HTTP/1.1" 200 -
+2025-07-02 19:18:45,561 INFO 127.0.0.1 - - [02/Jul/2025 19:18:45] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 19:18:46,876 INFO get_answers called with raw_nick='Arivederci', processed nickname='arivederci'
+2025-07-02 19:18:46,877 DEBUG Line 1: Found question from IamQueue with request_id 08d424e4-f17b-4376-bae9-d805f2dcb88a
+2025-07-02 19:18:46,877 DEBUG Line 2: Skipped entry (no prompt field)
+2025-07-02 19:18:46,877 DEBUG Line 3: Skipped entry (no prompt field)
+2025-07-02 19:18:46,877 DEBUG Line 4: Found question from IamQueue with request_id fd962a94-92b5-40b7-8e0d-42438c5ab7bd
+2025-07-02 19:18:46,877 DEBUG Line 5: Found question from Bruno with request_id ed11524a-7438-482c-bc72-ef13a5c0febe
+2025-07-02 19:18:46,878 DEBUG Line 6: Skipped entry (no prompt field)
+2025-07-02 19:18:46,878 DEBUG Line 7: Skipped entry (no prompt field)
+2025-07-02 19:18:46,878 DEBUG Line 8: Found question from Bruno with request_id 30e67194-c4b1-4af4-a07e-ebd2bf894e02
+2025-07-02 19:18:46,878 DEBUG Line 9: Skipped entry (no prompt field)
+2025-07-02 19:18:46,878 DEBUG Line 10: Skipped entry (no prompt field)
+2025-07-02 19:18:46,879 DEBUG Line 11: Found question from Arivederci with request_id 514b89f3-15bf-4f83-9d18-25be94e21056
+2025-07-02 19:18:46,879 DEBUG Line 12: Skipped entry (no prompt field)
+2025-07-02 19:18:46,879 DEBUG Line 13: Skipped entry (no prompt field)
+2025-07-02 19:18:46,879 INFO Processed 13 lines from requests_questions.log
+2025-07-02 19:18:46,879 INFO Found 5 total questions in log
+2025-07-02 19:18:46,879 INFO All nicknames found: ['IamQueue', 'IamQueue', 'Bruno', 'Bruno', 'Arivederci']
+2025-07-02 19:18:46,879 INFO Question 0: original='iamqueue' -> processed='iamqueue' vs target='arivederci' | Match: False
+2025-07-02 19:18:46,880 INFO Question 0: Found 0 answers for request_id 08d424e4-f17b-4376-bae9-d805f2dcb88a
+2025-07-02 19:18:46,881 INFO Question 1: original='iamqueue' -> processed='iamqueue' vs target='arivederci' | Match: False
+2025-07-02 19:18:46,881 INFO Question 1: Found 2 answers for request_id fd962a94-92b5-40b7-8e0d-42438c5ab7bd
+2025-07-02 19:18:46,881 DEBUG Added to extra questions pool: fd962a94-92b5-40b7-8e0d-42438c5ab7bd from IamQueue
+2025-07-02 19:18:46,882 INFO Question 2: original='bruno' -> processed='bruno' vs target='arivederci' | Match: False
+2025-07-02 19:18:46,882 INFO Question 2: Found 2 answers for request_id ed11524a-7438-482c-bc72-ef13a5c0febe
+2025-07-02 19:18:46,883 DEBUG Added to extra questions pool: ed11524a-7438-482c-bc72-ef13a5c0febe from Bruno
+2025-07-02 19:18:46,883 INFO Question 3: original='bruno' -> processed='bruno' vs target='arivederci' | Match: False
+2025-07-02 19:18:46,883 INFO Question 3: Found 2 answers for request_id 30e67194-c4b1-4af4-a07e-ebd2bf894e02
+2025-07-02 19:18:46,884 DEBUG Added to extra questions pool: 30e67194-c4b1-4af4-a07e-ebd2bf894e02 from Bruno
+2025-07-02 19:18:46,884 INFO Question 4: original='arivederci' -> processed='arivederci' vs target='arivederci' | Match: True
+2025-07-02 19:18:46,884 INFO Question 4: Found 2 answers for request_id 514b89f3-15bf-4f83-9d18-25be94e21056
+2025-07-02 19:18:46,885 INFO ✓ Added user question: 514b89f3-15bf-4f83-9d18-25be94e21056 from Arivederci
+2025-07-02 19:18:46,885 INFO Selected 1 extra questions out of 3 available
+2025-07-02 19:18:46,885 INFO Final result: 1 user questions and 1 extra questions
+2025-07-02 19:18:46,886 INFO 127.0.0.1 - - [02/Jul/2025 19:18:46] "GET /get_answers?nickname=Arivederci&extra=1 HTTP/1.1" 200 -
+2025-07-02 19:18:46,893 INFO 127.0.0.1 - - [02/Jul/2025 19:18:46] "GET /available_pdfs HTTP/1.1" 200 -

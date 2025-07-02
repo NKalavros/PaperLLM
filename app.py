@@ -36,7 +36,7 @@ request_tracker = defaultdict(list)  # Tracks request_id -> task_ids
 
 # Configure logging
 logging.basicConfig(
-    level=logging.INFO,
+    level=logging.DEBUG,  # Changed from INFO to DEBUG
     format='%(asctime)s %(levelname)s %(message)s',
     handlers=[
         RotatingFileHandler('app.log', maxBytes=1024*1024*5, backupCount=5),
@@ -44,6 +44,13 @@ logging.basicConfig(
     ]
 )
 logger = logging.getLogger(__name__)
+
+# Force the logger to show debug messages
+logger.setLevel(logging.DEBUG)
+
+# Test logging on startup
+logger.info("Flask app starting up - logging is working!")
+logger.debug("Debug logging is enabled")
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -627,40 +634,57 @@ def get_answers():
     else:
         nickname = raw_nick
     nickname = nickname.lower()
+    
+    logger.info(f"get_answers called with raw_nick='{raw_nick}', processed nickname='{nickname}'")
+    
     extra = request.args.get('extra', '0')
     try:
         extra = int(extra)
     except ValueError:
         extra = 0
-    
-    logger.info(f"get_answers called with nickname={nickname}, extra={extra}")
 
     # First, get questions from file
     questions = []
     try:
         with open('requests_questions.log', 'r') as f:
+            line_count = 0
             for line in f:
+                line_count += 1
                 try:
                     entry = json.loads(line)
                     if 'prompt' in entry:  # This is a question entry
                         questions.append(entry)
-                except json.JSONDecodeError:
+                        logger.debug(f"Line {line_count}: Found question from {entry.get('nickname')} with request_id {entry.get('request_id')}")
+                    else:
+                        logger.debug(f"Line {line_count}: Skipped entry (no prompt field)")
+                except json.JSONDecodeError as e:
+                    logger.debug(f"Line {line_count}: JSON decode error: {e}")
                     continue
+            logger.info(f"Processed {line_count} lines from requests_questions.log")
     except FileNotFoundError:
         logger.warning("requests_questions.log file not found")
         return jsonify([])
+
+    logger.info(f"Found {len(questions)} total questions in log")
+    
+    # Print all found nicknames for debugging
+    found_nicknames = [q.get('nickname', 'NO_NICKNAME') for q in questions]
+    logger.info(f"All nicknames found: {found_nicknames}")
 
     # Now get answers from Redis
     user_results = []
     extra_results = []
     
-    for question in questions:
+    for i, question in enumerate(questions):
         request_id = question['request_id']
         question_nickname = question.get('nickname', '').strip().lower()
+        original_nickname = question_nickname
         
         # Strip author_ prefix from stored nickname for comparison
         if question_nickname.startswith('author_'):
             question_nickname = question_nickname[len('author_'):]
+        
+        logger.info(f"Question {i}: original='{original_nickname}' -> processed='{question_nickname}' vs target='{nickname}' | Match: {question_nickname == nickname}")
         
         model_answers = {}
 
@@ -696,8 +720,9 @@ def get_answers():
                         elif 'model_answers' in entry:
                             for m, s in entry['model_answers'].items():
                                 model_answers.setdefault(m, s)
-            if len(model_answers) >= 2:
-                break
+            # Removed the break statement here that was causing early exit
+
+        logger.info(f"Question {i}: Found {len(model_answers)} answers for request_id {request_id}")
 
         # include only if >=2 answers
         if len(model_answers) >= 2:
@@ -711,7 +736,7 @@ def get_answers():
             # Check if this question belongs to the requesting user
             if question_nickname == nickname:
                 user_results.append(item)
-                logger.debug(f"Added user question: {request_id}")
+                logger.info(f"✓ Added user question: {request_id} from {question.get('nickname')}")
             else:
                 extra_results.append(item)
                 logger.debug(f"Added to extra questions pool: {request_id} from {question.get('nickname')}")
@@ -724,6 +749,8 @@ def get_answers():
         selected_extras = random.sample(extra_results, num_to_select)
         logger.info(f"Selected {len(selected_extras)} extra questions out of {len(extra_results)} available")
     
+    logger.info(f"Final result: {len(user_results)} user questions and {len(selected_extras)} extra questions")
+    
     # Combine into two lists
     return jsonify({
         'user_questions': user_results,
@@ -733,7 +760,16 @@ def get_answers():
 @app.route('/get_questions', methods=['GET'])
 @login_required
 def get_questions():
-    nickname = request.args.get('nickname', '')
+    raw_nick = request.args.get('nickname', '').strip()
+    # strip author_ prefix if present
+    if raw_nick.startswith('author_'):
+        nickname = raw_nick[len('author_'):]
+    else:
+        nickname = raw_nick
+    nickname = nickname.lower()
+    
+    logger.info(f"get_questions called with raw_nick='{raw_nick}', processed nickname='{nickname}'")
+    
     extra = request.args.get('extra', '0')
     try:
         extra = int(extra)
@@ -744,29 +780,57 @@ def get_questions():
     # Read questions from requests_questions.log
     try:
         with open('requests_questions.log', 'r') as f:
+            line_count = 0
             for line in f:
+                line_count += 1
                 try:
                     entry = json.loads(line)
                     if 'prompt' in entry:  # Only get question entries, not answer entries
                         questions.append(entry)
-                except json.JSONDecodeError:
+                        logger.debug(f"Line {line_count}: Found question from {entry.get('nickname')} with request_id {entry.get('request_id')}")
+                    else:
+                        logger.debug(f"Line {line_count}: Skipped entry (no prompt field)")
+                except json.JSONDecodeError as e:
+                    logger.debug(f"Line {line_count}: JSON decode error: {e}")
                     continue
+            logger.info(f"Processed {line_count} lines from requests_questions.log")
     except FileNotFoundError:
+        logger.error("requests_questions.log file not found")
         questions = []
-        
-    user_questions = [
-        q for q in questions
-        if q.get('nickname','').strip().lower() == nickname.strip().lower()
-    ]
-    extra_questions = []
     
+    logger.info(f"Found {len(questions)} total questions in log")
+    
+    # Print all found nicknames for debugging
+    found_nicknames = [q.get('nickname', 'NO_NICKNAME') for q in questions]
+    logger.info(f"All nicknames found: {found_nicknames}")
+    
+    # Filter user questions with consistent nickname handling
+    user_questions = []
+    other_questions = []
+    
+    for i, q in enumerate(questions):
+        question_nickname = q.get('nickname', '').strip().lower()
+        original_nickname = question_nickname
+        
+        # Strip author_ prefix from stored nickname for comparison
+        if question_nickname.startswith('author_'):
+            question_nickname = question_nickname[len('author_'):]
+        
+        logger.info(f"Question {i}: original='{original_nickname}' -> processed='{question_nickname}' vs target='{nickname}' | Match: {question_nickname == nickname}")
+        
+        if question_nickname == nickname:
+            user_questions.append(q)
+            logger.info(f"✓ Added user question: {q.get('request_id')} from {q.get('nickname')}")
+        else:
+            other_questions.append(q)
+    
+    logger.info(f"Final result: {len(user_questions)} user questions and {len(other_questions)} other questions")
+    
+    extra_questions = []
     # Only select extra questions if explicitly requested
-    if extra > 0:
-        # Filter out questions that belong to the user
-        other_questions = [q for q in questions if q.get('nickname') != nickname]
-        if other_questions:
-            # Randomly select up to 'extra' number of questions
-            extra_questions = random.sample(other_questions, min(extra, len(other_questions)))
+    if extra > 0 and other_questions:
+        # Randomly select up to 'extra' number of questions
+        extra_questions = random.sample(other_questions, min(extra, len(other_questions)))
             
     return jsonify({
         'user_questions': user_questions,
@@ -1284,6 +1348,15 @@ def instructions():
     html = markdown.markdown(text, extensions=['fenced_code', 'tables'])
     return render_template('instructions.html', instructions_html=html)
 
+# Test endpoint to check logging
+@app.route('/test_logging')
+@login_required
+def test_logging():
+    logger.info("Test logging endpoint called")
+    logger.debug("This is a debug message")
+    logger.warning("This is a warning message")
+    logger.error("This is an error message")
+    return jsonify({"message": "Check logs for output"})
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5100)
