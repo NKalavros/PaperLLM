@@ -8972,3 +8972,23 @@ json.decoder.JSONDecodeError: Extra data: line 1 column 635 (char 634)
 2025-07-02 14:11:40,803 INFO 127.0.0.1 - - [02/Jul/2025 14:11:40] "GET /repo_status HTTP/1.1" 200 -
 2025-07-02 14:12:40,809 INFO 127.0.0.1 - - [02/Jul/2025 14:12:40] "GET /repo_status HTTP/1.1" 200 -
 2025-07-02 14:13:40,809 INFO 127.0.0.1 - - [02/Jul/2025 14:13:40] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 14:14:40,826 INFO 127.0.0.1 - - [02/Jul/2025 14:14:40] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 14:17:32,102 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.138.7.248:5100
+2025-07-02 14:17:32,102 INFO [33mPress CTRL+C to quit[0m
+2025-07-02 14:17:36,101 INFO 127.0.0.1 - - [02/Jul/2025 14:17:36] "GET / HTTP/1.1" 200 -
+2025-07-02 14:17:36,160 INFO 127.0.0.1 - - [02/Jul/2025 14:17:36] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 14:17:36,183 INFO 127.0.0.1 - - [02/Jul/2025 14:17:36] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 14:17:36,273 INFO 127.0.0.1 - - [02/Jul/2025 14:17:36] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 14:17:43,124 INFO get_answers called with nickname=iamqueue, extra=0
+2025-07-02 14:17:43,128 INFO 127.0.0.1 - - [02/Jul/2025 14:17:43] "GET /get_answers?nickname=IamQueue&extra=0 HTTP/1.1" 200 -
+2025-07-02 14:17:43,136 INFO 127.0.0.1 - - [02/Jul/2025 14:17:43] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 14:17:47,259 INFO get_answers called with nickname=bruno, extra=0
+2025-07-02 14:17:47,261 INFO 127.0.0.1 - - [02/Jul/2025 14:17:47] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 14:17:48,117 INFO get_answers called with nickname=bruno, extra=0
+2025-07-02 14:17:48,120 INFO 127.0.0.1 - - [02/Jul/2025 14:17:48] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 14:17:48,534 INFO get_answers called with nickname=bruno, extra=0
+2025-07-02 14:17:48,537 INFO 127.0.0.1 - - [02/Jul/2025 14:17:48] "GET /get_answers?nickname=Bruno&extra=0 HTTP/1.1" 200 -
+2025-07-02 14:18:36,189 INFO 127.0.0.1 - - [02/Jul/2025 14:18:36] "GET /repo_status HTTP/1.1" 200 -

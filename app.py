@@ -653,13 +653,17 @@ def get_answers():
     # Now get answers from Redis
     user_results = []
     extra_results = []
-
+    
     for question in questions:
-        qnick = question.get('nickname','').strip().lower()
         request_id = question['request_id']
+        question_nickname = question.get('nickname', '').strip().lower()
+        
+        # Strip author_ prefix from stored nickname for comparison
+        if question_nickname.startswith('author_'):
+            question_nickname = question_nickname[len('author_'):]
+        
         model_answers = {}
 
-        # load answers (Redis + fallback) into model_answers
         # 1) try Redis
         pattern = f"result:{request_id}:*"
         for key in redis_client.scan_iter(match=pattern):
@@ -695,25 +699,24 @@ def get_answers():
             if len(model_answers) >= 2:
                 break
 
-        # only include own questions in user_results
-        if qnick == nickname and len(model_answers) >= 2:
-            # own question
-            user_results.append({
+        # include only if >=2 answers
+        if len(model_answers) >= 2:
+            item = {
                 'request_id': request_id,
                 'prompt': question.get('prompt', 'No prompt available'),
                 'file': question.get('file', 'File: Unavailable'),
                 'model_answers': model_answers
-            })
-        elif qnick != nickname and extra > 0 and len(model_answers) >= 2:
-            # other users’ questions for extra pool
-            extra_results.append({
-                'request_id': request_id,
-                'prompt': question.get('prompt', 'No prompt available'),
-                'file': question.get('file', 'File: Unavailable'),
-                'model_answers': model_answers
-            })
-
-    # select random extras if requested
+            }
+            
+            # Check if this question belongs to the requesting user
+            if question_nickname == nickname:
+                user_results.append(item)
+                logger.debug(f"Added user question: {request_id}")
+            else:
+                extra_results.append(item)
+                logger.debug(f"Added to extra questions pool: {request_id} from {question.get('nickname')}")
+    
+    # If extra > 0, randomly select that many extra questions
     selected_extras = []
     if extra > 0 and extra_results:
         # Ensure we're selecting random items without repeating
@@ -1281,19 +1284,6 @@ def instructions():
     html = markdown.markdown(text, extensions=['fenced_code', 'tables'])
     return render_template('instructions.html', instructions_html=html)
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5100)
-    # choose md file based on role
-    role = current_user.id
-    fname = 'instructions_audience.md' if role == 'audience' else 'instructions_speaker.md'
-    path = os.path.join(os.path.dirname(__file__), fname)
-    try:
-        text = open(path, 'r').read()
-    except FileNotFoundError:
-        return "Instructions not found", 404
-    # convert to HTML
-    html = markdown.markdown(text, extensions=['fenced_code', 'tables'])
-    return render_template('instructions.html', instructions_html=html)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5100)
