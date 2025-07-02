@@ -668,8 +668,13 @@ def get_answers():
 
         # 2) fallback to legacy logs if still <2 answers
         if len(model_answers) < 2:
-            for logf in ('./requests_questions.log'):
+            # app.py might not run in the same directory as logs, ensure you are reading correctly
+            # by using the path of the app.py file (this file)
+            # Otherwise you can get: IsADirectoryError: [Errno 21] Is a directory: '.'
+            current_dir = os.path.dirname(os.path.abspath(__file__))
+            for logf in os.path.join(current_dir, 'requests_answers.log'):
                 if os.path.exists(logf):
+                    
                     with open(logf, 'r') as lf:
                         for line in lf:
                             try:
