@@ -254,9 +254,18 @@
 
 <body>
     <div class="container markdown-body">
-        <!-- add logout button aligned right -->
-        <div style="text-align: right; margin-bottom: 1rem;">
-            <a href="{{ url_for('auth.logout') }}"><button>Logout</button></a>
+        <!-- instructions & logout aligned left/right -->
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+            <div>
+                <a href="{{ url_for('instructions') }}">
+                    <button>Instructions</button>
+                </a>
+            </div>
+            <div>
+                <a href="{{ url_for('auth.logout') }}">
+                    <button>Logout</button>
+                </a>
+            </div>
         </div>
         <h1>Academic Talk Summarizer</h1>
         <div id="repo-status" style="margin-bottom:1rem;">
@@ -769,8 +778,8 @@
                 const model1 = panel.getAttribute('data-model1-name');
                 const model2 = panel.getAttribute('data-model2-name');
                 const preferred = panel.querySelector('.preferred-dropdown').value;
-                const quality1 = panel.querySelector(`#quality1-${reqId}`).value;
-                const quality2 = panel.querySelector(`#quality2-${reqId}`).value;
+                const q1 = panel.querySelector(`#quality1-${reqId}`).value;
+                const q2 = panel.querySelector(`#quality2-${reqId}`).value;
 
                 // Only check if request ID is present, make preferred model optional
                 if (!reqId) {
@@ -779,21 +788,17 @@
                     return;
                 }
 
-                const q1 = quality1 === '' ? null : parseInt(quality1, 10);
-                const q2 = quality2 === '' ? null : parseInt(quality2, 10);
+                const q1Parsed = q1 === '' ? null : parseInt(q1, 10);
+                const q2Parsed = q2 === '' ? null : parseInt(q2, 10);
 
                 // Only perform consistency check if preferred model is selected and both scores provided
-                if (preferred && q1 !== null && q2 !== null) {
-                    if ((preferred === 'answer1' && q1 <= q2) ||
-                        (preferred === 'answer2' && q2 <= q1)) {
-                        const highModel = (preferred === 'answer1') ? model1 : model2;
-                        const lowModel = (preferred === 'answer1') ? model2 : model1;
-                        const highScore = (preferred === 'answer1') ? q1 : q2;
-                        const lowScore = (preferred === 'answer1') ? q2 : q1;
+                if (preferred && q1 !== '' && q2 !== '') {
+                    // changed: only error when strictly lower, ties are OK
+                    if ((preferred === 'answer1' && q1Parsed < q2Parsed) ||
+                        (preferred === 'answer2' && q2Parsed < q1Parsed)) {
                         alert(
-                            `Inconsistent ratings detected!\n\nYou ranked ${highModel} as preferred but its quality ` +
-                            `score (${highScore}) is not higher than ${lowModel} (${lowScore}).\n\n` +
-                            `Please fix this inconsistency before submitting.`
+                            'Inconsistent ratings detected!\n\nThe preferred answer\'s quality score must be strictly higher than the other answer. ' +
+                            'Please correct this inconsistency before submitting.'
                         );
                         cancel = true;
                         return;
@@ -812,7 +817,7 @@
                     body: JSON.stringify({
                         request_id: reqId,
                         rankings: rankings,
-                        quality_scores: { "Model 1": q1, "Model 2": q2 },
+                        quality_scores: { "Model 1": q1Parsed, "Model 2": q2Parsed },
                         model_answers: {
                             "Model 1": panel.getAttribute('data-model1-answer'),
                             "Model 2": panel.getAttribute('data-model2-answer')

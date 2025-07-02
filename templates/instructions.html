@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Instructions</title>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown.min.css">
+    <style>
+        body {
+            background: #f0f4f8;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: transparent;
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        .markdown-body {
+            background: transparent !important;
+            color: #000 !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container markdown-body">
+        <div style="margin-bottom:1rem;">
+            <a href="{{ url_for('index') }}"><button>Back</button></a>
+        </div>
+        <div class="markdown-body">
+            {{ instructions_html|safe }}
+        </div>
+    </div>
+</body>
+
+</html>

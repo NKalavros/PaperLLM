@@ -7,6 +7,7 @@ import uuid
 import json
 import time
 import random
+import markdown #type: ignore
 from datetime import datetime
 import pymupdf4llm #type: ignore
 from celery import Celery #type: ignore
@@ -133,7 +134,7 @@ class Recipe(typing.TypedDict):
 geminimodel = genai.GenerativeModel("gemini-exp-1206")
 
 # Constants
-prompt_suffix = 'Make sure your answers are 5 sentences or less. Your answer **MUST** contain information from the provided text.'
+prompt_suffix = 'Make sure your answers are 5 sentences or less. Use the text provided alongside this prompt. Please answer the question **ONLY USING INFORMATION IN THE DOCUMENT** and not from any external sources or prior knowledge.'
 MAX_API_TIMEOUT = 45
 MAX_TEXT_LENGTH = 1200000
 API_RETRY_DELAYS = [5, 15, 45]
@@ -1256,6 +1257,21 @@ def process_pending_questions_for_pdf(pdf_filename):
         logger.info(f"Processed {processed_count} pending questions for {pdf_filename}")
     
     return processed_count
+
+@app.route('/instructions')
+@login_required
+def instructions():
+    # choose md file based on role
+    role = current_user.id
+    fname = 'instructions_audience.md' if role == 'audience' else 'instructions_speaker.md'
+    path = os.path.join(os.path.dirname(__file__), fname)
+    try:
+        text = open(path, 'r').read()
+    except FileNotFoundError:
+        return "Instructions not found", 404
+    # convert to HTML
+    html = markdown.markdown(text, extensions=['fenced_code', 'tables'])
+    return render_template('instructions.html', instructions_html=html)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5100)
