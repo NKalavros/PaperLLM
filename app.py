@@ -672,26 +672,26 @@ def get_answers():
             # by using the path of the app.py file (this file)
             # Otherwise you can get: IsADirectoryError: [Errno 21] Is a directory: '.'
             current_dir = os.path.dirname(os.path.abspath(__file__))
-            for logf in os.path.join(current_dir, 'requests_answers.log'):
-                if os.path.exists(logf):
-                    
-                    with open(logf, 'r') as lf:
-                        for line in lf:
-                            try:
-                                entry = json.loads(line)
-                            except json.JSONDecodeError:
-                                continue
-                            if entry.get('request_id') != request_id:
-                                continue
-                            # legacy summary entries in requests_questions.log
-                            if 'model' in entry and 'summary' in entry:
-                                model_answers.setdefault(entry['model'], entry['summary'])
-                            # entries in requests_answers.log.bak have 'model_answers'
-                            elif 'model_answers' in entry:
-                                for m, s in entry['model_answers'].items():
-                                    model_answers.setdefault(m, s)
-                if len(model_answers) >= 2:
-                    break
+            answers_file= os.path.join(current_dir, 'requests_answers.log')
+            if os.path.exists(answers_file):
+                
+                with open(answers_file, 'r') as lf:
+                    for line in lf:
+                        try:
+                            entry = json.loads(line)
+                        except json.JSONDecodeError:
+                            continue
+                        if entry.get('request_id') != request_id:
+                            continue
+                        # legacy summary entries in requests_questions.log
+                        if 'model' in entry and 'summary' in entry:
+                            model_answers.setdefault(entry['model'], entry['summary'])
+                        # entries in requests_answers.log.bak have 'model_answers'
+                        elif 'model_answers' in entry:
+                            for m, s in entry['model_answers'].items():
+                                model_answers.setdefault(m, s)
+            if len(model_answers) >= 2:
+                break
 
         # include only if >=2 answers
         if len(model_answers) >= 2:

@@ -8947,3 +8947,16 @@ json.decoder.JSONDecodeError: Extra data: line 1 column 635 (char 634)
 2025-07-02 13:53:40,609 INFO get_answers called with nickname=iamqueue, extra=0
 2025-07-02 13:53:40,612 INFO 127.0.0.1 - - [02/Jul/2025 13:53:40] "GET /get_answers?nickname=IamQueue&extra=0 HTTP/1.1" 200 -
 2025-07-02 13:53:40,618 INFO 127.0.0.1 - - [02/Jul/2025 13:53:40] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 14:01:34,545 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.138.7.248:5100
+2025-07-02 14:01:34,545 INFO [33mPress CTRL+C to quit[0m
+2025-07-02 14:01:40,668 INFO 127.0.0.1 - - [02/Jul/2025 14:01:40] "GET / HTTP/1.1" 200 -
+2025-07-02 14:01:40,735 INFO 127.0.0.1 - - [02/Jul/2025 14:01:40] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 14:01:40,750 INFO 127.0.0.1 - - [02/Jul/2025 14:01:40] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-07-02 14:01:40,756 INFO 127.0.0.1 - - [02/Jul/2025 14:01:40] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 14:01:40,861 INFO 127.0.0.1 - - [02/Jul/2025 14:01:40] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 14:01:44,120 INFO get_answers called with nickname=iamqueue, extra=0
+2025-07-02 14:01:44,123 INFO 127.0.0.1 - - [02/Jul/2025 14:01:44] "GET /get_answers?nickname=IamQueue&extra=0 HTTP/1.1" 200 -
+2025-07-02 14:01:44,146 INFO 127.0.0.1 - - [02/Jul/2025 14:01:44] "GET /available_pdfs HTTP/1.1" 200 -
