@@ -668,7 +668,7 @@ def get_answers():
 
         # 2) fallback to legacy logs if still <2 answers
         if len(model_answers) < 2:
-            for logf in ('requests_questions.log'):
+            for logf in ('./requests_questions.log'):
                 if os.path.exists(logf):
                     with open(logf, 'r') as lf:
                         for line in lf:
