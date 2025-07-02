@@ -8755,3 +8755,183 @@ json.decoder.JSONDecodeError: Extra data: line 1 column 635 (char 634)
 2025-07-02 11:48:01,003 INFO get_answers called with nickname=ronaldo, extra=0
 2025-07-02 11:48:01,004 INFO 127.0.0.1 - - [02/Jul/2025 11:48:01] "GET /get_answers?nickname=author_Ronaldo&extra=0 HTTP/1.1" 200 -
 2025-07-02 11:48:50,192 INFO 127.0.0.1 - - [02/Jul/2025 11:48:50] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 11:49:54,432 INFO 127.0.0.1 - - [02/Jul/2025 11:49:54] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 11:50:54,426 INFO 127.0.0.1 - - [02/Jul/2025 11:50:54] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 11:50:59,201 INFO get_answers called with nickname=ronaldo, extra=0
+2025-07-02 11:50:59,203 INFO 127.0.0.1 - - [02/Jul/2025 11:50:59] "GET /get_answers?nickname=author_Ronaldo&extra=0 HTTP/1.1" 200 -
+2025-07-02 11:50:59,641 INFO get_answers called with nickname=ronaldo, extra=0
+2025-07-02 11:50:59,642 INFO 127.0.0.1 - - [02/Jul/2025 11:50:59] "GET /get_answers?nickname=author_Ronaldo&extra=0 HTTP/1.1" 200 -
+2025-07-02 11:50:59,768 INFO get_answers called with nickname=ronaldo, extra=0
+2025-07-02 11:50:59,769 INFO 127.0.0.1 - - [02/Jul/2025 11:50:59] "GET /get_answers?nickname=author_Ronaldo&extra=0 HTTP/1.1" 200 -
+2025-07-02 11:51:54,426 INFO 127.0.0.1 - - [02/Jul/2025 11:51:54] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 11:52:54,441 INFO 127.0.0.1 - - [02/Jul/2025 11:52:54] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 11:53:10,755 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.148.173.249:5100
+2025-07-02 11:53:10,755 INFO [33mPress CTRL+C to quit[0m
+2025-07-02 11:53:13,210 INFO 127.0.0.1 - - [02/Jul/2025 11:53:13] "GET / HTTP/1.1" 200 -
+2025-07-02 11:53:13,325 INFO 127.0.0.1 - - [02/Jul/2025 11:53:13] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 11:53:13,347 INFO 127.0.0.1 - - [02/Jul/2025 11:53:13] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-07-02 11:53:13,358 INFO 127.0.0.1 - - [02/Jul/2025 11:53:13] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 11:53:13,445 INFO 127.0.0.1 - - [02/Jul/2025 11:53:13] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 11:53:17,741 INFO get_answers called with nickname=ronaldo, extra=0
+2025-07-02 11:53:17,743 INFO 127.0.0.1 - - [02/Jul/2025 11:53:17] "GET /get_answers?nickname=author_Ronaldo&extra=0 HTTP/1.1" 200 -
+2025-07-02 11:53:18,341 INFO get_answers called with nickname=ronaldo, extra=0
+2025-07-02 11:53:18,342 INFO 127.0.0.1 - - [02/Jul/2025 11:53:18] "GET /get_answers?nickname=author_Ronaldo&extra=0 HTTP/1.1" 200 -
+2025-07-02 11:53:18,594 INFO get_answers called with nickname=ronaldo, extra=0
+2025-07-02 11:53:18,595 INFO 127.0.0.1 - - [02/Jul/2025 11:53:18] "GET /get_answers?nickname=author_Ronaldo&extra=0 HTTP/1.1" 200 -
+2025-07-02 11:53:18,746 INFO get_answers called with nickname=ronaldo, extra=0
+2025-07-02 11:53:18,747 INFO 127.0.0.1 - - [02/Jul/2025 11:53:18] "GET /get_answers?nickname=author_Ronaldo&extra=0 HTTP/1.1" 200 -
+2025-07-02 11:53:18,910 INFO get_answers called with nickname=ronaldo, extra=0
+2025-07-02 11:53:18,911 INFO 127.0.0.1 - - [02/Jul/2025 11:53:18] "GET /get_answers?nickname=author_Ronaldo&extra=0 HTTP/1.1" 200 -
+2025-07-02 11:53:26,080 INFO get_answers called with nickname=ronaldo, extra=0
+2025-07-02 11:53:26,081 INFO 127.0.0.1 - - [02/Jul/2025 11:53:26] "GET /get_answers?nickname=author_Ronaldo&extra=0 HTTP/1.1" 200 -
+2025-07-02 11:53:26,242 INFO get_answers called with nickname=ronaldo, extra=0
+2025-07-02 11:53:26,243 INFO 127.0.0.1 - - [02/Jul/2025 11:53:26] "GET /get_answers?nickname=author_Ronaldo&extra=0 HTTP/1.1" 200 -
+2025-07-02 11:53:26,409 INFO get_answers called with nickname=ronaldo, extra=0
+2025-07-02 11:53:26,410 INFO 127.0.0.1 - - [02/Jul/2025 11:53:26] "GET /get_answers?nickname=author_Ronaldo&extra=0 HTTP/1.1" 200 -
+2025-07-02 11:53:40,456 INFO 127.0.0.1 - - [02/Jul/2025 11:53:40] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-07-02 11:53:40,463 INFO 127.0.0.1 - - [02/Jul/2025 11:53:40] "[32mGET / HTTP/1.1[0m" 302 -
+2025-07-02 11:53:40,469 INFO 127.0.0.1 - - [02/Jul/2025 11:53:40] "GET /login HTTP/1.1" 200 -
+2025-07-02 11:53:46,714 INFO 127.0.0.1 - - [02/Jul/2025 11:53:46] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-07-02 11:53:46,722 INFO 127.0.0.1 - - [02/Jul/2025 11:53:46] "GET / HTTP/1.1" 200 -
+2025-07-02 11:53:46,792 INFO 127.0.0.1 - - [02/Jul/2025 11:53:46] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 11:53:46,792 INFO 127.0.0.1 - - [02/Jul/2025 11:53:46] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 11:53:46,883 INFO 127.0.0.1 - - [02/Jul/2025 11:53:46] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 11:53:50,029 INFO get_answers called with nickname=ronaldo, extra=0
+2025-07-02 11:53:50,031 INFO 127.0.0.1 - - [02/Jul/2025 11:53:50] "GET /get_answers?nickname=author_ronaldo&extra=0 HTTP/1.1" 200 -
+2025-07-02 11:53:54,460 INFO 127.0.0.1 - - [02/Jul/2025 11:53:54] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 11:54:46,787 INFO 127.0.0.1 - - [02/Jul/2025 11:54:46] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 11:54:54,461 INFO 127.0.0.1 - - [02/Jul/2025 11:54:54] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 11:55:46,795 INFO 127.0.0.1 - - [02/Jul/2025 11:55:46] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 11:55:54,469 INFO 127.0.0.1 - - [02/Jul/2025 11:55:54] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 11:56:46,811 INFO 127.0.0.1 - - [02/Jul/2025 11:56:46] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 11:56:54,479 INFO 127.0.0.1 - - [02/Jul/2025 11:56:54] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 11:57:31,765 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.148.173.249:5100
+2025-07-02 11:57:31,765 INFO [33mPress CTRL+C to quit[0m
+2025-07-02 11:57:33,647 INFO 127.0.0.1 - - [02/Jul/2025 11:57:33] "GET / HTTP/1.1" 200 -
+2025-07-02 11:57:33,698 INFO 127.0.0.1 - - [02/Jul/2025 11:57:33] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 11:57:33,712 INFO 127.0.0.1 - - [02/Jul/2025 11:57:33] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 11:57:33,806 INFO 127.0.0.1 - - [02/Jul/2025 11:57:33] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 11:57:38,199 INFO get_answers called with nickname=ronaldo, extra=0
+2025-07-02 11:57:38,201 INFO 127.0.0.1 - - [02/Jul/2025 11:57:38] "GET /get_answers?nickname=ronaldo&extra=0 HTTP/1.1" 200 -
+2025-07-02 11:57:38,765 INFO get_answers called with nickname=ronaldo, extra=0
+2025-07-02 11:57:38,766 INFO 127.0.0.1 - - [02/Jul/2025 11:57:38] "GET /get_answers?nickname=ronaldo&extra=0 HTTP/1.1" 200 -
+2025-07-02 11:57:38,917 INFO get_answers called with nickname=ronaldo, extra=0
+2025-07-02 11:57:38,918 INFO 127.0.0.1 - - [02/Jul/2025 11:57:38] "GET /get_answers?nickname=ronaldo&extra=0 HTTP/1.1" 200 -
+2025-07-02 11:57:43,518 INFO get_answers called with nickname=ronaldo, extra=0
+2025-07-02 11:57:43,520 INFO 127.0.0.1 - - [02/Jul/2025 11:57:43] "GET /get_answers?nickname=Ronaldo&extra=0 HTTP/1.1" 200 -
+2025-07-02 11:57:44,066 INFO get_answers called with nickname=ronaldo, extra=0
+2025-07-02 11:57:44,068 INFO 127.0.0.1 - - [02/Jul/2025 11:57:44] "GET /get_answers?nickname=Ronaldo&extra=0 HTTP/1.1" 200 -
+2025-07-02 11:57:44,199 INFO get_answers called with nickname=ronaldo, extra=0
+2025-07-02 11:57:44,201 INFO 127.0.0.1 - - [02/Jul/2025 11:57:44] "GET /get_answers?nickname=Ronaldo&extra=0 HTTP/1.1" 200 -
+2025-07-02 11:57:48,667 INFO 127.0.0.1 - - [02/Jul/2025 11:57:48] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-07-02 11:57:48,673 INFO 127.0.0.1 - - [02/Jul/2025 11:57:48] "[32mGET / HTTP/1.1[0m" 302 -
+2025-07-02 11:57:48,686 INFO 127.0.0.1 - - [02/Jul/2025 11:57:48] "GET /login HTTP/1.1" 200 -
+2025-07-02 11:57:52,754 INFO 127.0.0.1 - - [02/Jul/2025 11:57:52] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-07-02 11:57:52,760 INFO 127.0.0.1 - - [02/Jul/2025 11:57:52] "GET / HTTP/1.1" 200 -
+2025-07-02 11:57:52,818 INFO 127.0.0.1 - - [02/Jul/2025 11:57:52] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 11:57:52,819 INFO 127.0.0.1 - - [02/Jul/2025 11:57:52] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 11:57:52,919 INFO 127.0.0.1 - - [02/Jul/2025 11:57:52] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 11:57:54,490 INFO 127.0.0.1 - - [02/Jul/2025 11:57:54] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 11:57:56,601 INFO get_answers called with nickname=ronaldo, extra=0
+2025-07-02 11:57:56,603 INFO 127.0.0.1 - - [02/Jul/2025 11:57:56] "GET /get_answers?nickname=Ronaldo&extra=0 HTTP/1.1" 200 -
+2025-07-02 11:58:25,226 INFO 127.0.0.1 - - [02/Jul/2025 11:58:25] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-07-02 11:58:25,237 INFO 127.0.0.1 - - [02/Jul/2025 11:58:25] "[32mGET / HTTP/1.1[0m" 302 -
+2025-07-02 11:58:25,242 INFO 127.0.0.1 - - [02/Jul/2025 11:58:25] "GET /login HTTP/1.1" 200 -
+2025-07-02 11:58:28,229 INFO 127.0.0.1 - - [02/Jul/2025 11:58:28] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-07-02 11:58:28,233 INFO 127.0.0.1 - - [02/Jul/2025 11:58:28] "GET / HTTP/1.1" 200 -
+2025-07-02 11:58:34,228 INFO 127.0.0.1 - - [02/Jul/2025 11:58:34] "GET /instructions HTTP/1.1" 200 -
+2025-07-02 11:58:35,191 INFO 127.0.0.1 - - [02/Jul/2025 11:58:35] "GET / HTTP/1.1" 200 -
+2025-07-02 11:58:54,495 INFO 127.0.0.1 - - [02/Jul/2025 11:58:54] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 11:59:09,190 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.148.173.249:5100
+2025-07-02 11:59:09,190 INFO [33mPress CTRL+C to quit[0m
+2025-07-02 11:59:09,591 INFO 127.0.0.1 - - [02/Jul/2025 11:59:09] "GET / HTTP/1.1" 200 -
+2025-07-02 11:59:09,629 INFO 127.0.0.1 - - [02/Jul/2025 11:59:09] "GET /speaker_talks HTTP/1.1" 200 -
+2025-07-02 11:59:09,630 INFO 127.0.0.1 - - [02/Jul/2025 11:59:09] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 11:59:11,389 INFO 127.0.0.1 - - [02/Jul/2025 11:59:11] "GET /leaderboard/speaker HTTP/1.1" 200 -
+2025-07-02 11:59:11,389 INFO 127.0.0.1 - - [02/Jul/2025 11:59:11] "GET /leaderboard HTTP/1.1" 200 -
+2025-07-02 11:59:11,389 INFO 127.0.0.1 - - [02/Jul/2025 11:59:11] "GET /leaderboard/speaker HTTP/1.1" 200 -
+2025-07-02 11:59:11,389 INFO 127.0.0.1 - - [02/Jul/2025 11:59:11] "GET /leaderboard HTTP/1.1" 200 -
+2025-07-02 11:59:12,824 INFO 127.0.0.1 - - [02/Jul/2025 11:59:12] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 11:59:19,879 INFO 127.0.0.1 - - [02/Jul/2025 11:59:19] "GET /leaderboard/speaker HTTP/1.1" 200 -
+2025-07-02 11:59:19,880 INFO 127.0.0.1 - - [02/Jul/2025 11:59:19] "GET /leaderboard HTTP/1.1" 200 -
+2025-07-02 11:59:19,886 INFO 127.0.0.1 - - [02/Jul/2025 11:59:19] "GET /leaderboard/speaker HTTP/1.1" 200 -
+2025-07-02 11:59:19,887 INFO 127.0.0.1 - - [02/Jul/2025 11:59:19] "GET /leaderboard HTTP/1.1" 200 -
+2025-07-02 11:59:24,583 INFO get_answers called with nickname=ronaldo, extra=0
+2025-07-02 11:59:24,584 INFO 127.0.0.1 - - [02/Jul/2025 11:59:24] "GET /get_answers?nickname=Ronaldo&extra=0 HTTP/1.1" 200 -
+2025-07-02 11:59:54,504 INFO 127.0.0.1 - - [02/Jul/2025 11:59:54] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 11:59:56,686 INFO get_answers called with nickname=iamqueue, extra=0
+2025-07-02 11:59:56,688 INFO 127.0.0.1 - - [02/Jul/2025 11:59:56] "GET /get_answers?nickname=IamQueue&extra=0 HTTP/1.1" 200 -
+2025-07-02 11:59:57,187 INFO get_answers called with nickname=iamqueue, extra=0
+2025-07-02 11:59:57,188 INFO 127.0.0.1 - - [02/Jul/2025 11:59:57] "GET /get_answers?nickname=IamQueue&extra=0 HTTP/1.1" 200 -
+2025-07-02 11:59:57,336 INFO get_answers called with nickname=iamqueue, extra=0
+2025-07-02 11:59:57,338 INFO 127.0.0.1 - - [02/Jul/2025 11:59:57] "GET /get_answers?nickname=IamQueue&extra=0 HTTP/1.1" 200 -
+2025-07-02 11:59:57,435 INFO get_answers called with nickname=iamqueue, extra=0
+2025-07-02 11:59:57,437 INFO 127.0.0.1 - - [02/Jul/2025 11:59:57] "GET /get_answers?nickname=IamQueue&extra=0 HTTP/1.1" 200 -
+2025-07-02 12:00:09,638 INFO 127.0.0.1 - - [02/Jul/2025 12:00:09] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 12:05:22,690 INFO 127.0.0.1 - - [02/Jul/2025 12:05:22] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 12:25:32,322 INFO 127.0.0.1 - - [02/Jul/2025 12:25:32] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 12:32:41,705 INFO 127.0.0.1 - - [02/Jul/2025 12:32:41] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 13:12:16,294 INFO 127.0.0.1 - - [02/Jul/2025 13:12:16] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 13:41:37,066 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.138.7.248:5100
+2025-07-02 13:41:37,066 INFO [33mPress CTRL+C to quit[0m
+2025-07-02 13:41:37,921 INFO 127.0.0.1 - - [02/Jul/2025 13:41:37] "GET / HTTP/1.1" 200 -
+2025-07-02 13:41:37,966 INFO 127.0.0.1 - - [02/Jul/2025 13:41:37] "GET /speaker_talks HTTP/1.1" 200 -
+2025-07-02 13:41:37,967 INFO 127.0.0.1 - - [02/Jul/2025 13:41:37] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 13:41:40,463 INFO get_answers called with nickname=iamqueue, extra=0
+2025-07-02 13:41:40,464 INFO 127.0.0.1 - - [02/Jul/2025 13:41:40] "GET /get_answers?nickname=IamQueue&extra=0 HTTP/1.1" 200 -
+2025-07-02 13:41:45,585 INFO 127.0.0.1 - - [02/Jul/2025 13:41:45] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-07-02 13:41:45,597 INFO 127.0.0.1 - - [02/Jul/2025 13:41:45] "[32mGET / HTTP/1.1[0m" 302 -
+2025-07-02 13:41:45,605 INFO 127.0.0.1 - - [02/Jul/2025 13:41:45] "GET /login HTTP/1.1" 200 -
+2025-07-02 13:41:51,432 INFO 127.0.0.1 - - [02/Jul/2025 13:41:51] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-07-02 13:41:51,439 INFO 127.0.0.1 - - [02/Jul/2025 13:41:51] "GET / HTTP/1.1" 200 -
+2025-07-02 13:41:51,493 INFO 127.0.0.1 - - [02/Jul/2025 13:41:51] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 13:41:51,508 INFO 127.0.0.1 - - [02/Jul/2025 13:41:51] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 13:41:51,608 INFO 127.0.0.1 - - [02/Jul/2025 13:41:51] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 13:42:15,425 INFO Extracted 24352 characters from PDF
+2025-07-02 13:42:15,425 INFO Extracted 3131 words from PDF
+2025-07-02 13:42:15,468 INFO 127.0.0.1 - - [02/Jul/2025 13:42:15] "[35m[1mPOST /summarize HTTP/1.1[0m" 202 -
+2025-07-02 13:42:48,013 INFO 127.0.0.1 - - [02/Jul/2025 13:42:48] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-07-02 13:42:48,022 INFO 127.0.0.1 - - [02/Jul/2025 13:42:48] "[32mGET / HTTP/1.1[0m" 302 -
+2025-07-02 13:42:48,027 INFO 127.0.0.1 - - [02/Jul/2025 13:42:48] "GET /login HTTP/1.1" 200 -
+2025-07-02 13:43:05,208 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.138.7.248:5100
+2025-07-02 13:43:05,208 INFO [33mPress CTRL+C to quit[0m
+2025-07-02 13:43:13,038 INFO 127.0.0.1 - - [02/Jul/2025 13:43:13] "[32mGET / HTTP/1.1[0m" 302 -
+2025-07-02 13:43:13,048 INFO 127.0.0.1 - - [02/Jul/2025 13:43:13] "GET /login HTTP/1.1" 200 -
+2025-07-02 13:43:16,706 INFO 127.0.0.1 - - [02/Jul/2025 13:43:16] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-07-02 13:43:16,719 INFO 127.0.0.1 - - [02/Jul/2025 13:43:16] "GET / HTTP/1.1" 200 -
+2025-07-02 13:43:16,768 INFO 127.0.0.1 - - [02/Jul/2025 13:43:16] "GET /speaker_talks HTTP/1.1" 200 -
+2025-07-02 13:43:16,769 INFO 127.0.0.1 - - [02/Jul/2025 13:43:16] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 13:43:16,779 INFO 127.0.0.1 - - [02/Jul/2025 13:43:16] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 13:43:16,872 INFO 127.0.0.1 - - [02/Jul/2025 13:43:16] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 13:43:19,844 INFO 127.0.0.1 - - [02/Jul/2025 13:43:19] "GET /leaderboard/speaker HTTP/1.1" 200 -
+2025-07-02 13:43:19,845 INFO 127.0.0.1 - - [02/Jul/2025 13:43:19] "GET /leaderboard HTTP/1.1" 200 -
+2025-07-02 13:43:19,845 INFO 127.0.0.1 - - [02/Jul/2025 13:43:19] "GET /leaderboard/speaker HTTP/1.1" 200 -
+2025-07-02 13:43:19,845 INFO 127.0.0.1 - - [02/Jul/2025 13:43:19] "GET /leaderboard HTTP/1.1" 200 -
+2025-07-02 13:43:22,263 INFO 127.0.0.1 - - [02/Jul/2025 13:43:22] "GET /speaker_questions?talk=A_community_computational_challenge_to_predict_the_activity_of_pairs_of_compounds_Gustavo_Stolovitzky_Highlights_ISMB_ECCB_2015.pdf&num=5 HTTP/1.1" 200 -
+2025-07-02 13:43:22,270 INFO 127.0.0.1 - - [02/Jul/2025 13:43:22] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 13:43:23,678 INFO 127.0.0.1 - - [02/Jul/2025 13:43:23] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-07-02 13:43:23,688 INFO 127.0.0.1 - - [02/Jul/2025 13:43:23] "[32mGET / HTTP/1.1[0m" 302 -
+2025-07-02 13:43:23,693 INFO 127.0.0.1 - - [02/Jul/2025 13:43:23] "GET /login HTTP/1.1" 200 -
+2025-07-02 13:43:27,288 INFO 127.0.0.1 - - [02/Jul/2025 13:43:27] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-07-02 13:43:27,292 INFO 127.0.0.1 - - [02/Jul/2025 13:43:27] "GET / HTTP/1.1" 200 -
+2025-07-02 13:43:27,341 INFO 127.0.0.1 - - [02/Jul/2025 13:43:27] "GET /repo_status HTTP/1.1" 200 -
+2025-07-02 13:43:27,353 INFO 127.0.0.1 - - [02/Jul/2025 13:43:27] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 13:43:27,457 INFO 127.0.0.1 - - [02/Jul/2025 13:43:27] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-02 13:43:32,379 INFO get_answers called with nickname=iamqueue, extra=0
+2025-07-02 13:43:32,382 INFO 127.0.0.1 - - [02/Jul/2025 13:43:32] "GET /get_answers?nickname=IamQueue&extra=0 HTTP/1.1" 200 -
+2025-07-02 13:43:32,388 INFO 127.0.0.1 - - [02/Jul/2025 13:43:32] "GET /available_pdfs HTTP/1.1" 200 -

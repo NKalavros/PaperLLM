@@ -272,14 +272,14 @@
             Last repo sync: <span id="last-update">--</span>
         </div>
         <div>
-            {% if username in ['gustavo', 'audience'] %}
+            {% if username in ['admin', 'audience'] %}
             <span class="tab active" id="questions-tab-btn">Audience Questions</span>
             <span class="tab" id="answers-tab-btn">LLM Answers</span>
             {% endif %}
-            {% if username in ['gustavo', 'audience', 'speaker'] %}
+            {% if username in ['admin', 'audience', 'speaker'] %}
             <span class="tab {% if username=='speaker' %}active{% endif %}" id="leaderboard-tab-btn">Leaderboard</span>
             {% endif %}
-            {% if username in ['gustavo', 'speaker'] %}
+            {% if username in ['admin', 'speaker'] %}
             <span class="tab {% if username=='speaker' %}active{% endif %}" id="speaker-tab-btn">Speaker-only
                 interface</span>
             {% endif %}
@@ -288,7 +288,7 @@
         <div id="questions-tab" class="tab-content active">
             <div class="form-section">
                 <form id="summarizeForm" method="POST" enctype="multipart/form-data" action="/summarize">
-                    {% if username == 'gustavo' %}
+                    {% if username == 'admin' %}
                     <div class="form-group">
                         <label>Source:</label>
                         <div class="radio-group">
@@ -405,7 +405,7 @@
                 </p>
             </div>
         </div>
-        {% if username in ['gustavo','speaker'] %}
+        {% if username in ['admin','speaker'] %}
         <!-- Speaker Tab -->
         <div id="speaker-tab" class="tab-content">
             <div class="form-section">
@@ -664,7 +664,6 @@
         document.getElementById('answersForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             let nickname = document.getElementById('ans-nickname').value.trim();
-            nickname = `author_${nickname}`;               // prepend author_
             const extra = parseInt(document.getElementById('extra-num').value, 10);
             document.getElementById('ratings-panels').innerHTML = '<p>Loading questions...</p>';
             document.getElementById('all-ratings-submit').classList.add('hidden');

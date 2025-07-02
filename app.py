@@ -469,8 +469,8 @@ def summarize():
         # Check if user selected an existing PDF
         selected_pdf = request.form.get('selected_pdf')
         # only Gustavo may upload new PDFs
-        if not selected_pdf and current_user.id != 'gustavo':
-            return jsonify({'error': 'Only Gustavo can upload new PDFs'}), 403
+        if not selected_pdf and current_user.id != 'admin':
+            return jsonify({'error': 'Only admin can upload new PDFs'}), 403
 
         if selected_pdf and selected_pdf != 'upload':
              # User selected an existing PDF
@@ -655,31 +655,49 @@ def get_answers():
     extra_results = []
     
     for question in questions:
-        qn = question.get('nickname','').strip().lower()
-        # match against stripped nickname
-        if qn == nickname:
-            request_id = question['request_id']
-        
-            # Get all answers for this request from Redis
-            pattern = f"result:{request_id}:*"
-            model_answers = {}
-            
-            for key in redis_client.scan_iter(match=pattern):
-                result_data = redis_client.get(key)
-                if result_data:
-                    result = json.loads(result_data)
-                    model_answers[result['model']] = result['summary']
-            
-            # Only include questions that have at least 2 answers
-            if len(model_answers) >= 2:
-                item = {
-                    'request_id': request_id,
-                    'prompt': question.get('prompt', 'No prompt available'),
-                    'file': question.get('file', 'File: Unavailable'),
-                    'model_answers': model_answers
-                }
-                user_results.append(item)
-                logger.debug(f"Added user question: {request_id}")
+        request_id = question['request_id']
+        model_answers = {}
+
+        # 1) try Redis
+        pattern = f"result:{request_id}:*"
+        for key in redis_client.scan_iter(match=pattern):
+            result_data = redis_client.get(key)
+            if result_data:
+                result = json.loads(result_data)
+                model_answers[result['model']] = result['summary']
+
+        # 2) fallback to legacy logs if still <2 answers
+        if len(model_answers) < 2:
+            for logf in ('requests_questions.log'):
+                if os.path.exists(logf):
+                    with open(logf, 'r') as lf:
+                        for line in lf:
+                            try:
+                                entry = json.loads(line)
+                            except json.JSONDecodeError:
+                                continue
+                            if entry.get('request_id') != request_id:
+                                continue
+                            # legacy summary entries in requests_questions.log
+                            if 'model' in entry and 'summary' in entry:
+                                model_answers.setdefault(entry['model'], entry['summary'])
+                            # entries in requests_answers.log.bak have 'model_answers'
+                            elif 'model_answers' in entry:
+                                for m, s in entry['model_answers'].items():
+                                    model_answers.setdefault(m, s)
+                if len(model_answers) >= 2:
+                    break
+
+        # include only if >=2 answers
+        if len(model_answers) >= 2:
+            item = {
+                'request_id': request_id,
+                'prompt': question.get('prompt', 'No prompt available'),
+                'file': question.get('file', 'File: Unavailable'),
+                'model_answers': model_answers
+            }
+            user_results.append(item)
+            logger.debug(f"Added user question: {request_id}")
         else:
             request_id = question['request_id']
         
@@ -790,7 +808,6 @@ def index():
         return redirect(url_for('auth.login'))
     return render_template('index.html', username=current_user.id)
 
-@app.route('/rankings', methods=['POST'])
 @app.route('/rankings/', methods=['POST'])
 @login_required
 def save_rankings():
@@ -800,7 +817,7 @@ def save_rankings():
     quality_scores = data.get('quality_scores', {}) # type: ignore
     model_answers = data.get('model_answers', {}) # type: ignore
     real_model_mapping = data.get('real_model_mapping', {}) # type: ignore
-    is_speaker = data.get('is_speaker', False)    # type: ignore
+    is_speaker = (current_user.id == 'speaker')    # type: ignore
     
     # Calculate real_rankings and real_quality_scores using real_model_mapping
     real_rankings = {}
