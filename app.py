@@ -141,7 +141,7 @@ class Recipe(typing.TypedDict):
 geminimodel = genai.GenerativeModel("gemini-exp-1206")
 
 # Constants
-prompt_suffix = 'Make sure your answers are 5 sentences or less. Use the text provided alongside this prompt. Please answer the question **ONLY USING INFORMATION IN THE DOCUMENT** and not from any external sources or prior knowledge.'
+prompt_suffix = 'Make sure your answers are 5 sentences or less. Use the text provided alongside this prompt. Please answer the question **ONLY USING INFORMATION IN THE DOCUMENT** and not from any external sources or prior knowledge. Please do not provide citations in your answers.'
 MAX_API_TIMEOUT = 45
 MAX_TEXT_LENGTH = 1200000
 API_RETRY_DELAYS = [5, 15, 45]

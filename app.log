@@ -11209,3 +11209,4 @@ def process_summary(self, text, prompt_prefix, model, request_id=0, display_name
 2025-07-03 10:13:23,161 INFO 127.0.0.1 - - [03/Jul/2025 10:13:23] "GET /leaderboard HTTP/1.1" 200 -
 2025-07-03 10:13:23,162 INFO Leaderboard JSON: {"models": [{"name": "OpenAI", "stats": {"Easy": {"mean": null, "sem": null}, "Hard": {"mean": 5.0, "sem": 0.71}, "All": {"mean": 5.0, "sem": 0.71}}}, {"name": "Perplexity", "stats": {"Easy": {"mean": null, "sem": null}, "Hard": {"mean": 8.0, "sem": 0.0}, "All": {"mean": 8.0, "sem": 0.0}}}], "ttest": {"Hard": {"N": 2, "p_value": 0.2, "notation": "N.S."}, "All": {"N": 2, "p_value": 0.2, "notation": "N.S."}}}
 2025-07-03 10:13:23,163 INFO 127.0.0.1 - - [03/Jul/2025 10:13:23] "GET /leaderboard HTTP/1.1" 200 -
+2025-07-03 10:14:03,381 INFO 127.0.0.1 - - [03/Jul/2025 10:14:03] "GET /repo_status HTTP/1.1" 200 -
