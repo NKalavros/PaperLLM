@@ -893,21 +893,38 @@
 
         function loadAudienceLeaderboard() {
             fetch('/leaderboard')
-                .then(r => r.json())
+                .then(r => {
+                    if (!r.ok) throw new Error(`HTTP error ${r.status}`);
+                    return r.json();
+                })
                 .then(data => {
+                    console.log('Audience leaderboard data:', data);
                     renderLeaderboard('audienceLeaderboardTable', data.models);
                     renderTTestRow('audienceLeaderboardTable', data.ttest);
                 })
-                .catch(console.error);
+                .catch(e => {
+                    console.error('Error loading audience leaderboard:', e);
+                    document.querySelector('#audienceLeaderboardTable tbody').innerHTML =
+                        `<tr><td colspan="4">Error loading leaderboard: ${e.message}</td></tr>`;
+                });
         }
+
         function loadSpeakerLeaderboard() {
             fetch('/leaderboard/speaker')
-                .then(r => r.json())
+                .then(r => {
+                    if (!r.ok) throw new Error(`HTTP error ${r.status}`);
+                    return r.json();
+                })
                 .then(data => {
+                    console.log('Speaker leaderboard data:', data);
                     renderLeaderboard('speakerLeaderboardTable', data.models);
                     renderTTestRow('speakerLeaderboardTable', data.ttest);
                 })
-                .catch(console.error);
+                .catch(e => {
+                    console.error('Error loading speaker leaderboard:', e);
+                    document.querySelector('#speakerLeaderboardTable tbody').innerHTML =
+                        `<tr><td colspan="4">Error loading leaderboard: ${e.message}</td></tr>`;
+                });
         }
 
         // Automatically fetch and populate table
@@ -919,19 +936,32 @@
                 })
                 .then(data => {
                     console.log('Loaded leaderboard data:', data);
-                    renderTable(data);
+                    renderLeaderboard('audienceLeaderboardTable', data.models);
+                    renderTTestRow('audienceLeaderboardTable', data.ttest);
                 })
                 .catch(e => {
                     console.error('Error loading leaderboard:', e);
-                    document.querySelector('#leaderboardTable tbody').innerHTML =
+                    document.querySelector('#audienceLeaderboardTable tbody').innerHTML =
                         `<tr><td colspan="4">Error loading leaderboard: ${e.message}</td></tr>`;
                 });
         }
+
         // Load on tab click
-        lbBtn.addEventListener('click', () => {
-            loadAudienceLeaderboard();
-            loadSpeakerLeaderboard();
-        });
+        if (lbBtn) {
+            lbBtn.addEventListener('click', () => {
+                lbBtn.classList.add('active');
+                questionsTabBtn?.classList.remove('active');
+                answersTabBtn?.classList.remove('active');
+                speakerTabBtn?.classList.remove('active');
+                leaderboardTab.classList.add('active');
+                questionsTab?.classList.remove('active');
+                answersTab?.classList.remove('active');
+                speakerTab?.classList.remove('active');
+                loadAudienceLeaderboard();
+                loadSpeakerLeaderboard();
+            });
+        }
+
         // Load on initial page load if leaderboard is active
         if (leaderboardTab.classList.contains('active')) {
             loadAudienceLeaderboard();

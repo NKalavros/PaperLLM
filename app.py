@@ -647,18 +647,19 @@ def get_answers():
     questions = []
     try:
         with open('requests_questions.log', 'r') as f:
-            line_count = 0
+            line_count = 0;
             for line in f:
                 line_count += 1
                 try:
                     entry = json.loads(line)
                     if 'prompt' in entry:  # This is a question entry
                         questions.append(entry)
-                        logger.debug(f"Line {line_count}: Found question from {entry.get('nickname')} with request_id {entry.get('request_id')}")
+                        #logger.debug(f"Line {line_count}: Found question from {entry.get('nickname')} with request_id {entry.get('request_id')}")
                     else:
-                        logger.debug(f"Line {line_count}: Skipped entry (no prompt field)")
+                        #logger.debug(f"Line {line_count}: Skipped entry (no prompt field)")
+                        pass
                 except json.JSONDecodeError as e:
-                    logger.debug(f"Line {line_count}: JSON decode error: {e}")
+                    #logger.debug(f"Line {line_count}: JSON decode error: {e}")
                     continue
             logger.info(f"Processed {line_count} lines from requests_questions.log")
     except FileNotFoundError:
@@ -739,7 +740,7 @@ def get_answers():
                 logger.info(f"✓ Added user question: {request_id} from {question.get('nickname')}")
             else:
                 extra_results.append(item)
-                logger.debug(f"Added to extra questions pool: {request_id} from {question.get('nickname')}")
+                #logger.debug(f"Added to extra questions pool: {request_id} from {question.get('nickname')}")
     
     # If extra > 0, randomly select that many extra questions
     selected_extras = []
@@ -787,11 +788,12 @@ def get_questions():
                     entry = json.loads(line)
                     if 'prompt' in entry:  # Only get question entries, not answer entries
                         questions.append(entry)
-                        logger.debug(f"Line {line_count}: Found question from {entry.get('nickname')} with request_id {entry.get('request_id')}")
+                        #logger.debug(f"Line {line_count}: Found question from {entry.get('nickname')} with request_id {entry.get('request_id')}")
                     else:
-                        logger.debug(f"Line {line_count}: Skipped entry (no prompt field)")
+                        #logger.debug(f"Line {line_count}: Skipped entry (no prompt field)")
+                        pass
                 except json.JSONDecodeError as e:
-                    logger.debug(f"Line {line_count}: JSON decode error: {e}")
+                    #logger.debug(f"Line {line_count}: JSON decode error: {e}")
                     continue
             logger.info(f"Processed {line_count} lines from requests_questions.log")
     except FileNotFoundError:
@@ -962,10 +964,18 @@ def leaderboard():
     diff_map = {}
     try:
         with open('requests_questions.log','r') as fq:
-            for line in fq:
-                e = json.loads(line)
-                if 'request_id' in e and 'question_difficulty' in e:
-                    diff_map[e['request_id']] = e['question_difficulty']
+            for line_num, line in enumerate(fq, 1):
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    e = json.loads(line)
+                    if 'request_id' in e and 'question_difficulty' in e:
+                        diff_map[e['request_id']] = e['question_difficulty']
+                except json.JSONDecodeError as json_err:
+                    logger.warning(f"JSON decode error in requests_questions.log line {line_num}: {json_err}")
+                    #logger.debug(f"Problematic line content: {line[:100]}...")
+                    continue
     except FileNotFoundError:
         pass
 
@@ -973,8 +983,17 @@ def leaderboard():
     agg = defaultdict(lambda: defaultdict(list))  # agg[model][difficulty]
     try:
         with open('requests_answers.log','r') as fa:
-            for line in fa:
-                e = json.loads(line)
+            for line_num, line in enumerate(fa, 1):
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    e = json.loads(line)
+                except json.JSONDecodeError as json_err:
+                    logger.warning(f"JSON decode error in requests_answers.log line {line_num}: {json_err}")
+                    #logger.debug(f"Problematic line content: {line[:100]}...")
+                    continue
+                
                 rid = e.get('request_id')
                 
                 # First try to get difficulty directly from the answer entry (new format)
@@ -983,19 +1002,20 @@ def leaderboard():
                 if diff is None:
                     diff = diff_map.get(rid, 'All')
                 
-                # Handle all formats:
-                # 1. Old format with 'summaries' containing 'real_model'
-                # 2. New format with real_quality_scores
-                # 3. Transitional format with direct model names in quality_scores
-                
                 # First try the newest format with real_quality_scores
                 if 'real_quality_scores' in e:
+                    #logger.debug(f"Processing real_quality_scores: {e['real_quality_scores']}")
                     for model, score in e.get('real_quality_scores', {}).items():
-                        # Only include valid numeric scores
-                        if score is not None and isinstance(score, (int, float)):
+                        #logger.debug(f"Checking model '{model}' with score {score}")
+                        # Only include valid numeric scores and real model names (not display names)
+                        if (score is not None and isinstance(score, (int, float)) and 
+                            model in ['openai', 'perplexity', 'claude', 'deepseek', 'llama3', 'grok2', 'gemini']):
                             agg[model][diff].append(score)
                             agg[model]['All'].append(score)
-                
+                            #logger.debug(f"Added score {score} for model {model}, difficulty {diff}")
+                        else:
+                            #logger.debug(f"Skipped model '{model}' - not in allowed list or invalid score")
+                            pass
                 # Then try the old format with summaries
                 elif 'summaries' in e:
                     for disp, info in e.get('summaries', {}).items():
@@ -1009,12 +1029,16 @@ def leaderboard():
                 # Finally try the transitional format with direct model names in quality_scores
                 else:
                     for model, score in e.get('quality_scores', {}).items():
-                        # Only include valid numeric scores and real model names
-                        if score is not None and isinstance(score, (int, float)) and not model.startswith('Model '):
+                        # Only include valid numeric scores and real model names (not Model 1/Model 2)
+                        if (score is not None and isinstance(score, (int, float)) and 
+                            not model.startswith('Model ') and 
+                            model in ['openai', 'perplexity', 'claude', 'deepseek', 'llama3', 'grok2', 'gemini']):
                             agg[model][diff].append(score)
                             agg[model]['All'].append(score)
     except FileNotFoundError:
-        pass
+        logger.warning("requests_answers.log file not found")
+
+    #logger.info(f"Final aggregated data: {dict(agg)}")
 
     # compute mean and sem
     import math
@@ -1025,7 +1049,107 @@ def leaderboard():
         m = sum(lst) / n
         var = sum((x - m) ** 2 for x in lst) / n
         sem = math.sqrt(var) / math.sqrt(n)
-        return {'mean': round(m, 2), 'sem': round(sem, 2)}
+        # Ensure no NaN or inf
+        if math.isnan(m) or math.isinf(m):
+            m = None
+        if math.isnan(sem) or math.isinf(sem):
+            sem = None
+        return {'mean': round(m, 2) if m is not None else None, 'sem': round(sem, 2) if sem is not None else None}
+
+    results = []
+    for model, diffs in agg.items():
+        results.append({
+            'name': model.replace('openai','OpenAI').replace('perplexity','Perplexity'),
+            'stats': {
+                'Easy': stats_list(diffs.get('Easy', [])),
+                'Hard': stats_list(diffs.get('Hard', [])),
+                'All': stats_list(diffs.get('All', []))
+            }
+        })
+    
+    logger.info(f"Final results being returned: {results}")
+
+    # compute t-tests per difficulty
+    from scipy.stats import ttest_ind #type: ignore
+    
+    def format_p_value(p):
+        """Format p-value with scientific notation"""
+        if p is None or math.isnan(p) or math.isinf(p):
+            return {'p_value': None, 'notation': 'N.S.'}
+        p_rounded = round(p, 2)
+        if p > 0.05:
+            return {'p_value': p_rounded, 'notation': 'N.S.'}
+        elif p > 0.01:
+            return {'p_value': p_rounded, 'notation': '*'}
+        elif p > 0.001:
+            return {'p_value': p_rounded, 'notation': '**'}
+        else:
+            return {'p_value': p_rounded, 'notation': '***'}
+    
+    ttest = {}
+    model_keys = list(agg.keys())[:2]
+    for diff in ('Easy','Hard','All'):
+        if len(model_keys)==2:
+            x = agg[model_keys[0]][diff]
+            y = agg[model_keys[1]][diff]
+            if x and y:
+                try:
+                    _, p = ttest_ind(x, y, equal_var=False)
+                except Exception:
+                    p = None
+                p_formatted = format_p_value(p)
+                ttest[diff] = {'N': min(len(x), len(y)), **p_formatted}
+    logger.info(f"Leaderboard JSON: {json.dumps({'models': results, 'ttest': ttest})}")
+    return jsonify({'models': results, 'ttest': ttest})
+
+@app.route('/leaderboard/speaker', methods=['GET'])
+@login_required
+def speaker_leaderboard():
+    # read only answers with asker_nickname starting "author_"
+    agg = defaultdict(lambda: defaultdict(list))
+    try:
+        with open('requests_answers.log','r') as fa:
+            for line_num, line in enumerate(fa, 1):
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    e = json.loads(line)
+                except json.JSONDecodeError as json_err:
+                    #logger.warning(f"JSON decode error in requests_answers.log line {line_num}: {json_err}")
+                    #logger.debug(f"Problematic line content: {line[:100]}...")
+                    continue
+                
+                asker = e.get('asker_nickname','')
+                if not asker.startswith('author_'):
+                    continue
+                
+                # same aggregation logic as /leaderboard
+                diff = e.get('question_difficulty') or 'All'
+                for model, score in e.get('real_quality_scores', {}).items():
+                    # Only include valid scores for real model names
+                    if (isinstance(score,(int,float)) and 
+                        model in ['openai', 'perplexity', 'claude', 'deepseek', 'llama3', 'grok2', 'gemini']):
+                        agg[model][diff].append(score)
+                        agg[model]['All'].append(score)
+    except FileNotFoundError:
+        logger.warning("requests_answers.log file not found for speaker leaderboard")
+
+    # compute mean and sem
+    import math
+    def stats_list(lst):
+        n = len(lst)
+        if n == 0:
+            return {'mean': None, 'sem': None}
+        m = sum(lst) / n
+        var = sum((x - m) ** 2 for x in lst) / n
+        sem = math.sqrt(var) / math.sqrt(n)
+        # Ensure no NaN or inf
+        if math.isnan(m) or math.isinf(m):
+            m = None
+        if math.isnan(sem) or math.isinf(sem):
+            sem = None
+        return {'mean': round(m, 2) if m is not None else None, 'sem': round(sem, 2) if sem is not None else None}
 
     results = []
     for model, diffs in agg.items():
@@ -1043,6 +1167,8 @@ def leaderboard():
     
     def format_p_value(p):
         """Format p-value with scientific notation"""
+        if p is None or math.isnan(p) or math.isinf(p):
+            return {'p_value': None, 'notation': 'N.S.'}
         p_rounded = round(p, 2)
         if p > 0.05:
             return {'p_value': p_rounded, 'notation': 'N.S.'}
@@ -1060,76 +1186,13 @@ def leaderboard():
             x = agg[model_keys[0]][diff]
             y = agg[model_keys[1]][diff]
             if x and y:
-                _, p = ttest_ind(x, y, equal_var=False)
+                try:
+                    _, p = ttest_ind(x, y, equal_var=False)
+                except Exception:
+                    p = None
                 p_formatted = format_p_value(p)
                 ttest[diff] = {'N': min(len(x), len(y)), **p_formatted}
-    return jsonify({'models': results, 'ttest': ttest})
-
-@app.route('/leaderboard/speaker', methods=['GET'])
-@login_required
-def speaker_leaderboard():
-    # read only answers with asker_nickname starting "author_"
-    agg = defaultdict(lambda: defaultdict(list))
-    try:
-        with open('requests_answers.log','r') as fa:
-            for line in fa:
-                e = json.loads(line)
-                asker = e.get('asker_nickname','')
-                if not asker.startswith('author_'):
-                    continue
-                # same aggregation logic as /leaderboard
-                diff = e.get('question_difficulty') or 'All'
-                for model, score in e.get('real_quality_scores', {}).items():
-                    if isinstance(score,(int,float)):
-                        agg[model][diff].append(score)
-                        agg[model]['All'].append(score)
-    except FileNotFoundError:
-        pass
-
-    import math
-    def stats_list(lst):
-        n=len(lst)
-        if n==0: return {'mean':None,'sem':None}
-        m=sum(lst)/n
-        sem=math.sqrt(sum((x-m)**2 for x in lst)/n)/math.sqrt(n)
-        return {'mean':round(m,2),'sem':round(sem,2)}
-
-    results=[]
-    for model,diffs in agg.items():
-        results.append({
-            'name': model.replace('openai','OpenAI').replace('perplexity','Perplexity'),
-            'stats': {
-                'Easy': stats_list(diffs.get('Easy',[])),
-                'Hard': stats_list(diffs.get('Hard',[])),
-                'All': stats_list(diffs.get('All',[]))
-            }
-        })
-    
-    # compute t-tests per difficulty
-    from scipy.stats import ttest_ind # type: ignore
-    
-    def format_p_value(p):
-        """Format p-value with scientific notation"""
-        p_rounded = round(p, 2)
-        if p > 0.05:
-            return {'p_value': p_rounded, 'notation': 'N.S.'}
-        elif p > 0.01:
-            return {'p_value': p_rounded, 'notation': '*'}
-        elif p > 0.001:
-            return {'p_value': p_rounded, 'notation': '**'}
-        else:
-            return {'p_value': p_rounded, 'notation': '***'}
-    
-    ttest = {}
-    model_keys = list(agg.keys())[:2]
-    for diff in ('Easy','Hard','All'):
-        if len(model_keys)==2:
-            x = agg[model_keys[0]][diff]
-            y = agg[model_keys[1]][diff]
-            if x and y:
-                _, p = ttest_ind(x, y, equal_var=False)
-                p_formatted = format_p_value(p)
-                ttest[diff] = {'N': min(len(x), len(y)), **p_formatted}
+    logger.info(f"Speaker Leaderboard JSON: {json.dumps({'models': results, 'ttest': ttest})}")
     return jsonify({'models': results, 'ttest': ttest})
 
 @app.route('/speaker_talks', methods=['GET'])
@@ -1177,17 +1240,38 @@ def speaker_questions():
     except FileNotFoundError:
         return jsonify({'questions': []})
 
-    # attach answers from Redis, only keep those with >=2
+    # attach answers from Redis, fallback to log if needed, only keep those with >=2
     results = []
     for q in qs:
         rid = q['request_id']
         pattern = f"result:{rid}:*"
         m_ans = {}
+        # 1) Try Redis
         for key in redis_client.scan_iter(match=pattern):
             data = redis_client.get(key)
             if not data: continue
             r = json.loads(data)
             m_ans[r['model']] = r['summary']
+        # 2) Fallback to requests_answers.log if <2 answers
+        if len(m_ans) < 2:
+            current_dir = os.path.dirname(os.path.abspath(__file__))
+            answers_file = os.path.join(current_dir, 'requests_answers.log')
+            if os.path.exists(answers_file):
+                with open(answers_file, 'r') as lf:
+                    for line in lf:
+                        try:
+                            entry = json.loads(line)
+                        except json.JSONDecodeError:
+                            continue
+                        if entry.get('request_id') != rid:
+                            continue
+                        # legacy summary entries
+                        if 'model' in entry and 'summary' in entry:
+                            m_ans.setdefault(entry['model'], entry['summary'])
+                        # entries with model_answers dict
+                        elif 'model_answers' in entry:
+                            for m, s in entry['model_answers'].items():
+                                m_ans.setdefault(m, s)
         if len(m_ans) >= 2:
             results.append({
                 'request_id': rid,
@@ -1332,6 +1416,9 @@ def process_pending_questions_for_pdf(pdf_filename):
         logger.info(f"Processed {processed_count} pending questions for {pdf_filename}")
     
     return processed_count
+
+
+
 
 @app.route('/instructions')
 @login_required
