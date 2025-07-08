@@ -6,3 +6,4 @@ audio_transcription_output_concurrent
 complete_transcription/
 audio_transcription_output_concurrent/
 pdf_storage
+text_cache

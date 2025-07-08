@@ -11321,3 +11321,4 @@ def process_summary(self, text, prompt_prefix, model, request_id=0, display_name
 2025-07-08 11:47:41,966 INFO Loaded 41249 characters from cache
 2025-07-08 11:47:41,967 INFO Loaded 4979 words from cache
 2025-07-08 11:47:42,011 INFO 127.0.0.1 - - [08/Jul/2025 11:47:42] "[35m[1mPOST /summarize HTTP/1.1[0m" 202 -
+2025-07-08 11:48:27,313 INFO 127.0.0.1 - - [08/Jul/2025 11:48:27] "GET /repo_status HTTP/1.1" 200 -
