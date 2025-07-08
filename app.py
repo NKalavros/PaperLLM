@@ -71,6 +71,7 @@ app.register_blueprint(auth_bp)
 app.config.update(
     UPLOAD_FOLDER=os.path.join(os.getcwd(), 'uploads'),
     PDF_STORAGE_FOLDER=os.path.join(os.getcwd(), 'pdf_storage'),
+    TEXT_CACHE_FOLDER=os.path.join(os.getcwd(), 'text_cache'),  # New cache directory
     MAX_CONTENT_LENGTH=50*1024*1024,
     CELERY_BROKER_URL=os.environ.get('CELERY_BROKER_URL', 'redis://localhost:6379/0'),
     CELERY_RESULT_BACKEND=os.environ.get('CELERY_BROKER_URL', 'redis://localhost:6379/0'),
@@ -150,6 +151,7 @@ RPM_LIMIT = 3500
 # Create upload directory and PDF storage directory
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 os.makedirs(app.config['PDF_STORAGE_FOLDER'], exist_ok=True)
+os.makedirs(app.config['TEXT_CACHE_FOLDER'], exist_ok=True)  # Create text cache directory
 
 def calculate_md5(file_path):
     """Calculate MD5 hash of a file"""
@@ -191,11 +193,45 @@ def log_request(request_id, text, prompt_prefix, summaries, question_difficulty,
         logger.error(f"Initial log failed: {str(e)}")
 
 def extract_text_from_pdf(pdf_path):
+    """
+    Extract text from PDF with caching support.
+    First checks for cached .txt file, if not found extracts and caches the result.
+    Uses MD5 hash of PDF to ensure cache validity.
+    """
     try:
+        # Generate cache file path based on PDF filename and MD5 hash
+        pdf_filename = os.path.basename(pdf_path)
+        pdf_name_without_ext = os.path.splitext(pdf_filename)[0]
+        pdf_md5 = calculate_md5(pdf_path)
+        cache_filename = f"{pdf_name_without_ext}_{pdf_md5[:8]}.txt"  # Use first 8 chars of MD5
+        cache_path = os.path.join(app.config['TEXT_CACHE_FOLDER'], cache_filename)
+        
+        # Check if cached text exists and is valid
+        if os.path.exists(cache_path):
+            logger.info(f"Using cached text for {pdf_filename}")
+            with open(cache_path, 'r', encoding='utf-8') as f:
+                text = f.read()
+            logger.info(f"Loaded {len(text)} characters from cache")
+            wordcount = len(text.split(" "))
+            logger.info(f"Loaded {wordcount} words from cache")
+            return text
+        
+        # Cache miss - extract text from PDF
+        logger.info(f"Cache miss for {pdf_filename}, extracting text from PDF")
         text = pymupdf4llm.to_markdown(pdf_path)
         logger.info(f"Extracted {len(text)} characters from PDF")
         wordcount = len(text.split(" "))
         logger.info(f"Extracted {wordcount} words from PDF")
+        
+        # Cache the extracted text for future use
+        try:
+            with open(cache_path, 'w', encoding='utf-8') as f:
+                f.write(text)
+            logger.info(f"Cached extracted text to {cache_path}")
+        except Exception as cache_error:
+            # Don't fail the main operation if caching fails
+            logger.warning(f"Failed to cache text: {str(cache_error)}")
+        
         return text
     except Exception as e:
         logger.error(f"PDF extraction failed: {str(e)}")

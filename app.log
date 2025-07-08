@@ -11210,3 +11210,114 @@ def process_summary(self, text, prompt_prefix, model, request_id=0, display_name
 2025-07-03 10:13:23,162 INFO Leaderboard JSON: {"models": [{"name": "OpenAI", "stats": {"Easy": {"mean": null, "sem": null}, "Hard": {"mean": 5.0, "sem": 0.71}, "All": {"mean": 5.0, "sem": 0.71}}}, {"name": "Perplexity", "stats": {"Easy": {"mean": null, "sem": null}, "Hard": {"mean": 8.0, "sem": 0.0}, "All": {"mean": 8.0, "sem": 0.0}}}], "ttest": {"Hard": {"N": 2, "p_value": 0.2, "notation": "N.S."}, "All": {"N": 2, "p_value": 0.2, "notation": "N.S."}}}
 2025-07-03 10:13:23,163 INFO 127.0.0.1 - - [03/Jul/2025 10:13:23] "GET /leaderboard HTTP/1.1" 200 -
 2025-07-03 10:14:03,381 INFO 127.0.0.1 - - [03/Jul/2025 10:14:03] "GET /repo_status HTTP/1.1" 200 -
+2025-07-08 11:44:41,596 INFO Flask app starting up - logging is working!
+2025-07-08 11:44:41,597 DEBUG Debug logging is enabled
+2025-07-08 11:44:41,681 DEBUG 
+def backend_cleanup():
+    return 1
+
+2025-07-08 11:44:41,682 DEBUG 
+def xstarmap(task, it):
+    return 1
+
+2025-07-08 11:44:41,682 DEBUG 
+def chord(self, header, body, partial_args=0, interval=1, countdown=2, max_retries=3, eager=4, **kwargs):
+    return 1
+
+2025-07-08 11:44:41,682 DEBUG 
+def accumulate(self, *args, **kwargs):
+    return 1
+
+2025-07-08 11:44:41,682 DEBUG 
+def chunks(task, it, n):
+    return 1
+
+2025-07-08 11:44:41,682 DEBUG 
+def update_repo():
+    return 1
+
+2025-07-08 11:44:41,682 DEBUG 
+def unlock_chord(self, group_id, callback, interval=0, max_retries=1, result=2, Result=3, GroupResult=4, result_from_tuple=5, **kwargs):
+    return 1
+
+2025-07-08 11:44:41,682 DEBUG 
+def group(self, tasks, result, group_id, partial_args, add_to_parent=0):
+    return 1
+
+2025-07-08 11:44:41,682 DEBUG 
+def process_summary(self, text, prompt_prefix, model, request_id=0, display_name=1, nickname=2):
+    return 1
+
+2025-07-08 11:44:41,683 DEBUG 
+def xmap(task, it):
+    return 1
+
+2025-07-08 11:44:41,683 DEBUG 
+def chain(*args, **kwargs):
+    return 1
+
+2025-07-08 11:44:52,001 INFO Flask app starting up - logging is working!
+2025-07-08 11:44:52,001 DEBUG Debug logging is enabled
+2025-07-08 11:44:52,073 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.128.221.43:5100
+2025-07-08 11:44:52,073 INFO [33mPress CTRL+C to quit[0m
+2025-07-08 11:45:27,063 INFO 127.0.0.1 - - [08/Jul/2025 11:45:27] "GET / HTTP/1.1" 200 -
+2025-07-08 11:45:27,168 INFO 127.0.0.1 - - [08/Jul/2025 11:45:27] "GET /speaker_talks HTTP/1.1" 200 -
+2025-07-08 11:45:27,170 INFO 127.0.0.1 - - [08/Jul/2025 11:45:27] "GET /repo_status HTTP/1.1" 200 -
+2025-07-08 11:45:27,191 INFO 127.0.0.1 - - [08/Jul/2025 11:45:27] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-08 11:45:27,201 INFO 127.0.0.1 - - [08/Jul/2025 11:45:27] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-07-08 11:45:27,283 INFO 127.0.0.1 - - [08/Jul/2025 11:45:27] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-08 11:45:34,230 INFO Flask app starting up - logging is working!
+2025-07-08 11:45:34,230 DEBUG Debug logging is enabled
+2025-07-08 11:45:34,299 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.128.221.43:5100
+2025-07-08 11:45:34,300 INFO [33mPress CTRL+C to quit[0m
+2025-07-08 11:45:36,113 INFO 127.0.0.1 - - [08/Jul/2025 11:45:36] "GET / HTTP/1.1" 200 -
+2025-07-08 11:45:36,153 INFO 127.0.0.1 - - [08/Jul/2025 11:45:36] "GET /speaker_talks HTTP/1.1" 200 -
+2025-07-08 11:45:36,154 INFO 127.0.0.1 - - [08/Jul/2025 11:45:36] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-08 11:45:36,155 INFO 127.0.0.1 - - [08/Jul/2025 11:45:36] "GET /repo_status HTTP/1.1" 200 -
+2025-07-08 11:45:36,259 INFO 127.0.0.1 - - [08/Jul/2025 11:45:36] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-08 11:45:40,853 INFO 127.0.0.1 - - [08/Jul/2025 11:45:40] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-07-08 11:45:40,857 INFO 127.0.0.1 - - [08/Jul/2025 11:45:40] "[32mGET / HTTP/1.1[0m" 302 -
+2025-07-08 11:45:40,865 INFO 127.0.0.1 - - [08/Jul/2025 11:45:40] "GET /login HTTP/1.1" 200 -
+2025-07-08 11:45:42,194 INFO 127.0.0.1 - - [08/Jul/2025 11:45:42] "[31m[1mPOST /login HTTP/1.1[0m" 401 -
+2025-07-08 11:45:45,865 INFO 127.0.0.1 - - [08/Jul/2025 11:45:45] "[31m[1mPOST /login HTTP/1.1[0m" 401 -
+2025-07-08 11:45:47,591 INFO 127.0.0.1 - - [08/Jul/2025 11:45:47] "[32mGET / HTTP/1.1[0m" 302 -
+2025-07-08 11:45:47,596 INFO 127.0.0.1 - - [08/Jul/2025 11:45:47] "GET /login HTTP/1.1" 200 -
+2025-07-08 11:45:50,391 INFO 127.0.0.1 - - [08/Jul/2025 11:45:50] "[31m[1mPOST /login HTTP/1.1[0m" 401 -
+2025-07-08 11:45:55,635 INFO 127.0.0.1 - - [08/Jul/2025 11:45:55] "[31m[1mPOST /login HTTP/1.1[0m" 401 -
+2025-07-08 11:46:16,181 INFO 127.0.0.1 - - [08/Jul/2025 11:46:16] "[31m[1mPOST /login HTTP/1.1[0m" 401 -
+2025-07-08 11:46:17,623 INFO 127.0.0.1 - - [08/Jul/2025 11:46:17] "[32mGET / HTTP/1.1[0m" 302 -
+2025-07-08 11:46:17,626 INFO 127.0.0.1 - - [08/Jul/2025 11:46:17] "GET /login HTTP/1.1" 200 -
+2025-07-08 11:46:19,155 INFO 127.0.0.1 - - [08/Jul/2025 11:46:19] "[31m[1mPOST /login HTTP/1.1[0m" 401 -
+2025-07-08 11:46:23,105 INFO 127.0.0.1 - - [08/Jul/2025 11:46:23] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-07-08 11:46:23,111 INFO 127.0.0.1 - - [08/Jul/2025 11:46:23] "GET / HTTP/1.1" 200 -
+2025-07-08 11:46:23,170 INFO 127.0.0.1 - - [08/Jul/2025 11:46:23] "GET /repo_status HTTP/1.1" 200 -
+2025-07-08 11:46:23,171 INFO 127.0.0.1 - - [08/Jul/2025 11:46:23] "GET /speaker_talks HTTP/1.1" 200 -
+2025-07-08 11:46:26,780 INFO 127.0.0.1 - - [08/Jul/2025 11:46:26] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-08 11:46:52,470 INFO New PDF stored: Talk1.pdf
+2025-07-08 11:46:52,484 INFO Cache miss for Talk1.pdf, extracting text from PDF
+2025-07-08 11:46:58,422 INFO Extracted 41249 characters from PDF
+2025-07-08 11:46:58,422 INFO Extracted 4979 words from PDF
+2025-07-08 11:46:58,422 INFO Cached extracted text to /Users/nikolas/Desktop/Projects/PaperLLM/text_cache/Talk1_cde1c968.txt
+2025-07-08 11:46:58,426 DEBUG 
+def process_summary(self, text, prompt_prefix, model, request_id=0, display_name=1, nickname=2):
+    return 1
+
+2025-07-08 11:46:58,464 INFO 127.0.0.1 - - [08/Jul/2025 11:46:58] "[35m[1mPOST /summarize HTTP/1.1[0m" 202 -
+2025-07-08 11:47:17,219 INFO 127.0.0.1 - - [08/Jul/2025 11:47:17] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-07-08 11:47:17,231 INFO 127.0.0.1 - - [08/Jul/2025 11:47:17] "[32mGET / HTTP/1.1[0m" 302 -
+2025-07-08 11:47:17,236 INFO 127.0.0.1 - - [08/Jul/2025 11:47:17] "GET /login HTTP/1.1" 200 -
+2025-07-08 11:47:25,520 INFO 127.0.0.1 - - [08/Jul/2025 11:47:25] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-07-08 11:47:25,526 INFO 127.0.0.1 - - [08/Jul/2025 11:47:25] "GET / HTTP/1.1" 200 -
+2025-07-08 11:47:25,603 INFO 127.0.0.1 - - [08/Jul/2025 11:47:25] "GET /repo_status HTTP/1.1" 200 -
+2025-07-08 11:47:25,603 INFO 127.0.0.1 - - [08/Jul/2025 11:47:25] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-08 11:47:25,690 INFO 127.0.0.1 - - [08/Jul/2025 11:47:25] "GET /available_pdfs HTTP/1.1" 200 -
+2025-07-08 11:47:41,965 INFO Using cached text for Talk1.pdf
+2025-07-08 11:47:41,966 INFO Loaded 41249 characters from cache
+2025-07-08 11:47:41,967 INFO Loaded 4979 words from cache
+2025-07-08 11:47:42,011 INFO 127.0.0.1 - - [08/Jul/2025 11:47:42] "[35m[1mPOST /summarize HTTP/1.1[0m" 202 -
