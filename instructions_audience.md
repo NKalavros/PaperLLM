@@ -15,7 +15,7 @@ Use password: audiencepass
 2. **Enter your question** (Default Example: "Summarize the following talks key findings within 5 lines")
 3. **Select difficulty of your question**: Easy (basic) or Hard (complex analysis)
 4. **Enter your nickname** (use consistently - you'll need it later)
-5. **Submit** - AI answers generate in 30-60 seconds after talk is uploaded
+5. **Submit** - AI answers generate in 30-60 seconds after talk is uploaded from OPenAI and Perplexity
 
 ### Step 2: Rate AI Answers (LLM Answers Tab)
 
@@ -31,11 +31,3 @@ Use password: audiencepass
 
 - **Audience Leaderboard**: Shows ratings from all audience members in real time, as questions come in.
 - **Speaker Leaderboard**: Shows ratings from the speaker only (ground truth)
-
-## Tips
-
-- Ask specific questions about content the speaker mentioned
-- Use the same nickname consistently
-- Both preference selection and quality scoring are optional but your answers will not be scored unless you complete them
-- Answers typically generate in 30-60 seconds after talk upload (approximately one-two minutes after talk end)
-- Two LLMs (currently OpenAI and Perplexity models) will answer your question

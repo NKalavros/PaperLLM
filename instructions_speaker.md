@@ -25,9 +25,7 @@ As a speaker, you evaluate how well AI models understood your talk. Your expert 
 - Focus on technical accuracy when rating
 - Consider whether the AI captured nuanced points from your talk
 - Rate based on how well you'd want this summary to represent your work
-- Even rating a subset of questions is valuable
-   - They contribute to the separate "Speaker Leaderboard"
-   - The system flags these as speaker evaluations using the `is_speaker` parameter
+- Even rating a subset of questions is valuable, they contribute to the separate "Speaker Leaderboard"
 
 ### Why Speaker Ratings Matter
 
