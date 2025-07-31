@@ -9,3 +9,7 @@ pdf_storage
 text_cache
 *.mp3
 *.wav
+*pdf
+*txt
+Talk*
+*_talk
