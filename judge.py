@@ -347,6 +347,21 @@ def main():
     import random
     results = {}
     rids = list(questions.keys())
+    output_file = f'judge_results_{args.model}.log'
+    existing_ids = set()
+    if os.path.exists(output_file):
+        with open(output_file, 'r') as outf:
+            for line in outf:
+                try:
+                    entry = json.loads(line)
+                    if 'request_id' in entry:
+                        existing_ids.add(entry['request_id'])
+                except Exception:
+                    continue
+        print(f"Loaded {len(existing_ids)} existing request_ids from {output_file}. Will skip these.")
+
+    # Filter rids to only those not already in output file
+    rids = [rid for rid in rids if rid not in existing_ids]
     if args.test:
         # Pick one random question id
         if not rids:
