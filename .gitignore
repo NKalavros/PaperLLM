@@ -7,3 +7,5 @@ complete_transcription/
 audio_transcription_output_concurrent/
 pdf_storage
 text_cache
+.mp3
+.wav
