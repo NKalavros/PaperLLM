@@ -1,10 +1,15 @@
-# Fetch speaker (author) scores by model from requests_answers.log
+import os
+import json
+from collections import defaultdict
+import matplotlib.pyplot as plt
+from dotenv import load_dotenv
+import pandas as pd
+
 def fetch_speaker_by_model(log_path='requests_answers.log'):
-    # Returns: data[model][difficulty] = list of scores
-    data = defaultdict(lambda: defaultdict(list))
-    speaker_ids = set()
+    # Returns: list of dicts with keys: request_id, model, difficulty, score
+    records = []
     if not os.path.exists(log_path):
-        return data, speaker_ids
+        return records
     with open(log_path, 'r') as f:
         for line in f:
             try:
@@ -12,35 +17,28 @@ def fetch_speaker_by_model(log_path='requests_answers.log'):
                 asker = e.get('asker_nickname', '')
                 if 'author' in asker.lower():
                     qs = e.get('real_quality_scores') or e.get('quality_scores', {})
-                    model_keys = set(qs.keys())
-                    if model_keys == {"Model 1", "Model 2"}:
-                        continue  # skip entries with only Model 1/2
+                    if set(qs.keys()) == {"Model 1", "Model 2"}:
+                        continue
                     if len(qs) < 2:
-                        continue  # skip entries with only one model
+                        continue
                     difficulty = e.get('question_difficulty', 'All')
+                    reqid = e.get('request_id')
                     for m, v in qs.items():
                         if isinstance(v, (int, float)):
-                            data[m]['All'].append(v)
-                            data[m][difficulty].append(v)
-                    speaker_ids.add(e.get('request_id'))
-            except json.JSONDecodeError:
+                            records.append({
+                                'request_id': reqid,
+                                'model': m,
+                                'difficulty': difficulty,
+                                'score': v
+                            })
+            except Exception:
                 continue
-    return data, speaker_ids
-import os
-import json
-from collections import defaultdict
-import numpy as np
-import matplotlib.pyplot as plt
-from dotenv import load_dotenv
-from scipy.stats import ttest_ind
+    return records
 
-# fetch LLM‐judge scores by model from all judge_results_{model}.log files
 def fetch_llm_by_model(qa_log_path='requests_answers.log'):
-    # Returns: data[model][difficulty] = list of scores
-    data = defaultdict(lambda: defaultdict(list))
-    
-    # Build request_id -> difficulty map from requests_answers.log
+    records = []
     reqid_to_diff = {}
+    reqid_to_model_order = {}
     if os.path.exists(qa_log_path):
         with open(qa_log_path, 'r') as f:
             for line in f:
@@ -48,42 +46,48 @@ def fetch_llm_by_model(qa_log_path='requests_answers.log'):
                     e = json.loads(line)
                     reqid = e.get('request_id')
                     diff = e.get('question_difficulty', 'All')
+                    model_order = None
+                    if 'real_rankings' in e and isinstance(e['real_rankings'], dict):
+                        model_order = [k for k, v in sorted(e['real_rankings'].items(), key=lambda x: x[1])]
+                    elif 'real_quality_scores' in e and isinstance(e['real_quality_scores'], dict):
+                        model_order = [k for k, v in sorted(e['real_quality_scores'].items(), key=lambda x: -x[1])]
+                    elif 'quality_scores' in e and isinstance(e['quality_scores'], dict):
+                        model_order = list(e['quality_scores'].keys())
                     if reqid:
                         reqid_to_diff[reqid] = diff
+                        if model_order and len(model_order) == 2:
+                            reqid_to_model_order[reqid] = model_order
                 except Exception:
                     continue
-    
-    # Check for judge results files for each model
-    judge_models = ['perplexity', 'gemini', 'claude', 'openai', 'deepseek', 'grok']
-    
-    for judge_model in judge_models:
-        log_path = f'judge_results_{judge_model}.log'
-        if not os.path.exists(log_path):
-            continue
-            
+    import glob
+    log_files = glob.glob('judge_results_*.log')
+    for log_path in log_files:
+        base = os.path.basename(log_path)
+        judge_llm = base[len('judge_results_'):-len('.log')]
         with open(log_path, 'r') as f:
             for line in f:
                 try:
                     e = json.loads(line)
                     scores = e.get('scores', [])
-                    model_names = e.get('model_names')
-                    if model_names and set(model_names) == {"Model 1", "Model 2"}:
-                        continue
-                    if len(scores) < 2:
-                        continue
                     reqid = e.get('request_id')
                     difficulty = reqid_to_diff.get(reqid, 'All')
-                    
-                    # For judge results, we typically have two scores for two models
-                    # We'll assign them to generic "Model 1" and "Model 2" for the judge
-                    data[f'{judge_model}_model1']['All'].append(scores[0])
-                    data[f'{judge_model}_model2']['All'].append(scores[1])
-                    data[f'{judge_model}_model1'][difficulty].append(scores[0])
-                    data[f'{judge_model}_model2'][difficulty].append(scores[1])
-                except json.JSONDecodeError:
+                    model_order = reqid_to_model_order.get(reqid)
+                    if not model_order or len(scores) != 2:
+                        continue
+                    for idx, answering_llm in enumerate(model_order):
+                        answering_llm = answering_llm.lower()
+                        score = scores[idx]
+                        if answering_llm in ['openai', 'perplexity']:
+                            records.append({
+                                'difficulty': difficulty,
+                                'answering_llm': answering_llm,
+                                'judge_llm': judge_llm,
+                                'score': score,
+                                'request_id': reqid
+                            })
+                except Exception:
                     continue
-    
-    # Also check for legacy judge_results.log
+    # Also check for legacy judge_results.log (assume judge_llm = 'openai')
     if os.path.exists('judge_results.log'):
         with open('judge_results.log', 'r') as f:
             for line in f:
@@ -91,118 +95,159 @@ def fetch_llm_by_model(qa_log_path='requests_answers.log'):
                     e = json.loads(line)
                     scores = e.get('scores', [])
                     model_names = e.get('model_names')
-                    if model_names and set(model_names) == {"Model 1", "Model 2"}:
+                    if not model_names or len(model_names) != 2:
                         continue
                     if len(scores) < 2:
                         continue
                     reqid = e.get('request_id')
                     difficulty = reqid_to_diff.get(reqid, 'All')
-                    data['openai_model1']['All'].append(scores[0])
-                    data['openai_model2']['All'].append(scores[1])
-                    data['openai_model1'][difficulty].append(scores[0])
-                    data['openai_model2'][difficulty].append(scores[1])
-                except json.JSONDecodeError:
+                    for idx, answering_llm in enumerate(model_names):
+                        answering_llm = answering_llm.lower()
+                        score = scores[idx]
+                        if answering_llm in ['openai', 'perplexity']:
+                            records.append({
+                                'difficulty': difficulty,
+                                'answering_llm': answering_llm,
+                                'judge_llm': 'openai',
+                                'score': score,
+                                'request_id': reqid
+                            })
+                except Exception:
                     continue
-                    
-    return data
+    return records
 
-# fetch human scores by model from requests_answers.log
 def fetch_human_by_model(log_path='requests_answers.log'):
-    # Returns: data[model][difficulty] = list of scores
-    data = defaultdict(lambda: defaultdict(list))
-    ids = set()
+    # Returns: list of dicts with keys: request_id, model, difficulty, score
+    records = []
     if not os.path.exists(log_path):
-        return data, ids
+        return records
     with open(log_path, 'r') as f:
         for line in f:
             try:
                 e = json.loads(line)
                 asker = e.get('asker_nickname', '')
                 if 'author' in asker.lower():
-                    continue  # skip speaker/author
+                    continue
                 qs = e.get('real_quality_scores') or e.get('quality_scores', {})
-                model_keys = set(qs.keys())
-                if model_keys == {"Model 1", "Model 2"}:
-                    continue  # skip entries with only Model 1/2
+                if set(qs.keys()) == {"Model 1", "Model 2"}:
+                    continue
                 if len(qs) < 2:
-                    continue  # skip entries with only one model
+                    continue
                 difficulty = e.get('question_difficulty', 'All')
+                reqid = e.get('request_id')
                 for m, v in qs.items():
                     if isinstance(v, (int, float)):
-                        data[m]['All'].append(v)
-                        data[m][difficulty].append(v)
-                ids.add(e.get('request_id'))
-            except json.JSONDecodeError:
+                        records.append({
+                            'request_id': reqid,
+                            'model': m,
+                            'difficulty': difficulty,
+                            'score': v
+                        })
+            except Exception:
                 continue
-    return data, ids
+    return records
 
 def plot_scores(llm_data, human_data, speaker_data, outpath="judge_scores.png"):
-    # get list of models
-    models = sorted(set(llm_data) | set(human_data) | set(speaker_data))
-    if not models:
-        print("No matching models to plot.")
-        return
+    # Step 1: Build request_id -> (nickname, Talk) mapping from requests_questions.log
+    reqid_to_nickname = {}
+    reqid_to_talk = {}
+    questions_log = 'requests_questions.log'
+    if os.path.exists(questions_log):
+        with open(questions_log, 'r') as f:
+            for line in f:
+                try:
+                    e = json.loads(line)
+                    reqid = e.get('request_id')
+                    nickname = e.get('nickname')
+                    talk = e.get('speaker')
+                    if reqid:
+                        reqid_to_nickname[reqid] = nickname
+                        reqid_to_talk[reqid] = talk
+                except Exception:
+                    continue
 
-    judge_types = [
-        (llm_data, "LLM Judge", 'lightblue'),
-        (human_data, "Audience", 'lightgreen'),
-        (speaker_data, "Speaker", 'orange'),
-    ]
-    difficulties = ["All", "Easy", "Hard"]
-
-    # Prepare data for each (model, judge_type, difficulty)
-    box_data = []
-    box_labels = []
-    box_colors = []
-    xtick_positions = []
-    pos = 0
-    group_width = len(judge_types) * len(difficulties) + 1
-    for model in models:
-        for judge_idx, (data, judge_label, color) in enumerate(judge_types):
-            for diff_idx, diff in enumerate(difficulties):
-                scores = data.get(model, {}).get(diff, [])
-                box_data.append(scores)
-                box_labels.append(f"{model}\n{judge_label}\n{diff}")
-                box_colors.append(color)
-                xtick_positions.append(pos)
-                pos += 1
-        pos += 1  # gap between models
-
-    plt.figure(figsize=(max(12, len(box_data) * 0.6), 7))
-    bplots = plt.boxplot(box_data, positions=xtick_positions, widths=0.6, patch_artist=True, showmeans=True)
-    for patch, color in zip(bplots['boxes'], box_colors):
-        patch.set_facecolor(color)
-
-    # Set x-ticks at the center of each model group
-    model_centers = []
-    for i in range(len(models)):
-        start = i * group_width
-        end = start + len(judge_types) * len(difficulties)
-        model_centers.append((start + end - 1) / 2)
-    plt.xticks(model_centers, [m.capitalize() for m in models], fontsize=12)
-
-    # Add legend for judge types and difficulties
-    from matplotlib.patches import Patch
-    legend_patches = [Patch(facecolor=color, label=label) for _, label, color in judge_types]
-    plt.legend(handles=legend_patches, title="Judge Type", loc='upper right')
-    # Add difficulty labels below x-axis
-    for i, (x, label) in enumerate(zip(xtick_positions, box_labels)):
-        plt.text(x, plt.ylim()[0] - 0.5, label.split('\n')[-1], ha='center', va='top', fontsize=9, rotation=90)
-
-    plt.ylabel("Score (1–10)")
-    plt.title("LLM Judge vs Audience vs Speaker Scores by Model and Difficulty")
-    plt.grid(axis='y', linestyle='--', alpha=0.5)
-    plt.tight_layout(rect=(0, 0.05, 1, 1))
-    plt.savefig(outpath)
-    print(f"Plot saved to {outpath}")
-    print(f"Plot saved to {outpath}")
+    allowed_difficulties = ["Easy", "Hard"]
+    records = []
+    # Audience
+    for rec in human_data:
+        if rec['difficulty'] not in allowed_difficulties:
+            continue
+        reqid = rec.get('request_id')
+        records.append({
+            'difficulty': rec['difficulty'],
+            'answering_llm': rec['model'].lower(),
+            'judge_llm': 'Audience',
+            'score': rec['score'],
+            'nickname': reqid_to_nickname.get(reqid),
+            'Talk': reqid_to_talk.get(reqid)
+        })
+    # Speaker
+    for rec in speaker_data:
+        if rec['difficulty'] not in allowed_difficulties:
+            continue
+        reqid = rec.get('request_id')
+        records.append({
+            'difficulty': rec['difficulty'],
+            'answering_llm': rec['model'].lower(),
+            'judge_llm': 'Speaker',
+            'score': rec['score'],
+            'nickname': reqid_to_nickname.get(reqid),
+            'Talk': reqid_to_talk.get(reqid)
+        })
+    # LLM Judges
+    for rec in llm_data:
+        if rec['difficulty'] in allowed_difficulties and rec['answering_llm'] in ['openai', 'perplexity']:
+            reqid = rec.get('request_id')
+            records.append({
+                'difficulty': rec['difficulty'],
+                'answering_llm': rec['answering_llm'],
+                'judge_llm': rec['judge_llm'],
+                'score': rec['score'],
+                'nickname': reqid_to_nickname.get(reqid),
+                'Talk': reqid_to_talk.get(reqid)
+            })
+    # Create DataFrame for Easy and Hard
+    df_eh = pd.DataFrame(records)
+    # Generate 'All' as the union of Easy and Hard
+    df_all = df_eh.copy()
+    df_all['difficulty'] = 'All'
+    # Concatenate
+    df = pd.concat([df_eh, df_all], ignore_index=True)
+    print("Counts by difficulty:")
+    print(df['difficulty'].value_counts())
+    df.to_csv('judge_scores_long.csv', index=False)
+    print(f"Aggregated data saved to judge_scores_long.csv with {len(df)} rows.")
+    import seaborn as sns
+    judge_order = ['Audience', 'Speaker'] + sorted([c for c in df['judge_llm'].unique() if c not in ['Audience', 'Speaker']])
+    for diff in ["All", "Easy", "Hard"]:
+        dfd = df[df["difficulty"] == diff]
+        plt.figure(figsize=(max(10, len(judge_order)*1.2), 7))
+        ax = sns.boxplot(
+            data=dfd,
+            x="judge_llm",
+            y="score",
+            hue="answering_llm",
+            order=judge_order,
+            palette="Set2",
+            showmeans=True
+        )
+        plt.xlabel("Rater (Judge)")
+        plt.ylabel("Score (1–10)")
+        plt.title(f"Scores by Rater and Answering LLM ({diff} Difficulty)")
+        plt.xticks(rotation=30, ha='right')
+        plt.legend(title="Answering LLM")
+        plt.tight_layout()
+        fname = f"judge_scores_{diff.lower()}.png"
+        plt.savefig(fname)
+        plt.close()
+        print(f"Saved {fname}")
 
 def main():
     load_dotenv()
-    llm_data   = fetch_llm_by_model('requests_answers.log')
-    speaker_data, speaker_ids = fetch_speaker_by_model('requests_answers.log')
-    human_data, human_ids = fetch_human_by_model('requests_answers.log')
-    plot_scores(llm_data, human_data, speaker_data)
+    llm_records = fetch_llm_by_model('requests_answers.log')
+    speaker_data = fetch_speaker_by_model('requests_answers.log')
+    human_data = fetch_human_by_model('requests_answers.log')
+    plot_scores(llm_records, human_data, speaker_data)
 
 if __name__ == "__main__":
     main()

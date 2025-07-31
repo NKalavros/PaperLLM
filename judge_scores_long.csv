@@ -1,0 +1,1245 @@
+difficulty,answering_llm,judge_llm,score,nickname,Talk
+Hard,openai,Audience,6,gerold,Talk1
+Hard,perplexity,Audience,3,gerold,Talk1
+Easy,openai,Audience,6,DaniH,Talk1
+Easy,perplexity,Audience,4,DaniH,Talk1
+Easy,openai,Audience,8,Chris,Talk1
+Easy,perplexity,Audience,5,Chris,Talk1
+Easy,openai,Audience,6,DaniH,Talk1
+Easy,perplexity,Audience,5,DaniH,Talk1
+Easy,openai,Audience,8,DEIMANTĖ ,Talk1
+Easy,perplexity,Audience,6,DEIMANTĖ ,Talk1
+Easy,openai,Audience,6,Chris,Talk1
+Easy,perplexity,Audience,6,Chris,Talk1
+Easy,openai,Audience,6,Chris,Talk1
+Easy,perplexity,Audience,6,Chris,Talk1
+Easy,openai,Audience,8,DEIMANTĖ ,Talk1
+Easy,perplexity,Audience,6,DEIMANTĖ ,Talk1
+Easy,openai,Audience,8,DEIMANTĖ ,Talk1
+Easy,perplexity,Audience,6,DEIMANTĖ ,Talk1
+Easy,openai,Audience,5,Chris,Talk1
+Easy,perplexity,Audience,5,Chris,Talk1
+Easy,openai,Audience,5,suu,Talk1
+Easy,perplexity,Audience,6,suu,Talk1
+Easy,openai,Audience,5,Small brain ,Talk6
+Easy,perplexity,Audience,6,Small brain ,Talk6
+Easy,openai,Audience,8,DEIMANTĖ,Talk6
+Easy,perplexity,Audience,9,DEIMANTĖ,Talk6
+Easy,openai,Audience,8,DEIMANTĖ,Talk6
+Easy,perplexity,Audience,9,DEIMANTĖ,Talk6
+Hard,openai,Audience,8,CB,Talk3
+Hard,perplexity,Audience,7,CB,Talk3
+Easy,openai,Audience,5,TN,Talk6
+Easy,perplexity,Audience,9,TN,Talk6
+Easy,openai,Audience,4,TN,Talk6
+Easy,perplexity,Audience,8,TN,Talk6
+Easy,openai,Audience,6,TN,Talk6
+Easy,perplexity,Audience,9,TN,Talk6
+Easy,openai,Audience,8,Luis,Talk6
+Easy,perplexity,Audience,6,Luis,Talk6
+Hard,openai,Audience,3,eda,Talk6
+Hard,perplexity,Audience,8,eda,Talk6
+Easy,openai,Audience,6,Chris,Talk3
+Easy,perplexity,Audience,8,Chris,Talk3
+Easy,openai,Audience,7,Katha,Talk1
+Easy,perplexity,Audience,9,Katha,Talk1
+Easy,openai,Audience,8,DEIMANTĖ,Talk6
+Easy,perplexity,Audience,9,DEIMANTĖ,Talk6
+Easy,openai,Audience,7,Snps ,Talk6
+Easy,perplexity,Audience,8,Snps ,Talk6
+Easy,openai,Audience,8,DEIMANTĖ,Talk6
+Easy,perplexity,Audience,9,DEIMANTĖ,Talk6
+Hard,openai,Audience,7,DEIMANTĖ ,Talk6
+Hard,perplexity,Audience,9,DEIMANTĖ ,Talk6
+Easy,openai,Audience,8,DEIMANTĖ,Talk6
+Easy,perplexity,Audience,10,DEIMANTĖ,Talk6
+Hard,openai,Audience,7,DEIMANTĖ ,Talk6
+Hard,perplexity,Audience,9,DEIMANTĖ ,Talk6
+Hard,openai,Audience,1,Snps,Talk4
+Hard,perplexity,Audience,1,Snps,Talk4
+Easy,openai,Audience,8,Ale28,Talk6
+Easy,perplexity,Audience,7,Ale28,Talk6
+Easy,openai,Audience,8,Ale28,Talk6
+Easy,perplexity,Audience,7,Ale28,Talk6
+Easy,openai,Audience,1,Katha,Talk4
+Easy,perplexity,Audience,9,Katha,Talk4
+Easy,openai,Audience,1,Katha,Talk4
+Easy,perplexity,Audience,9,Katha,Talk4
+Hard,openai,Audience,8,Snps,Talk4
+Hard,perplexity,Audience,8,Snps,Talk4
+Easy,openai,Audience,6,EF,Talk6
+Easy,perplexity,Audience,7,EF,Talk6
+Easy,openai,Audience,4,EF,Talk4
+Easy,perplexity,Audience,8,EF,Talk4
+Easy,openai,Audience,5,EF,Talk3
+Easy,perplexity,Audience,7,EF,Talk3
+Hard,openai,Audience,7,A,Talk4
+Hard,perplexity,Audience,6,A,Talk4
+Hard,openai,Audience,8,DEIMANTĖ ,Talk3
+Hard,perplexity,Audience,9,DEIMANTĖ ,Talk3
+Hard,openai,Audience,8,DEIMANTĖ ,Talk3
+Hard,perplexity,Audience,9,DEIMANTĖ ,Talk3
+Hard,openai,Audience,7,DEIMANTĖ,Talk4
+Hard,perplexity,Audience,6,DEIMANTĖ,Talk4
+Hard,openai,Audience,3,eda,Talk3
+Hard,perplexity,Audience,4,eda,Talk3
+Hard,openai,Audience,5,eda,Talk6
+Hard,perplexity,Audience,7,eda,Talk6
+Hard,openai,Audience,8,DEIMANTĖ ,Talk3
+Hard,perplexity,Audience,9,DEIMANTĖ ,Talk3
+Hard,openai,Audience,7,DEIMANTĖ,Talk4
+Hard,perplexity,Audience,6,DEIMANTĖ,Talk4
+Easy,openai,Audience,6,DEIMANTĖ ,Talk5
+Easy,perplexity,Audience,8,DEIMANTĖ ,Talk5
+Easy,openai,Audience,6,Aquaria,Talk6
+Easy,perplexity,Audience,10,Aquaria,Talk6
+Easy,openai,Audience,7,Aquaria,Talk6
+Easy,perplexity,Audience,8,Aquaria,Talk6
+Hard,openai,Audience,6,Aquaria,Talk6
+Hard,perplexity,Audience,9,Aquaria,Talk6
+Hard,openai,Audience,6,jyhuang,Talk1
+Hard,perplexity,Audience,8,jyhuang,Talk1
+Hard,openai,Audience,6,jyhuang,Talk1
+Hard,perplexity,Audience,8,jyhuang,Talk1
+Easy,openai,Speaker,7,ferenckata,Talk6
+Easy,perplexity,Speaker,9,ferenckata,Talk6
+Hard,openai,Speaker,6,DEIMANTĖ ,Talk6
+Hard,perplexity,Speaker,8,DEIMANTĖ ,Talk6
+Easy,openai,Speaker,6,DEIMANTĖ,Talk6
+Easy,perplexity,Speaker,8,DEIMANTĖ,Talk6
+Easy,openai,Speaker,5,Jeremie,Talk6
+Easy,perplexity,Speaker,8,Jeremie,Talk6
+Easy,openai,Speaker,6,EF,Talk6
+Easy,perplexity,Speaker,8,EF,Talk6
+Hard,openai,Speaker,6,Jeanne,Talk6
+Hard,perplexity,Speaker,8,Jeanne,Talk6
+Hard,openai,Speaker,8,Hola,Talk6
+Hard,perplexity,Speaker,9,Hola,Talk6
+Easy,openai,Speaker,7,Harpreet ,Talk6
+Easy,perplexity,Speaker,7,Harpreet ,Talk6
+Hard,openai,Speaker,5,ferenckata,Talk6
+Hard,perplexity,Speaker,7,ferenckata,Talk6
+Easy,openai,Speaker,6,DEIMANTĖ,Talk6
+Easy,perplexity,Speaker,8,DEIMANTĖ,Talk6
+Easy,openai,Speaker,5,TN,Talk6
+Easy,perplexity,Speaker,8,TN,Talk6
+Easy,openai,Speaker,7,Hola,Talk6
+Easy,perplexity,Speaker,6,Hola,Talk6
+Easy,openai,Speaker,6,Hola,Talk6
+Easy,perplexity,Speaker,9,Hola,Talk6
+Easy,openai,Speaker,7,Aquaria,Talk6
+Easy,perplexity,Speaker,9,Aquaria,Talk6
+Easy,openai,Speaker,6,Jeremie,Talk6
+Easy,perplexity,Speaker,8,Jeremie,Talk6
+Hard,openai,gemini,9,gerold,Talk1
+Hard,perplexity,gemini,2,gerold,Talk1
+Easy,openai,gemini,9,DEIMANTĖ ,Talk1
+Easy,perplexity,gemini,8,DEIMANTĖ ,Talk1
+Easy,perplexity,gemini,6,suu,Talk1
+Easy,openai,gemini,2,suu,Talk1
+Easy,openai,gemini,8,DaniH,Talk1
+Easy,perplexity,gemini,9,DaniH,Talk1
+Easy,openai,gemini,3,Does Dr Saez-Rodriguez like black box models?,Talk1
+Easy,perplexity,gemini,7,Does Dr Saez-Rodriguez like black box models?,Talk1
+Easy,openai,gemini,10,Chris,Talk1
+Easy,perplexity,gemini,4,Chris,Talk1
+Easy,perplexity,gemini,8,Katha,Talk1
+Easy,openai,gemini,9,Katha,Talk1
+Easy,perplexity,gemini,9,EF,Talk6
+Easy,openai,gemini,8,EF,Talk6
+Easy,perplexity,gemini,8,DEIMANTĖ,Talk6
+Easy,openai,gemini,7,DEIMANTĖ,Talk6
+Hard,perplexity,gemini,5,eda,Talk6
+Hard,openai,gemini,9,eda,Talk6
+Hard,perplexity,gemini,1,ferenckata,Talk6
+Hard,openai,gemini,8,ferenckata,Talk6
+Easy,perplexity,gemini,3,Small brain ,Talk6
+Easy,openai,gemini,9,Small brain ,Talk6
+Easy,perplexity,gemini,10,TN,Talk6
+Easy,openai,gemini,7,TN,Talk6
+Easy,perplexity,gemini,9,DEIMANTĖ,Talk6
+Easy,openai,gemini,8,DEIMANTĖ,Talk6
+Easy,perplexity,gemini,3,Jeremie,Talk6
+Easy,openai,gemini,9,Jeremie,Talk6
+Easy,perplexity,gemini,8,Aquaria,Talk6
+Easy,openai,gemini,5,Aquaria,Talk6
+Easy,perplexity,gemini,7,TN,Talk6
+Easy,openai,gemini,4,TN,Talk6
+Easy,perplexity,gemini,9,TN,Talk6
+Easy,openai,gemini,7,TN,Talk6
+Easy,perplexity,gemini,4,Harpreet ,Talk6
+Easy,openai,gemini,8,Harpreet ,Talk6
+Easy,perplexity,gemini,8,Hola,Talk6
+Easy,openai,gemini,5,Hola,Talk6
+Easy,openai,gemini,9,Ale28,Talk6
+Easy,perplexity,gemini,1,Ale28,Talk6
+Hard,perplexity,gemini,3,Hola,Talk6
+Hard,openai,gemini,8,Hola,Talk6
+Easy,perplexity,gemini,10,Aquaria,Talk6
+Easy,openai,gemini,7,Aquaria,Talk6
+Easy,perplexity,gemini,6,Hola,Talk6
+Easy,openai,gemini,8,Hola,Talk6
+Hard,perplexity,gemini,10,Aquaria,Talk6
+Hard,openai,gemini,5,Aquaria,Talk6
+Easy,perplexity,gemini,9,Aquaria,Talk6
+Easy,openai,gemini,6,Aquaria,Talk6
+Easy,openai,gemini,9,ferenckata,Talk6
+Easy,perplexity,gemini,5,ferenckata,Talk6
+Hard,perplexity,gemini,9,DEIMANTĖ ,Talk6
+Hard,openai,gemini,8,DEIMANTĖ ,Talk6
+Easy,openai,gemini,7,Luis,Talk6
+Easy,perplexity,gemini,9,Luis,Talk6
+Hard,perplexity,gemini,9,Jeanne,Talk6
+Hard,openai,gemini,7,Jeanne,Talk6
+Easy,perplexity,gemini,9,Chris,Talk3
+Easy,openai,gemini,10,Chris,Talk3
+Hard,perplexity,gemini,1,DEIMANTĖ ,Talk3
+Hard,openai,gemini,9,DEIMANTĖ ,Talk3
+Hard,perplexity,gemini,8,eda,Talk3
+Hard,openai,gemini,9,eda,Talk3
+Easy,perplexity,gemini,2,EF,Talk3
+Easy,openai,gemini,3,EF,Talk3
+Hard,openai,gemini,9,CB,Talk3
+Hard,perplexity,gemini,8,CB,Talk3
+Easy,perplexity,gemini,9,Snps ,Talk6
+Easy,openai,gemini,8,Snps ,Talk6
+Hard,perplexity,gemini,3,Snps,Talk4
+Hard,openai,gemini,1,Snps,Talk4
+Easy,perplexity,gemini,6,Katha,Talk4
+Easy,openai,gemini,7,Katha,Talk4
+Easy,perplexity,gemini,1,EF,Talk4
+Easy,openai,gemini,9,EF,Talk4
+Hard,openai,gemini,7,DEIMANTĖ,Talk4
+Hard,perplexity,gemini,9,DEIMANTĖ,Talk4
+Hard,openai,gemini,9,A,Talk4
+Hard,perplexity,gemini,7,A,Talk4
+Easy,perplexity,gemini,8,DEIMANTĖ ,Talk5
+Easy,openai,gemini,3,DEIMANTĖ ,Talk5
+Hard,perplexity,gemini,6,jyhuang,Talk1
+Hard,openai,gemini,8,jyhuang,Talk1
+Hard,openai,grok,9,gerold,Talk1
+Hard,perplexity,grok,7,gerold,Talk1
+Easy,openai,grok,9,DEIMANTĖ ,Talk1
+Easy,perplexity,grok,8,DEIMANTĖ ,Talk1
+Easy,perplexity,grok,9,suu,Talk1
+Easy,openai,grok,6,suu,Talk1
+Easy,openai,grok,8,DaniH,Talk1
+Easy,perplexity,grok,9,DaniH,Talk1
+Easy,openai,grok,9,Does Dr Saez-Rodriguez like black box models?,Talk1
+Easy,perplexity,grok,7,Does Dr Saez-Rodriguez like black box models?,Talk1
+Easy,openai,grok,9,Chris,Talk1
+Easy,perplexity,grok,8,Chris,Talk1
+Easy,perplexity,grok,9,Katha,Talk1
+Easy,openai,grok,10,Katha,Talk1
+Easy,perplexity,grok,9,EF,Talk6
+Easy,openai,grok,8,EF,Talk6
+Easy,perplexity,grok,9,DEIMANTĖ,Talk6
+Easy,openai,grok,6,DEIMANTĖ,Talk6
+Hard,perplexity,grok,8,eda,Talk6
+Hard,openai,grok,9,eda,Talk6
+Hard,perplexity,grok,2,ferenckata,Talk6
+Hard,openai,grok,8,ferenckata,Talk6
+Easy,perplexity,grok,4,Small brain ,Talk6
+Easy,openai,grok,9,Small brain ,Talk6
+Easy,perplexity,grok,9,TN,Talk6
+Easy,openai,grok,8,TN,Talk6
+Easy,perplexity,grok,9,DEIMANTĖ,Talk6
+Easy,openai,grok,8,DEIMANTĖ,Talk6
+Easy,perplexity,grok,7,Jeremie,Talk6
+Easy,openai,grok,9,Jeremie,Talk6
+Easy,perplexity,grok,8,Aquaria,Talk6
+Easy,openai,grok,9,Aquaria,Talk6
+Easy,perplexity,grok,8,TN,Talk6
+Easy,openai,grok,9,TN,Talk6
+Easy,perplexity,grok,10,TN,Talk6
+Easy,openai,grok,7,TN,Talk6
+Easy,perplexity,grok,9,Harpreet ,Talk6
+Easy,openai,grok,8,Harpreet ,Talk6
+Easy,perplexity,grok,9,Hola,Talk6
+Easy,openai,grok,8,Hola,Talk6
+Easy,openai,grok,9,Ale28,Talk6
+Easy,perplexity,grok,7,Ale28,Talk6
+Hard,perplexity,grok,10,Hola,Talk6
+Hard,openai,grok,9,Hola,Talk6
+Easy,perplexity,grok,9,Aquaria,Talk6
+Easy,openai,grok,9,Aquaria,Talk6
+Easy,perplexity,grok,9,Hola,Talk6
+Easy,openai,grok,8,Hola,Talk6
+Hard,perplexity,grok,8,Aquaria,Talk6
+Hard,openai,grok,9,Aquaria,Talk6
+Easy,perplexity,grok,8,Aquaria,Talk6
+Easy,openai,grok,9,Aquaria,Talk6
+Easy,openai,grok,8,ferenckata,Talk6
+Easy,perplexity,grok,10,ferenckata,Talk6
+Hard,perplexity,grok,9,DEIMANTĖ ,Talk6
+Hard,openai,grok,8,DEIMANTĖ ,Talk6
+Easy,openai,grok,9,Luis,Talk6
+Easy,perplexity,grok,10,Luis,Talk6
+Hard,perplexity,grok,9,Jeanne,Talk6
+Hard,openai,grok,8,Jeanne,Talk6
+Easy,perplexity,grok,8,Chris,Talk3
+Easy,openai,grok,9,Chris,Talk3
+Hard,perplexity,grok,2,DEIMANTĖ ,Talk3
+Hard,openai,grok,8,DEIMANTĖ ,Talk3
+Hard,perplexity,grok,6,eda,Talk3
+Hard,openai,grok,9,eda,Talk3
+Easy,perplexity,grok,6,EF,Talk3
+Easy,openai,grok,9,EF,Talk3
+Hard,openai,grok,9,CB,Talk3
+Hard,perplexity,grok,8,CB,Talk3
+Easy,perplexity,grok,9,Snps ,Talk6
+Easy,openai,grok,8,Snps ,Talk6
+Hard,perplexity,grok,2,Snps,Talk4
+Hard,openai,grok,3,Snps,Talk4
+Easy,perplexity,grok,7,Katha,Talk4
+Easy,openai,grok,9,Katha,Talk4
+Easy,perplexity,grok,8,EF,Talk4
+Easy,openai,grok,6,EF,Talk4
+Hard,openai,grok,8,DEIMANTĖ,Talk4
+Hard,perplexity,grok,9,DEIMANTĖ,Talk4
+Hard,openai,grok,9,A,Talk4
+Hard,perplexity,grok,8,A,Talk4
+Easy,perplexity,grok,6,DEIMANTĖ ,Talk5
+Easy,openai,grok,9,DEIMANTĖ ,Talk5
+Hard,perplexity,grok,8,jyhuang,Talk1
+Hard,openai,grok,7,jyhuang,Talk1
+Hard,openai,claude,5,gerold,Talk1
+Hard,perplexity,claude,6,gerold,Talk1
+Easy,openai,claude,8,DEIMANTĖ ,Talk1
+Easy,perplexity,claude,9,DEIMANTĖ ,Talk1
+Easy,perplexity,claude,8,suu,Talk1
+Easy,openai,claude,9,suu,Talk1
+Easy,openai,claude,7,DaniH,Talk1
+Easy,perplexity,claude,8,DaniH,Talk1
+Easy,openai,claude,9,Does Dr Saez-Rodriguez like black box models?,Talk1
+Easy,perplexity,claude,6,Does Dr Saez-Rodriguez like black box models?,Talk1
+Easy,openai,claude,8,Chris,Talk1
+Easy,perplexity,claude,9,Chris,Talk1
+Easy,perplexity,claude,8,Katha,Talk1
+Easy,openai,claude,10,Katha,Talk1
+Easy,perplexity,claude,8,EF,Talk6
+Easy,openai,claude,7,EF,Talk6
+Easy,perplexity,claude,9,DEIMANTĖ,Talk6
+Easy,openai,claude,6,DEIMANTĖ,Talk6
+Hard,perplexity,claude,7,eda,Talk6
+Hard,openai,claude,9,eda,Talk6
+Hard,perplexity,claude,5,ferenckata,Talk6
+Hard,openai,claude,2,ferenckata,Talk6
+Easy,perplexity,claude,6,Small brain ,Talk6
+Easy,openai,claude,9,Small brain ,Talk6
+Easy,perplexity,claude,10,TN,Talk6
+Easy,openai,claude,8,TN,Talk6
+Easy,perplexity,claude,8,DEIMANTĖ,Talk6
+Easy,openai,claude,9,DEIMANTĖ,Talk6
+Easy,perplexity,claude,8,Jeremie,Talk6
+Easy,openai,claude,9,Jeremie,Talk6
+Easy,perplexity,claude,8,Aquaria,Talk6
+Easy,openai,claude,9,Aquaria,Talk6
+Easy,perplexity,claude,8,TN,Talk6
+Easy,openai,claude,9,TN,Talk6
+Easy,perplexity,claude,9,TN,Talk6
+Easy,openai,claude,6,TN,Talk6
+Easy,perplexity,claude,8,Harpreet ,Talk6
+Easy,openai,claude,7,Harpreet ,Talk6
+Easy,perplexity,claude,10,Hola,Talk6
+Easy,openai,claude,8,Hola,Talk6
+Easy,openai,claude,8,Ale28,Talk6
+Easy,perplexity,claude,6,Ale28,Talk6
+Hard,perplexity,claude,9,Hola,Talk6
+Hard,openai,claude,8,Hola,Talk6
+Easy,perplexity,claude,8,Aquaria,Talk6
+Easy,openai,claude,9,Aquaria,Talk6
+Easy,perplexity,claude,10,Hola,Talk6
+Easy,openai,claude,8,Hola,Talk6
+Hard,perplexity,claude,8,Aquaria,Talk6
+Hard,openai,claude,9,Aquaria,Talk6
+Easy,perplexity,claude,7,Aquaria,Talk6
+Easy,openai,claude,9,Aquaria,Talk6
+Easy,openai,claude,8,ferenckata,Talk6
+Easy,perplexity,claude,9,ferenckata,Talk6
+Hard,perplexity,claude,9,DEIMANTĖ ,Talk6
+Hard,openai,claude,7,DEIMANTĖ ,Talk6
+Easy,openai,claude,7,Luis,Talk6
+Easy,perplexity,claude,9,Luis,Talk6
+Hard,perplexity,claude,8,Jeanne,Talk6
+Hard,openai,claude,5,Jeanne,Talk6
+Hard,openai,deepseek,9,gerold,Talk1
+Hard,perplexity,deepseek,8,gerold,Talk1
+Easy,openai,deepseek,9,DEIMANTĖ ,Talk1
+Easy,perplexity,deepseek,8,DEIMANTĖ ,Talk1
+Easy,perplexity,deepseek,8,suu,Talk1
+Easy,openai,deepseek,9,suu,Talk1
+Easy,openai,deepseek,8,DaniH,Talk1
+Easy,perplexity,deepseek,9,DaniH,Talk1
+Easy,openai,deepseek,8,Does Dr Saez-Rodriguez like black box models?,Talk1
+Easy,perplexity,deepseek,5,Does Dr Saez-Rodriguez like black box models?,Talk1
+Easy,openai,deepseek,9,Chris,Talk1
+Easy,perplexity,deepseek,10,Chris,Talk1
+Easy,perplexity,deepseek,9,Katha,Talk1
+Easy,openai,deepseek,10,Katha,Talk1
+Easy,perplexity,deepseek,9,EF,Talk6
+Easy,openai,deepseek,8,EF,Talk6
+Easy,perplexity,deepseek,8,DEIMANTĖ,Talk6
+Easy,openai,deepseek,9,DEIMANTĖ,Talk6
+Hard,perplexity,deepseek,8,eda,Talk6
+Hard,openai,deepseek,9,eda,Talk6
+Hard,perplexity,deepseek,8,ferenckata,Talk6
+Hard,openai,deepseek,6,ferenckata,Talk6
+Easy,perplexity,deepseek,8,Small brain ,Talk6
+Easy,openai,deepseek,9,Small brain ,Talk6
+Easy,perplexity,deepseek,9,TN,Talk6
+Easy,openai,deepseek,7,TN,Talk6
+Easy,perplexity,deepseek,9,DEIMANTĖ,Talk6
+Easy,openai,deepseek,8,DEIMANTĖ,Talk6
+Easy,perplexity,deepseek,8,Jeremie,Talk6
+Easy,openai,deepseek,9,Jeremie,Talk6
+Easy,perplexity,deepseek,9,Aquaria,Talk6
+Easy,openai,deepseek,10,Aquaria,Talk6
+Easy,perplexity,deepseek,8,TN,Talk6
+Easy,openai,deepseek,9,TN,Talk6
+Easy,perplexity,deepseek,9,TN,Talk6
+Easy,openai,deepseek,8,TN,Talk6
+Easy,perplexity,deepseek,8,Harpreet ,Talk6
+Easy,openai,deepseek,6,Harpreet ,Talk6
+Easy,perplexity,deepseek,9,Hola,Talk6
+Easy,openai,deepseek,8,Hola,Talk6
+Easy,openai,deepseek,9,Ale28,Talk6
+Easy,perplexity,deepseek,10,Ale28,Talk6
+Hard,perplexity,deepseek,9,Hola,Talk6
+Hard,openai,deepseek,10,Hola,Talk6
+Easy,perplexity,deepseek,8,Aquaria,Talk6
+Easy,openai,deepseek,9,Aquaria,Talk6
+Easy,perplexity,deepseek,8,Hola,Talk6
+Easy,openai,deepseek,7,Hola,Talk6
+Hard,perplexity,deepseek,9,Aquaria,Talk6
+Hard,openai,deepseek,10,Aquaria,Talk6
+Easy,perplexity,deepseek,8,Aquaria,Talk6
+Easy,openai,deepseek,9,Aquaria,Talk6
+Easy,openai,deepseek,9,ferenckata,Talk6
+Easy,perplexity,deepseek,10,ferenckata,Talk6
+Hard,perplexity,deepseek,9,DEIMANTĖ ,Talk6
+Hard,openai,deepseek,8,DEIMANTĖ ,Talk6
+Easy,openai,deepseek,9,Luis,Talk6
+Easy,perplexity,deepseek,10,Luis,Talk6
+Hard,perplexity,deepseek,8,Jeanne,Talk6
+Hard,openai,deepseek,7,Jeanne,Talk6
+Easy,perplexity,deepseek,9,Chris,Talk3
+Easy,openai,deepseek,10,Chris,Talk3
+Hard,perplexity,deepseek,8,DEIMANTĖ ,Talk3
+Hard,openai,deepseek,9,DEIMANTĖ ,Talk3
+Hard,perplexity,deepseek,8,eda,Talk3
+Hard,openai,deepseek,9,eda,Talk3
+Easy,perplexity,deepseek,9,EF,Talk3
+Easy,openai,deepseek,8,EF,Talk3
+Hard,openai,deepseek,8,CB,Talk3
+Hard,perplexity,deepseek,7,CB,Talk3
+Easy,perplexity,deepseek,8,Snps ,Talk6
+Easy,openai,deepseek,7,Snps ,Talk6
+Hard,perplexity,deepseek,8,Snps,Talk4
+Hard,openai,deepseek,9,Snps,Talk4
+Easy,perplexity,deepseek,8,Katha,Talk4
+Easy,openai,deepseek,9,Katha,Talk4
+Easy,perplexity,deepseek,8,EF,Talk4
+Easy,openai,deepseek,7,EF,Talk4
+Hard,openai,deepseek,8,DEIMANTĖ,Talk4
+Hard,perplexity,deepseek,9,DEIMANTĖ,Talk4
+Hard,openai,deepseek,8,A,Talk4
+Hard,perplexity,deepseek,6,A,Talk4
+Easy,perplexity,deepseek,8,DEIMANTĖ ,Talk5
+Easy,openai,deepseek,9,DEIMANTĖ ,Talk5
+Hard,perplexity,deepseek,8,jyhuang,Talk1
+Hard,openai,deepseek,7,jyhuang,Talk1
+Hard,openai,perplexity,7,gerold,Talk1
+Hard,perplexity,perplexity,9,gerold,Talk1
+Easy,openai,perplexity,8,DEIMANTĖ ,Talk1
+Easy,perplexity,perplexity,9,DEIMANTĖ ,Talk1
+Easy,perplexity,perplexity,6,suu,Talk1
+Easy,openai,perplexity,7,suu,Talk1
+Easy,openai,perplexity,7,DaniH,Talk1
+Easy,perplexity,perplexity,9,DaniH,Talk1
+Easy,openai,perplexity,9,Does Dr Saez-Rodriguez like black box models?,Talk1
+Easy,perplexity,perplexity,5,Does Dr Saez-Rodriguez like black box models?,Talk1
+Easy,openai,perplexity,6,Chris,Talk1
+Easy,perplexity,perplexity,9,Chris,Talk1
+Easy,perplexity,perplexity,7,Katha,Talk1
+Easy,openai,perplexity,9,Katha,Talk1
+Easy,perplexity,perplexity,9,EF,Talk6
+Easy,openai,perplexity,8,EF,Talk6
+Easy,perplexity,perplexity,10,DEIMANTĖ,Talk6
+Easy,openai,perplexity,6,DEIMANTĖ,Talk6
+Hard,perplexity,perplexity,5,eda,Talk6
+Hard,openai,perplexity,9,eda,Talk6
+Hard,perplexity,perplexity,9,ferenckata,Talk6
+Hard,openai,perplexity,6,ferenckata,Talk6
+Easy,perplexity,perplexity,4,Small brain ,Talk6
+Easy,openai,perplexity,8,Small brain ,Talk6
+Easy,perplexity,perplexity,8,TN,Talk6
+Easy,openai,perplexity,7,TN,Talk6
+Easy,perplexity,perplexity,8,DEIMANTĖ,Talk6
+Easy,openai,perplexity,10,DEIMANTĖ,Talk6
+Easy,perplexity,perplexity,8,Jeremie,Talk6
+Easy,openai,perplexity,9,Jeremie,Talk6
+Easy,perplexity,perplexity,7,Aquaria,Talk6
+Easy,openai,perplexity,9,Aquaria,Talk6
+Easy,perplexity,perplexity,5,TN,Talk6
+Easy,openai,perplexity,9,TN,Talk6
+Easy,perplexity,perplexity,10,TN,Talk6
+Easy,openai,perplexity,8,TN,Talk6
+Easy,perplexity,perplexity,9,Harpreet ,Talk6
+Easy,openai,perplexity,7,Harpreet ,Talk6
+Easy,perplexity,perplexity,9,Hola,Talk6
+Easy,openai,perplexity,7,Hola,Talk6
+Easy,openai,perplexity,8,Ale28,Talk6
+Easy,perplexity,perplexity,7,Ale28,Talk6
+Hard,perplexity,perplexity,10,Hola,Talk6
+Hard,openai,perplexity,9,Hola,Talk6
+Easy,perplexity,perplexity,8,Aquaria,Talk6
+Easy,openai,perplexity,9,Aquaria,Talk6
+Easy,perplexity,perplexity,9,Hola,Talk6
+Easy,openai,perplexity,7,Hola,Talk6
+Hard,perplexity,perplexity,8,Aquaria,Talk6
+Hard,openai,perplexity,10,Aquaria,Talk6
+Easy,perplexity,perplexity,6,Aquaria,Talk6
+Easy,openai,perplexity,10,Aquaria,Talk6
+Easy,openai,perplexity,8,ferenckata,Talk6
+Easy,perplexity,perplexity,10,ferenckata,Talk6
+Hard,perplexity,perplexity,9,DEIMANTĖ ,Talk6
+Hard,openai,perplexity,8,DEIMANTĖ ,Talk6
+Easy,openai,perplexity,8,Luis,Talk6
+Easy,perplexity,perplexity,9,Luis,Talk6
+Hard,perplexity,perplexity,9,Jeanne,Talk6
+Hard,openai,perplexity,7,Jeanne,Talk6
+Easy,perplexity,perplexity,7,Chris,Talk3
+Easy,openai,perplexity,9,Chris,Talk3
+Hard,perplexity,perplexity,4,DEIMANTĖ ,Talk3
+Hard,openai,perplexity,7,DEIMANTĖ ,Talk3
+Hard,perplexity,perplexity,6,eda,Talk3
+Hard,openai,perplexity,9,eda,Talk3
+Easy,perplexity,perplexity,6,EF,Talk3
+Easy,openai,perplexity,9,EF,Talk3
+Hard,openai,perplexity,9,CB,Talk3
+Hard,perplexity,perplexity,8,CB,Talk3
+Easy,perplexity,perplexity,9,Snps ,Talk6
+Easy,openai,perplexity,7,Snps ,Talk6
+Hard,perplexity,perplexity,6,Snps,Talk4
+Hard,openai,perplexity,7,Snps,Talk4
+Easy,perplexity,perplexity,6,Katha,Talk4
+Easy,openai,perplexity,10,Katha,Talk4
+Easy,perplexity,perplexity,8,EF,Talk4
+Easy,openai,perplexity,6,EF,Talk4
+Hard,openai,perplexity,6,DEIMANTĖ,Talk4
+Hard,perplexity,perplexity,9,DEIMANTĖ,Talk4
+Hard,openai,perplexity,9,A,Talk4
+Hard,perplexity,perplexity,6,A,Talk4
+Easy,perplexity,perplexity,6,DEIMANTĖ ,Talk5
+Easy,openai,perplexity,9,DEIMANTĖ ,Talk5
+Hard,perplexity,perplexity,8,jyhuang,Talk1
+Hard,openai,perplexity,7,jyhuang,Talk1
+Hard,openai,openai,4,gerold,Talk1
+Hard,perplexity,openai,7,gerold,Talk1
+Easy,openai,openai,9,DEIMANTĖ ,Talk1
+Easy,perplexity,openai,8,DEIMANTĖ ,Talk1
+Easy,perplexity,openai,6,suu,Talk1
+Easy,openai,openai,8,suu,Talk1
+Easy,openai,openai,6,DaniH,Talk1
+Easy,perplexity,openai,8,DaniH,Talk1
+Easy,openai,openai,9,Does Dr Saez-Rodriguez like black box models?,Talk1
+Easy,perplexity,openai,4,Does Dr Saez-Rodriguez like black box models?,Talk1
+Easy,openai,openai,9,Chris,Talk1
+Easy,perplexity,openai,7,Chris,Talk1
+Easy,perplexity,openai,10,Katha,Talk1
+Easy,openai,openai,8,Katha,Talk1
+Easy,perplexity,openai,9,EF,Talk6
+Easy,openai,openai,8,EF,Talk6
+Easy,perplexity,openai,9,DEIMANTĖ,Talk6
+Easy,openai,openai,5,DEIMANTĖ,Talk6
+Hard,perplexity,openai,3,eda,Talk6
+Hard,openai,openai,9,eda,Talk6
+Hard,perplexity,openai,6,ferenckata,Talk6
+Hard,openai,openai,4,ferenckata,Talk6
+Easy,perplexity,openai,2,Small brain ,Talk6
+Easy,openai,openai,6,Small brain ,Talk6
+Easy,perplexity,openai,9,TN,Talk6
+Easy,openai,openai,8,TN,Talk6
+Easy,perplexity,openai,9,DEIMANTĖ,Talk6
+Easy,openai,openai,8,DEIMANTĖ,Talk6
+Easy,perplexity,openai,4,Jeremie,Talk6
+Easy,openai,openai,9,Jeremie,Talk6
+Easy,perplexity,openai,8,Aquaria,Talk6
+Easy,openai,openai,9,Aquaria,Talk6
+Easy,perplexity,openai,5,TN,Talk6
+Easy,openai,openai,9,TN,Talk6
+Easy,perplexity,openai,9,TN,Talk6
+Easy,openai,openai,7,TN,Talk6
+Easy,perplexity,openai,9,Harpreet ,Talk6
+Easy,openai,openai,7,Harpreet ,Talk6
+Easy,perplexity,openai,5,Hola,Talk6
+Easy,openai,openai,9,Hola,Talk6
+Easy,openai,openai,8,Ale28,Talk6
+Easy,perplexity,openai,6,Ale28,Talk6
+Hard,perplexity,openai,9,Hola,Talk6
+Hard,openai,openai,8,Hola,Talk6
+Easy,perplexity,openai,9,Aquaria,Talk6
+Easy,openai,openai,8,Aquaria,Talk6
+Easy,perplexity,openai,9,Hola,Talk6
+Easy,openai,openai,6,Hola,Talk6
+Hard,perplexity,openai,7,Aquaria,Talk6
+Hard,openai,openai,9,Aquaria,Talk6
+Easy,perplexity,openai,9,Aquaria,Talk6
+Easy,openai,openai,7,Aquaria,Talk6
+Easy,openai,openai,8,ferenckata,Talk6
+Easy,perplexity,openai,9,ferenckata,Talk6
+Hard,perplexity,openai,9,DEIMANTĖ ,Talk6
+Hard,openai,openai,7,DEIMANTĖ ,Talk6
+Easy,openai,openai,7,Luis,Talk6
+Easy,perplexity,openai,10,Luis,Talk6
+Hard,perplexity,openai,9,Jeanne,Talk6
+Hard,openai,openai,6,Jeanne,Talk6
+Easy,perplexity,openai,8,Chris,Talk3
+Easy,openai,openai,10,Chris,Talk3
+Hard,perplexity,openai,2,DEIMANTĖ ,Talk3
+Hard,openai,openai,8,DEIMANTĖ ,Talk3
+Hard,perplexity,openai,5,eda,Talk3
+Hard,openai,openai,9,eda,Talk3
+Easy,perplexity,openai,8,EF,Talk3
+Easy,openai,openai,7,EF,Talk3
+Hard,openai,openai,9,CB,Talk3
+Hard,perplexity,openai,7,CB,Talk3
+Easy,perplexity,openai,9,Snps ,Talk6
+Easy,openai,openai,6,Snps ,Talk6
+Hard,perplexity,openai,2,Snps,Talk4
+Hard,openai,openai,3,Snps,Talk4
+Easy,perplexity,openai,5,Katha,Talk4
+Easy,openai,openai,9,Katha,Talk4
+Easy,perplexity,openai,8,EF,Talk4
+Easy,openai,openai,5,EF,Talk4
+Hard,openai,openai,8,DEIMANTĖ,Talk4
+Hard,perplexity,openai,5,DEIMANTĖ,Talk4
+Hard,openai,openai,9,A,Talk4
+Hard,perplexity,openai,6,A,Talk4
+Easy,perplexity,openai,7,DEIMANTĖ ,Talk5
+Easy,openai,openai,9,DEIMANTĖ ,Talk5
+Hard,perplexity,openai,7,jyhuang,Talk1
+Hard,openai,openai,4,jyhuang,Talk1
+All,openai,Audience,6,gerold,Talk1
+All,perplexity,Audience,3,gerold,Talk1
+All,openai,Audience,6,DaniH,Talk1
+All,perplexity,Audience,4,DaniH,Talk1
+All,openai,Audience,8,Chris,Talk1
+All,perplexity,Audience,5,Chris,Talk1
+All,openai,Audience,6,DaniH,Talk1
+All,perplexity,Audience,5,DaniH,Talk1
+All,openai,Audience,8,DEIMANTĖ ,Talk1
+All,perplexity,Audience,6,DEIMANTĖ ,Talk1
+All,openai,Audience,6,Chris,Talk1
+All,perplexity,Audience,6,Chris,Talk1
+All,openai,Audience,6,Chris,Talk1
+All,perplexity,Audience,6,Chris,Talk1
+All,openai,Audience,8,DEIMANTĖ ,Talk1
+All,perplexity,Audience,6,DEIMANTĖ ,Talk1
+All,openai,Audience,8,DEIMANTĖ ,Talk1
+All,perplexity,Audience,6,DEIMANTĖ ,Talk1
+All,openai,Audience,5,Chris,Talk1
+All,perplexity,Audience,5,Chris,Talk1
+All,openai,Audience,5,suu,Talk1
+All,perplexity,Audience,6,suu,Talk1
+All,openai,Audience,5,Small brain ,Talk6
+All,perplexity,Audience,6,Small brain ,Talk6
+All,openai,Audience,8,DEIMANTĖ,Talk6
+All,perplexity,Audience,9,DEIMANTĖ,Talk6
+All,openai,Audience,8,DEIMANTĖ,Talk6
+All,perplexity,Audience,9,DEIMANTĖ,Talk6
+All,openai,Audience,8,CB,Talk3
+All,perplexity,Audience,7,CB,Talk3
+All,openai,Audience,5,TN,Talk6
+All,perplexity,Audience,9,TN,Talk6
+All,openai,Audience,4,TN,Talk6
+All,perplexity,Audience,8,TN,Talk6
+All,openai,Audience,6,TN,Talk6
+All,perplexity,Audience,9,TN,Talk6
+All,openai,Audience,8,Luis,Talk6
+All,perplexity,Audience,6,Luis,Talk6
+All,openai,Audience,3,eda,Talk6
+All,perplexity,Audience,8,eda,Talk6
+All,openai,Audience,6,Chris,Talk3
+All,perplexity,Audience,8,Chris,Talk3
+All,openai,Audience,7,Katha,Talk1
+All,perplexity,Audience,9,Katha,Talk1
+All,openai,Audience,8,DEIMANTĖ,Talk6
+All,perplexity,Audience,9,DEIMANTĖ,Talk6
+All,openai,Audience,7,Snps ,Talk6
+All,perplexity,Audience,8,Snps ,Talk6
+All,openai,Audience,8,DEIMANTĖ,Talk6
+All,perplexity,Audience,9,DEIMANTĖ,Talk6
+All,openai,Audience,7,DEIMANTĖ ,Talk6
+All,perplexity,Audience,9,DEIMANTĖ ,Talk6
+All,openai,Audience,8,DEIMANTĖ,Talk6
+All,perplexity,Audience,10,DEIMANTĖ,Talk6
+All,openai,Audience,7,DEIMANTĖ ,Talk6
+All,perplexity,Audience,9,DEIMANTĖ ,Talk6
+All,openai,Audience,1,Snps,Talk4
+All,perplexity,Audience,1,Snps,Talk4
+All,openai,Audience,8,Ale28,Talk6
+All,perplexity,Audience,7,Ale28,Talk6
+All,openai,Audience,8,Ale28,Talk6
+All,perplexity,Audience,7,Ale28,Talk6
+All,openai,Audience,1,Katha,Talk4
+All,perplexity,Audience,9,Katha,Talk4
+All,openai,Audience,1,Katha,Talk4
+All,perplexity,Audience,9,Katha,Talk4
+All,openai,Audience,8,Snps,Talk4
+All,perplexity,Audience,8,Snps,Talk4
+All,openai,Audience,6,EF,Talk6
+All,perplexity,Audience,7,EF,Talk6
+All,openai,Audience,4,EF,Talk4
+All,perplexity,Audience,8,EF,Talk4
+All,openai,Audience,5,EF,Talk3
+All,perplexity,Audience,7,EF,Talk3
+All,openai,Audience,7,A,Talk4
+All,perplexity,Audience,6,A,Talk4
+All,openai,Audience,8,DEIMANTĖ ,Talk3
+All,perplexity,Audience,9,DEIMANTĖ ,Talk3
+All,openai,Audience,8,DEIMANTĖ ,Talk3
+All,perplexity,Audience,9,DEIMANTĖ ,Talk3
+All,openai,Audience,7,DEIMANTĖ,Talk4
+All,perplexity,Audience,6,DEIMANTĖ,Talk4
+All,openai,Audience,3,eda,Talk3
+All,perplexity,Audience,4,eda,Talk3
+All,openai,Audience,5,eda,Talk6
+All,perplexity,Audience,7,eda,Talk6
+All,openai,Audience,8,DEIMANTĖ ,Talk3
+All,perplexity,Audience,9,DEIMANTĖ ,Talk3
+All,openai,Audience,7,DEIMANTĖ,Talk4
+All,perplexity,Audience,6,DEIMANTĖ,Talk4
+All,openai,Audience,6,DEIMANTĖ ,Talk5
+All,perplexity,Audience,8,DEIMANTĖ ,Talk5
+All,openai,Audience,6,Aquaria,Talk6
+All,perplexity,Audience,10,Aquaria,Talk6
+All,openai,Audience,7,Aquaria,Talk6
+All,perplexity,Audience,8,Aquaria,Talk6
+All,openai,Audience,6,Aquaria,Talk6
+All,perplexity,Audience,9,Aquaria,Talk6
+All,openai,Audience,6,jyhuang,Talk1
+All,perplexity,Audience,8,jyhuang,Talk1
+All,openai,Audience,6,jyhuang,Talk1
+All,perplexity,Audience,8,jyhuang,Talk1
+All,openai,Speaker,7,ferenckata,Talk6
+All,perplexity,Speaker,9,ferenckata,Talk6
+All,openai,Speaker,6,DEIMANTĖ ,Talk6
+All,perplexity,Speaker,8,DEIMANTĖ ,Talk6
+All,openai,Speaker,6,DEIMANTĖ,Talk6
+All,perplexity,Speaker,8,DEIMANTĖ,Talk6
+All,openai,Speaker,5,Jeremie,Talk6
+All,perplexity,Speaker,8,Jeremie,Talk6
+All,openai,Speaker,6,EF,Talk6
+All,perplexity,Speaker,8,EF,Talk6
+All,openai,Speaker,6,Jeanne,Talk6
+All,perplexity,Speaker,8,Jeanne,Talk6
+All,openai,Speaker,8,Hola,Talk6
+All,perplexity,Speaker,9,Hola,Talk6
+All,openai,Speaker,7,Harpreet ,Talk6
+All,perplexity,Speaker,7,Harpreet ,Talk6
+All,openai,Speaker,5,ferenckata,Talk6
+All,perplexity,Speaker,7,ferenckata,Talk6
+All,openai,Speaker,6,DEIMANTĖ,Talk6
+All,perplexity,Speaker,8,DEIMANTĖ,Talk6
+All,openai,Speaker,5,TN,Talk6
+All,perplexity,Speaker,8,TN,Talk6
+All,openai,Speaker,7,Hola,Talk6
+All,perplexity,Speaker,6,Hola,Talk6
+All,openai,Speaker,6,Hola,Talk6
+All,perplexity,Speaker,9,Hola,Talk6
+All,openai,Speaker,7,Aquaria,Talk6
+All,perplexity,Speaker,9,Aquaria,Talk6
+All,openai,Speaker,6,Jeremie,Talk6
+All,perplexity,Speaker,8,Jeremie,Talk6
+All,openai,gemini,9,gerold,Talk1
+All,perplexity,gemini,2,gerold,Talk1
+All,openai,gemini,9,DEIMANTĖ ,Talk1
+All,perplexity,gemini,8,DEIMANTĖ ,Talk1
+All,perplexity,gemini,6,suu,Talk1
+All,openai,gemini,2,suu,Talk1
+All,openai,gemini,8,DaniH,Talk1
+All,perplexity,gemini,9,DaniH,Talk1
+All,openai,gemini,3,Does Dr Saez-Rodriguez like black box models?,Talk1
+All,perplexity,gemini,7,Does Dr Saez-Rodriguez like black box models?,Talk1
+All,openai,gemini,10,Chris,Talk1
+All,perplexity,gemini,4,Chris,Talk1
+All,perplexity,gemini,8,Katha,Talk1
+All,openai,gemini,9,Katha,Talk1
+All,perplexity,gemini,9,EF,Talk6
+All,openai,gemini,8,EF,Talk6
+All,perplexity,gemini,8,DEIMANTĖ,Talk6
+All,openai,gemini,7,DEIMANTĖ,Talk6
+All,perplexity,gemini,5,eda,Talk6
+All,openai,gemini,9,eda,Talk6
+All,perplexity,gemini,1,ferenckata,Talk6
+All,openai,gemini,8,ferenckata,Talk6
+All,perplexity,gemini,3,Small brain ,Talk6
+All,openai,gemini,9,Small brain ,Talk6
+All,perplexity,gemini,10,TN,Talk6
+All,openai,gemini,7,TN,Talk6
+All,perplexity,gemini,9,DEIMANTĖ,Talk6
+All,openai,gemini,8,DEIMANTĖ,Talk6
+All,perplexity,gemini,3,Jeremie,Talk6
+All,openai,gemini,9,Jeremie,Talk6
+All,perplexity,gemini,8,Aquaria,Talk6
+All,openai,gemini,5,Aquaria,Talk6
+All,perplexity,gemini,7,TN,Talk6
+All,openai,gemini,4,TN,Talk6
+All,perplexity,gemini,9,TN,Talk6
+All,openai,gemini,7,TN,Talk6
+All,perplexity,gemini,4,Harpreet ,Talk6
+All,openai,gemini,8,Harpreet ,Talk6
+All,perplexity,gemini,8,Hola,Talk6
+All,openai,gemini,5,Hola,Talk6
+All,openai,gemini,9,Ale28,Talk6
+All,perplexity,gemini,1,Ale28,Talk6
+All,perplexity,gemini,3,Hola,Talk6
+All,openai,gemini,8,Hola,Talk6
+All,perplexity,gemini,10,Aquaria,Talk6
+All,openai,gemini,7,Aquaria,Talk6
+All,perplexity,gemini,6,Hola,Talk6
+All,openai,gemini,8,Hola,Talk6
+All,perplexity,gemini,10,Aquaria,Talk6
+All,openai,gemini,5,Aquaria,Talk6
+All,perplexity,gemini,9,Aquaria,Talk6
+All,openai,gemini,6,Aquaria,Talk6
+All,openai,gemini,9,ferenckata,Talk6
+All,perplexity,gemini,5,ferenckata,Talk6
+All,perplexity,gemini,9,DEIMANTĖ ,Talk6
+All,openai,gemini,8,DEIMANTĖ ,Talk6
+All,openai,gemini,7,Luis,Talk6
+All,perplexity,gemini,9,Luis,Talk6
+All,perplexity,gemini,9,Jeanne,Talk6
+All,openai,gemini,7,Jeanne,Talk6
+All,perplexity,gemini,9,Chris,Talk3
+All,openai,gemini,10,Chris,Talk3
+All,perplexity,gemini,1,DEIMANTĖ ,Talk3
+All,openai,gemini,9,DEIMANTĖ ,Talk3
+All,perplexity,gemini,8,eda,Talk3
+All,openai,gemini,9,eda,Talk3
+All,perplexity,gemini,2,EF,Talk3
+All,openai,gemini,3,EF,Talk3
+All,openai,gemini,9,CB,Talk3
+All,perplexity,gemini,8,CB,Talk3
+All,perplexity,gemini,9,Snps ,Talk6
+All,openai,gemini,8,Snps ,Talk6
+All,perplexity,gemini,3,Snps,Talk4
+All,openai,gemini,1,Snps,Talk4
+All,perplexity,gemini,6,Katha,Talk4
+All,openai,gemini,7,Katha,Talk4
+All,perplexity,gemini,1,EF,Talk4
+All,openai,gemini,9,EF,Talk4
+All,openai,gemini,7,DEIMANTĖ,Talk4
+All,perplexity,gemini,9,DEIMANTĖ,Talk4
+All,openai,gemini,9,A,Talk4
+All,perplexity,gemini,7,A,Talk4
+All,perplexity,gemini,8,DEIMANTĖ ,Talk5
+All,openai,gemini,3,DEIMANTĖ ,Talk5
+All,perplexity,gemini,6,jyhuang,Talk1
+All,openai,gemini,8,jyhuang,Talk1
+All,openai,grok,9,gerold,Talk1
+All,perplexity,grok,7,gerold,Talk1
+All,openai,grok,9,DEIMANTĖ ,Talk1
+All,perplexity,grok,8,DEIMANTĖ ,Talk1
+All,perplexity,grok,9,suu,Talk1
+All,openai,grok,6,suu,Talk1
+All,openai,grok,8,DaniH,Talk1
+All,perplexity,grok,9,DaniH,Talk1
+All,openai,grok,9,Does Dr Saez-Rodriguez like black box models?,Talk1
+All,perplexity,grok,7,Does Dr Saez-Rodriguez like black box models?,Talk1
+All,openai,grok,9,Chris,Talk1
+All,perplexity,grok,8,Chris,Talk1
+All,perplexity,grok,9,Katha,Talk1
+All,openai,grok,10,Katha,Talk1
+All,perplexity,grok,9,EF,Talk6
+All,openai,grok,8,EF,Talk6
+All,perplexity,grok,9,DEIMANTĖ,Talk6
+All,openai,grok,6,DEIMANTĖ,Talk6
+All,perplexity,grok,8,eda,Talk6
+All,openai,grok,9,eda,Talk6
+All,perplexity,grok,2,ferenckata,Talk6
+All,openai,grok,8,ferenckata,Talk6
+All,perplexity,grok,4,Small brain ,Talk6
+All,openai,grok,9,Small brain ,Talk6
+All,perplexity,grok,9,TN,Talk6
+All,openai,grok,8,TN,Talk6
+All,perplexity,grok,9,DEIMANTĖ,Talk6
+All,openai,grok,8,DEIMANTĖ,Talk6
+All,perplexity,grok,7,Jeremie,Talk6
+All,openai,grok,9,Jeremie,Talk6
+All,perplexity,grok,8,Aquaria,Talk6
+All,openai,grok,9,Aquaria,Talk6
+All,perplexity,grok,8,TN,Talk6
+All,openai,grok,9,TN,Talk6
+All,perplexity,grok,10,TN,Talk6
+All,openai,grok,7,TN,Talk6
+All,perplexity,grok,9,Harpreet ,Talk6
+All,openai,grok,8,Harpreet ,Talk6
+All,perplexity,grok,9,Hola,Talk6
+All,openai,grok,8,Hola,Talk6
+All,openai,grok,9,Ale28,Talk6
+All,perplexity,grok,7,Ale28,Talk6
+All,perplexity,grok,10,Hola,Talk6
+All,openai,grok,9,Hola,Talk6
+All,perplexity,grok,9,Aquaria,Talk6
+All,openai,grok,9,Aquaria,Talk6
+All,perplexity,grok,9,Hola,Talk6
+All,openai,grok,8,Hola,Talk6
+All,perplexity,grok,8,Aquaria,Talk6
+All,openai,grok,9,Aquaria,Talk6
+All,perplexity,grok,8,Aquaria,Talk6
+All,openai,grok,9,Aquaria,Talk6
+All,openai,grok,8,ferenckata,Talk6
+All,perplexity,grok,10,ferenckata,Talk6
+All,perplexity,grok,9,DEIMANTĖ ,Talk6
+All,openai,grok,8,DEIMANTĖ ,Talk6
+All,openai,grok,9,Luis,Talk6
+All,perplexity,grok,10,Luis,Talk6
+All,perplexity,grok,9,Jeanne,Talk6
+All,openai,grok,8,Jeanne,Talk6
+All,perplexity,grok,8,Chris,Talk3
+All,openai,grok,9,Chris,Talk3
+All,perplexity,grok,2,DEIMANTĖ ,Talk3
+All,openai,grok,8,DEIMANTĖ ,Talk3
+All,perplexity,grok,6,eda,Talk3
+All,openai,grok,9,eda,Talk3
+All,perplexity,grok,6,EF,Talk3
+All,openai,grok,9,EF,Talk3
+All,openai,grok,9,CB,Talk3
+All,perplexity,grok,8,CB,Talk3
+All,perplexity,grok,9,Snps ,Talk6
+All,openai,grok,8,Snps ,Talk6
+All,perplexity,grok,2,Snps,Talk4
+All,openai,grok,3,Snps,Talk4
+All,perplexity,grok,7,Katha,Talk4
+All,openai,grok,9,Katha,Talk4
+All,perplexity,grok,8,EF,Talk4
+All,openai,grok,6,EF,Talk4
+All,openai,grok,8,DEIMANTĖ,Talk4
+All,perplexity,grok,9,DEIMANTĖ,Talk4
+All,openai,grok,9,A,Talk4
+All,perplexity,grok,8,A,Talk4
+All,perplexity,grok,6,DEIMANTĖ ,Talk5
+All,openai,grok,9,DEIMANTĖ ,Talk5
+All,perplexity,grok,8,jyhuang,Talk1
+All,openai,grok,7,jyhuang,Talk1
+All,openai,claude,5,gerold,Talk1
+All,perplexity,claude,6,gerold,Talk1
+All,openai,claude,8,DEIMANTĖ ,Talk1
+All,perplexity,claude,9,DEIMANTĖ ,Talk1
+All,perplexity,claude,8,suu,Talk1
+All,openai,claude,9,suu,Talk1
+All,openai,claude,7,DaniH,Talk1
+All,perplexity,claude,8,DaniH,Talk1
+All,openai,claude,9,Does Dr Saez-Rodriguez like black box models?,Talk1
+All,perplexity,claude,6,Does Dr Saez-Rodriguez like black box models?,Talk1
+All,openai,claude,8,Chris,Talk1
+All,perplexity,claude,9,Chris,Talk1
+All,perplexity,claude,8,Katha,Talk1
+All,openai,claude,10,Katha,Talk1
+All,perplexity,claude,8,EF,Talk6
+All,openai,claude,7,EF,Talk6
+All,perplexity,claude,9,DEIMANTĖ,Talk6
+All,openai,claude,6,DEIMANTĖ,Talk6
+All,perplexity,claude,7,eda,Talk6
+All,openai,claude,9,eda,Talk6
+All,perplexity,claude,5,ferenckata,Talk6
+All,openai,claude,2,ferenckata,Talk6
+All,perplexity,claude,6,Small brain ,Talk6
+All,openai,claude,9,Small brain ,Talk6
+All,perplexity,claude,10,TN,Talk6
+All,openai,claude,8,TN,Talk6
+All,perplexity,claude,8,DEIMANTĖ,Talk6
+All,openai,claude,9,DEIMANTĖ,Talk6
+All,perplexity,claude,8,Jeremie,Talk6
+All,openai,claude,9,Jeremie,Talk6
+All,perplexity,claude,8,Aquaria,Talk6
+All,openai,claude,9,Aquaria,Talk6
+All,perplexity,claude,8,TN,Talk6
+All,openai,claude,9,TN,Talk6
+All,perplexity,claude,9,TN,Talk6
+All,openai,claude,6,TN,Talk6
+All,perplexity,claude,8,Harpreet ,Talk6
+All,openai,claude,7,Harpreet ,Talk6
+All,perplexity,claude,10,Hola,Talk6
+All,openai,claude,8,Hola,Talk6
+All,openai,claude,8,Ale28,Talk6
+All,perplexity,claude,6,Ale28,Talk6
+All,perplexity,claude,9,Hola,Talk6
+All,openai,claude,8,Hola,Talk6
+All,perplexity,claude,8,Aquaria,Talk6
+All,openai,claude,9,Aquaria,Talk6
+All,perplexity,claude,10,Hola,Talk6
+All,openai,claude,8,Hola,Talk6
+All,perplexity,claude,8,Aquaria,Talk6
+All,openai,claude,9,Aquaria,Talk6
+All,perplexity,claude,7,Aquaria,Talk6
+All,openai,claude,9,Aquaria,Talk6
+All,openai,claude,8,ferenckata,Talk6
+All,perplexity,claude,9,ferenckata,Talk6
+All,perplexity,claude,9,DEIMANTĖ ,Talk6
+All,openai,claude,7,DEIMANTĖ ,Talk6
+All,openai,claude,7,Luis,Talk6
+All,perplexity,claude,9,Luis,Talk6
+All,perplexity,claude,8,Jeanne,Talk6
+All,openai,claude,5,Jeanne,Talk6
+All,openai,deepseek,9,gerold,Talk1
+All,perplexity,deepseek,8,gerold,Talk1
+All,openai,deepseek,9,DEIMANTĖ ,Talk1
+All,perplexity,deepseek,8,DEIMANTĖ ,Talk1
+All,perplexity,deepseek,8,suu,Talk1
+All,openai,deepseek,9,suu,Talk1
+All,openai,deepseek,8,DaniH,Talk1
+All,perplexity,deepseek,9,DaniH,Talk1
+All,openai,deepseek,8,Does Dr Saez-Rodriguez like black box models?,Talk1
+All,perplexity,deepseek,5,Does Dr Saez-Rodriguez like black box models?,Talk1
+All,openai,deepseek,9,Chris,Talk1
+All,perplexity,deepseek,10,Chris,Talk1
+All,perplexity,deepseek,9,Katha,Talk1
+All,openai,deepseek,10,Katha,Talk1
+All,perplexity,deepseek,9,EF,Talk6
+All,openai,deepseek,8,EF,Talk6
+All,perplexity,deepseek,8,DEIMANTĖ,Talk6
+All,openai,deepseek,9,DEIMANTĖ,Talk6
+All,perplexity,deepseek,8,eda,Talk6
+All,openai,deepseek,9,eda,Talk6
+All,perplexity,deepseek,8,ferenckata,Talk6
+All,openai,deepseek,6,ferenckata,Talk6
+All,perplexity,deepseek,8,Small brain ,Talk6
+All,openai,deepseek,9,Small brain ,Talk6
+All,perplexity,deepseek,9,TN,Talk6
+All,openai,deepseek,7,TN,Talk6
+All,perplexity,deepseek,9,DEIMANTĖ,Talk6
+All,openai,deepseek,8,DEIMANTĖ,Talk6
+All,perplexity,deepseek,8,Jeremie,Talk6
+All,openai,deepseek,9,Jeremie,Talk6
+All,perplexity,deepseek,9,Aquaria,Talk6
+All,openai,deepseek,10,Aquaria,Talk6
+All,perplexity,deepseek,8,TN,Talk6
+All,openai,deepseek,9,TN,Talk6
+All,perplexity,deepseek,9,TN,Talk6
+All,openai,deepseek,8,TN,Talk6
+All,perplexity,deepseek,8,Harpreet ,Talk6
+All,openai,deepseek,6,Harpreet ,Talk6
+All,perplexity,deepseek,9,Hola,Talk6
+All,openai,deepseek,8,Hola,Talk6
+All,openai,deepseek,9,Ale28,Talk6
+All,perplexity,deepseek,10,Ale28,Talk6
+All,perplexity,deepseek,9,Hola,Talk6
+All,openai,deepseek,10,Hola,Talk6
+All,perplexity,deepseek,8,Aquaria,Talk6
+All,openai,deepseek,9,Aquaria,Talk6
+All,perplexity,deepseek,8,Hola,Talk6
+All,openai,deepseek,7,Hola,Talk6
+All,perplexity,deepseek,9,Aquaria,Talk6
+All,openai,deepseek,10,Aquaria,Talk6
+All,perplexity,deepseek,8,Aquaria,Talk6
+All,openai,deepseek,9,Aquaria,Talk6
+All,openai,deepseek,9,ferenckata,Talk6
+All,perplexity,deepseek,10,ferenckata,Talk6
+All,perplexity,deepseek,9,DEIMANTĖ ,Talk6
+All,openai,deepseek,8,DEIMANTĖ ,Talk6
+All,openai,deepseek,9,Luis,Talk6
+All,perplexity,deepseek,10,Luis,Talk6
+All,perplexity,deepseek,8,Jeanne,Talk6
+All,openai,deepseek,7,Jeanne,Talk6
+All,perplexity,deepseek,9,Chris,Talk3
+All,openai,deepseek,10,Chris,Talk3
+All,perplexity,deepseek,8,DEIMANTĖ ,Talk3
+All,openai,deepseek,9,DEIMANTĖ ,Talk3
+All,perplexity,deepseek,8,eda,Talk3
+All,openai,deepseek,9,eda,Talk3
+All,perplexity,deepseek,9,EF,Talk3
+All,openai,deepseek,8,EF,Talk3
+All,openai,deepseek,8,CB,Talk3
+All,perplexity,deepseek,7,CB,Talk3
+All,perplexity,deepseek,8,Snps ,Talk6
+All,openai,deepseek,7,Snps ,Talk6
+All,perplexity,deepseek,8,Snps,Talk4
+All,openai,deepseek,9,Snps,Talk4
+All,perplexity,deepseek,8,Katha,Talk4
+All,openai,deepseek,9,Katha,Talk4
+All,perplexity,deepseek,8,EF,Talk4
+All,openai,deepseek,7,EF,Talk4
+All,openai,deepseek,8,DEIMANTĖ,Talk4
+All,perplexity,deepseek,9,DEIMANTĖ,Talk4
+All,openai,deepseek,8,A,Talk4
+All,perplexity,deepseek,6,A,Talk4
+All,perplexity,deepseek,8,DEIMANTĖ ,Talk5
+All,openai,deepseek,9,DEIMANTĖ ,Talk5
+All,perplexity,deepseek,8,jyhuang,Talk1
+All,openai,deepseek,7,jyhuang,Talk1
+All,openai,perplexity,7,gerold,Talk1
+All,perplexity,perplexity,9,gerold,Talk1
+All,openai,perplexity,8,DEIMANTĖ ,Talk1
+All,perplexity,perplexity,9,DEIMANTĖ ,Talk1
+All,perplexity,perplexity,6,suu,Talk1
+All,openai,perplexity,7,suu,Talk1
+All,openai,perplexity,7,DaniH,Talk1
+All,perplexity,perplexity,9,DaniH,Talk1
+All,openai,perplexity,9,Does Dr Saez-Rodriguez like black box models?,Talk1
+All,perplexity,perplexity,5,Does Dr Saez-Rodriguez like black box models?,Talk1
+All,openai,perplexity,6,Chris,Talk1
+All,perplexity,perplexity,9,Chris,Talk1
+All,perplexity,perplexity,7,Katha,Talk1
+All,openai,perplexity,9,Katha,Talk1
+All,perplexity,perplexity,9,EF,Talk6
+All,openai,perplexity,8,EF,Talk6
+All,perplexity,perplexity,10,DEIMANTĖ,Talk6
+All,openai,perplexity,6,DEIMANTĖ,Talk6
+All,perplexity,perplexity,5,eda,Talk6
+All,openai,perplexity,9,eda,Talk6
+All,perplexity,perplexity,9,ferenckata,Talk6
+All,openai,perplexity,6,ferenckata,Talk6
+All,perplexity,perplexity,4,Small brain ,Talk6
+All,openai,perplexity,8,Small brain ,Talk6
+All,perplexity,perplexity,8,TN,Talk6
+All,openai,perplexity,7,TN,Talk6
+All,perplexity,perplexity,8,DEIMANTĖ,Talk6
+All,openai,perplexity,10,DEIMANTĖ,Talk6
+All,perplexity,perplexity,8,Jeremie,Talk6
+All,openai,perplexity,9,Jeremie,Talk6
+All,perplexity,perplexity,7,Aquaria,Talk6
+All,openai,perplexity,9,Aquaria,Talk6
+All,perplexity,perplexity,5,TN,Talk6
+All,openai,perplexity,9,TN,Talk6
+All,perplexity,perplexity,10,TN,Talk6
+All,openai,perplexity,8,TN,Talk6
+All,perplexity,perplexity,9,Harpreet ,Talk6
+All,openai,perplexity,7,Harpreet ,Talk6
+All,perplexity,perplexity,9,Hola,Talk6
+All,openai,perplexity,7,Hola,Talk6
+All,openai,perplexity,8,Ale28,Talk6
+All,perplexity,perplexity,7,Ale28,Talk6
+All,perplexity,perplexity,10,Hola,Talk6
+All,openai,perplexity,9,Hola,Talk6
+All,perplexity,perplexity,8,Aquaria,Talk6
+All,openai,perplexity,9,Aquaria,Talk6
+All,perplexity,perplexity,9,Hola,Talk6
+All,openai,perplexity,7,Hola,Talk6
+All,perplexity,perplexity,8,Aquaria,Talk6
+All,openai,perplexity,10,Aquaria,Talk6
+All,perplexity,perplexity,6,Aquaria,Talk6
+All,openai,perplexity,10,Aquaria,Talk6
+All,openai,perplexity,8,ferenckata,Talk6
+All,perplexity,perplexity,10,ferenckata,Talk6
+All,perplexity,perplexity,9,DEIMANTĖ ,Talk6
+All,openai,perplexity,8,DEIMANTĖ ,Talk6
+All,openai,perplexity,8,Luis,Talk6
+All,perplexity,perplexity,9,Luis,Talk6
+All,perplexity,perplexity,9,Jeanne,Talk6
+All,openai,perplexity,7,Jeanne,Talk6
+All,perplexity,perplexity,7,Chris,Talk3
+All,openai,perplexity,9,Chris,Talk3
+All,perplexity,perplexity,4,DEIMANTĖ ,Talk3
+All,openai,perplexity,7,DEIMANTĖ ,Talk3
+All,perplexity,perplexity,6,eda,Talk3
+All,openai,perplexity,9,eda,Talk3
+All,perplexity,perplexity,6,EF,Talk3
+All,openai,perplexity,9,EF,Talk3
+All,openai,perplexity,9,CB,Talk3
+All,perplexity,perplexity,8,CB,Talk3
+All,perplexity,perplexity,9,Snps ,Talk6
+All,openai,perplexity,7,Snps ,Talk6
+All,perplexity,perplexity,6,Snps,Talk4
+All,openai,perplexity,7,Snps,Talk4
+All,perplexity,perplexity,6,Katha,Talk4
+All,openai,perplexity,10,Katha,Talk4
+All,perplexity,perplexity,8,EF,Talk4
+All,openai,perplexity,6,EF,Talk4
+All,openai,perplexity,6,DEIMANTĖ,Talk4
+All,perplexity,perplexity,9,DEIMANTĖ,Talk4
+All,openai,perplexity,9,A,Talk4
+All,perplexity,perplexity,6,A,Talk4
+All,perplexity,perplexity,6,DEIMANTĖ ,Talk5
+All,openai,perplexity,9,DEIMANTĖ ,Talk5
+All,perplexity,perplexity,8,jyhuang,Talk1
+All,openai,perplexity,7,jyhuang,Talk1
+All,openai,openai,4,gerold,Talk1
+All,perplexity,openai,7,gerold,Talk1
+All,openai,openai,9,DEIMANTĖ ,Talk1
+All,perplexity,openai,8,DEIMANTĖ ,Talk1
+All,perplexity,openai,6,suu,Talk1
+All,openai,openai,8,suu,Talk1
+All,openai,openai,6,DaniH,Talk1
+All,perplexity,openai,8,DaniH,Talk1
+All,openai,openai,9,Does Dr Saez-Rodriguez like black box models?,Talk1
+All,perplexity,openai,4,Does Dr Saez-Rodriguez like black box models?,Talk1
+All,openai,openai,9,Chris,Talk1
+All,perplexity,openai,7,Chris,Talk1
+All,perplexity,openai,10,Katha,Talk1
+All,openai,openai,8,Katha,Talk1
+All,perplexity,openai,9,EF,Talk6
+All,openai,openai,8,EF,Talk6
+All,perplexity,openai,9,DEIMANTĖ,Talk6
+All,openai,openai,5,DEIMANTĖ,Talk6
+All,perplexity,openai,3,eda,Talk6
+All,openai,openai,9,eda,Talk6
+All,perplexity,openai,6,ferenckata,Talk6
+All,openai,openai,4,ferenckata,Talk6
+All,perplexity,openai,2,Small brain ,Talk6
+All,openai,openai,6,Small brain ,Talk6
+All,perplexity,openai,9,TN,Talk6
+All,openai,openai,8,TN,Talk6
+All,perplexity,openai,9,DEIMANTĖ,Talk6
+All,openai,openai,8,DEIMANTĖ,Talk6
+All,perplexity,openai,4,Jeremie,Talk6
+All,openai,openai,9,Jeremie,Talk6
+All,perplexity,openai,8,Aquaria,Talk6
+All,openai,openai,9,Aquaria,Talk6
+All,perplexity,openai,5,TN,Talk6
+All,openai,openai,9,TN,Talk6
+All,perplexity,openai,9,TN,Talk6
+All,openai,openai,7,TN,Talk6
+All,perplexity,openai,9,Harpreet ,Talk6
+All,openai,openai,7,Harpreet ,Talk6
+All,perplexity,openai,5,Hola,Talk6
+All,openai,openai,9,Hola,Talk6
+All,openai,openai,8,Ale28,Talk6
+All,perplexity,openai,6,Ale28,Talk6
+All,perplexity,openai,9,Hola,Talk6
+All,openai,openai,8,Hola,Talk6
+All,perplexity,openai,9,Aquaria,Talk6
+All,openai,openai,8,Aquaria,Talk6
+All,perplexity,openai,9,Hola,Talk6
+All,openai,openai,6,Hola,Talk6
+All,perplexity,openai,7,Aquaria,Talk6
+All,openai,openai,9,Aquaria,Talk6
+All,perplexity,openai,9,Aquaria,Talk6
+All,openai,openai,7,Aquaria,Talk6
+All,openai,openai,8,ferenckata,Talk6
+All,perplexity,openai,9,ferenckata,Talk6
+All,perplexity,openai,9,DEIMANTĖ ,Talk6
+All,openai,openai,7,DEIMANTĖ ,Talk6
+All,openai,openai,7,Luis,Talk6
+All,perplexity,openai,10,Luis,Talk6
+All,perplexity,openai,9,Jeanne,Talk6
+All,openai,openai,6,Jeanne,Talk6
+All,perplexity,openai,8,Chris,Talk3
+All,openai,openai,10,Chris,Talk3
+All,perplexity,openai,2,DEIMANTĖ ,Talk3
+All,openai,openai,8,DEIMANTĖ ,Talk3
+All,perplexity,openai,5,eda,Talk3
+All,openai,openai,9,eda,Talk3
+All,perplexity,openai,8,EF,Talk3
+All,openai,openai,7,EF,Talk3
+All,openai,openai,9,CB,Talk3
+All,perplexity,openai,7,CB,Talk3
+All,perplexity,openai,9,Snps ,Talk6
+All,openai,openai,6,Snps ,Talk6
+All,perplexity,openai,2,Snps,Talk4
+All,openai,openai,3,Snps,Talk4
+All,perplexity,openai,5,Katha,Talk4
+All,openai,openai,9,Katha,Talk4
+All,perplexity,openai,8,EF,Talk4
+All,openai,openai,5,EF,Talk4
+All,openai,openai,8,DEIMANTĖ,Talk4
+All,perplexity,openai,5,DEIMANTĖ,Talk4
+All,openai,openai,9,A,Talk4
+All,perplexity,openai,6,A,Talk4
+All,perplexity,openai,7,DEIMANTĖ ,Talk5
+All,openai,openai,9,DEIMANTĖ ,Talk5
+All,perplexity,openai,7,jyhuang,Talk1
+All,openai,openai,4,jyhuang,Talk1
