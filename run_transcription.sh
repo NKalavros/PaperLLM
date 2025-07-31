@@ -68,6 +68,8 @@ fi
 if [ -n "${FFMPEG_DEVICE:-}" ]; then
     PYTHON_ARGS+=(--audio-device "$FFMPEG_DEVICE")
 fi
+# ensure segments use same target folder
+PYTHON_ARGS+=(--output-base-dir "$TARGET_DIR")
 
 echo "Running transcription script..."
 "$PYTHON_EXE" "$SCRIPT_NAME" "$FINAL_OUTPUT_PATH" "${PYTHON_ARGS[@]}"

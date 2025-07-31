@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Academic Talk Summarizer - Benchmarking LLMs using Academic </div>Talks</title>
+    <title>Academic Talk Summarizer - Benchmarking LLMs using Academic Talks</title>
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown.min.css">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
@@ -516,7 +516,7 @@
                 const response = await fetch('/available_pdfs');
                 console.log('Response status:', response.status);
                 const data = await response.json();
-                console.log('Received data:', data);
+                console.log('Received data:', JSON.stringify(data, null, 2));
                 const dropdown = document.getElementById('pdf-dropdown');
                 console.log('Dropdown element:', dropdown);
 
@@ -929,7 +929,7 @@
         // Automatically fetch and populate table
         function loadTable() {
             fetch('/leaderboard')
-                .then(r => {
+                .then r => {
                     if (!r.ok) throw new Error(`HTTP error ${r.status}`);
                     return r.json();
                 })

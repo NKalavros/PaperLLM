@@ -47,7 +47,6 @@ VAD_FILTER_ENABLED = os.environ.get("FWS_USE_VAD", "false").lower() in ("true","
 
 # Toggle punctuation restoration via env (default: off)
 PUNCTUATE_TRANSCRIPTION = os.environ.get("FWS_PUNCTUATE", "false").lower() in ("true","1","yes")
-punct_model = PunctuationModel() if PUNCTUATE_TRANSCRIPTION else None  # instantiate once
 
 # --- OpenAI API Configuration --- (Only if TRANSCRIPTION_MODE = 'api')
 # os.environ["OPENAI_API_KEY"] = "your-api-key-here"
@@ -88,18 +87,15 @@ def get_platform_defaults():
 FFMPEG_INPUT_FORMAT, AUDIO_DEVICE, PLATFORM_NEEDS_MANUAL_CONFIG = get_platform_defaults()
 
 # --- FFmpeg Configuration ---
-# Manually override FFMPEG_INPUT_FORMAT and AUDIO_DEVICE here if needed
-
-if PLATFORM_NEEDS_MANUAL_CONFIG:
-    print("WARNING: Please verify FFMPEG settings below.")
-    # time.sleep(3)
-
 FFMPEG_COMMAND_BASE = [
-    'ffmpeg', '-loglevel', 'error', '-f', FFMPEG_INPUT_FORMAT,
-    '-i', AUDIO_DEVICE,
-    '-af', 'afftdn',            # simple noise reduction
-    '-t', str(RECORD_INTERVAL_SECONDS),
-    '-codec:a', 'libmp3lame', '-q:a', '4', # MP3 output
+    'ffmpeg', '-loglevel', 'error',
+    '-f', FFMPEG_INPUT_FORMAT, '-i', AUDIO_DEVICE,
+    '-af', 'afftdn',
+    '-f', 'segment',                  # use segment muxer
+    '-segment_time', str(RECORD_INTERVAL_SECONDS),
+    '-reset_timestamps', '1',
+    '-codec:a', 'libmp3lame', '-q:a', '4',
+    str(AUDIO_SEGMENTS_DIR / 'segment_%04d.mp3'),
 ]
 
 # --- Global Variables ---
@@ -174,9 +170,6 @@ def transcribe_api(audio_path):
             )
         transcription = response.text.strip()
 
-        # Restore punctuation if enabled
-        if transcription and punct_model:
-            transcription = punct_model.punctuate(transcription)
 
         print(f"  > API Transcription successful: {audio_path.name}")
         return transcription
@@ -206,9 +199,6 @@ def transcribe_faster_whisper(model, audio_path):
         # Concatenate segments into a single string
         full_transcription = " ".join([segment.text for segment in segments]).strip()
 
-        # apply punctuation if enabled
-        if punct_model:
-            full_transcription = punct_model.punctuate(full_transcription)
 
         print(f"  > faster-whisper Transcription successful: {audio_path.name}")
         return full_transcription
@@ -286,6 +276,37 @@ def save_transcription_segment(text, output_filename):
         # print(f"  > Save successful: {output_filename.name}")
     except IOError as e:
         print(f"  > ERROR saving transcription segment {output_filename.name}: {e}")
+
+# New helper to concatenate all MP3 segments into one file
+def concatenate_audio_segments(segments_dir: Path, output_path: Path):
+    """Concatenate all segment_*.mp3 files into a single MP3 via ffmpeg."""
+    # Gather and sort segment files
+    segment_files = sorted(segments_dir.glob("segment_*.mp3"))
+    if not segment_files:
+        print(f"No audio segments found in {segments_dir}, skipping concatenation.")
+        return
+
+    # Build ffmpeg concat list
+    list_file = segments_dir / "concat_list.txt"
+    try:
+        with open(list_file, 'w', encoding='utf-8') as f:
+            for seg in segment_files:
+                f.write(f"file '{seg.resolve()}'\n")
+        cmd = [
+            "ffmpeg", "-loglevel", "error",
+            "-f", "concat", "-safe", "0",
+            "-i", str(list_file),
+            "-c", "copy",
+            str(output_path)
+        ]
+        print(f"Concatenating {len(segment_files)} segments into {output_path.name}...")
+        subprocess.run(cmd, check=True)
+        print(f"  > Combined audio saved at: {output_path}")
+    except Exception as e:
+        print(f"ERROR during audio concatenation: {e}")
+    finally:
+        if list_file.exists():
+            list_file.unlink()
 
 # --- Collation Function ---
 def collate_transcriptions(final_output_path): # <-- Added argument
@@ -365,6 +386,8 @@ def main(args): # <-- Added args parameter
     if hasattr(args, "output_base_dir") and args.output_base_dir:
         OUTPUT_BASE_DIR = args.output_base_dir
     AUDIO_SEGMENTS_DIR, TRANSCRIPTION_SEGMENTS_DIR = setup_directories(OUTPUT_BASE_DIR)
+    print(f"Audio segments directory: {AUDIO_SEGMENTS_DIR}")
+    print(f"Transcription segments directory: {TRANSCRIPTION_SEGMENTS_DIR}")
     FINAL_TRANSCRIPTION_FILE = args.final_output_path
 
     # --- Apply User Overrides ---
@@ -378,8 +401,12 @@ def main(args): # <-- Added args parameter
     FFMPEG_COMMAND_BASE = [
         'ffmpeg', '-loglevel', 'error',
         '-f', FFMPEG_INPUT_FORMAT, '-i', AUDIO_DEVICE,
-        '-af', 'afftdn', '-t', str(RECORD_INTERVAL_SECONDS),
+        '-af', 'afftdn',
+        '-f', 'segment',
+        '-segment_time', str(RECORD_INTERVAL_SECONDS),
+        '-reset_timestamps', '1',
         '-codec:a', 'libmp3lame', '-q:a', '4',
+        str(AUDIO_SEGMENTS_DIR / 'segment_%04d.mp3'),
     ]
 
     # --- Load Model or Prep API (Keep as is) ---
@@ -450,6 +477,10 @@ def main(args): # <-- Added args parameter
     collate_transcriptions(FINAL_TRANSCRIPTION_FILE)
     logging.info("Done.")
 
+    # --- New section: concatenate all MP3 segments ---
+    final_audio_file = OUTPUT_BASE_DIR / "combined.mp3"
+    concatenate_audio_segments(AUDIO_SEGMENTS_DIR, final_audio_file)
+
     # Optional: Clean up temporary directory
     # print(f"Cleaning up temporary directory: {OUTPUT_BASE_DIR}")
     # try:
@@ -475,7 +506,7 @@ if __name__ == "__main__":
         help="Workspace for segments"
     )
     parser.add_argument(
-        "--interval", type=int, default=30,
+        "--interval", type=int, default=180,
         help="Recording length in seconds"
     )
     parser.add_argument(

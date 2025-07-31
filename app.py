@@ -189,6 +189,8 @@ def log_request(request_id, text, prompt_prefix, summaries, question_difficulty,
     try:
         with open('requests.log', 'a') as f:
             f.write(json.dumps(log_entry) + '\n')
+        # Also push to Redis list for compatibility
+        redis_client.lpush('questions', json.dumps(log_entry))
     except Exception as e:
         logger.error(f"Initial log failed: {str(e)}")
 
@@ -420,6 +422,9 @@ def process_summary(self, text, prompt_prefix, model, request_id=None, display_n
         result_key = f"result:{request_id}:{model}"
         redis_client.setex(result_key, 3600, json.dumps(result_data))
 
+        # Also push to Redis list for compatibility
+        redis_client.lpush('answers', json.dumps(result_data))
+
         # Log to file for compatibility, also tag by real model
         log_entry = {
             'timestamp': datetime.now().isoformat(),
@@ -456,6 +461,8 @@ def log_question(request_id, text, prompt_prefix, question_difficulty, nickname,
     try:
         with open('requests_questions.log', 'a') as f:
             f.write(json.dumps(log_entry) + '\n')
+        # Also push to Redis list for compatibility
+        redis_client.lpush('questions', json.dumps(log_entry))
     except Exception as e:
         logger.error(f"Question log failed: {str(e)}")
 
