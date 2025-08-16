@@ -75,7 +75,7 @@ app.config.update(
     MAX_CONTENT_LENGTH=50*1024*1024,
     CELERY_BROKER_URL=os.environ.get('CELERY_BROKER_URL', 'redis://localhost:6379/0'),
     CELERY_RESULT_BACKEND=os.environ.get('CELERY_BROKER_URL', 'redis://localhost:6379/0'),
-    CELERY_RESULT_EXPIRES=300,
+    CELERY_RESULT_EXPIRES=3600*24*7,  # 7 days
     CELERY_TASK_IGNORE_RESULT=False
 )
 
@@ -420,7 +420,7 @@ def process_summary(self, text, prompt_prefix, model, request_id=None, display_n
             'timestamp': datetime.now().isoformat()
         }
         result_key = f"result:{request_id}:{model}"
-        redis_client.setex(result_key, 3600, json.dumps(result_data))
+        redis_client.setex(result_key, 3600*24*7, json.dumps(result_data))
 
         # Also push to Redis list for compatibility
         redis_client.lpush('answers', json.dumps(result_data))

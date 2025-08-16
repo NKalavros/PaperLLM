@@ -1,0 +1,19 @@
+---
+
+1. Check answers in website
+
+2. Do semantic analysis between the answers to examine similarities
+
+3. Bootstrap every variable - 1k tests - get p-value of coef - Should be close to confidence intervals
+
+4. Regress the difference of the score, rather than the score itself. 
+
+---
+
+Can you find the optimal LLM model for human alignment?
+
+---
+
+Run DeepEval instead here:
+
+github.com/confident-ai/deepeval
