@@ -1,0 +1,2130 @@
+2025-09-02 21:46:58,417 INFO Flask app starting up - logging is working!
+2025-09-02 21:46:58,417 DEBUG Debug logging is enabled
+2025-09-02 21:46:58,509 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.128.217.67:5100
+2025-09-02 21:46:58,509 INFO [33mPress CTRL+C to quit[0m
+2025-09-02 21:47:03,211 INFO 127.0.0.1 - - [02/Sep/2025 21:47:03] "[32mGET / HTTP/1.1[0m" 302 -
+2025-09-02 21:47:03,228 INFO 127.0.0.1 - - [02/Sep/2025 21:47:03] "GET /login HTTP/1.1" 200 -
+2025-09-02 21:47:03,317 INFO 127.0.0.1 - - [02/Sep/2025 21:47:03] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-09-02 21:47:05,844 INFO 127.0.0.1 - - [02/Sep/2025 21:47:05] "[31m[1mPOST /login HTTP/1.1[0m" 401 -
+2025-09-02 21:47:12,348 INFO 127.0.0.1 - - [02/Sep/2025 21:47:12] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-09-02 21:47:12,360 INFO 127.0.0.1 - - [02/Sep/2025 21:47:12] "GET / HTTP/1.1" 200 -
+2025-09-02 21:47:19,088 INFO 127.0.0.1 - - [02/Sep/2025 21:47:19] "GET / HTTP/1.1" 200 -
+2025-09-02 21:47:21,450 INFO 127.0.0.1 - - [02/Sep/2025 21:47:21] "[32mGET / HTTP/1.1[0m" 302 -
+2025-09-02 21:47:21,454 INFO 127.0.0.1 - - [02/Sep/2025 21:47:21] "GET /login HTTP/1.1" 200 -
+2025-09-02 21:47:21,516 INFO 127.0.0.1 - - [02/Sep/2025 21:47:21] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-09-02 21:47:25,617 INFO 127.0.0.1 - - [02/Sep/2025 21:47:25] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-09-02 21:47:25,623 INFO 127.0.0.1 - - [02/Sep/2025 21:47:25] "GET / HTTP/1.1" 200 -
+2025-09-02 21:47:28,173 INFO 127.0.0.1 - - [02/Sep/2025 21:47:28] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-09-02 21:47:28,181 INFO 127.0.0.1 - - [02/Sep/2025 21:47:28] "[32mGET / HTTP/1.1[0m" 302 -
+2025-09-02 21:47:28,186 INFO 127.0.0.1 - - [02/Sep/2025 21:47:28] "GET /login HTTP/1.1" 200 -
+2025-09-02 21:47:44,021 INFO Flask app starting up - logging is working!
+2025-09-02 21:47:44,021 DEBUG Debug logging is enabled
+2025-09-02 21:47:44,131 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.128.217.67:5100
+2025-09-02 21:47:44,131 INFO [33mPress CTRL+C to quit[0m
+2025-09-02 21:49:09,087 INFO 127.0.0.1 - - [02/Sep/2025 21:49:09] "[32mGET / HTTP/1.1[0m" 302 -
+2025-09-02 21:49:09,093 INFO 127.0.0.1 - - [02/Sep/2025 21:49:09] "GET /login HTTP/1.1" 200 -
+2025-09-02 21:49:09,171 INFO 127.0.0.1 - - [02/Sep/2025 21:49:09] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-09-02 21:49:13,251 INFO 127.0.0.1 - - [02/Sep/2025 21:49:13] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-09-02 21:49:13,261 INFO 127.0.0.1 - - [02/Sep/2025 21:49:13] "GET / HTTP/1.1" 200 -
+2025-09-02 21:50:31,854 INFO Flask app starting up - logging is working!
+2025-09-02 21:50:31,855 DEBUG Debug logging is enabled
+2025-09-02 21:50:31,947 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.128.217.67:5100
+2025-09-02 21:50:31,947 INFO [33mPress CTRL+C to quit[0m
+2025-09-02 21:52:50,041 INFO 127.0.0.1 - - [02/Sep/2025 21:52:50] "GET / HTTP/1.1" 200 -
+2025-09-02 21:52:52,589 DEBUG Successfully loaded extension "markdown.extensions.fenced_code.FencedCodeExtension".
+2025-09-02 21:52:52,590 DEBUG Successfully loaded extension "markdown.extensions.tables.TableExtension".
+2025-09-02 21:52:52,594 INFO 127.0.0.1 - - [02/Sep/2025 21:52:52] "GET /instructions HTTP/1.1" 200 -
+2025-09-02 21:52:53,642 INFO 127.0.0.1 - - [02/Sep/2025 21:52:53] "GET / HTTP/1.1" 200 -
+2025-09-02 21:53:55,965 INFO Flask app starting up - logging is working!
+2025-09-02 21:53:55,966 DEBUG Debug logging is enabled
+2025-09-02 21:54:28,566 INFO Flask app starting up - logging is working!
+2025-09-02 21:54:28,567 DEBUG Debug logging is enabled
+2025-09-02 21:54:28,681 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.128.217.67:5100
+2025-09-02 21:54:28,681 INFO [33mPress CTRL+C to quit[0m
+2025-09-02 21:54:41,002 INFO 127.0.0.1 - - [02/Sep/2025 21:54:41] "[32mGET /?id=b5406a41-797b-4bfb-8329-83dab0c6df17&vscodeBrowserReqId=1756839280996 HTTP/1.1[0m" 302 -
+2025-09-02 21:54:41,006 INFO 127.0.0.1 - - [02/Sep/2025 21:54:41] "GET /login HTTP/1.1" 200 -
+2025-09-02 21:55:35,635 INFO 127.0.0.1 - - [02/Sep/2025 21:55:35] "GET /login?id=b5406a41-797b-4bfb-8329-83dab0c6df17&vscodeBrowserReqId=1756839335629 HTTP/1.1" 200 -
+2025-09-02 21:57:03,455 INFO Flask app starting up - logging is working!
+2025-09-02 21:57:03,455 DEBUG Debug logging is enabled
+2025-09-02 21:57:03,560 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.128.217.67:5100
+2025-09-02 21:57:03,561 INFO [33mPress CTRL+C to quit[0m
+2025-09-02 21:57:14,636 INFO 127.0.0.1 - - [02/Sep/2025 21:57:14] "[32mGET /?id=b5406a41-797b-4bfb-8329-83dab0c6df17&vscodeBrowserReqId=1756839434632 HTTP/1.1[0m" 302 -
+2025-09-02 21:57:14,644 INFO 127.0.0.1 - - [02/Sep/2025 21:57:14] "GET /login HTTP/1.1" 200 -
+2025-09-02 21:58:22,955 INFO 127.0.0.1 - - [02/Sep/2025 21:58:22] "GET / HTTP/1.1" 200 -
+2025-09-02 21:58:25,647 INFO 127.0.0.1 - - [02/Sep/2025 21:58:25] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-09-02 21:58:25,653 INFO 127.0.0.1 - - [02/Sep/2025 21:58:25] "[32mGET / HTTP/1.1[0m" 302 -
+2025-09-02 21:58:25,656 INFO 127.0.0.1 - - [02/Sep/2025 21:58:25] "GET /login HTTP/1.1" 200 -
+2025-09-02 21:58:29,191 INFO 127.0.0.1 - - [02/Sep/2025 21:58:29] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-09-02 21:58:29,194 INFO 127.0.0.1 - - [02/Sep/2025 21:58:29] "GET / HTTP/1.1" 200 -
+2025-09-02 22:07:25,101 INFO Flask app starting up - logging is working!
+2025-09-02 22:07:25,101 DEBUG Debug logging is enabled
+2025-09-02 22:07:25,265 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.128.217.67:5100
+2025-09-02 22:07:25,265 INFO [33mPress CTRL+C to quit[0m
+2025-09-02 22:07:35,018 INFO 127.0.0.1 - - [02/Sep/2025 22:07:35] "[32mGET / HTTP/1.1[0m" 302 -
+2025-09-02 22:07:35,033 INFO 127.0.0.1 - - [02/Sep/2025 22:07:35] "GET /login HTTP/1.1" 200 -
+2025-09-02 22:07:35,125 INFO 127.0.0.1 - - [02/Sep/2025 22:07:35] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-09-02 22:07:39,077 INFO 127.0.0.1 - - [02/Sep/2025 22:07:39] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-09-02 22:07:39,095 INFO 127.0.0.1 - - [02/Sep/2025 22:07:39] "GET / HTTP/1.1" 200 -
+2025-09-02 22:07:39,263 INFO 127.0.0.1 - - [02/Sep/2025 22:07:39] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-09-02 22:08:38,164 INFO Flask app starting up - logging is working!
+2025-09-02 22:08:38,164 DEBUG Debug logging is enabled
+2025-09-02 22:08:38,285 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.128.217.67:5100
+2025-09-02 22:08:38,285 INFO [33mPress CTRL+C to quit[0m
+2025-09-02 22:09:09,512 INFO 127.0.0.1 - - [02/Sep/2025 22:09:09] "[32mGET /?id=b5406a41-797b-4bfb-8329-83dab0c6df17&vscodeBrowserReqId=1756840149506 HTTP/1.1[0m" 302 -
+2025-09-02 22:09:09,515 INFO 127.0.0.1 - - [02/Sep/2025 22:09:09] "GET /login HTTP/1.1" 200 -
+2025-09-02 22:10:23,341 INFO Flask app starting up - logging is working!
+2025-09-02 22:10:23,341 DEBUG Debug logging is enabled
+2025-09-02 22:10:23,453 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.128.217.67:5100
+2025-09-02 22:10:23,453 INFO [33mPress CTRL+C to quit[0m
+2025-09-02 22:10:26,789 INFO 127.0.0.1 - - [02/Sep/2025 22:10:26] "GET / HTTP/1.1" 200 -
+2025-09-02 22:10:26,848 ERROR Exception on /repo_status [GET]
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 357, in connect
+    sock = self.retry.call_with_retry(
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/retry.py", line 62, in call_with_retry
+    return do()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 358, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 730, in _connect
+    raise err
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 718, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/nikolas/Desktop/Projects/PaperLLM/app.py", line 1369, in repo_status
+    last = redis_client.get('repo_last_update')
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/commands/core.py", line 1822, in get
+    return self.execute_command("GET", name, keys=[name])
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 559, in execute_command
+    return self._execute_command(*args, **options)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 565, in _execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 1422, in get_connection
+    connection.connect()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 363, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 61 connecting to localhost:6379. Connection refused.
+2025-09-02 22:10:26,853 INFO 127.0.0.1 - - [02/Sep/2025 22:10:26] "[35m[1mGET /repo_status HTTP/1.1[0m" 500 -
+2025-09-02 22:10:26,871 INFO 127.0.0.1 - - [02/Sep/2025 22:10:26] "GET /available_pdfs HTTP/1.1" 200 -
+2025-09-02 22:10:26,878 INFO 127.0.0.1 - - [02/Sep/2025 22:10:26] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-09-02 22:10:27,037 INFO 127.0.0.1 - - [02/Sep/2025 22:10:27] "GET /available_pdfs HTTP/1.1" 200 -
+2025-09-02 22:10:28,825 INFO Final results being returned: [{'name': 'OpenAI', 'stats': {'Easy': {'mean': 6.23, 'sem': 0.25}, 'Hard': {'mean': 6.18, 'sem': 0.39}, 'All': {'mean': 6.21, 'sem': 0.21}}}, {'name': 'Perplexity', 'stats': {'Easy': {'mean': 7.55, 'sem': 0.22}, 'Hard': {'mean': 7.18, 'sem': 0.45}, 'All': {'mean': 7.42, 'sem': 0.21}}}]
+2025-09-02 22:10:29,804 INFO Speaker Leaderboard JSON: {"models": [{"name": "OpenAI", "stats": {"Easy": {"mean": 6.18, "sem": 0.22}, "Hard": {"mean": 6.25, "sem": 0.54}, "All": {"mean": 6.2, "sem": 0.21}}}, {"name": "Perplexity", "stats": {"Easy": {"mean": 8.0, "sem": 0.26}, "Hard": {"mean": 8.0, "sem": 0.35}, "All": {"mean": 8.0, "sem": 0.21}}}], "ttest": {"Easy": {"N": 11, "p_value": 0.0, "notation": "***"}, "Hard": {"N": 4, "p_value": 0.07, "notation": "N.S."}, "All": {"N": 15, "p_value": 0.0, "notation": "***"}}}
+2025-09-02 22:10:29,806 INFO Leaderboard JSON: {"models": [{"name": "OpenAI", "stats": {"Easy": {"mean": 6.23, "sem": 0.25}, "Hard": {"mean": 6.18, "sem": 0.39}, "All": {"mean": 6.21, "sem": 0.21}}}, {"name": "Perplexity", "stats": {"Easy": {"mean": 7.55, "sem": 0.22}, "Hard": {"mean": 7.18, "sem": 0.45}, "All": {"mean": 7.42, "sem": 0.21}}}], "ttest": {"Easy": {"N": 44, "p_value": 0.0, "notation": "***"}, "Hard": {"N": 22, "p_value": 0.11, "notation": "N.S."}, "All": {"N": 66, "p_value": 0.0, "notation": "***"}}}
+2025-09-02 22:10:29,807 INFO 127.0.0.1 - - [02/Sep/2025 22:10:29] "GET /leaderboard/speaker HTTP/1.1" 200 -
+2025-09-02 22:10:29,807 INFO 127.0.0.1 - - [02/Sep/2025 22:10:29] "GET /leaderboard HTTP/1.1" 200 -
+2025-09-02 22:10:31,113 INFO get_answers called with raw_nick='Gustavo', processed nickname='gustavo'
+2025-09-02 22:10:31,115 INFO Processed 118 lines from requests_questions.log
+2025-09-02 22:10:31,115 INFO Found 118 total questions in log
+2025-09-02 22:10:31,115 INFO All nicknames found: ['gerold', 'DEIMANTĖ ', 'Gerold', 'suu', 'DaniH', 'Does Dr Saez-Rodriguez like black box models?', 'CesarPrada', 'Chris', 'Grace Hopper ', 'sceptic-jo', 'Hola', 'Luis', 'Katha', 'Julio', 'Juan Andrés Tejedor-Serrano', 'EF', 'Andrew Parton', 'Admin', 'suu', 'EF', 'DEIMANTĖ', 'eda', 'Gerold', 'ferenckata', 'JK', 'dmk', 'ttme', 'Small brain ', 'Chris', 'Grace Hopper', 'TN', 'DEIMANTĖ', 'Jeremie', 'thomcsmits', 'Hola', 'Aquaria', 'Hola', 'TN', 'train', 'TN', 'Harpreet ', 'CesarPrada', 'Hola', 'Ale28', 'AP', 'Hola', 'Aquaria', 'Hola', 'Aquaria', 'Hola', 'Anais', 'Aquaria', 'ferenckata', 'DEIMANTĖ ', 'Admin', 'Luis', 'Jeanne', 'asdfg', 'CesarPrada', 'Gerold', 'Luis', 'LK', 'Chris', 'JK', 'DEIMANTĖ ', 'Harpreet ', 'eda', 'dmk', 'skeptic-jo', 'EF', 'DaniH', 'Hola', 'Hola', 'Al ', 'DEIMANTĖ', 'Deimantė', 'Hola', 'aln', 'Hola', 'Hola', 'Admin', 'CB', 'Mxfly', 'Snps ', 'Admin', 'Luis', 'Admin', 'Snps', 'Snps', 'Eric', 'CesarPrada', 'Katha', 'Hola', 'EF', 'DEIMANTĖ', 'I-wonder', 'A', 'DEIMANTĖ', 'Hola', 'Hola', 'DEIMANTĖ', 'TN', 'Hola', 'DaniH', 'DEIMANTĖ ', 'Hola', 'Hola', 'Hola', 'Hola', 'Hola', 'Admin', 'Snps', 'gerold', 'Bastien Chassagnol ', 'DEIMANTĖ ', 'gaia', 'Admin', 'jyhuang']
+2025-09-02 22:10:31,115 INFO Question 0: original='gerold' -> processed='gerold' vs target='gustavo' | Match: False
+2025-09-02 22:10:31,117 ERROR Exception on /get_answers [GET]
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 357, in connect
+    sock = self.retry.call_with_retry(
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/retry.py", line 62, in call_with_retry
+    return do()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 358, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 730, in _connect
+    raise err
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 718, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/nikolas/Desktop/Projects/PaperLLM/app.py", line 737, in get_answers
+    for key in redis_client.scan_iter(match=pattern):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/commands/core.py", line 3045, in scan_iter
+    cursor, data = self.scan(
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/commands/core.py", line 3020, in scan
+    return self.execute_command("SCAN", *pieces, **kwargs)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 559, in execute_command
+    return self._execute_command(*args, **options)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 565, in _execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 1422, in get_connection
+    connection.connect()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 363, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 61 connecting to localhost:6379. Connection refused.
+2025-09-02 22:10:31,118 INFO 127.0.0.1 - - [02/Sep/2025 22:10:31] "[35m[1mGET /get_answers?nickname=Gustavo&extra=0 HTTP/1.1[0m" 500 -
+2025-09-02 22:10:31,816 INFO get_answers called with raw_nick='Gustavo', processed nickname='gustavo'
+2025-09-02 22:10:31,820 INFO Processed 118 lines from requests_questions.log
+2025-09-02 22:10:31,820 INFO Found 118 total questions in log
+2025-09-02 22:10:31,823 INFO All nicknames found: ['gerold', 'DEIMANTĖ ', 'Gerold', 'suu', 'DaniH', 'Does Dr Saez-Rodriguez like black box models?', 'CesarPrada', 'Chris', 'Grace Hopper ', 'sceptic-jo', 'Hola', 'Luis', 'Katha', 'Julio', 'Juan Andrés Tejedor-Serrano', 'EF', 'Andrew Parton', 'Admin', 'suu', 'EF', 'DEIMANTĖ', 'eda', 'Gerold', 'ferenckata', 'JK', 'dmk', 'ttme', 'Small brain ', 'Chris', 'Grace Hopper', 'TN', 'DEIMANTĖ', 'Jeremie', 'thomcsmits', 'Hola', 'Aquaria', 'Hola', 'TN', 'train', 'TN', 'Harpreet ', 'CesarPrada', 'Hola', 'Ale28', 'AP', 'Hola', 'Aquaria', 'Hola', 'Aquaria', 'Hola', 'Anais', 'Aquaria', 'ferenckata', 'DEIMANTĖ ', 'Admin', 'Luis', 'Jeanne', 'asdfg', 'CesarPrada', 'Gerold', 'Luis', 'LK', 'Chris', 'JK', 'DEIMANTĖ ', 'Harpreet ', 'eda', 'dmk', 'skeptic-jo', 'EF', 'DaniH', 'Hola', 'Hola', 'Al ', 'DEIMANTĖ', 'Deimantė', 'Hola', 'aln', 'Hola', 'Hola', 'Admin', 'CB', 'Mxfly', 'Snps ', 'Admin', 'Luis', 'Admin', 'Snps', 'Snps', 'Eric', 'CesarPrada', 'Katha', 'Hola', 'EF', 'DEIMANTĖ', 'I-wonder', 'A', 'DEIMANTĖ', 'Hola', 'Hola', 'DEIMANTĖ', 'TN', 'Hola', 'DaniH', 'DEIMANTĖ ', 'Hola', 'Hola', 'Hola', 'Hola', 'Hola', 'Admin', 'Snps', 'gerold', 'Bastien Chassagnol ', 'DEIMANTĖ ', 'gaia', 'Admin', 'jyhuang']
+2025-09-02 22:10:31,823 INFO Question 0: original='gerold' -> processed='gerold' vs target='gustavo' | Match: False
+2025-09-02 22:10:31,825 ERROR Exception on /get_answers [GET]
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 357, in connect
+    sock = self.retry.call_with_retry(
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/retry.py", line 62, in call_with_retry
+    return do()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 358, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 730, in _connect
+    raise err
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 718, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/nikolas/Desktop/Projects/PaperLLM/app.py", line 737, in get_answers
+    for key in redis_client.scan_iter(match=pattern):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/commands/core.py", line 3045, in scan_iter
+    cursor, data = self.scan(
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/commands/core.py", line 3020, in scan
+    return self.execute_command("SCAN", *pieces, **kwargs)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 559, in execute_command
+    return self._execute_command(*args, **options)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 565, in _execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 1422, in get_connection
+    connection.connect()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 363, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 61 connecting to localhost:6379. Connection refused.
+2025-09-02 22:10:31,826 INFO 127.0.0.1 - - [02/Sep/2025 22:10:31] "[35m[1mGET /get_answers?nickname=Gustavo&extra=0 HTTP/1.1[0m" 500 -
+2025-09-02 22:10:33,243 INFO Speaker Leaderboard JSON: {"models": [{"name": "OpenAI", "stats": {"Easy": {"mean": 6.18, "sem": 0.22}, "Hard": {"mean": 6.25, "sem": 0.54}, "All": {"mean": 6.2, "sem": 0.21}}}, {"name": "Perplexity", "stats": {"Easy": {"mean": 8.0, "sem": 0.26}, "Hard": {"mean": 8.0, "sem": 0.35}, "All": {"mean": 8.0, "sem": 0.21}}}], "ttest": {"Easy": {"N": 11, "p_value": 0.0, "notation": "***"}, "Hard": {"N": 4, "p_value": 0.07, "notation": "N.S."}, "All": {"N": 15, "p_value": 0.0, "notation": "***"}}}
+2025-09-02 22:10:33,246 INFO 127.0.0.1 - - [02/Sep/2025 22:10:33] "GET /leaderboard/speaker HTTP/1.1" 200 -
+2025-09-02 22:10:33,247 INFO Final results being returned: [{'name': 'OpenAI', 'stats': {'Easy': {'mean': 6.23, 'sem': 0.25}, 'Hard': {'mean': 6.18, 'sem': 0.39}, 'All': {'mean': 6.21, 'sem': 0.21}}}, {'name': 'Perplexity', 'stats': {'Easy': {'mean': 7.55, 'sem': 0.22}, 'Hard': {'mean': 7.18, 'sem': 0.45}, 'All': {'mean': 7.42, 'sem': 0.21}}}]
+2025-09-02 22:10:33,254 INFO Leaderboard JSON: {"models": [{"name": "OpenAI", "stats": {"Easy": {"mean": 6.23, "sem": 0.25}, "Hard": {"mean": 6.18, "sem": 0.39}, "All": {"mean": 6.21, "sem": 0.21}}}, {"name": "Perplexity", "stats": {"Easy": {"mean": 7.55, "sem": 0.22}, "Hard": {"mean": 7.18, "sem": 0.45}, "All": {"mean": 7.42, "sem": 0.21}}}], "ttest": {"Easy": {"N": 44, "p_value": 0.0, "notation": "***"}, "Hard": {"N": 22, "p_value": 0.11, "notation": "N.S."}, "All": {"N": 66, "p_value": 0.0, "notation": "***"}}}
+2025-09-02 22:10:33,255 INFO 127.0.0.1 - - [02/Sep/2025 22:10:33] "GET /leaderboard HTTP/1.1" 200 -
+2025-09-02 22:11:26,857 ERROR Exception on /repo_status [GET]
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 357, in connect
+    sock = self.retry.call_with_retry(
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/retry.py", line 62, in call_with_retry
+    return do()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 358, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 730, in _connect
+    raise err
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 718, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/nikolas/Desktop/Projects/PaperLLM/app.py", line 1369, in repo_status
+    last = redis_client.get('repo_last_update')
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/commands/core.py", line 1822, in get
+    return self.execute_command("GET", name, keys=[name])
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 559, in execute_command
+    return self._execute_command(*args, **options)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 565, in _execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 1422, in get_connection
+    connection.connect()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 363, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 61 connecting to localhost:6379. Connection refused.
+2025-09-02 22:11:26,859 INFO 127.0.0.1 - - [02/Sep/2025 22:11:26] "[35m[1mGET /repo_status HTTP/1.1[0m" 500 -
+2025-09-02 22:12:27,148 ERROR Exception on /repo_status [GET]
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 357, in connect
+    sock = self.retry.call_with_retry(
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/retry.py", line 62, in call_with_retry
+    return do()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 358, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 730, in _connect
+    raise err
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 718, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/nikolas/Desktop/Projects/PaperLLM/app.py", line 1369, in repo_status
+    last = redis_client.get('repo_last_update')
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/commands/core.py", line 1822, in get
+    return self.execute_command("GET", name, keys=[name])
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 559, in execute_command
+    return self._execute_command(*args, **options)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 565, in _execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 1422, in get_connection
+    connection.connect()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 363, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 61 connecting to localhost:6379. Connection refused.
+2025-09-02 22:12:27,150 INFO 127.0.0.1 - - [02/Sep/2025 22:12:27] "[35m[1mGET /repo_status HTTP/1.1[0m" 500 -
+2025-09-02 22:13:27,186 ERROR Exception on /repo_status [GET]
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 357, in connect
+    sock = self.retry.call_with_retry(
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/retry.py", line 62, in call_with_retry
+    return do()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 358, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 730, in _connect
+    raise err
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 718, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/nikolas/Desktop/Projects/PaperLLM/app.py", line 1369, in repo_status
+    last = redis_client.get('repo_last_update')
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/commands/core.py", line 1822, in get
+    return self.execute_command("GET", name, keys=[name])
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 559, in execute_command
+    return self._execute_command(*args, **options)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 565, in _execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 1422, in get_connection
+    connection.connect()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 363, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 61 connecting to localhost:6379. Connection refused.
+2025-09-02 22:13:27,189 INFO 127.0.0.1 - - [02/Sep/2025 22:13:27] "[35m[1mGET /repo_status HTTP/1.1[0m" 500 -
+2025-09-02 22:14:27,191 ERROR Exception on /repo_status [GET]
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 357, in connect
+    sock = self.retry.call_with_retry(
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/retry.py", line 62, in call_with_retry
+    return do()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 358, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 730, in _connect
+    raise err
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 718, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/nikolas/Desktop/Projects/PaperLLM/app.py", line 1369, in repo_status
+    last = redis_client.get('repo_last_update')
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/commands/core.py", line 1822, in get
+    return self.execute_command("GET", name, keys=[name])
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 559, in execute_command
+    return self._execute_command(*args, **options)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 565, in _execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 1422, in get_connection
+    connection.connect()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 363, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 61 connecting to localhost:6379. Connection refused.
+2025-09-02 22:14:27,192 INFO 127.0.0.1 - - [02/Sep/2025 22:14:27] "[35m[1mGET /repo_status HTTP/1.1[0m" 500 -
+2025-09-02 22:15:27,200 ERROR Exception on /repo_status [GET]
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 357, in connect
+    sock = self.retry.call_with_retry(
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/retry.py", line 62, in call_with_retry
+    return do()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 358, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 730, in _connect
+    raise err
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 718, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/nikolas/Desktop/Projects/PaperLLM/app.py", line 1369, in repo_status
+    last = redis_client.get('repo_last_update')
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/commands/core.py", line 1822, in get
+    return self.execute_command("GET", name, keys=[name])
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 559, in execute_command
+    return self._execute_command(*args, **options)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 565, in _execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 1422, in get_connection
+    connection.connect()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 363, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 61 connecting to localhost:6379. Connection refused.
+2025-09-02 22:15:27,203 INFO 127.0.0.1 - - [02/Sep/2025 22:15:27] "[35m[1mGET /repo_status HTTP/1.1[0m" 500 -
+2025-09-02 22:16:27,208 ERROR Exception on /repo_status [GET]
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 357, in connect
+    sock = self.retry.call_with_retry(
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/retry.py", line 62, in call_with_retry
+    return do()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 358, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 730, in _connect
+    raise err
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 718, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/nikolas/Desktop/Projects/PaperLLM/app.py", line 1369, in repo_status
+    last = redis_client.get('repo_last_update')
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/commands/core.py", line 1822, in get
+    return self.execute_command("GET", name, keys=[name])
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 559, in execute_command
+    return self._execute_command(*args, **options)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 565, in _execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 1422, in get_connection
+    connection.connect()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 363, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 61 connecting to localhost:6379. Connection refused.
+2025-09-02 22:16:27,211 INFO 127.0.0.1 - - [02/Sep/2025 22:16:27] "[35m[1mGET /repo_status HTTP/1.1[0m" 500 -
+2025-09-02 22:17:27,207 ERROR Exception on /repo_status [GET]
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 357, in connect
+    sock = self.retry.call_with_retry(
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/retry.py", line 62, in call_with_retry
+    return do()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 358, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 730, in _connect
+    raise err
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 718, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/nikolas/Desktop/Projects/PaperLLM/app.py", line 1369, in repo_status
+    last = redis_client.get('repo_last_update')
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/commands/core.py", line 1822, in get
+    return self.execute_command("GET", name, keys=[name])
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 559, in execute_command
+    return self._execute_command(*args, **options)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 565, in _execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 1422, in get_connection
+    connection.connect()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 363, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 61 connecting to localhost:6379. Connection refused.
+2025-09-02 22:17:27,208 INFO 127.0.0.1 - - [02/Sep/2025 22:17:27] "[35m[1mGET /repo_status HTTP/1.1[0m" 500 -
+2025-09-02 22:18:27,223 ERROR Exception on /repo_status [GET]
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 357, in connect
+    sock = self.retry.call_with_retry(
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/retry.py", line 62, in call_with_retry
+    return do()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 358, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 730, in _connect
+    raise err
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 718, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/nikolas/Desktop/Projects/PaperLLM/app.py", line 1369, in repo_status
+    last = redis_client.get('repo_last_update')
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/commands/core.py", line 1822, in get
+    return self.execute_command("GET", name, keys=[name])
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 559, in execute_command
+    return self._execute_command(*args, **options)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 565, in _execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 1422, in get_connection
+    connection.connect()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 363, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 61 connecting to localhost:6379. Connection refused.
+2025-09-02 22:18:27,225 INFO 127.0.0.1 - - [02/Sep/2025 22:18:27] "[35m[1mGET /repo_status HTTP/1.1[0m" 500 -
+2025-09-02 22:19:27,219 ERROR Exception on /repo_status [GET]
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 357, in connect
+    sock = self.retry.call_with_retry(
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/retry.py", line 62, in call_with_retry
+    return do()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 358, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 730, in _connect
+    raise err
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 718, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/nikolas/Desktop/Projects/PaperLLM/app.py", line 1369, in repo_status
+    last = redis_client.get('repo_last_update')
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/commands/core.py", line 1822, in get
+    return self.execute_command("GET", name, keys=[name])
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 559, in execute_command
+    return self._execute_command(*args, **options)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 565, in _execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 1422, in get_connection
+    connection.connect()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 363, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 61 connecting to localhost:6379. Connection refused.
+2025-09-02 22:19:27,220 INFO 127.0.0.1 - - [02/Sep/2025 22:19:27] "[35m[1mGET /repo_status HTTP/1.1[0m" 500 -
+2025-09-02 22:20:27,225 ERROR Exception on /repo_status [GET]
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 357, in connect
+    sock = self.retry.call_with_retry(
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/retry.py", line 62, in call_with_retry
+    return do()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 358, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 730, in _connect
+    raise err
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 718, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/nikolas/Desktop/Projects/PaperLLM/app.py", line 1369, in repo_status
+    last = redis_client.get('repo_last_update')
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/commands/core.py", line 1822, in get
+    return self.execute_command("GET", name, keys=[name])
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 559, in execute_command
+    return self._execute_command(*args, **options)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 565, in _execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 1422, in get_connection
+    connection.connect()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 363, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 61 connecting to localhost:6379. Connection refused.
+2025-09-02 22:20:27,226 INFO 127.0.0.1 - - [02/Sep/2025 22:20:27] "[35m[1mGET /repo_status HTTP/1.1[0m" 500 -
+2025-09-02 22:21:27,228 ERROR Exception on /repo_status [GET]
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 357, in connect
+    sock = self.retry.call_with_retry(
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/retry.py", line 62, in call_with_retry
+    return do()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 358, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 730, in _connect
+    raise err
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 718, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/nikolas/Desktop/Projects/PaperLLM/app.py", line 1369, in repo_status
+    last = redis_client.get('repo_last_update')
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/commands/core.py", line 1822, in get
+    return self.execute_command("GET", name, keys=[name])
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 559, in execute_command
+    return self._execute_command(*args, **options)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 565, in _execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 1422, in get_connection
+    connection.connect()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 363, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 61 connecting to localhost:6379. Connection refused.
+2025-09-02 22:21:27,229 INFO 127.0.0.1 - - [02/Sep/2025 22:21:27] "[35m[1mGET /repo_status HTTP/1.1[0m" 500 -
+2025-10-30 12:02:12,288 INFO Flask app starting up - logging is working!
+2025-10-30 12:02:12,289 DEBUG Debug logging is enabled
+2025-10-30 12:02:12,471 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.148.196.182:5100
+2025-10-30 12:02:12,471 INFO [33mPress CTRL+C to quit[0m
+2025-10-30 12:02:34,246 INFO 10.148.196.182 - - [30/Oct/2025 12:02:34] "[32mGET / HTTP/1.1[0m" 302 -
+2025-10-30 12:02:34,290 INFO 10.148.196.182 - - [30/Oct/2025 12:02:34] "GET /login HTTP/1.1" 200 -
+2025-10-30 12:02:34,491 INFO 10.148.196.182 - - [30/Oct/2025 12:02:34] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-10-30 12:02:41,048 INFO 10.148.196.182 - - [30/Oct/2025 12:02:41] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-10-30 12:02:41,076 INFO 10.148.196.182 - - [30/Oct/2025 12:02:41] "GET / HTTP/1.1" 200 -
+2025-10-30 12:02:41,303 ERROR Exception on /repo_status [GET]
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 357, in connect
+    sock = self.retry.call_with_retry(
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/retry.py", line 62, in call_with_retry
+    return do()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 358, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 730, in _connect
+    raise err
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 718, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/nikolas/Desktop/Projects/PaperLLM/app.py", line 1488, in repo_status
+    last = redis_client.get('repo_last_update')
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/commands/core.py", line 1822, in get
+    return self.execute_command("GET", name, keys=[name])
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 559, in execute_command
+    return self._execute_command(*args, **options)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 565, in _execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 1422, in get_connection
+    connection.connect()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 363, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 61 connecting to localhost:6379. Connection refused.
+2025-10-30 12:02:41,311 INFO 10.148.196.182 - - [30/Oct/2025 12:02:41] "[35m[1mGET /repo_status HTTP/1.1[0m" 500 -
+2025-10-30 12:02:41,323 INFO 10.148.196.182 - - [30/Oct/2025 12:02:41] "GET /available_pdfs HTTP/1.1" 200 -
+2025-10-30 12:02:41,339 INFO 10.148.196.182 - - [30/Oct/2025 12:02:41] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-10-30 12:02:41,421 INFO 10.148.196.182 - - [30/Oct/2025 12:02:41] "GET /available_pdfs HTTP/1.1" 200 -
+2025-10-30 12:02:51,558 INFO get_answers called with raw_nick='Gustavo', processed nickname='gustavo'
+2025-10-30 12:02:51,561 INFO Processed 118 lines from requests_questions.log
+2025-10-30 12:02:51,561 INFO Found 118 total questions in log
+2025-10-30 12:02:51,561 INFO All nicknames found: ['gerold', 'DEIMANTĖ ', 'Gerold', 'suu', 'DaniH', 'Does Dr Saez-Rodriguez like black box models?', 'CesarPrada', 'Chris', 'Grace Hopper ', 'sceptic-jo', 'Hola', 'Luis', 'Katha', 'Julio', 'Juan Andrés Tejedor-Serrano', 'EF', 'Andrew Parton', 'Admin', 'suu', 'EF', 'DEIMANTĖ', 'eda', 'Gerold', 'ferenckata', 'JK', 'dmk', 'ttme', 'Small brain ', 'Chris', 'Grace Hopper', 'TN', 'DEIMANTĖ', 'Jeremie', 'thomcsmits', 'Hola', 'Aquaria', 'Hola', 'TN', 'train', 'TN', 'Harpreet ', 'CesarPrada', 'Hola', 'Ale28', 'AP', 'Hola', 'Aquaria', 'Hola', 'Aquaria', 'Hola', 'Anais', 'Aquaria', 'ferenckata', 'DEIMANTĖ ', 'Admin', 'Luis', 'Jeanne', 'asdfg', 'CesarPrada', 'Gerold', 'Luis', 'LK', 'Chris', 'JK', 'DEIMANTĖ ', 'Harpreet ', 'eda', 'dmk', 'skeptic-jo', 'EF', 'DaniH', 'Hola', 'Hola', 'Al ', 'DEIMANTĖ', 'Deimantė', 'Hola', 'aln', 'Hola', 'Hola', 'Admin', 'CB', 'Mxfly', 'Snps ', 'Admin', 'Luis', 'Admin', 'Snps', 'Snps', 'Eric', 'CesarPrada', 'Katha', 'Hola', 'EF', 'DEIMANTĖ', 'I-wonder', 'A', 'DEIMANTĖ', 'Hola', 'Hola', 'DEIMANTĖ', 'TN', 'Hola', 'DaniH', 'DEIMANTĖ ', 'Hola', 'Hola', 'Hola', 'Hola', 'Hola', 'Admin', 'Snps', 'gerold', 'Bastien Chassagnol ', 'DEIMANTĖ ', 'gaia', 'Admin', 'jyhuang']
+2025-10-30 12:02:51,562 INFO Question 0: original='gerold' -> processed='gerold' vs target='gustavo' | Match: False
+2025-10-30 12:02:51,563 ERROR Exception on /get_answers [GET]
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 357, in connect
+    sock = self.retry.call_with_retry(
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/retry.py", line 62, in call_with_retry
+    return do()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 358, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 730, in _connect
+    raise err
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 718, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/nikolas/Desktop/Projects/PaperLLM/app.py", line 851, in get_answers
+    for key in redis_client.scan_iter(match=pattern):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/commands/core.py", line 3045, in scan_iter
+    cursor, data = self.scan(
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/commands/core.py", line 3020, in scan
+    return self.execute_command("SCAN", *pieces, **kwargs)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 559, in execute_command
+    return self._execute_command(*args, **options)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 565, in _execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 1422, in get_connection
+    connection.connect()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 363, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 61 connecting to localhost:6379. Connection refused.
+2025-10-30 12:02:51,564 INFO 10.148.196.182 - - [30/Oct/2025 12:02:51] "[35m[1mGET /get_answers?nickname=Gustavo&extra=1 HTTP/1.1[0m" 500 -
+2025-10-30 12:02:54,259 INFO get_answers called with raw_nick='Gustavo', processed nickname='gustavo'
+2025-10-30 12:02:54,260 INFO Processed 118 lines from requests_questions.log
+2025-10-30 12:02:54,261 INFO Found 118 total questions in log
+2025-10-30 12:02:54,261 INFO All nicknames found: ['gerold', 'DEIMANTĖ ', 'Gerold', 'suu', 'DaniH', 'Does Dr Saez-Rodriguez like black box models?', 'CesarPrada', 'Chris', 'Grace Hopper ', 'sceptic-jo', 'Hola', 'Luis', 'Katha', 'Julio', 'Juan Andrés Tejedor-Serrano', 'EF', 'Andrew Parton', 'Admin', 'suu', 'EF', 'DEIMANTĖ', 'eda', 'Gerold', 'ferenckata', 'JK', 'dmk', 'ttme', 'Small brain ', 'Chris', 'Grace Hopper', 'TN', 'DEIMANTĖ', 'Jeremie', 'thomcsmits', 'Hola', 'Aquaria', 'Hola', 'TN', 'train', 'TN', 'Harpreet ', 'CesarPrada', 'Hola', 'Ale28', 'AP', 'Hola', 'Aquaria', 'Hola', 'Aquaria', 'Hola', 'Anais', 'Aquaria', 'ferenckata', 'DEIMANTĖ ', 'Admin', 'Luis', 'Jeanne', 'asdfg', 'CesarPrada', 'Gerold', 'Luis', 'LK', 'Chris', 'JK', 'DEIMANTĖ ', 'Harpreet ', 'eda', 'dmk', 'skeptic-jo', 'EF', 'DaniH', 'Hola', 'Hola', 'Al ', 'DEIMANTĖ', 'Deimantė', 'Hola', 'aln', 'Hola', 'Hola', 'Admin', 'CB', 'Mxfly', 'Snps ', 'Admin', 'Luis', 'Admin', 'Snps', 'Snps', 'Eric', 'CesarPrada', 'Katha', 'Hola', 'EF', 'DEIMANTĖ', 'I-wonder', 'A', 'DEIMANTĖ', 'Hola', 'Hola', 'DEIMANTĖ', 'TN', 'Hola', 'DaniH', 'DEIMANTĖ ', 'Hola', 'Hola', 'Hola', 'Hola', 'Hola', 'Admin', 'Snps', 'gerold', 'Bastien Chassagnol ', 'DEIMANTĖ ', 'gaia', 'Admin', 'jyhuang']
+2025-10-30 12:02:54,261 INFO Question 0: original='gerold' -> processed='gerold' vs target='gustavo' | Match: False
+2025-10-30 12:02:54,263 ERROR Exception on /get_answers [GET]
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 357, in connect
+    sock = self.retry.call_with_retry(
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/retry.py", line 62, in call_with_retry
+    return do()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 358, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 730, in _connect
+    raise err
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 718, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/nikolas/Desktop/Projects/PaperLLM/app.py", line 851, in get_answers
+    for key in redis_client.scan_iter(match=pattern):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/commands/core.py", line 3045, in scan_iter
+    cursor, data = self.scan(
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/commands/core.py", line 3020, in scan
+    return self.execute_command("SCAN", *pieces, **kwargs)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 559, in execute_command
+    return self._execute_command(*args, **options)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 565, in _execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 1422, in get_connection
+    connection.connect()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 363, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 61 connecting to localhost:6379. Connection refused.
+2025-10-30 12:02:54,264 INFO 10.148.196.182 - - [30/Oct/2025 12:02:54] "[35m[1mGET /get_answers?nickname=Gustavo&extra=0 HTTP/1.1[0m" 500 -
+2025-10-30 12:03:41,312 ERROR Exception on /repo_status [GET]
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 357, in connect
+    sock = self.retry.call_with_retry(
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/retry.py", line 62, in call_with_retry
+    return do()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 358, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 730, in _connect
+    raise err
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 718, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/nikolas/Desktop/Projects/PaperLLM/app.py", line 1488, in repo_status
+    last = redis_client.get('repo_last_update')
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/commands/core.py", line 1822, in get
+    return self.execute_command("GET", name, keys=[name])
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 559, in execute_command
+    return self._execute_command(*args, **options)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 565, in _execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 1422, in get_connection
+    connection.connect()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 363, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 61 connecting to localhost:6379. Connection refused.
+2025-10-30 12:03:41,314 INFO 10.148.196.182 - - [30/Oct/2025 12:03:41] "[35m[1mGET /repo_status HTTP/1.1[0m" 500 -
+2025-10-30 12:04:41,304 ERROR Exception on /repo_status [GET]
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 357, in connect
+    sock = self.retry.call_with_retry(
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/retry.py", line 62, in call_with_retry
+    return do()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 358, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 730, in _connect
+    raise err
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 718, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/nikolas/Desktop/Projects/PaperLLM/app.py", line 1488, in repo_status
+    last = redis_client.get('repo_last_update')
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/commands/core.py", line 1822, in get
+    return self.execute_command("GET", name, keys=[name])
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 559, in execute_command
+    return self._execute_command(*args, **options)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 565, in _execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 1422, in get_connection
+    connection.connect()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 363, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 61 connecting to localhost:6379. Connection refused.
+2025-10-30 12:04:41,306 INFO 10.148.196.182 - - [30/Oct/2025 12:04:41] "[35m[1mGET /repo_status HTTP/1.1[0m" 500 -
+2025-10-30 12:05:41,303 ERROR Exception on /repo_status [GET]
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 357, in connect
+    sock = self.retry.call_with_retry(
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/retry.py", line 62, in call_with_retry
+    return do()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 358, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 730, in _connect
+    raise err
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 718, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/nikolas/Desktop/Projects/PaperLLM/app.py", line 1488, in repo_status
+    last = redis_client.get('repo_last_update')
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/commands/core.py", line 1822, in get
+    return self.execute_command("GET", name, keys=[name])
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 559, in execute_command
+    return self._execute_command(*args, **options)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 565, in _execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 1422, in get_connection
+    connection.connect()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 363, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 61 connecting to localhost:6379. Connection refused.
+2025-10-30 12:05:41,305 INFO 10.148.196.182 - - [30/Oct/2025 12:05:41] "[35m[1mGET /repo_status HTTP/1.1[0m" 500 -
+2025-10-30 12:06:41,310 ERROR Exception on /repo_status [GET]
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 357, in connect
+    sock = self.retry.call_with_retry(
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/retry.py", line 62, in call_with_retry
+    return do()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 358, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 730, in _connect
+    raise err
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 718, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/nikolas/Desktop/Projects/PaperLLM/app.py", line 1488, in repo_status
+    last = redis_client.get('repo_last_update')
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/commands/core.py", line 1822, in get
+    return self.execute_command("GET", name, keys=[name])
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 559, in execute_command
+    return self._execute_command(*args, **options)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 565, in _execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 1422, in get_connection
+    connection.connect()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 363, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 61 connecting to localhost:6379. Connection refused.
+2025-10-30 12:06:41,312 INFO 10.148.196.182 - - [30/Oct/2025 12:06:41] "[35m[1mGET /repo_status HTTP/1.1[0m" 500 -
+2025-10-30 12:07:41,315 ERROR Exception on /repo_status [GET]
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 357, in connect
+    sock = self.retry.call_with_retry(
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/retry.py", line 62, in call_with_retry
+    return do()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 358, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 730, in _connect
+    raise err
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 718, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/nikolas/Desktop/Projects/PaperLLM/app.py", line 1488, in repo_status
+    last = redis_client.get('repo_last_update')
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/commands/core.py", line 1822, in get
+    return self.execute_command("GET", name, keys=[name])
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 559, in execute_command
+    return self._execute_command(*args, **options)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 565, in _execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 1422, in get_connection
+    connection.connect()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 363, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 61 connecting to localhost:6379. Connection refused.
+2025-10-30 12:07:41,317 INFO 10.148.196.182 - - [30/Oct/2025 12:07:41] "[35m[1mGET /repo_status HTTP/1.1[0m" 500 -
+2025-10-30 12:08:41,323 ERROR Exception on /repo_status [GET]
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 357, in connect
+    sock = self.retry.call_with_retry(
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/retry.py", line 62, in call_with_retry
+    return do()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 358, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 730, in _connect
+    raise err
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 718, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/nikolas/Desktop/Projects/PaperLLM/app.py", line 1488, in repo_status
+    last = redis_client.get('repo_last_update')
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/commands/core.py", line 1822, in get
+    return self.execute_command("GET", name, keys=[name])
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 559, in execute_command
+    return self._execute_command(*args, **options)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 565, in _execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 1422, in get_connection
+    connection.connect()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 363, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 61 connecting to localhost:6379. Connection refused.
+2025-10-30 12:08:41,324 INFO 10.148.196.182 - - [30/Oct/2025 12:08:41] "[35m[1mGET /repo_status HTTP/1.1[0m" 500 -
+2025-10-30 12:09:41,333 ERROR Exception on /repo_status [GET]
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 357, in connect
+    sock = self.retry.call_with_retry(
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/retry.py", line 62, in call_with_retry
+    return do()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 358, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 730, in _connect
+    raise err
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 718, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/nikolas/Desktop/Projects/PaperLLM/app.py", line 1488, in repo_status
+    last = redis_client.get('repo_last_update')
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/commands/core.py", line 1822, in get
+    return self.execute_command("GET", name, keys=[name])
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 559, in execute_command
+    return self._execute_command(*args, **options)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 565, in _execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 1422, in get_connection
+    connection.connect()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 363, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 61 connecting to localhost:6379. Connection refused.
+2025-10-30 12:09:41,336 INFO 10.148.196.182 - - [30/Oct/2025 12:09:41] "[35m[1mGET /repo_status HTTP/1.1[0m" 500 -
+2025-10-30 12:26:26,134 ERROR Exception on /repo_status [GET]
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 357, in connect
+    sock = self.retry.call_with_retry(
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/retry.py", line 62, in call_with_retry
+    return do()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 358, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 730, in _connect
+    raise err
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 718, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/nikolas/Desktop/Projects/PaperLLM/app.py", line 1488, in repo_status
+    last = redis_client.get('repo_last_update')
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/commands/core.py", line 1822, in get
+    return self.execute_command("GET", name, keys=[name])
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 559, in execute_command
+    return self._execute_command(*args, **options)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 565, in _execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 1422, in get_connection
+    connection.connect()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 363, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 61 connecting to localhost:6379. Connection refused.
+2025-10-30 12:26:26,136 INFO 10.148.196.182 - - [30/Oct/2025 12:26:26] "[35m[1mGET /repo_status HTTP/1.1[0m" 500 -
+2025-10-30 13:57:25,020 INFO 10.148.196.182 - - [30/Oct/2025 13:57:25] "GET / HTTP/1.1" 200 -
+2025-10-30 13:57:25,239 INFO 10.148.196.182 - - [30/Oct/2025 13:57:25] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-10-30 13:57:25,257 INFO 10.148.196.182 - - [30/Oct/2025 13:57:25] "GET /available_pdfs HTTP/1.1" 200 -
+2025-10-30 13:57:25,338 INFO 10.148.196.182 - - [30/Oct/2025 13:57:25] "GET /available_pdfs HTTP/1.1" 200 -
+2025-10-30 13:57:38,803 INFO Using cached text for Talk1.pdf
+2025-10-30 13:57:38,804 INFO Loaded 41249 characters from cache
+2025-10-30 13:57:38,805 INFO Loaded 4979 words from cache
+2025-10-30 13:57:38,820 DEBUG 
+def process_summary(self, text, prompt_prefix, model, request_id=0, display_name=1, nickname=2):
+    return 1
+
+2025-10-30 13:57:38,920 ERROR Connection to Redis lost: Retry (0/20) now.
+2025-10-30 13:57:38,921 ERROR Connection to Redis lost: Retry (1/20) in 1.00 second.
+2025-10-30 13:57:39,922 ERROR Connection to Redis lost: Retry (2/20) in 1.00 second.
+2025-10-30 13:57:40,927 ERROR Connection to Redis lost: Retry (3/20) in 1.00 second.
+2025-10-30 13:57:41,933 ERROR Connection to Redis lost: Retry (4/20) in 1.00 second.
+2025-10-30 13:57:42,937 ERROR Connection to Redis lost: Retry (5/20) in 1.00 second.
+2025-10-30 13:57:43,940 ERROR Connection to Redis lost: Retry (6/20) in 1.00 second.
+2025-10-30 13:57:44,945 ERROR Connection to Redis lost: Retry (7/20) in 1.00 second.
+2025-10-30 13:57:45,948 ERROR Connection to Redis lost: Retry (8/20) in 1.00 second.
+2025-10-30 13:57:46,954 ERROR Connection to Redis lost: Retry (9/20) in 1.00 second.
+2025-10-30 13:57:47,959 ERROR Connection to Redis lost: Retry (10/20) in 1.00 second.
+2025-10-30 13:57:48,963 ERROR Connection to Redis lost: Retry (11/20) in 1.00 second.
+2025-10-30 13:57:49,969 ERROR Connection to Redis lost: Retry (12/20) in 1.00 second.
+2025-10-30 13:57:50,976 ERROR Connection to Redis lost: Retry (13/20) in 1.00 second.
+2025-10-30 13:57:51,979 ERROR Connection to Redis lost: Retry (14/20) in 1.00 second.
+2025-10-30 13:57:52,982 ERROR Connection to Redis lost: Retry (15/20) in 1.00 second.
+2025-10-30 13:57:53,985 ERROR Connection to Redis lost: Retry (16/20) in 1.00 second.
+2025-10-30 13:57:54,990 ERROR Connection to Redis lost: Retry (17/20) in 1.00 second.
+2025-10-30 13:57:55,998 ERROR Connection to Redis lost: Retry (18/20) in 1.00 second.
+2025-10-30 13:57:57,004 ERROR Connection to Redis lost: Retry (19/20) in 1.00 second.
+2025-10-30 13:57:58,009 CRITICAL 
+Retry limit exceeded while trying to reconnect to the Celery redis result store backend. The Celery application must be restarted.
+
+2025-10-30 13:57:58,009 ERROR Request 1d7ed35b-6142-41eb-b2db-a44a02254306 failed: Error 61 connecting to localhost:6379. Connection refused.
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 357, in connect
+    sock = self.retry.call_with_retry(
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/retry.py", line 62, in call_with_retry
+    return do()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 358, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 730, in _connect
+    raise err
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 718, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/celery/backends/redis.py", line 127, in reconnect_on_error
+    yield
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/celery/backends/redis.py", line 177, in _consume_from
+    self._pubsub.subscribe(key)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 957, in subscribe
+    ret_val = self.execute_command("SUBSCRIBE", *new_channels.keys())
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 786, in execute_command
+    self.connection = self.connection_pool.get_connection(
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 1422, in get_connection
+    connection.connect()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 363, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 61 connecting to localhost:6379. Connection refused.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 357, in connect
+    sock = self.retry.call_with_retry(
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/retry.py", line 62, in call_with_retry
+    return do()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 358, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 730, in _connect
+    raise err
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 718, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/kombu/connection.py", line 472, in _reraise_as_library_errors
+    yield
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/celery/app/base.py", line 800, in send_task
+    self.backend.on_task_call(P, task_id)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/celery/backends/redis.py", line 373, in on_task_call
+    self.result_consumer.consume_from(task_id)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/celery/backends/redis.py", line 169, in consume_from
+    return self.start(task_id)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/celery/backends/redis.py", line 147, in start
+    self._consume_from(initial_task_id)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/celery/backends/redis.py", line 176, in _consume_from
+    with self.reconnect_on_error():
+  File "/Users/nikolas/miniconda3/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/celery/backends/redis.py", line 130, in reconnect_on_error
+    self._ensure(self._reconnect_pubsub, ())
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/celery/backends/redis.py", line 384, in ensure
+    return retry_over_time(
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/kombu/utils/functional.py", line 318, in retry_over_time
+    return fun(*args, **kwargs)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/celery/backends/redis.py", line 106, in _reconnect_pubsub
+    metas = self.backend.client.mget(self.subscribed_to)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/commands/core.py", line 2009, in mget
+    return self.execute_command("MGET", *args, **options)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 559, in execute_command
+    return self._execute_command(*args, **options)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/client.py", line 565, in _execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 1422, in get_connection
+    connection.connect()
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/redis/connection.py", line 363, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 61 connecting to localhost:6379. Connection refused.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/nikolas/Desktop/Projects/PaperLLM/app.py", line 725, in summarize
+    task = process_summary.apply_async(
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/celery/app/task.py", line 594, in apply_async
+    return app.send_task(
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/celery/app/base.py", line 798, in send_task
+    with P.connection._reraise_as_library_errors():
+  File "/Users/nikolas/miniconda3/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/Users/nikolas/miniconda3/lib/python3.10/site-packages/kombu/connection.py", line 476, in _reraise_as_library_errors
+    raise ConnectionError(str(exc)) from exc
+kombu.exceptions.OperationalError: Error 61 connecting to localhost:6379. Connection refused.
+2025-10-30 13:57:58,017 INFO 10.148.196.182 - - [30/Oct/2025 13:57:58] "[35m[1mPOST /summarize HTTP/1.1[0m" 500 -
+2025-10-30 13:58:15,681 INFO Flask app starting up - logging is working!
+2025-10-30 13:58:15,681 DEBUG Debug logging is enabled
+2025-10-30 13:58:15,901 DEBUG 
+def unlock_chord(self, group_id, callback, interval=0, max_retries=1, result=2, Result=3, GroupResult=4, result_from_tuple=5, **kwargs):
+    return 1
+
+2025-10-30 13:58:15,903 DEBUG 
+def group(self, tasks, result, group_id, partial_args, add_to_parent=0):
+    return 1
+
+2025-10-30 13:58:15,904 DEBUG 
+def process_summary(self, text, prompt_prefix, model, request_id=0, display_name=1, nickname=2):
+    return 1
+
+2025-10-30 13:58:15,904 DEBUG 
+def xmap(task, it):
+    return 1
+
+2025-10-30 13:58:15,905 DEBUG 
+def update_repo():
+    return 1
+
+2025-10-30 13:58:15,905 DEBUG 
+def chain(*args, **kwargs):
+    return 1
+
+2025-10-30 13:58:15,905 DEBUG 
+def backend_cleanup():
+    return 1
+
+2025-10-30 13:58:15,906 DEBUG 
+def xstarmap(task, it):
+    return 1
+
+2025-10-30 13:58:15,906 DEBUG 
+def chord(self, header, body, partial_args=0, interval=1, countdown=2, max_retries=3, eager=4, **kwargs):
+    return 1
+
+2025-10-30 13:58:15,906 DEBUG 
+def accumulate(self, *args, **kwargs):
+    return 1
+
+2025-10-30 13:58:15,907 DEBUG 
+def chunks(task, it, n):
+    return 1
+
+2025-10-30 13:58:17,979 INFO Using cached text for Talk1.pdf
+2025-10-30 13:58:17,980 INFO Loaded 41249 characters from cache
+2025-10-30 13:58:17,981 INFO Loaded 4979 words from cache
+2025-10-30 13:58:18,020 INFO 10.148.196.182 - - [30/Oct/2025 13:58:18] "[35m[1mPOST /summarize HTTP/1.1[0m" 202 -
+2025-10-30 13:58:25,453 INFO 10.148.196.182 - - [30/Oct/2025 13:58:25] "GET /repo_status HTTP/1.1" 200 -
+2025-10-30 13:59:25,174 INFO 10.148.196.182 - - [30/Oct/2025 13:59:25] "GET /repo_status HTTP/1.1" 200 -
+2025-10-30 14:00:25,176 INFO 10.148.196.182 - - [30/Oct/2025 14:00:25] "GET /repo_status HTTP/1.1" 200 -
+2025-10-30 14:01:25,179 INFO 10.148.196.182 - - [30/Oct/2025 14:01:25] "GET /repo_status HTTP/1.1" 200 -
+2025-10-30 14:02:25,185 INFO 10.148.196.182 - - [30/Oct/2025 14:02:25] "GET /repo_status HTTP/1.1" 200 -
+2025-10-30 14:03:27,187 INFO 10.148.196.182 - - [30/Oct/2025 14:03:27] "GET /repo_status HTTP/1.1" 200 -
+2025-10-30 14:04:27,303 INFO 10.148.196.182 - - [30/Oct/2025 14:04:27] "GET /repo_status HTTP/1.1" 200 -
+2025-10-30 14:04:55,453 INFO get_answers called with raw_nick='Nikolas', processed nickname='nikolas'
+2025-10-30 14:04:55,456 INFO Processed 121 lines from requests_questions.log
+2025-10-30 14:04:55,456 INFO Found 119 total questions in log
+2025-10-30 14:04:55,456 INFO All nicknames found: ['gerold', 'DEIMANTĖ ', 'Gerold', 'suu', 'DaniH', 'Does Dr Saez-Rodriguez like black box models?', 'CesarPrada', 'Chris', 'Grace Hopper ', 'sceptic-jo', 'Hola', 'Luis', 'Katha', 'Julio', 'Juan Andrés Tejedor-Serrano', 'EF', 'Andrew Parton', 'Admin', 'suu', 'EF', 'DEIMANTĖ', 'eda', 'Gerold', 'ferenckata', 'JK', 'dmk', 'ttme', 'Small brain ', 'Chris', 'Grace Hopper', 'TN', 'DEIMANTĖ', 'Jeremie', 'thomcsmits', 'Hola', 'Aquaria', 'Hola', 'TN', 'train', 'TN', 'Harpreet ', 'CesarPrada', 'Hola', 'Ale28', 'AP', 'Hola', 'Aquaria', 'Hola', 'Aquaria', 'Hola', 'Anais', 'Aquaria', 'ferenckata', 'DEIMANTĖ ', 'Admin', 'Luis', 'Jeanne', 'asdfg', 'CesarPrada', 'Gerold', 'Luis', 'LK', 'Chris', 'JK', 'DEIMANTĖ ', 'Harpreet ', 'eda', 'dmk', 'skeptic-jo', 'EF', 'DaniH', 'Hola', 'Hola', 'Al ', 'DEIMANTĖ', 'Deimantė', 'Hola', 'aln', 'Hola', 'Hola', 'Admin', 'CB', 'Mxfly', 'Snps ', 'Admin', 'Luis', 'Admin', 'Snps', 'Snps', 'Eric', 'CesarPrada', 'Katha', 'Hola', 'EF', 'DEIMANTĖ', 'I-wonder', 'A', 'DEIMANTĖ', 'Hola', 'Hola', 'DEIMANTĖ', 'TN', 'Hola', 'DaniH', 'DEIMANTĖ ', 'Hola', 'Hola', 'Hola', 'Hola', 'Hola', 'Admin', 'Snps', 'gerold', 'Bastien Chassagnol ', 'DEIMANTĖ ', 'gaia', 'Admin', 'jyhuang', 'Nikolas']
+2025-10-30 14:04:55,456 INFO Question 0: original='gerold' -> processed='gerold' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,463 INFO Question 0: Found 2 answers for request_id b61314ca-feb2-4474-a503-c253eacd04f5
+2025-10-30 14:04:55,463 INFO Question 1: original='deimantė' -> processed='deimantė' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,466 INFO Question 1: Found 2 answers for request_id 2550f244-6998-4777-a5a2-39d07a22f73a
+2025-10-30 14:04:55,467 INFO Question 2: original='gerold' -> processed='gerold' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,470 INFO Question 2: Found 0 answers for request_id 6b447917-ec1f-4c96-af35-11e36a7dfd13
+2025-10-30 14:04:55,470 INFO Question 3: original='suu' -> processed='suu' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,474 INFO Question 3: Found 2 answers for request_id 97e6dacc-ff39-4932-a600-5f7ca6c091d8
+2025-10-30 14:04:55,474 INFO Question 4: original='danih' -> processed='danih' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,480 INFO Question 4: Found 2 answers for request_id 96988a22-a560-4155-9792-51cfa6f44a2d
+2025-10-30 14:04:55,480 INFO Question 5: original='does dr saez-rodriguez like black box models?' -> processed='does dr saez-rodriguez like black box models?' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,484 INFO Question 5: Found 2 answers for request_id 0551b4c1-74be-444e-9613-75e001df50a7
+2025-10-30 14:04:55,484 INFO Question 6: original='cesarprada' -> processed='cesarprada' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,487 INFO Question 6: Found 0 answers for request_id e633b35b-a005-4314-94ec-f488f84f1ad9
+2025-10-30 14:04:55,487 INFO Question 7: original='chris' -> processed='chris' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,493 INFO Question 7: Found 2 answers for request_id 155ac338-3532-4cbc-a86f-f608862a782c
+2025-10-30 14:04:55,493 INFO Question 8: original='grace hopper' -> processed='grace hopper' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,497 INFO Question 8: Found 0 answers for request_id 65a4060f-2726-4fb3-8745-e6055665f8bf
+2025-10-30 14:04:55,497 INFO Question 9: original='sceptic-jo' -> processed='sceptic-jo' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,500 INFO Question 9: Found 0 answers for request_id 8033d5bf-ad6b-45ba-bcc0-cce1b8767966
+2025-10-30 14:04:55,500 INFO Question 10: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,503 INFO Question 10: Found 2 answers for request_id 8a364135-28fb-4a12-86a5-5bc73c98b0c5
+2025-10-30 14:04:55,503 INFO Question 11: original='luis' -> processed='luis' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,506 INFO Question 11: Found 0 answers for request_id e77d9c05-b697-4eb8-8bf0-34d7a02d4505
+2025-10-30 14:04:55,506 INFO Question 12: original='katha' -> processed='katha' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,509 INFO Question 12: Found 2 answers for request_id 9bf217db-9868-4913-b36f-4bb88f704e90
+2025-10-30 14:04:55,509 INFO Question 13: original='julio' -> processed='julio' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,512 INFO Question 13: Found 0 answers for request_id af25a403-cf77-4a11-b613-978ed1e84ae6
+2025-10-30 14:04:55,512 INFO Question 14: original='juan andrés tejedor-serrano' -> processed='juan andrés tejedor-serrano' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,515 INFO Question 14: Found 2 answers for request_id 2e2aa846-c6ed-4466-bf68-d82bde234ce1
+2025-10-30 14:04:55,515 INFO Question 15: original='ef' -> processed='ef' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,518 INFO Question 15: Found 2 answers for request_id 79952193-a81f-4ad2-ad08-7f40f7ba3fa9
+2025-10-30 14:04:55,519 INFO Question 16: original='andrew parton' -> processed='andrew parton' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,521 INFO Question 16: Found 0 answers for request_id 9e0e0d3d-73ee-4b86-a904-fbda5d78cf09
+2025-10-30 14:04:55,521 INFO Question 17: original='admin' -> processed='admin' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,524 INFO Question 17: Found 0 answers for request_id b2e0a3d4-416d-4f3b-936f-eb08014f1092
+2025-10-30 14:04:55,525 INFO Question 18: original='suu' -> processed='suu' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,528 INFO Question 18: Found 0 answers for request_id 82aaafe6-f346-4a1f-9054-88b6a2c75ec8
+2025-10-30 14:04:55,528 INFO Question 19: original='ef' -> processed='ef' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,533 INFO Question 19: Found 4 answers for request_id bbb778fe-391a-4661-b116-78e27c641d7e
+2025-10-30 14:04:55,533 INFO Question 20: original='deimantė' -> processed='deimantė' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,536 INFO Question 20: Found 4 answers for request_id 3c6a15c0-6780-457d-9d22-055621e4b2b7
+2025-10-30 14:04:55,536 INFO Question 21: original='eda' -> processed='eda' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,539 INFO Question 21: Found 2 answers for request_id 2deccddb-ae00-4497-9bbe-fbb10b050279
+2025-10-30 14:04:55,539 INFO Question 22: original='gerold' -> processed='gerold' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,542 INFO Question 22: Found 0 answers for request_id 62a92cbf-ff63-4372-a05a-a5168f2e0bb4
+2025-10-30 14:04:55,542 INFO Question 23: original='ferenckata' -> processed='ferenckata' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,545 INFO Question 23: Found 4 answers for request_id 38030161-7f6d-431b-acf7-82153527f826
+2025-10-30 14:04:55,545 INFO Question 24: original='jk' -> processed='jk' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,548 INFO Question 24: Found 0 answers for request_id 2cbb01e2-fd9c-4591-b6a2-d3da5bbd0c99
+2025-10-30 14:04:55,548 INFO Question 25: original='dmk' -> processed='dmk' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,551 INFO Question 25: Found 0 answers for request_id 67dcdf7b-5e9f-410c-b734-8c8a089a2e3e
+2025-10-30 14:04:55,551 INFO Question 26: original='ttme' -> processed='ttme' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,554 INFO Question 26: Found 2 answers for request_id 3fd6ffab-3b7a-421f-8ea3-e066c287d077
+2025-10-30 14:04:55,554 INFO Question 27: original='small brain' -> processed='small brain' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,558 INFO Question 27: Found 2 answers for request_id 0ffbc990-23c2-4a71-bc0b-b8412612292f
+2025-10-30 14:04:55,558 INFO Question 28: original='chris' -> processed='chris' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,561 INFO Question 28: Found 2 answers for request_id 5c6d24e2-b6e5-4453-9e94-6fab8151a377
+2025-10-30 14:04:55,561 INFO Question 29: original='grace hopper' -> processed='grace hopper' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,564 INFO Question 29: Found 2 answers for request_id 1df0aa4a-235a-454b-961b-19764c58341b
+2025-10-30 14:04:55,564 INFO Question 30: original='tn' -> processed='tn' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,568 INFO Question 30: Found 4 answers for request_id 14b86bfe-2bcc-4e14-b802-8f714fbc2485
+2025-10-30 14:04:55,568 INFO Question 31: original='deimantė' -> processed='deimantė' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,572 INFO Question 31: Found 4 answers for request_id cc85ae40-228c-45ab-a1d6-d391fd5630d1
+2025-10-30 14:04:55,572 INFO Question 32: original='jeremie' -> processed='jeremie' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,574 INFO Question 32: Found 4 answers for request_id 8dfa3ef9-81d0-4393-82fd-c594ae6be0ee
+2025-10-30 14:04:55,575 INFO Question 33: original='thomcsmits' -> processed='thomcsmits' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,578 INFO Question 33: Found 0 answers for request_id fff995b5-3d15-497a-a8a2-d8a6352606ca
+2025-10-30 14:04:55,578 INFO Question 34: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,581 INFO Question 34: Found 0 answers for request_id 85d4de4a-3efe-4c17-8916-402fcaadc6d5
+2025-10-30 14:04:55,581 INFO Question 35: original='aquaria' -> processed='aquaria' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,584 INFO Question 35: Found 2 answers for request_id 7fdbb9d8-d884-4418-b6ca-6e5863f3b8a1
+2025-10-30 14:04:55,584 INFO Question 36: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,587 INFO Question 36: Found 0 answers for request_id 5da873ce-337e-436b-9ec6-ded36339ee67
+2025-10-30 14:04:55,587 INFO Question 37: original='tn' -> processed='tn' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,590 INFO Question 37: Found 2 answers for request_id 9a6213f9-9e79-4ef0-911d-f01f54223ef2
+2025-10-30 14:04:55,590 INFO Question 38: original='train' -> processed='train' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,593 INFO Question 38: Found 0 answers for request_id e2926bd6-9c9b-47aa-835c-ee289fb9a7a4
+2025-10-30 14:04:55,594 INFO Question 39: original='tn' -> processed='tn' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,597 INFO Question 39: Found 2 answers for request_id d926b806-0b3a-4fc7-a129-a431a4176270
+2025-10-30 14:04:55,597 INFO Question 40: original='harpreet' -> processed='harpreet' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,599 INFO Question 40: Found 4 answers for request_id 98d8084c-54a6-4e6e-9576-7572d0743557
+2025-10-30 14:04:55,600 INFO Question 41: original='cesarprada' -> processed='cesarprada' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,602 INFO Question 41: Found 0 answers for request_id 8753201d-22e9-46ab-a4f3-e2559eb1f33f
+2025-10-30 14:04:55,602 INFO Question 42: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,606 INFO Question 42: Found 4 answers for request_id 98c34916-ec47-472d-ae0e-b8accf0df855
+2025-10-30 14:04:55,606 INFO Question 43: original='ale28' -> processed='ale28' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,609 INFO Question 43: Found 2 answers for request_id 992bed5a-a889-43b9-af53-7192b426f20f
+2025-10-30 14:04:55,609 INFO Question 44: original='ap' -> processed='ap' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,612 INFO Question 44: Found 0 answers for request_id 4f7cc6bc-d54b-42db-a7bc-84ec7b7d065b
+2025-10-30 14:04:55,612 INFO Question 45: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,615 INFO Question 45: Found 4 answers for request_id 582341f3-ac73-4d40-8e3d-69e633b7bcad
+2025-10-30 14:04:55,615 INFO Question 46: original='aquaria' -> processed='aquaria' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,618 INFO Question 46: Found 2 answers for request_id 0c9fa92d-a637-4614-838f-4c9c7e63ad68
+2025-10-30 14:04:55,618 INFO Question 47: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,621 INFO Question 47: Found 4 answers for request_id 968da9ff-687c-4a2a-9b0c-a0e3b68617f9
+2025-10-30 14:04:55,621 INFO Question 48: original='aquaria' -> processed='aquaria' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,624 INFO Question 48: Found 2 answers for request_id 0dabd225-b356-4d11-975a-1f927b349a16
+2025-10-30 14:04:55,625 INFO Question 49: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,628 INFO Question 49: Found 2 answers for request_id 721b510c-c767-484a-a037-91e4ded4af1b
+2025-10-30 14:04:55,628 INFO Question 50: original='anais' -> processed='anais' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,631 INFO Question 50: Found 0 answers for request_id 94d596eb-36d2-4da0-bd32-9083795b7484
+2025-10-30 14:04:55,631 INFO Question 51: original='aquaria' -> processed='aquaria' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,634 INFO Question 51: Found 4 answers for request_id 570fcaf4-19fa-4b79-96f4-999817315b88
+2025-10-30 14:04:55,634 INFO Question 52: original='ferenckata' -> processed='ferenckata' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,637 INFO Question 52: Found 4 answers for request_id bda201b4-2810-426d-993d-833830133eae
+2025-10-30 14:04:55,637 INFO Question 53: original='deimantė' -> processed='deimantė' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,639 INFO Question 53: Found 4 answers for request_id 9647562d-1adb-4830-b5b0-7fdbda88692d
+2025-10-30 14:04:55,639 INFO Question 54: original='admin' -> processed='admin' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,643 INFO Question 54: Found 0 answers for request_id d99f6101-29a1-4cd7-a424-fc5e17482cf9
+2025-10-30 14:04:55,643 INFO Question 55: original='luis' -> processed='luis' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,646 INFO Question 55: Found 2 answers for request_id ba9172f8-e138-46a1-81da-b15a41b49c1a
+2025-10-30 14:04:55,646 INFO Question 56: original='jeanne' -> processed='jeanne' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,649 INFO Question 56: Found 4 answers for request_id 244950e2-382f-4460-9741-b06b7710ec36
+2025-10-30 14:04:55,649 INFO Question 57: original='asdfg' -> processed='asdfg' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,652 INFO Question 57: Found 2 answers for request_id 8307714c-af84-425d-8d1e-cdea303830a7
+2025-10-30 14:04:55,652 INFO Question 58: original='cesarprada' -> processed='cesarprada' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,655 INFO Question 58: Found 0 answers for request_id fcebc352-0a69-4930-b621-a5b93ad0cd1a
+2025-10-30 14:04:55,655 INFO Question 59: original='gerold' -> processed='gerold' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,658 INFO Question 59: Found 2 answers for request_id d677deee-64f3-4bb7-b0a9-2b7ab93d7abb
+2025-10-30 14:04:55,658 INFO Question 60: original='luis' -> processed='luis' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,661 INFO Question 60: Found 0 answers for request_id be26fa40-6817-4e05-ac15-6dff9365dfee
+2025-10-30 14:04:55,661 INFO Question 61: original='lk' -> processed='lk' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,664 INFO Question 61: Found 0 answers for request_id 1a699d6f-4f3a-4309-b69d-eb399a70b032
+2025-10-30 14:04:55,664 INFO Question 62: original='chris' -> processed='chris' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,667 INFO Question 62: Found 2 answers for request_id d169e4e7-a844-4452-aa7e-e0c844807eb6
+2025-10-30 14:04:55,667 INFO Question 63: original='jk' -> processed='jk' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,670 INFO Question 63: Found 0 answers for request_id c61d572f-5c30-4047-bbc4-677ff23e5e6d
+2025-10-30 14:04:55,670 INFO Question 64: original='deimantė' -> processed='deimantė' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,673 INFO Question 64: Found 2 answers for request_id 4f1f4cbe-6006-4f72-9a45-ed19366bb273
+2025-10-30 14:04:55,673 INFO Question 65: original='harpreet' -> processed='harpreet' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,676 INFO Question 65: Found 0 answers for request_id 00318b20-ba17-44bb-9c83-14545121f81f
+2025-10-30 14:04:55,676 INFO Question 66: original='eda' -> processed='eda' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,680 INFO Question 66: Found 2 answers for request_id f1ae5762-010a-4396-8594-345df420356d
+2025-10-30 14:04:55,680 INFO Question 67: original='dmk' -> processed='dmk' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,683 INFO Question 67: Found 0 answers for request_id 1636bb43-5813-43a3-9c9c-f8f491398d01
+2025-10-30 14:04:55,683 INFO Question 68: original='skeptic-jo' -> processed='skeptic-jo' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,686 INFO Question 68: Found 0 answers for request_id e04fba18-3a09-4007-9a1f-1d8375d29dae
+2025-10-30 14:04:55,686 INFO Question 69: original='ef' -> processed='ef' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,689 INFO Question 69: Found 2 answers for request_id fbc793cc-bfbc-4e4f-8b76-0dd7f1884345
+2025-10-30 14:04:55,689 INFO Question 70: original='danih' -> processed='danih' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,692 INFO Question 70: Found 0 answers for request_id bdd5d566-0fbc-4ea3-9c5a-3108f1cc60de
+2025-10-30 14:04:55,692 INFO Question 71: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,695 INFO Question 71: Found 0 answers for request_id 2e0adb8b-29ad-4441-a742-30d858978ab3
+2025-10-30 14:04:55,695 INFO Question 72: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,698 INFO Question 72: Found 0 answers for request_id c4d5204e-870f-4038-9c4a-66eed0fd07e3
+2025-10-30 14:04:55,699 INFO Question 73: original='al' -> processed='al' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,701 INFO Question 73: Found 0 answers for request_id dd8a79db-66fd-4b12-95da-adc75fe1de06
+2025-10-30 14:04:55,701 INFO Question 74: original='deimantė' -> processed='deimantė' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,704 INFO Question 74: Found 2 answers for request_id e220d2ec-ee7d-4330-83a7-f6dc832f3714
+2025-10-30 14:04:55,704 INFO Question 75: original='deimantė' -> processed='deimantė' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,708 INFO Question 75: Found 2 answers for request_id 660d7b67-a867-4494-ae53-0dc0505a9205
+2025-10-30 14:04:55,708 INFO Question 76: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,710 INFO Question 76: Found 0 answers for request_id ec19c261-8f42-4706-ae67-39d602c2a018
+2025-10-30 14:04:55,710 INFO Question 77: original='aln' -> processed='aln' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,713 INFO Question 77: Found 0 answers for request_id 3acd29d6-5a32-4d5b-bcb8-14c14c19848d
+2025-10-30 14:04:55,713 INFO Question 78: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,717 INFO Question 78: Found 0 answers for request_id 5cbbacb6-ff65-4c1e-b405-d59366a0f8fa
+2025-10-30 14:04:55,717 INFO Question 79: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,720 INFO Question 79: Found 0 answers for request_id fbee225f-d741-45a2-8763-5e8e694175cc
+2025-10-30 14:04:55,720 INFO Question 80: original='admin' -> processed='admin' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,723 INFO Question 80: Found 0 answers for request_id 13817f00-523f-4f99-954b-117ecdefce3c
+2025-10-30 14:04:55,723 INFO Question 81: original='cb' -> processed='cb' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,725 INFO Question 81: Found 2 answers for request_id 55dacf96-2f47-40a7-bfe0-92a25d071fd0
+2025-10-30 14:04:55,725 INFO Question 82: original='mxfly' -> processed='mxfly' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,728 INFO Question 82: Found 0 answers for request_id 33580ae3-082e-4c85-82c9-56a52dd54d69
+2025-10-30 14:04:55,728 INFO Question 83: original='snps' -> processed='snps' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,731 INFO Question 83: Found 2 answers for request_id ded1e790-98f1-4ee9-975e-6b5d99c55cdc
+2025-10-30 14:04:55,731 INFO Question 84: original='admin' -> processed='admin' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,734 INFO Question 84: Found 0 answers for request_id 0c7f9442-8207-48a6-92d0-6645198acdc7
+2025-10-30 14:04:55,734 INFO Question 85: original='luis' -> processed='luis' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,737 INFO Question 85: Found 0 answers for request_id 1936f9fa-95d8-4253-ab96-245a80f1f5c1
+2025-10-30 14:04:55,737 INFO Question 86: original='admin' -> processed='admin' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,740 INFO Question 86: Found 0 answers for request_id 908c8f35-f0d9-46fb-9f73-cf70c8554def
+2025-10-30 14:04:55,740 INFO Question 87: original='snps' -> processed='snps' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,743 INFO Question 87: Found 2 answers for request_id 607e8b82-01b3-432c-bcc5-90863b98f234
+2025-10-30 14:04:55,743 INFO Question 88: original='snps' -> processed='snps' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,746 INFO Question 88: Found 2 answers for request_id d2afbd82-9350-4fd2-ad66-3cf5f13ac269
+2025-10-30 14:04:55,746 INFO Question 89: original='eric' -> processed='eric' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,749 INFO Question 89: Found 0 answers for request_id 142aef21-103a-4530-9db4-38927c23b606
+2025-10-30 14:04:55,749 INFO Question 90: original='cesarprada' -> processed='cesarprada' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,753 INFO Question 90: Found 0 answers for request_id 214d8c98-7201-4656-9170-0b2b1841f1e7
+2025-10-30 14:04:55,753 INFO Question 91: original='katha' -> processed='katha' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,756 INFO Question 91: Found 2 answers for request_id 1c9d3ef2-6a4b-48fb-84f7-72bf9ef8aa95
+2025-10-30 14:04:55,756 INFO Question 92: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,759 INFO Question 92: Found 0 answers for request_id 38231b55-eb08-4bdb-b9c2-30c3b2016cc5
+2025-10-30 14:04:55,759 INFO Question 93: original='ef' -> processed='ef' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,762 INFO Question 93: Found 2 answers for request_id 9e91d7bd-78e3-4e82-99d1-a84c8ad01897
+2025-10-30 14:04:55,762 INFO Question 94: original='deimantė' -> processed='deimantė' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,765 INFO Question 94: Found 2 answers for request_id 937c04ed-6453-49df-bcd3-1c3fcc76ce22
+2025-10-30 14:04:55,765 INFO Question 95: original='i-wonder' -> processed='i-wonder' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,767 INFO Question 95: Found 0 answers for request_id 80e40948-ca1e-4e39-aa15-bd59cc376466
+2025-10-30 14:04:55,768 INFO Question 96: original='a' -> processed='a' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,770 INFO Question 96: Found 2 answers for request_id fdd9f575-4b0d-4a77-84c5-e151cdd1b32f
+2025-10-30 14:04:55,770 INFO Question 97: original='deimantė' -> processed='deimantė' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,774 INFO Question 97: Found 2 answers for request_id 5cf4b48a-9cfd-4630-9d08-abf07fdd9c67
+2025-10-30 14:04:55,774 INFO Question 98: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,776 INFO Question 98: Found 0 answers for request_id 24352dbe-2d14-4944-a25a-ae60cd00e94e
+2025-10-30 14:04:55,777 INFO Question 99: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,779 INFO Question 99: Found 0 answers for request_id b36e0680-44b9-4771-ad7c-f94b9b71de26
+2025-10-30 14:04:55,780 INFO Question 100: original='deimantė' -> processed='deimantė' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,782 INFO Question 100: Found 2 answers for request_id 13f7402f-723f-46c3-ad27-3ac9aca087e7
+2025-10-30 14:04:55,783 INFO Question 101: original='tn' -> processed='tn' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,786 INFO Question 101: Found 0 answers for request_id e4f650c1-830e-4756-847e-8039199cedca
+2025-10-30 14:04:55,786 INFO Question 102: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,789 INFO Question 102: Found 0 answers for request_id ae225a61-6090-4cc5-83e5-b51079cfa6fe
+2025-10-30 14:04:55,789 INFO Question 103: original='danih' -> processed='danih' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,792 INFO Question 103: Found 0 answers for request_id 18c2cab4-fb16-44e6-8c61-c521ef6df7e2
+2025-10-30 14:04:55,792 INFO Question 104: original='deimantė' -> processed='deimantė' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,795 INFO Question 104: Found 2 answers for request_id 0c33dbfb-2417-4386-9a25-4b105f3b1fb5
+2025-10-30 14:04:55,795 INFO Question 105: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,798 INFO Question 105: Found 0 answers for request_id 8feaf643-fd6f-485c-97f3-3acddc781309
+2025-10-30 14:04:55,798 INFO Question 106: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,801 INFO Question 106: Found 0 answers for request_id f1a0e502-d2fa-4957-ac9e-98b3d22e5f0d
+2025-10-30 14:04:55,801 INFO Question 107: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,804 INFO Question 107: Found 0 answers for request_id 633539a5-9483-4e30-86fa-fd8d3d9d6ba3
+2025-10-30 14:04:55,804 INFO Question 108: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,807 INFO Question 108: Found 0 answers for request_id 2d1c45ee-030b-4a15-a40d-f273b865770f
+2025-10-30 14:04:55,807 INFO Question 109: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,810 INFO Question 109: Found 0 answers for request_id d6682bcf-1d8f-4365-a904-c6574049b379
+2025-10-30 14:04:55,810 INFO Question 110: original='admin' -> processed='admin' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,813 INFO Question 110: Found 0 answers for request_id a2073514-f4a9-419a-acfe-64a3a8579c42
+2025-10-30 14:04:55,813 INFO Question 111: original='snps' -> processed='snps' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,816 INFO Question 111: Found 2 answers for request_id be90be32-4565-43cc-b5b7-d0bbaf3975d8
+2025-10-30 14:04:55,816 INFO Question 112: original='gerold' -> processed='gerold' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,819 INFO Question 112: Found 0 answers for request_id 151054ef-9d52-4629-ab02-2a6ff256154a
+2025-10-30 14:04:55,819 INFO Question 113: original='bastien chassagnol' -> processed='bastien chassagnol' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,822 INFO Question 113: Found 0 answers for request_id 89a4f611-e638-4e5e-9109-d1bc21c0997b
+2025-10-30 14:04:55,822 INFO Question 114: original='deimantė' -> processed='deimantė' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,826 INFO Question 114: Found 2 answers for request_id 9729f596-7384-42a0-92ee-f38e01beae15
+2025-10-30 14:04:55,826 INFO Question 115: original='gaia' -> processed='gaia' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,829 INFO Question 115: Found 0 answers for request_id 5a410391-2251-4241-aac3-5038afab4e14
+2025-10-30 14:04:55,829 INFO Question 116: original='admin' -> processed='admin' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,832 INFO Question 116: Found 0 answers for request_id 6d1736be-8537-48e9-a333-440aece0ac0f
+2025-10-30 14:04:55,832 INFO Question 117: original='jyhuang' -> processed='jyhuang' vs target='nikolas' | Match: False
+2025-10-30 14:04:55,835 INFO Question 117: Found 2 answers for request_id e4ffb4c3-0dde-4078-845f-7c11aed5d7ce
+2025-10-30 14:04:55,835 INFO Question 118: original='nikolas' -> processed='nikolas' vs target='nikolas' | Match: True
+2025-10-30 14:04:55,836 INFO Question 118: Found 2 answers for request_id 2205d379-63fc-4054-8d7c-f72fbdba7fee
+2025-10-30 14:04:55,836 INFO ✓ Added user question: 2205d379-63fc-4054-8d7c-f72fbdba7fee from Nikolas
+2025-10-30 14:04:55,836 INFO Final result: 1 user questions and 0 extra questions
+2025-10-30 14:04:55,837 INFO 10.148.196.182 - - [30/Oct/2025 14:04:55] "GET /get_answers?nickname=Nikolas&extra=0 HTTP/1.1" 200 -
+2025-10-30 14:04:55,848 INFO 10.148.196.182 - - [30/Oct/2025 14:04:55] "GET /available_pdfs HTTP/1.1" 200 -
+2025-10-30 14:05:28,156 INFO 10.148.196.182 - - [30/Oct/2025 14:05:28] "GET /repo_status HTTP/1.1" 200 -
+2025-10-30 14:06:23,657 INFO 10.148.196.182 - - [30/Oct/2025 14:06:23] "GET / HTTP/1.1" 200 -
+2025-10-30 14:06:23,799 INFO 10.148.196.182 - - [30/Oct/2025 14:06:23] "GET /repo_status HTTP/1.1" 200 -
+2025-10-30 14:06:23,803 INFO 10.148.196.182 - - [30/Oct/2025 14:06:23] "GET /available_pdfs HTTP/1.1" 200 -
+2025-10-30 14:06:23,882 INFO 10.148.196.182 - - [30/Oct/2025 14:06:23] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-10-30 14:06:23,895 INFO 10.148.196.182 - - [30/Oct/2025 14:06:23] "GET /available_pdfs HTTP/1.1" 200 -
+2025-10-30 14:06:26,169 INFO get_answers called with raw_nick='Nikolas', processed nickname='nikolas'
+2025-10-30 14:06:26,171 INFO Processed 121 lines from requests_questions.log
+2025-10-30 14:06:26,171 INFO Found 119 total questions in log
+2025-10-30 14:06:26,172 INFO All nicknames found: ['gerold', 'DEIMANTĖ ', 'Gerold', 'suu', 'DaniH', 'Does Dr Saez-Rodriguez like black box models?', 'CesarPrada', 'Chris', 'Grace Hopper ', 'sceptic-jo', 'Hola', 'Luis', 'Katha', 'Julio', 'Juan Andrés Tejedor-Serrano', 'EF', 'Andrew Parton', 'Admin', 'suu', 'EF', 'DEIMANTĖ', 'eda', 'Gerold', 'ferenckata', 'JK', 'dmk', 'ttme', 'Small brain ', 'Chris', 'Grace Hopper', 'TN', 'DEIMANTĖ', 'Jeremie', 'thomcsmits', 'Hola', 'Aquaria', 'Hola', 'TN', 'train', 'TN', 'Harpreet ', 'CesarPrada', 'Hola', 'Ale28', 'AP', 'Hola', 'Aquaria', 'Hola', 'Aquaria', 'Hola', 'Anais', 'Aquaria', 'ferenckata', 'DEIMANTĖ ', 'Admin', 'Luis', 'Jeanne', 'asdfg', 'CesarPrada', 'Gerold', 'Luis', 'LK', 'Chris', 'JK', 'DEIMANTĖ ', 'Harpreet ', 'eda', 'dmk', 'skeptic-jo', 'EF', 'DaniH', 'Hola', 'Hola', 'Al ', 'DEIMANTĖ', 'Deimantė', 'Hola', 'aln', 'Hola', 'Hola', 'Admin', 'CB', 'Mxfly', 'Snps ', 'Admin', 'Luis', 'Admin', 'Snps', 'Snps', 'Eric', 'CesarPrada', 'Katha', 'Hola', 'EF', 'DEIMANTĖ', 'I-wonder', 'A', 'DEIMANTĖ', 'Hola', 'Hola', 'DEIMANTĖ', 'TN', 'Hola', 'DaniH', 'DEIMANTĖ ', 'Hola', 'Hola', 'Hola', 'Hola', 'Hola', 'Admin', 'Snps', 'gerold', 'Bastien Chassagnol ', 'DEIMANTĖ ', 'gaia', 'Admin', 'jyhuang', 'Nikolas']
+2025-10-30 14:06:26,172 INFO Question 0: original='gerold' -> processed='gerold' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,177 INFO Question 0: Found 2 answers for request_id b61314ca-feb2-4474-a503-c253eacd04f5
+2025-10-30 14:06:26,178 INFO Question 1: original='deimantė' -> processed='deimantė' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,181 INFO Question 1: Found 2 answers for request_id 2550f244-6998-4777-a5a2-39d07a22f73a
+2025-10-30 14:06:26,182 INFO Question 2: original='gerold' -> processed='gerold' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,185 INFO Question 2: Found 0 answers for request_id 6b447917-ec1f-4c96-af35-11e36a7dfd13
+2025-10-30 14:06:26,185 INFO Question 3: original='suu' -> processed='suu' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,189 INFO Question 3: Found 2 answers for request_id 97e6dacc-ff39-4932-a600-5f7ca6c091d8
+2025-10-30 14:06:26,189 INFO Question 4: original='danih' -> processed='danih' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,193 INFO Question 4: Found 2 answers for request_id 96988a22-a560-4155-9792-51cfa6f44a2d
+2025-10-30 14:06:26,193 INFO Question 5: original='does dr saez-rodriguez like black box models?' -> processed='does dr saez-rodriguez like black box models?' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,196 INFO Question 5: Found 2 answers for request_id 0551b4c1-74be-444e-9613-75e001df50a7
+2025-10-30 14:06:26,196 INFO Question 6: original='cesarprada' -> processed='cesarprada' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,199 INFO Question 6: Found 0 answers for request_id e633b35b-a005-4314-94ec-f488f84f1ad9
+2025-10-30 14:06:26,199 INFO Question 7: original='chris' -> processed='chris' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,203 INFO Question 7: Found 2 answers for request_id 155ac338-3532-4cbc-a86f-f608862a782c
+2025-10-30 14:06:26,203 INFO Question 8: original='grace hopper' -> processed='grace hopper' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,210 INFO Question 8: Found 0 answers for request_id 65a4060f-2726-4fb3-8745-e6055665f8bf
+2025-10-30 14:06:26,211 INFO Question 9: original='sceptic-jo' -> processed='sceptic-jo' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,213 INFO Question 9: Found 0 answers for request_id 8033d5bf-ad6b-45ba-bcc0-cce1b8767966
+2025-10-30 14:06:26,213 INFO Question 10: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,216 INFO Question 10: Found 2 answers for request_id 8a364135-28fb-4a12-86a5-5bc73c98b0c5
+2025-10-30 14:06:26,216 INFO Question 11: original='luis' -> processed='luis' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,219 INFO Question 11: Found 0 answers for request_id e77d9c05-b697-4eb8-8bf0-34d7a02d4505
+2025-10-30 14:06:26,219 INFO Question 12: original='katha' -> processed='katha' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,222 INFO Question 12: Found 2 answers for request_id 9bf217db-9868-4913-b36f-4bb88f704e90
+2025-10-30 14:06:26,222 INFO Question 13: original='julio' -> processed='julio' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,225 INFO Question 13: Found 0 answers for request_id af25a403-cf77-4a11-b613-978ed1e84ae6
+2025-10-30 14:06:26,225 INFO Question 14: original='juan andrés tejedor-serrano' -> processed='juan andrés tejedor-serrano' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,228 INFO Question 14: Found 2 answers for request_id 2e2aa846-c6ed-4466-bf68-d82bde234ce1
+2025-10-30 14:06:26,228 INFO Question 15: original='ef' -> processed='ef' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,231 INFO Question 15: Found 2 answers for request_id 79952193-a81f-4ad2-ad08-7f40f7ba3fa9
+2025-10-30 14:06:26,231 INFO Question 16: original='andrew parton' -> processed='andrew parton' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,234 INFO Question 16: Found 0 answers for request_id 9e0e0d3d-73ee-4b86-a904-fbda5d78cf09
+2025-10-30 14:06:26,234 INFO Question 17: original='admin' -> processed='admin' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,237 INFO Question 17: Found 0 answers for request_id b2e0a3d4-416d-4f3b-936f-eb08014f1092
+2025-10-30 14:06:26,237 INFO Question 18: original='suu' -> processed='suu' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,240 INFO Question 18: Found 0 answers for request_id 82aaafe6-f346-4a1f-9054-88b6a2c75ec8
+2025-10-30 14:06:26,240 INFO Question 19: original='ef' -> processed='ef' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,243 INFO Question 19: Found 4 answers for request_id bbb778fe-391a-4661-b116-78e27c641d7e
+2025-10-30 14:06:26,244 INFO Question 20: original='deimantė' -> processed='deimantė' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,248 INFO Question 20: Found 4 answers for request_id 3c6a15c0-6780-457d-9d22-055621e4b2b7
+2025-10-30 14:06:26,249 INFO Question 21: original='eda' -> processed='eda' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,252 INFO Question 21: Found 2 answers for request_id 2deccddb-ae00-4497-9bbe-fbb10b050279
+2025-10-30 14:06:26,253 INFO Question 22: original='gerold' -> processed='gerold' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,257 INFO Question 22: Found 0 answers for request_id 62a92cbf-ff63-4372-a05a-a5168f2e0bb4
+2025-10-30 14:06:26,257 INFO Question 23: original='ferenckata' -> processed='ferenckata' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,263 INFO Question 23: Found 4 answers for request_id 38030161-7f6d-431b-acf7-82153527f826
+2025-10-30 14:06:26,263 INFO Question 24: original='jk' -> processed='jk' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,267 INFO Question 24: Found 0 answers for request_id 2cbb01e2-fd9c-4591-b6a2-d3da5bbd0c99
+2025-10-30 14:06:26,267 INFO Question 25: original='dmk' -> processed='dmk' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,271 INFO Question 25: Found 0 answers for request_id 67dcdf7b-5e9f-410c-b734-8c8a089a2e3e
+2025-10-30 14:06:26,271 INFO Question 26: original='ttme' -> processed='ttme' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,275 INFO Question 26: Found 2 answers for request_id 3fd6ffab-3b7a-421f-8ea3-e066c287d077
+2025-10-30 14:06:26,276 INFO Question 27: original='small brain' -> processed='small brain' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,279 INFO Question 27: Found 2 answers for request_id 0ffbc990-23c2-4a71-bc0b-b8412612292f
+2025-10-30 14:06:26,280 INFO Question 28: original='chris' -> processed='chris' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,283 INFO Question 28: Found 2 answers for request_id 5c6d24e2-b6e5-4453-9e94-6fab8151a377
+2025-10-30 14:06:26,283 INFO Question 29: original='grace hopper' -> processed='grace hopper' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,287 INFO Question 29: Found 2 answers for request_id 1df0aa4a-235a-454b-961b-19764c58341b
+2025-10-30 14:06:26,287 INFO Question 30: original='tn' -> processed='tn' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,291 INFO Question 30: Found 4 answers for request_id 14b86bfe-2bcc-4e14-b802-8f714fbc2485
+2025-10-30 14:06:26,291 INFO Question 31: original='deimantė' -> processed='deimantė' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,296 INFO Question 31: Found 4 answers for request_id cc85ae40-228c-45ab-a1d6-d391fd5630d1
+2025-10-30 14:06:26,296 INFO Question 32: original='jeremie' -> processed='jeremie' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,299 INFO Question 32: Found 4 answers for request_id 8dfa3ef9-81d0-4393-82fd-c594ae6be0ee
+2025-10-30 14:06:26,299 INFO Question 33: original='thomcsmits' -> processed='thomcsmits' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,301 INFO Question 33: Found 0 answers for request_id fff995b5-3d15-497a-a8a2-d8a6352606ca
+2025-10-30 14:06:26,301 INFO Question 34: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,304 INFO Question 34: Found 0 answers for request_id 85d4de4a-3efe-4c17-8916-402fcaadc6d5
+2025-10-30 14:06:26,304 INFO Question 35: original='aquaria' -> processed='aquaria' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,308 INFO Question 35: Found 2 answers for request_id 7fdbb9d8-d884-4418-b6ca-6e5863f3b8a1
+2025-10-30 14:06:26,308 INFO Question 36: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,311 INFO Question 36: Found 0 answers for request_id 5da873ce-337e-436b-9ec6-ded36339ee67
+2025-10-30 14:06:26,311 INFO Question 37: original='tn' -> processed='tn' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,314 INFO Question 37: Found 2 answers for request_id 9a6213f9-9e79-4ef0-911d-f01f54223ef2
+2025-10-30 14:06:26,314 INFO Question 38: original='train' -> processed='train' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,317 INFO Question 38: Found 0 answers for request_id e2926bd6-9c9b-47aa-835c-ee289fb9a7a4
+2025-10-30 14:06:26,317 INFO Question 39: original='tn' -> processed='tn' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,321 INFO Question 39: Found 2 answers for request_id d926b806-0b3a-4fc7-a129-a431a4176270
+2025-10-30 14:06:26,321 INFO Question 40: original='harpreet' -> processed='harpreet' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,324 INFO Question 40: Found 4 answers for request_id 98d8084c-54a6-4e6e-9576-7572d0743557
+2025-10-30 14:06:26,324 INFO Question 41: original='cesarprada' -> processed='cesarprada' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,326 INFO Question 41: Found 0 answers for request_id 8753201d-22e9-46ab-a4f3-e2559eb1f33f
+2025-10-30 14:06:26,327 INFO Question 42: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,329 INFO Question 42: Found 4 answers for request_id 98c34916-ec47-472d-ae0e-b8accf0df855
+2025-10-30 14:06:26,329 INFO Question 43: original='ale28' -> processed='ale28' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,332 INFO Question 43: Found 2 answers for request_id 992bed5a-a889-43b9-af53-7192b426f20f
+2025-10-30 14:06:26,332 INFO Question 44: original='ap' -> processed='ap' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,334 INFO Question 44: Found 0 answers for request_id 4f7cc6bc-d54b-42db-a7bc-84ec7b7d065b
+2025-10-30 14:06:26,334 INFO Question 45: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,337 INFO Question 45: Found 4 answers for request_id 582341f3-ac73-4d40-8e3d-69e633b7bcad
+2025-10-30 14:06:26,337 INFO Question 46: original='aquaria' -> processed='aquaria' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,339 INFO Question 46: Found 2 answers for request_id 0c9fa92d-a637-4614-838f-4c9c7e63ad68
+2025-10-30 14:06:26,339 INFO Question 47: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,342 INFO Question 47: Found 4 answers for request_id 968da9ff-687c-4a2a-9b0c-a0e3b68617f9
+2025-10-30 14:06:26,342 INFO Question 48: original='aquaria' -> processed='aquaria' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,344 INFO Question 48: Found 2 answers for request_id 0dabd225-b356-4d11-975a-1f927b349a16
+2025-10-30 14:06:26,344 INFO Question 49: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,347 INFO Question 49: Found 2 answers for request_id 721b510c-c767-484a-a037-91e4ded4af1b
+2025-10-30 14:06:26,347 INFO Question 50: original='anais' -> processed='anais' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,349 INFO Question 50: Found 0 answers for request_id 94d596eb-36d2-4da0-bd32-9083795b7484
+2025-10-30 14:06:26,349 INFO Question 51: original='aquaria' -> processed='aquaria' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,351 INFO Question 51: Found 4 answers for request_id 570fcaf4-19fa-4b79-96f4-999817315b88
+2025-10-30 14:06:26,351 INFO Question 52: original='ferenckata' -> processed='ferenckata' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,354 INFO Question 52: Found 4 answers for request_id bda201b4-2810-426d-993d-833830133eae
+2025-10-30 14:06:26,354 INFO Question 53: original='deimantė' -> processed='deimantė' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,357 INFO Question 53: Found 4 answers for request_id 9647562d-1adb-4830-b5b0-7fdbda88692d
+2025-10-30 14:06:26,358 INFO Question 54: original='admin' -> processed='admin' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,360 INFO Question 54: Found 0 answers for request_id d99f6101-29a1-4cd7-a424-fc5e17482cf9
+2025-10-30 14:06:26,360 INFO Question 55: original='luis' -> processed='luis' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,362 INFO Question 55: Found 2 answers for request_id ba9172f8-e138-46a1-81da-b15a41b49c1a
+2025-10-30 14:06:26,362 INFO Question 56: original='jeanne' -> processed='jeanne' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,365 INFO Question 56: Found 4 answers for request_id 244950e2-382f-4460-9741-b06b7710ec36
+2025-10-30 14:06:26,365 INFO Question 57: original='asdfg' -> processed='asdfg' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,368 INFO Question 57: Found 2 answers for request_id 8307714c-af84-425d-8d1e-cdea303830a7
+2025-10-30 14:06:26,368 INFO Question 58: original='cesarprada' -> processed='cesarprada' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,370 INFO Question 58: Found 0 answers for request_id fcebc352-0a69-4930-b621-a5b93ad0cd1a
+2025-10-30 14:06:26,370 INFO Question 59: original='gerold' -> processed='gerold' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,373 INFO Question 59: Found 2 answers for request_id d677deee-64f3-4bb7-b0a9-2b7ab93d7abb
+2025-10-30 14:06:26,373 INFO Question 60: original='luis' -> processed='luis' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,375 INFO Question 60: Found 0 answers for request_id be26fa40-6817-4e05-ac15-6dff9365dfee
+2025-10-30 14:06:26,375 INFO Question 61: original='lk' -> processed='lk' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,378 INFO Question 61: Found 0 answers for request_id 1a699d6f-4f3a-4309-b69d-eb399a70b032
+2025-10-30 14:06:26,378 INFO Question 62: original='chris' -> processed='chris' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,380 INFO Question 62: Found 2 answers for request_id d169e4e7-a844-4452-aa7e-e0c844807eb6
+2025-10-30 14:06:26,381 INFO Question 63: original='jk' -> processed='jk' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,383 INFO Question 63: Found 0 answers for request_id c61d572f-5c30-4047-bbc4-677ff23e5e6d
+2025-10-30 14:06:26,383 INFO Question 64: original='deimantė' -> processed='deimantė' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,386 INFO Question 64: Found 2 answers for request_id 4f1f4cbe-6006-4f72-9a45-ed19366bb273
+2025-10-30 14:06:26,386 INFO Question 65: original='harpreet' -> processed='harpreet' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,388 INFO Question 65: Found 0 answers for request_id 00318b20-ba17-44bb-9c83-14545121f81f
+2025-10-30 14:06:26,388 INFO Question 66: original='eda' -> processed='eda' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,390 INFO Question 66: Found 2 answers for request_id f1ae5762-010a-4396-8594-345df420356d
+2025-10-30 14:06:26,390 INFO Question 67: original='dmk' -> processed='dmk' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,394 INFO Question 67: Found 0 answers for request_id 1636bb43-5813-43a3-9c9c-f8f491398d01
+2025-10-30 14:06:26,394 INFO Question 68: original='skeptic-jo' -> processed='skeptic-jo' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,397 INFO Question 68: Found 0 answers for request_id e04fba18-3a09-4007-9a1f-1d8375d29dae
+2025-10-30 14:06:26,397 INFO Question 69: original='ef' -> processed='ef' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,399 INFO Question 69: Found 2 answers for request_id fbc793cc-bfbc-4e4f-8b76-0dd7f1884345
+2025-10-30 14:06:26,399 INFO Question 70: original='danih' -> processed='danih' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,401 INFO Question 70: Found 0 answers for request_id bdd5d566-0fbc-4ea3-9c5a-3108f1cc60de
+2025-10-30 14:06:26,402 INFO Question 71: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,404 INFO Question 71: Found 0 answers for request_id 2e0adb8b-29ad-4441-a742-30d858978ab3
+2025-10-30 14:06:26,404 INFO Question 72: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,406 INFO Question 72: Found 0 answers for request_id c4d5204e-870f-4038-9c4a-66eed0fd07e3
+2025-10-30 14:06:26,407 INFO Question 73: original='al' -> processed='al' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,409 INFO Question 73: Found 0 answers for request_id dd8a79db-66fd-4b12-95da-adc75fe1de06
+2025-10-30 14:06:26,409 INFO Question 74: original='deimantė' -> processed='deimantė' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,411 INFO Question 74: Found 2 answers for request_id e220d2ec-ee7d-4330-83a7-f6dc832f3714
+2025-10-30 14:06:26,411 INFO Question 75: original='deimantė' -> processed='deimantė' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,414 INFO Question 75: Found 2 answers for request_id 660d7b67-a867-4494-ae53-0dc0505a9205
+2025-10-30 14:06:26,414 INFO Question 76: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,417 INFO Question 76: Found 0 answers for request_id ec19c261-8f42-4706-ae67-39d602c2a018
+2025-10-30 14:06:26,417 INFO Question 77: original='aln' -> processed='aln' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,420 INFO Question 77: Found 0 answers for request_id 3acd29d6-5a32-4d5b-bcb8-14c14c19848d
+2025-10-30 14:06:26,420 INFO Question 78: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,424 INFO Question 78: Found 0 answers for request_id 5cbbacb6-ff65-4c1e-b405-d59366a0f8fa
+2025-10-30 14:06:26,424 INFO Question 79: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,427 INFO Question 79: Found 0 answers for request_id fbee225f-d741-45a2-8763-5e8e694175cc
+2025-10-30 14:06:26,427 INFO Question 80: original='admin' -> processed='admin' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,430 INFO Question 80: Found 0 answers for request_id 13817f00-523f-4f99-954b-117ecdefce3c
+2025-10-30 14:06:26,430 INFO Question 81: original='cb' -> processed='cb' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,433 INFO Question 81: Found 2 answers for request_id 55dacf96-2f47-40a7-bfe0-92a25d071fd0
+2025-10-30 14:06:26,433 INFO Question 82: original='mxfly' -> processed='mxfly' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,436 INFO Question 82: Found 0 answers for request_id 33580ae3-082e-4c85-82c9-56a52dd54d69
+2025-10-30 14:06:26,436 INFO Question 83: original='snps' -> processed='snps' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,439 INFO Question 83: Found 2 answers for request_id ded1e790-98f1-4ee9-975e-6b5d99c55cdc
+2025-10-30 14:06:26,439 INFO Question 84: original='admin' -> processed='admin' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,442 INFO Question 84: Found 0 answers for request_id 0c7f9442-8207-48a6-92d0-6645198acdc7
+2025-10-30 14:06:26,442 INFO Question 85: original='luis' -> processed='luis' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,445 INFO Question 85: Found 0 answers for request_id 1936f9fa-95d8-4253-ab96-245a80f1f5c1
+2025-10-30 14:06:26,445 INFO Question 86: original='admin' -> processed='admin' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,448 INFO Question 86: Found 0 answers for request_id 908c8f35-f0d9-46fb-9f73-cf70c8554def
+2025-10-30 14:06:26,448 INFO Question 87: original='snps' -> processed='snps' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,451 INFO Question 87: Found 2 answers for request_id 607e8b82-01b3-432c-bcc5-90863b98f234
+2025-10-30 14:06:26,451 INFO Question 88: original='snps' -> processed='snps' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,454 INFO Question 88: Found 2 answers for request_id d2afbd82-9350-4fd2-ad66-3cf5f13ac269
+2025-10-30 14:06:26,454 INFO Question 89: original='eric' -> processed='eric' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,456 INFO Question 89: Found 0 answers for request_id 142aef21-103a-4530-9db4-38927c23b606
+2025-10-30 14:06:26,456 INFO Question 90: original='cesarprada' -> processed='cesarprada' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,459 INFO Question 90: Found 0 answers for request_id 214d8c98-7201-4656-9170-0b2b1841f1e7
+2025-10-30 14:06:26,459 INFO Question 91: original='katha' -> processed='katha' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,462 INFO Question 91: Found 2 answers for request_id 1c9d3ef2-6a4b-48fb-84f7-72bf9ef8aa95
+2025-10-30 14:06:26,462 INFO Question 92: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,466 INFO Question 92: Found 0 answers for request_id 38231b55-eb08-4bdb-b9c2-30c3b2016cc5
+2025-10-30 14:06:26,466 INFO Question 93: original='ef' -> processed='ef' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,469 INFO Question 93: Found 2 answers for request_id 9e91d7bd-78e3-4e82-99d1-a84c8ad01897
+2025-10-30 14:06:26,469 INFO Question 94: original='deimantė' -> processed='deimantė' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,472 INFO Question 94: Found 2 answers for request_id 937c04ed-6453-49df-bcd3-1c3fcc76ce22
+2025-10-30 14:06:26,472 INFO Question 95: original='i-wonder' -> processed='i-wonder' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,475 INFO Question 95: Found 0 answers for request_id 80e40948-ca1e-4e39-aa15-bd59cc376466
+2025-10-30 14:06:26,475 INFO Question 96: original='a' -> processed='a' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,478 INFO Question 96: Found 2 answers for request_id fdd9f575-4b0d-4a77-84c5-e151cdd1b32f
+2025-10-30 14:06:26,478 INFO Question 97: original='deimantė' -> processed='deimantė' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,481 INFO Question 97: Found 2 answers for request_id 5cf4b48a-9cfd-4630-9d08-abf07fdd9c67
+2025-10-30 14:06:26,481 INFO Question 98: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,484 INFO Question 98: Found 0 answers for request_id 24352dbe-2d14-4944-a25a-ae60cd00e94e
+2025-10-30 14:06:26,484 INFO Question 99: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,487 INFO Question 99: Found 0 answers for request_id b36e0680-44b9-4771-ad7c-f94b9b71de26
+2025-10-30 14:06:26,487 INFO Question 100: original='deimantė' -> processed='deimantė' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,490 INFO Question 100: Found 2 answers for request_id 13f7402f-723f-46c3-ad27-3ac9aca087e7
+2025-10-30 14:06:26,490 INFO Question 101: original='tn' -> processed='tn' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,493 INFO Question 101: Found 0 answers for request_id e4f650c1-830e-4756-847e-8039199cedca
+2025-10-30 14:06:26,493 INFO Question 102: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,496 INFO Question 102: Found 0 answers for request_id ae225a61-6090-4cc5-83e5-b51079cfa6fe
+2025-10-30 14:06:26,496 INFO Question 103: original='danih' -> processed='danih' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,499 INFO Question 103: Found 0 answers for request_id 18c2cab4-fb16-44e6-8c61-c521ef6df7e2
+2025-10-30 14:06:26,499 INFO Question 104: original='deimantė' -> processed='deimantė' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,502 INFO Question 104: Found 2 answers for request_id 0c33dbfb-2417-4386-9a25-4b105f3b1fb5
+2025-10-30 14:06:26,503 INFO Question 105: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,505 INFO Question 105: Found 0 answers for request_id 8feaf643-fd6f-485c-97f3-3acddc781309
+2025-10-30 14:06:26,505 INFO Question 106: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,508 INFO Question 106: Found 0 answers for request_id f1a0e502-d2fa-4957-ac9e-98b3d22e5f0d
+2025-10-30 14:06:26,508 INFO Question 107: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,511 INFO Question 107: Found 0 answers for request_id 633539a5-9483-4e30-86fa-fd8d3d9d6ba3
+2025-10-30 14:06:26,511 INFO Question 108: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,514 INFO Question 108: Found 0 answers for request_id 2d1c45ee-030b-4a15-a40d-f273b865770f
+2025-10-30 14:06:26,514 INFO Question 109: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,517 INFO Question 109: Found 0 answers for request_id d6682bcf-1d8f-4365-a904-c6574049b379
+2025-10-30 14:06:26,517 INFO Question 110: original='admin' -> processed='admin' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,520 INFO Question 110: Found 0 answers for request_id a2073514-f4a9-419a-acfe-64a3a8579c42
+2025-10-30 14:06:26,520 INFO Question 111: original='snps' -> processed='snps' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,523 INFO Question 111: Found 2 answers for request_id be90be32-4565-43cc-b5b7-d0bbaf3975d8
+2025-10-30 14:06:26,523 INFO Question 112: original='gerold' -> processed='gerold' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,526 INFO Question 112: Found 0 answers for request_id 151054ef-9d52-4629-ab02-2a6ff256154a
+2025-10-30 14:06:26,526 INFO Question 113: original='bastien chassagnol' -> processed='bastien chassagnol' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,529 INFO Question 113: Found 0 answers for request_id 89a4f611-e638-4e5e-9109-d1bc21c0997b
+2025-10-30 14:06:26,529 INFO Question 114: original='deimantė' -> processed='deimantė' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,532 INFO Question 114: Found 2 answers for request_id 9729f596-7384-42a0-92ee-f38e01beae15
+2025-10-30 14:06:26,532 INFO Question 115: original='gaia' -> processed='gaia' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,535 INFO Question 115: Found 0 answers for request_id 5a410391-2251-4241-aac3-5038afab4e14
+2025-10-30 14:06:26,535 INFO Question 116: original='admin' -> processed='admin' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,538 INFO Question 116: Found 0 answers for request_id 6d1736be-8537-48e9-a333-440aece0ac0f
+2025-10-30 14:06:26,539 INFO Question 117: original='jyhuang' -> processed='jyhuang' vs target='nikolas' | Match: False
+2025-10-30 14:06:26,541 INFO Question 117: Found 2 answers for request_id e4ffb4c3-0dde-4078-845f-7c11aed5d7ce
+2025-10-30 14:06:26,542 INFO Question 118: original='nikolas' -> processed='nikolas' vs target='nikolas' | Match: True
+2025-10-30 14:06:26,542 INFO Question 118: Found 2 answers for request_id 2205d379-63fc-4054-8d7c-f72fbdba7fee
+2025-10-30 14:06:26,542 INFO ✓ Added user question: 2205d379-63fc-4054-8d7c-f72fbdba7fee from Nikolas
+2025-10-30 14:06:26,543 INFO Final result: 1 user questions and 0 extra questions
+2025-10-30 14:06:26,543 INFO 10.148.196.182 - - [30/Oct/2025 14:06:26] "GET /get_answers?nickname=Nikolas&extra=0 HTTP/1.1" 200 -
+2025-10-30 14:06:26,554 INFO 10.148.196.182 - - [30/Oct/2025 14:06:26] "GET /available_pdfs HTTP/1.1" 200 -
+2025-10-30 14:06:37,886 INFO Flask app starting up - logging is working!
+2025-10-30 14:06:37,886 DEBUG Debug logging is enabled
+2025-10-30 14:06:38,046 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5100
+ * Running on http://10.148.196.182:5100
+2025-10-30 14:06:38,046 INFO [33mPress CTRL+C to quit[0m
+2025-10-30 14:06:39,158 INFO 10.148.196.182 - - [30/Oct/2025 14:06:39] "GET / HTTP/1.1" 200 -
+2025-10-30 14:06:39,237 INFO 10.148.196.182 - - [30/Oct/2025 14:06:39] "GET /repo_status HTTP/1.1" 200 -
+2025-10-30 14:06:39,251 INFO 10.148.196.182 - - [30/Oct/2025 14:06:39] "GET /available_pdfs HTTP/1.1" 200 -
+2025-10-30 14:06:39,348 INFO 10.148.196.182 - - [30/Oct/2025 14:06:39] "GET /available_pdfs HTTP/1.1" 200 -
+2025-10-30 14:06:41,335 INFO get_answers called with raw_nick='Nikolas', processed nickname='nikolas'
+2025-10-30 14:06:41,337 INFO Processed 121 lines from requests_questions.log
+2025-10-30 14:06:41,337 INFO Found 119 total questions in log
+2025-10-30 14:06:41,337 INFO All nicknames found: ['gerold', 'DEIMANTĖ ', 'Gerold', 'suu', 'DaniH', 'Does Dr Saez-Rodriguez like black box models?', 'CesarPrada', 'Chris', 'Grace Hopper ', 'sceptic-jo', 'Hola', 'Luis', 'Katha', 'Julio', 'Juan Andrés Tejedor-Serrano', 'EF', 'Andrew Parton', 'Admin', 'suu', 'EF', 'DEIMANTĖ', 'eda', 'Gerold', 'ferenckata', 'JK', 'dmk', 'ttme', 'Small brain ', 'Chris', 'Grace Hopper', 'TN', 'DEIMANTĖ', 'Jeremie', 'thomcsmits', 'Hola', 'Aquaria', 'Hola', 'TN', 'train', 'TN', 'Harpreet ', 'CesarPrada', 'Hola', 'Ale28', 'AP', 'Hola', 'Aquaria', 'Hola', 'Aquaria', 'Hola', 'Anais', 'Aquaria', 'ferenckata', 'DEIMANTĖ ', 'Admin', 'Luis', 'Jeanne', 'asdfg', 'CesarPrada', 'Gerold', 'Luis', 'LK', 'Chris', 'JK', 'DEIMANTĖ ', 'Harpreet ', 'eda', 'dmk', 'skeptic-jo', 'EF', 'DaniH', 'Hola', 'Hola', 'Al ', 'DEIMANTĖ', 'Deimantė', 'Hola', 'aln', 'Hola', 'Hola', 'Admin', 'CB', 'Mxfly', 'Snps ', 'Admin', 'Luis', 'Admin', 'Snps', 'Snps', 'Eric', 'CesarPrada', 'Katha', 'Hola', 'EF', 'DEIMANTĖ', 'I-wonder', 'A', 'DEIMANTĖ', 'Hola', 'Hola', 'DEIMANTĖ', 'TN', 'Hola', 'DaniH', 'DEIMANTĖ ', 'Hola', 'Hola', 'Hola', 'Hola', 'Hola', 'Admin', 'Snps', 'gerold', 'Bastien Chassagnol ', 'DEIMANTĖ ', 'gaia', 'Admin', 'jyhuang', 'Nikolas']
+2025-10-30 14:06:41,337 INFO Question 0: original='gerold' -> processed='gerold' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,342 INFO Question 0: Found 2 answers for request_id b61314ca-feb2-4474-a503-c253eacd04f5
+2025-10-30 14:06:41,342 INFO Question 1: original='deimantė' -> processed='deimantė' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,346 INFO Question 1: Found 2 answers for request_id 2550f244-6998-4777-a5a2-39d07a22f73a
+2025-10-30 14:06:41,346 INFO Question 2: original='gerold' -> processed='gerold' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,349 INFO Question 2: Found 0 answers for request_id 6b447917-ec1f-4c96-af35-11e36a7dfd13
+2025-10-30 14:06:41,349 INFO Question 3: original='suu' -> processed='suu' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,353 INFO Question 3: Found 2 answers for request_id 97e6dacc-ff39-4932-a600-5f7ca6c091d8
+2025-10-30 14:06:41,353 INFO Question 4: original='danih' -> processed='danih' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,357 INFO Question 4: Found 2 answers for request_id 96988a22-a560-4155-9792-51cfa6f44a2d
+2025-10-30 14:06:41,357 INFO Question 5: original='does dr saez-rodriguez like black box models?' -> processed='does dr saez-rodriguez like black box models?' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,361 INFO Question 5: Found 2 answers for request_id 0551b4c1-74be-444e-9613-75e001df50a7
+2025-10-30 14:06:41,361 INFO Question 6: original='cesarprada' -> processed='cesarprada' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,364 INFO Question 6: Found 0 answers for request_id e633b35b-a005-4314-94ec-f488f84f1ad9
+2025-10-30 14:06:41,364 INFO Question 7: original='chris' -> processed='chris' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,367 INFO Question 7: Found 2 answers for request_id 155ac338-3532-4cbc-a86f-f608862a782c
+2025-10-30 14:06:41,367 INFO Question 8: original='grace hopper' -> processed='grace hopper' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,371 INFO Question 8: Found 0 answers for request_id 65a4060f-2726-4fb3-8745-e6055665f8bf
+2025-10-30 14:06:41,371 INFO Question 9: original='sceptic-jo' -> processed='sceptic-jo' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,375 INFO Question 9: Found 0 answers for request_id 8033d5bf-ad6b-45ba-bcc0-cce1b8767966
+2025-10-30 14:06:41,375 INFO Question 10: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,379 INFO Question 10: Found 2 answers for request_id 8a364135-28fb-4a12-86a5-5bc73c98b0c5
+2025-10-30 14:06:41,379 INFO Question 11: original='luis' -> processed='luis' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,382 INFO Question 11: Found 0 answers for request_id e77d9c05-b697-4eb8-8bf0-34d7a02d4505
+2025-10-30 14:06:41,382 INFO Question 12: original='katha' -> processed='katha' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,385 INFO Question 12: Found 2 answers for request_id 9bf217db-9868-4913-b36f-4bb88f704e90
+2025-10-30 14:06:41,385 INFO Question 13: original='julio' -> processed='julio' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,388 INFO Question 13: Found 0 answers for request_id af25a403-cf77-4a11-b613-978ed1e84ae6
+2025-10-30 14:06:41,388 INFO Question 14: original='juan andrés tejedor-serrano' -> processed='juan andrés tejedor-serrano' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,390 INFO Question 14: Found 2 answers for request_id 2e2aa846-c6ed-4466-bf68-d82bde234ce1
+2025-10-30 14:06:41,391 INFO Question 15: original='ef' -> processed='ef' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,394 INFO Question 15: Found 2 answers for request_id 79952193-a81f-4ad2-ad08-7f40f7ba3fa9
+2025-10-30 14:06:41,394 INFO Question 16: original='andrew parton' -> processed='andrew parton' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,397 INFO Question 16: Found 0 answers for request_id 9e0e0d3d-73ee-4b86-a904-fbda5d78cf09
+2025-10-30 14:06:41,397 INFO Question 17: original='admin' -> processed='admin' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,400 INFO Question 17: Found 0 answers for request_id b2e0a3d4-416d-4f3b-936f-eb08014f1092
+2025-10-30 14:06:41,400 INFO Question 18: original='suu' -> processed='suu' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,403 INFO Question 18: Found 0 answers for request_id 82aaafe6-f346-4a1f-9054-88b6a2c75ec8
+2025-10-30 14:06:41,403 INFO Question 19: original='ef' -> processed='ef' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,405 INFO Question 19: Found 4 answers for request_id bbb778fe-391a-4661-b116-78e27c641d7e
+2025-10-30 14:06:41,406 INFO Question 20: original='deimantė' -> processed='deimantė' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,410 INFO Question 20: Found 4 answers for request_id 3c6a15c0-6780-457d-9d22-055621e4b2b7
+2025-10-30 14:06:41,410 INFO Question 21: original='eda' -> processed='eda' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,413 INFO Question 21: Found 2 answers for request_id 2deccddb-ae00-4497-9bbe-fbb10b050279
+2025-10-30 14:06:41,414 INFO Question 22: original='gerold' -> processed='gerold' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,416 INFO Question 22: Found 0 answers for request_id 62a92cbf-ff63-4372-a05a-a5168f2e0bb4
+2025-10-30 14:06:41,416 INFO Question 23: original='ferenckata' -> processed='ferenckata' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,419 INFO Question 23: Found 4 answers for request_id 38030161-7f6d-431b-acf7-82153527f826
+2025-10-30 14:06:41,419 INFO Question 24: original='jk' -> processed='jk' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,422 INFO Question 24: Found 0 answers for request_id 2cbb01e2-fd9c-4591-b6a2-d3da5bbd0c99
+2025-10-30 14:06:41,422 INFO Question 25: original='dmk' -> processed='dmk' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,425 INFO Question 25: Found 0 answers for request_id 67dcdf7b-5e9f-410c-b734-8c8a089a2e3e
+2025-10-30 14:06:41,425 INFO Question 26: original='ttme' -> processed='ttme' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,428 INFO Question 26: Found 2 answers for request_id 3fd6ffab-3b7a-421f-8ea3-e066c287d077
+2025-10-30 14:06:41,428 INFO Question 27: original='small brain' -> processed='small brain' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,431 INFO Question 27: Found 2 answers for request_id 0ffbc990-23c2-4a71-bc0b-b8412612292f
+2025-10-30 14:06:41,431 INFO Question 28: original='chris' -> processed='chris' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,435 INFO Question 28: Found 2 answers for request_id 5c6d24e2-b6e5-4453-9e94-6fab8151a377
+2025-10-30 14:06:41,435 INFO Question 29: original='grace hopper' -> processed='grace hopper' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,438 INFO Question 29: Found 2 answers for request_id 1df0aa4a-235a-454b-961b-19764c58341b
+2025-10-30 14:06:41,438 INFO Question 30: original='tn' -> processed='tn' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,440 INFO Question 30: Found 4 answers for request_id 14b86bfe-2bcc-4e14-b802-8f714fbc2485
+2025-10-30 14:06:41,440 INFO Question 31: original='deimantė' -> processed='deimantė' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,443 INFO Question 31: Found 4 answers for request_id cc85ae40-228c-45ab-a1d6-d391fd5630d1
+2025-10-30 14:06:41,444 INFO Question 32: original='jeremie' -> processed='jeremie' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,448 INFO Question 32: Found 4 answers for request_id 8dfa3ef9-81d0-4393-82fd-c594ae6be0ee
+2025-10-30 14:06:41,448 INFO Question 33: original='thomcsmits' -> processed='thomcsmits' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,450 INFO Question 33: Found 0 answers for request_id fff995b5-3d15-497a-a8a2-d8a6352606ca
+2025-10-30 14:06:41,450 INFO Question 34: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,453 INFO Question 34: Found 0 answers for request_id 85d4de4a-3efe-4c17-8916-402fcaadc6d5
+2025-10-30 14:06:41,453 INFO Question 35: original='aquaria' -> processed='aquaria' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,456 INFO Question 35: Found 2 answers for request_id 7fdbb9d8-d884-4418-b6ca-6e5863f3b8a1
+2025-10-30 14:06:41,456 INFO Question 36: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,459 INFO Question 36: Found 0 answers for request_id 5da873ce-337e-436b-9ec6-ded36339ee67
+2025-10-30 14:06:41,459 INFO Question 37: original='tn' -> processed='tn' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,462 INFO Question 37: Found 2 answers for request_id 9a6213f9-9e79-4ef0-911d-f01f54223ef2
+2025-10-30 14:06:41,462 INFO Question 38: original='train' -> processed='train' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,465 INFO Question 38: Found 0 answers for request_id e2926bd6-9c9b-47aa-835c-ee289fb9a7a4
+2025-10-30 14:06:41,465 INFO Question 39: original='tn' -> processed='tn' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,468 INFO Question 39: Found 2 answers for request_id d926b806-0b3a-4fc7-a129-a431a4176270
+2025-10-30 14:06:41,468 INFO Question 40: original='harpreet' -> processed='harpreet' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,471 INFO Question 40: Found 4 answers for request_id 98d8084c-54a6-4e6e-9576-7572d0743557
+2025-10-30 14:06:41,471 INFO Question 41: original='cesarprada' -> processed='cesarprada' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,474 INFO Question 41: Found 0 answers for request_id 8753201d-22e9-46ab-a4f3-e2559eb1f33f
+2025-10-30 14:06:41,474 INFO Question 42: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,477 INFO Question 42: Found 4 answers for request_id 98c34916-ec47-472d-ae0e-b8accf0df855
+2025-10-30 14:06:41,477 INFO Question 43: original='ale28' -> processed='ale28' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,480 INFO Question 43: Found 2 answers for request_id 992bed5a-a889-43b9-af53-7192b426f20f
+2025-10-30 14:06:41,480 INFO Question 44: original='ap' -> processed='ap' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,483 INFO Question 44: Found 0 answers for request_id 4f7cc6bc-d54b-42db-a7bc-84ec7b7d065b
+2025-10-30 14:06:41,484 INFO Question 45: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,487 INFO Question 45: Found 4 answers for request_id 582341f3-ac73-4d40-8e3d-69e633b7bcad
+2025-10-30 14:06:41,487 INFO Question 46: original='aquaria' -> processed='aquaria' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,489 INFO Question 46: Found 2 answers for request_id 0c9fa92d-a637-4614-838f-4c9c7e63ad68
+2025-10-30 14:06:41,489 INFO Question 47: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,492 INFO Question 47: Found 4 answers for request_id 968da9ff-687c-4a2a-9b0c-a0e3b68617f9
+2025-10-30 14:06:41,492 INFO Question 48: original='aquaria' -> processed='aquaria' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,495 INFO Question 48: Found 2 answers for request_id 0dabd225-b356-4d11-975a-1f927b349a16
+2025-10-30 14:06:41,495 INFO Question 49: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,498 INFO Question 49: Found 2 answers for request_id 721b510c-c767-484a-a037-91e4ded4af1b
+2025-10-30 14:06:41,498 INFO Question 50: original='anais' -> processed='anais' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,501 INFO Question 50: Found 0 answers for request_id 94d596eb-36d2-4da0-bd32-9083795b7484
+2025-10-30 14:06:41,501 INFO Question 51: original='aquaria' -> processed='aquaria' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,504 INFO Question 51: Found 4 answers for request_id 570fcaf4-19fa-4b79-96f4-999817315b88
+2025-10-30 14:06:41,504 INFO Question 52: original='ferenckata' -> processed='ferenckata' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,507 INFO Question 52: Found 4 answers for request_id bda201b4-2810-426d-993d-833830133eae
+2025-10-30 14:06:41,507 INFO Question 53: original='deimantė' -> processed='deimantė' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,510 INFO Question 53: Found 4 answers for request_id 9647562d-1adb-4830-b5b0-7fdbda88692d
+2025-10-30 14:06:41,510 INFO Question 54: original='admin' -> processed='admin' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,513 INFO Question 54: Found 0 answers for request_id d99f6101-29a1-4cd7-a424-fc5e17482cf9
+2025-10-30 14:06:41,513 INFO Question 55: original='luis' -> processed='luis' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,516 INFO Question 55: Found 2 answers for request_id ba9172f8-e138-46a1-81da-b15a41b49c1a
+2025-10-30 14:06:41,516 INFO Question 56: original='jeanne' -> processed='jeanne' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,519 INFO Question 56: Found 4 answers for request_id 244950e2-382f-4460-9741-b06b7710ec36
+2025-10-30 14:06:41,520 INFO Question 57: original='asdfg' -> processed='asdfg' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,522 INFO Question 57: Found 2 answers for request_id 8307714c-af84-425d-8d1e-cdea303830a7
+2025-10-30 14:06:41,523 INFO Question 58: original='cesarprada' -> processed='cesarprada' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,525 INFO Question 58: Found 0 answers for request_id fcebc352-0a69-4930-b621-a5b93ad0cd1a
+2025-10-30 14:06:41,525 INFO Question 59: original='gerold' -> processed='gerold' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,528 INFO Question 59: Found 2 answers for request_id d677deee-64f3-4bb7-b0a9-2b7ab93d7abb
+2025-10-30 14:06:41,528 INFO Question 60: original='luis' -> processed='luis' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,531 INFO Question 60: Found 0 answers for request_id be26fa40-6817-4e05-ac15-6dff9365dfee
+2025-10-30 14:06:41,531 INFO Question 61: original='lk' -> processed='lk' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,534 INFO Question 61: Found 0 answers for request_id 1a699d6f-4f3a-4309-b69d-eb399a70b032
+2025-10-30 14:06:41,534 INFO Question 62: original='chris' -> processed='chris' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,536 INFO Question 62: Found 2 answers for request_id d169e4e7-a844-4452-aa7e-e0c844807eb6
+2025-10-30 14:06:41,537 INFO Question 63: original='jk' -> processed='jk' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,539 INFO Question 63: Found 0 answers for request_id c61d572f-5c30-4047-bbc4-677ff23e5e6d
+2025-10-30 14:06:41,539 INFO Question 64: original='deimantė' -> processed='deimantė' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,542 INFO Question 64: Found 2 answers for request_id 4f1f4cbe-6006-4f72-9a45-ed19366bb273
+2025-10-30 14:06:41,542 INFO Question 65: original='harpreet' -> processed='harpreet' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,545 INFO Question 65: Found 0 answers for request_id 00318b20-ba17-44bb-9c83-14545121f81f
+2025-10-30 14:06:41,545 INFO Question 66: original='eda' -> processed='eda' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,548 INFO Question 66: Found 2 answers for request_id f1ae5762-010a-4396-8594-345df420356d
+2025-10-30 14:06:41,548 INFO Question 67: original='dmk' -> processed='dmk' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,550 INFO Question 67: Found 0 answers for request_id 1636bb43-5813-43a3-9c9c-f8f491398d01
+2025-10-30 14:06:41,550 INFO Question 68: original='skeptic-jo' -> processed='skeptic-jo' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,556 INFO Question 68: Found 0 answers for request_id e04fba18-3a09-4007-9a1f-1d8375d29dae
+2025-10-30 14:06:41,556 INFO Question 69: original='ef' -> processed='ef' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,560 INFO Question 69: Found 2 answers for request_id fbc793cc-bfbc-4e4f-8b76-0dd7f1884345
+2025-10-30 14:06:41,561 INFO Question 70: original='danih' -> processed='danih' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,564 INFO Question 70: Found 0 answers for request_id bdd5d566-0fbc-4ea3-9c5a-3108f1cc60de
+2025-10-30 14:06:41,564 INFO Question 71: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,567 INFO Question 71: Found 0 answers for request_id 2e0adb8b-29ad-4441-a742-30d858978ab3
+2025-10-30 14:06:41,567 INFO Question 72: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,570 INFO Question 72: Found 0 answers for request_id c4d5204e-870f-4038-9c4a-66eed0fd07e3
+2025-10-30 14:06:41,570 INFO Question 73: original='al' -> processed='al' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,573 INFO Question 73: Found 0 answers for request_id dd8a79db-66fd-4b12-95da-adc75fe1de06
+2025-10-30 14:06:41,573 INFO Question 74: original='deimantė' -> processed='deimantė' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,576 INFO Question 74: Found 2 answers for request_id e220d2ec-ee7d-4330-83a7-f6dc832f3714
+2025-10-30 14:06:41,576 INFO Question 75: original='deimantė' -> processed='deimantė' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,579 INFO Question 75: Found 2 answers for request_id 660d7b67-a867-4494-ae53-0dc0505a9205
+2025-10-30 14:06:41,579 INFO Question 76: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,582 INFO Question 76: Found 0 answers for request_id ec19c261-8f42-4706-ae67-39d602c2a018
+2025-10-30 14:06:41,582 INFO Question 77: original='aln' -> processed='aln' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,585 INFO Question 77: Found 0 answers for request_id 3acd29d6-5a32-4d5b-bcb8-14c14c19848d
+2025-10-30 14:06:41,585 INFO Question 78: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,587 INFO Question 78: Found 0 answers for request_id 5cbbacb6-ff65-4c1e-b405-d59366a0f8fa
+2025-10-30 14:06:41,588 INFO Question 79: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,592 INFO Question 79: Found 0 answers for request_id fbee225f-d741-45a2-8763-5e8e694175cc
+2025-10-30 14:06:41,592 INFO Question 80: original='admin' -> processed='admin' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,594 INFO Question 80: Found 0 answers for request_id 13817f00-523f-4f99-954b-117ecdefce3c
+2025-10-30 14:06:41,594 INFO Question 81: original='cb' -> processed='cb' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,598 INFO Question 81: Found 2 answers for request_id 55dacf96-2f47-40a7-bfe0-92a25d071fd0
+2025-10-30 14:06:41,598 INFO Question 82: original='mxfly' -> processed='mxfly' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,600 INFO Question 82: Found 0 answers for request_id 33580ae3-082e-4c85-82c9-56a52dd54d69
+2025-10-30 14:06:41,600 INFO Question 83: original='snps' -> processed='snps' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,602 INFO Question 83: Found 2 answers for request_id ded1e790-98f1-4ee9-975e-6b5d99c55cdc
+2025-10-30 14:06:41,603 INFO Question 84: original='admin' -> processed='admin' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,605 INFO Question 84: Found 0 answers for request_id 0c7f9442-8207-48a6-92d0-6645198acdc7
+2025-10-30 14:06:41,605 INFO Question 85: original='luis' -> processed='luis' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,608 INFO Question 85: Found 0 answers for request_id 1936f9fa-95d8-4253-ab96-245a80f1f5c1
+2025-10-30 14:06:41,608 INFO Question 86: original='admin' -> processed='admin' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,611 INFO Question 86: Found 0 answers for request_id 908c8f35-f0d9-46fb-9f73-cf70c8554def
+2025-10-30 14:06:41,611 INFO Question 87: original='snps' -> processed='snps' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,614 INFO Question 87: Found 2 answers for request_id 607e8b82-01b3-432c-bcc5-90863b98f234
+2025-10-30 14:06:41,615 INFO Question 88: original='snps' -> processed='snps' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,618 INFO Question 88: Found 2 answers for request_id d2afbd82-9350-4fd2-ad66-3cf5f13ac269
+2025-10-30 14:06:41,618 INFO Question 89: original='eric' -> processed='eric' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,621 INFO Question 89: Found 0 answers for request_id 142aef21-103a-4530-9db4-38927c23b606
+2025-10-30 14:06:41,621 INFO Question 90: original='cesarprada' -> processed='cesarprada' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,624 INFO Question 90: Found 0 answers for request_id 214d8c98-7201-4656-9170-0b2b1841f1e7
+2025-10-30 14:06:41,624 INFO Question 91: original='katha' -> processed='katha' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,627 INFO Question 91: Found 2 answers for request_id 1c9d3ef2-6a4b-48fb-84f7-72bf9ef8aa95
+2025-10-30 14:06:41,627 INFO Question 92: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,630 INFO Question 92: Found 0 answers for request_id 38231b55-eb08-4bdb-b9c2-30c3b2016cc5
+2025-10-30 14:06:41,630 INFO Question 93: original='ef' -> processed='ef' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,633 INFO Question 93: Found 2 answers for request_id 9e91d7bd-78e3-4e82-99d1-a84c8ad01897
+2025-10-30 14:06:41,633 INFO Question 94: original='deimantė' -> processed='deimantė' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,636 INFO Question 94: Found 2 answers for request_id 937c04ed-6453-49df-bcd3-1c3fcc76ce22
+2025-10-30 14:06:41,636 INFO Question 95: original='i-wonder' -> processed='i-wonder' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,639 INFO Question 95: Found 0 answers for request_id 80e40948-ca1e-4e39-aa15-bd59cc376466
+2025-10-30 14:06:41,639 INFO Question 96: original='a' -> processed='a' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,642 INFO Question 96: Found 2 answers for request_id fdd9f575-4b0d-4a77-84c5-e151cdd1b32f
+2025-10-30 14:06:41,642 INFO Question 97: original='deimantė' -> processed='deimantė' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,645 INFO Question 97: Found 2 answers for request_id 5cf4b48a-9cfd-4630-9d08-abf07fdd9c67
+2025-10-30 14:06:41,645 INFO Question 98: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,648 INFO Question 98: Found 0 answers for request_id 24352dbe-2d14-4944-a25a-ae60cd00e94e
+2025-10-30 14:06:41,648 INFO Question 99: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,652 INFO Question 99: Found 0 answers for request_id b36e0680-44b9-4771-ad7c-f94b9b71de26
+2025-10-30 14:06:41,652 INFO Question 100: original='deimantė' -> processed='deimantė' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,655 INFO Question 100: Found 2 answers for request_id 13f7402f-723f-46c3-ad27-3ac9aca087e7
+2025-10-30 14:06:41,655 INFO Question 101: original='tn' -> processed='tn' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,658 INFO Question 101: Found 0 answers for request_id e4f650c1-830e-4756-847e-8039199cedca
+2025-10-30 14:06:41,658 INFO Question 102: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,661 INFO Question 102: Found 0 answers for request_id ae225a61-6090-4cc5-83e5-b51079cfa6fe
+2025-10-30 14:06:41,661 INFO Question 103: original='danih' -> processed='danih' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,665 INFO Question 103: Found 0 answers for request_id 18c2cab4-fb16-44e6-8c61-c521ef6df7e2
+2025-10-30 14:06:41,665 INFO Question 104: original='deimantė' -> processed='deimantė' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,668 INFO Question 104: Found 2 answers for request_id 0c33dbfb-2417-4386-9a25-4b105f3b1fb5
+2025-10-30 14:06:41,668 INFO Question 105: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,671 INFO Question 105: Found 0 answers for request_id 8feaf643-fd6f-485c-97f3-3acddc781309
+2025-10-30 14:06:41,671 INFO Question 106: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,674 INFO Question 106: Found 0 answers for request_id f1a0e502-d2fa-4957-ac9e-98b3d22e5f0d
+2025-10-30 14:06:41,674 INFO Question 107: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,677 INFO Question 107: Found 0 answers for request_id 633539a5-9483-4e30-86fa-fd8d3d9d6ba3
+2025-10-30 14:06:41,677 INFO Question 108: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,680 INFO Question 108: Found 0 answers for request_id 2d1c45ee-030b-4a15-a40d-f273b865770f
+2025-10-30 14:06:41,680 INFO Question 109: original='hola' -> processed='hola' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,682 INFO Question 109: Found 0 answers for request_id d6682bcf-1d8f-4365-a904-c6574049b379
+2025-10-30 14:06:41,682 INFO Question 110: original='admin' -> processed='admin' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,686 INFO Question 110: Found 0 answers for request_id a2073514-f4a9-419a-acfe-64a3a8579c42
+2025-10-30 14:06:41,686 INFO Question 111: original='snps' -> processed='snps' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,689 INFO Question 111: Found 2 answers for request_id be90be32-4565-43cc-b5b7-d0bbaf3975d8
+2025-10-30 14:06:41,689 INFO Question 112: original='gerold' -> processed='gerold' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,691 INFO Question 112: Found 0 answers for request_id 151054ef-9d52-4629-ab02-2a6ff256154a
+2025-10-30 14:06:41,691 INFO Question 113: original='bastien chassagnol' -> processed='bastien chassagnol' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,694 INFO Question 113: Found 0 answers for request_id 89a4f611-e638-4e5e-9109-d1bc21c0997b
+2025-10-30 14:06:41,694 INFO Question 114: original='deimantė' -> processed='deimantė' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,697 INFO Question 114: Found 2 answers for request_id 9729f596-7384-42a0-92ee-f38e01beae15
+2025-10-30 14:06:41,697 INFO Question 115: original='gaia' -> processed='gaia' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,701 INFO Question 115: Found 0 answers for request_id 5a410391-2251-4241-aac3-5038afab4e14
+2025-10-30 14:06:41,701 INFO Question 116: original='admin' -> processed='admin' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,704 INFO Question 116: Found 0 answers for request_id 6d1736be-8537-48e9-a333-440aece0ac0f
+2025-10-30 14:06:41,704 INFO Question 117: original='jyhuang' -> processed='jyhuang' vs target='nikolas' | Match: False
+2025-10-30 14:06:41,707 INFO Question 117: Found 2 answers for request_id e4ffb4c3-0dde-4078-845f-7c11aed5d7ce
+2025-10-30 14:06:41,707 INFO Question 118: original='nikolas' -> processed='nikolas' vs target='nikolas' | Match: True
+2025-10-30 14:06:41,708 INFO Question 118: Found 2 answers for request_id 2205d379-63fc-4054-8d7c-f72fbdba7fee
+2025-10-30 14:06:41,708 INFO ✓ Added user question: 2205d379-63fc-4054-8d7c-f72fbdba7fee from Nikolas
+2025-10-30 14:06:41,708 INFO Final result: 1 user questions and 0 extra questions
+2025-10-30 14:06:41,708 INFO 10.148.196.182 - - [30/Oct/2025 14:06:41] "GET /get_answers?nickname=Nikolas&extra=0 HTTP/1.1" 200 -
+2025-10-30 14:06:41,720 INFO 10.148.196.182 - - [30/Oct/2025 14:06:41] "GET /available_pdfs HTTP/1.1" 200 -
+2025-10-30 14:06:46,456 INFO Successfully saved rankings for request 2205d379-63fc-4054-8d7c-f72fbdba7fee
+2025-10-30 14:06:46,457 INFO 10.148.196.182 - - [30/Oct/2025 14:06:46] "POST /rankings/ HTTP/1.1" 200 -

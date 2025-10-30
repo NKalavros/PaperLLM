@@ -154,6 +154,35 @@
             /* Even darker shade for better readability */
         }
 
+        .answers-grid {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .answer-card {
+            flex: 1 1 0;
+            min-width: 260px;
+            background: #f8fafc;
+            border: 1px solid #d0d7de;
+            border-radius: 6px;
+            padding: 1rem;
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.04);
+        }
+
+        .answer-card h4 {
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+            color: #1f2933;
+            font-size: 1.05rem;
+        }
+
+        .answer-card .answer-body {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
         h1 {
             color: #2c3e50;
             margin-bottom: 1.5rem;
@@ -452,6 +481,7 @@
 
         if (answersTabBtn) {
             answersTabBtn.addEventListener('click', () => {
+                console.log('Answers tab clicked');
                 answersTabBtn.classList.add('active');
                 questionsTabBtn?.classList.remove('active');
                 lbBtn?.classList.remove('active');
@@ -460,11 +490,13 @@
                 questionsTab?.classList.remove('active');
                 leaderboardTab?.classList.remove('active');
                 speakerTab?.classList.remove('active');
+                console.log('Answers tab should now be visible');
             });
         }
 
         if (lbBtn) {
             lbBtn.addEventListener('click', () => {
+                console.log('Leaderboard tab clicked');
                 lbBtn.classList.add('active');
                 questionsTabBtn?.classList.remove('active');
                 answersTabBtn?.classList.remove('active');
@@ -473,8 +505,10 @@
                 questionsTab?.classList.remove('active');
                 answersTab?.classList.remove('active');
                 speakerTab?.classList.remove('active');
+                console.log('About to load audience and speaker leaderboards');
                 loadAudienceLeaderboard();
                 loadSpeakerLeaderboard();
+                console.log('Leaderboard loading functions called');
             });
         }
 
@@ -566,6 +600,10 @@
             const sizes = ['Bytes', 'KB', 'MB', 'GB'];
             const i = Math.floor(Math.log(bytes) / Math.log(k));
             return Math.round(bytes / Math.pow(k, i) * 100) / 100 + ' ' + sizes[i];
+        }
+
+        function formatModelLabel(rawName, position) {
+            return `Model ${position}`;
         }
 
         // Existing summarizeForm JS with modifications
@@ -711,6 +749,8 @@
                     const [model1, model2] = Object.keys(answers);
                     const answer1 = answers[model1];
                     const answer2 = answers[model2];
+                    const model1Label = formatModelLabel(model1, 1);
+                    const model2Label = formatModelLabel(model2, 2);
 
                     panelsHtml += `
                     <div class="summary-box"
@@ -727,22 +767,30 @@
                         <button type="button" class="toggle-details">Show Details</button>
                       </div>
                       <div class="summary-content hidden">
-                        <div><strong>Model 1:</strong>${marked.parse(answer1)}</div>
-                        <div><strong>Model 2:</strong>${marked.parse(answer2)}</div>
+                        <div class="answers-grid">
+                          <div class="answer-card">
+                            <h4>${model1Label}</h4>
+                            <div class="answer-body">${marked.parse(answer1)}</div>
+                          </div>
+                          <div class="answer-card">
+                            <h4>${model2Label}</h4>
+                            <div class="answer-body">${marked.parse(answer2)}</div>
+                          </div>
+                        </div>
                         <div class="form-group">
                           <label for="preferred-${reqId}">Preferred Answer:</label>
                           <select id="preferred-${reqId}" class="preferred-dropdown">
                             <option value="">--Select--</option>
-                            <option value="answer1">Model 1</option>
-                            <option value="answer2">Model 2</option>
+                            <option value="answer1">${model1Label}</option>
+                            <option value="answer2">${model2Label}</option>
                           </select>
                         </div>
                         <div class="form-group">
-                          <label for="quality1-${reqId}">Quality Model 1 (1-10):</label>
+                          <label for="quality1-${reqId}">Quality ${model1Label} (1-10):</label>
                           <input type="number" id="quality1-${reqId}" class="quality-input" min="1" max="10">
                         </div>
                         <div class="form-group">
-                          <label for="quality2-${reqId}">Quality Model 2 (1-10):</label>
+                          <label for="quality2-${reqId}">Quality ${model2Label} (1-10):</label>
                           <input type="number" id="quality2-${reqId}" class="quality-input" min="1" max="10">
                         </div>
                       </div>
@@ -929,7 +977,7 @@
         // Automatically fetch and populate table
         function loadTable() {
             fetch('/leaderboard')
-                .then r => {
+                .then(r => {
                     if (!r.ok) throw new Error(`HTTP error ${r.status}`);
                     return r.json();
                 })
@@ -943,22 +991,6 @@
                     document.querySelector('#audienceLeaderboardTable tbody').innerHTML =
                         `<tr><td colspan="4">Error loading leaderboard: ${e.message}</td></tr>`;
                 });
-        }
-
-        // Load on tab click
-        if (lbBtn) {
-            lbBtn.addEventListener('click', () => {
-                lbBtn.classList.add('active');
-                questionsTabBtn?.classList.remove('active');
-                answersTabBtn?.classList.remove('active');
-                speakerTabBtn?.classList.remove('active');
-                leaderboardTab.classList.add('active');
-                questionsTab?.classList.remove('active');
-                answersTab?.classList.remove('active');
-                speakerTab?.classList.remove('active');
-                loadAudienceLeaderboard();
-                loadSpeakerLeaderboard();
-            });
         }
 
         // Load on initial page load if leaderboard is active

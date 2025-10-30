@@ -16,6 +16,7 @@ from openai import OpenAI #type: ignore
 from dotenv import load_dotenv #type: ignore
 import google.generativeai as genai #type: ignore
 from collections import defaultdict
+from itertools import combinations
 import hashlib
 import shutil
 import redis #type: ignore
@@ -147,6 +148,119 @@ MAX_API_TIMEOUT = 45
 MAX_TEXT_LENGTH = 1200000
 API_RETRY_DELAYS = [5, 15, 45]
 RPM_LIMIT = 3500
+ELO_REDIS_KEY = "elo:ratings"
+DEFAULT_ELO_RATING = 1500.0
+ELO_EXPECTATION_DIVISOR = 400.0
+ELO_MIN_PAIR_WEIGHT = 0.05
+ELO_K_FACTOR = 24.0
+
+def get_model_elo_ratings(models: list[str]) -> dict[str, float]:
+    """Fetch Elo ratings for the given models, defaulting to baseline when missing."""
+    ratings = {model: DEFAULT_ELO_RATING for model in models}
+    try:
+        stored = redis_client.hgetall(ELO_REDIS_KEY)
+    except redis.exceptions.RedisError as exc:
+        logger.warning(f"Unable to load Elo ratings from Redis: {exc}")
+        return ratings
+
+    for raw_key, raw_value in stored.items():
+        try:
+            key = raw_key.decode() if isinstance(raw_key, bytes) else raw_key
+            if key not in ratings:
+                continue
+            value_str = raw_value.decode() if isinstance(raw_value, bytes) else raw_value
+            ratings[key] = float(value_str)
+        except (ValueError, AttributeError, TypeError):
+            logger.debug(f"Skipping malformed Elo entry for key {raw_key}")
+            continue
+    return ratings
+
+def select_models_for_request(all_models: list[str], sample_size: int = 2) -> list[str]:
+    """
+    Select models for a request using Elo-based pair sampling.
+    Prefers matchups with closer ratings but keeps a minimum sampling weight.
+    """
+    unique_models = list(dict.fromkeys(all_models))
+    if sample_size <= 0:
+        return []
+    if len(unique_models) <= sample_size:
+        return unique_models[:sample_size]
+
+    ratings = get_model_elo_ratings(unique_models)
+    pairs = list(combinations(unique_models, sample_size))
+    if not pairs:
+        return unique_models[:sample_size]
+
+    weights = []
+    for pair in pairs:
+        values = [ratings.get(model, DEFAULT_ELO_RATING) for model in pair]
+        diff = max(values) - min(values)
+        expected = 1.0 / (1.0 + 10 ** (diff / ELO_EXPECTATION_DIVISOR))
+        weight = max(ELO_MIN_PAIR_WEIGHT, 1.0 - abs(expected - 0.5) * 2)
+        weights.append(weight)
+
+    total_weight = sum(weights)
+    if total_weight <= 0:
+        return list(random.sample(unique_models, sample_size))
+
+    selected_pair = random.choices(pairs, weights=weights, k=1)[0]
+    logger.debug(f"Selected models {selected_pair} with ratings { {m: ratings[m] for m in selected_pair} }")
+    return list(selected_pair)
+
+def determine_pair_outcome(
+    model_a: str,
+    model_b: str,
+    real_rankings: dict[str, int],
+    real_quality_scores: dict[str, float]
+) -> typing.Optional[float]:
+    """Return outcome for model_a vs model_b (1=win, 0=loss, 0.5=tie)."""
+    rank_a = real_rankings.get(model_a)
+    rank_b = real_rankings.get(model_b)
+    if rank_a is not None and rank_b is not None:
+        if rank_a < rank_b:
+            return 1.0
+        if rank_a > rank_b:
+            return 0.0
+        # fall through to quality scores when ranks tie
+    score_a = real_quality_scores.get(model_a)
+    score_b = real_quality_scores.get(model_b)
+    if score_a is not None and score_b is not None:
+        if score_a > score_b:
+            return 1.0
+        if score_a < score_b:
+            return 0.0
+        return 0.5
+    if rank_a is not None and rank_b is not None:
+        return 0.5  # explicit tie from equal ranks without quality scores
+    return None
+
+def update_elo_from_rankings(
+    real_rankings: dict[str, int],
+    real_quality_scores: dict[str, float]
+) -> None:
+    """Update Elo ratings based on the submitted rankings and scores."""
+    models = sorted(set(real_rankings.keys()) | set(real_quality_scores.keys()))
+    if len(models) < 2:
+        return
+
+    ratings = get_model_elo_ratings(models)
+    updated = dict(ratings)
+
+    for model_a, model_b in combinations(models, 2):
+        outcome = determine_pair_outcome(model_a, model_b, real_rankings, real_quality_scores)
+        if outcome is None:
+            continue
+        rating_a = updated[model_a]
+        rating_b = updated[model_b]
+        expected_a = 1.0 / (1.0 + 10 ** ((rating_b - rating_a) / ELO_EXPECTATION_DIVISOR))
+        expected_b = 1.0 - expected_a
+        updated[model_a] = rating_a + ELO_K_FACTOR * (outcome - expected_a)
+        updated[model_b] = rating_b + ELO_K_FACTOR * ((1.0 - outcome) - expected_b)
+
+    try:
+        redis_client.hset(ELO_REDIS_KEY, mapping={model: f"{updated[model]:.6f}" for model in models})
+    except redis.exceptions.RedisError as exc:
+        logger.warning(f"Failed to persist Elo ratings: {exc}")
 
 # Create upload directory and PDF storage directory
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
@@ -605,7 +719,7 @@ def summarize():
 
         # choose real model names only
         all_models = ['perplexity', 'openai']
-        selected_models = random.sample(all_models, 2)
+        selected_models = select_models_for_request(all_models, sample_size=2)
         tasks = []
         for model in selected_models:
             task = process_summary.apply_async(
@@ -996,6 +1110,11 @@ def save_rankings():
     except Exception as e:
         logger.error(f"Ranking update failed: {str(e)}")
         return jsonify({'status': 'failed', 'error': str(e)}), 500
+
+    try:
+        update_elo_from_rankings(real_rankings, real_quality_scores)
+    except Exception as exc:
+        logger.warning(f"Elo update skipped due to error: {exc}")
 
     logger.info(f"Successfully saved rankings for request {request_id}")
     return jsonify({'status': 'success'})
@@ -1417,7 +1536,7 @@ def process_pending_questions_for_pdf(pdf_filename):
                     
                     # Choose models and create tasks
                     all_models = ['perplexity', 'openai']
-                    selected_models = random.sample(all_models, 2)
+                    selected_models = select_models_for_request(all_models, sample_size=2)
                     tasks = []
                     
                     for model in selected_models:
